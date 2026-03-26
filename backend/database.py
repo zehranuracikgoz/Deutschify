@@ -1,14 +1,21 @@
 import sqlite3
 import os
 from contextlib import contextmanager
+from flask import current_app
 
-DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db')
+DEFAULT_DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db')
 
 @contextmanager
 def get_db():
-    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    try:
+        db_path = current_app.config.get('DATABASE', DEFAULT_DB_PATH)
+    except RuntimeError:
+        db_path = DEFAULT_DB_PATH
 
-    conn = sqlite3.connect(DB_PATH)
+    if db_path != ':memory:':
+        os.makedirs(os.path.dirname(os.path.abspath(db_path)), exist_ok=True)
+
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     try:
         yield conn
