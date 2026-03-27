@@ -1,5 +1,6 @@
 import sys
 import os
+import tempfile
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
@@ -10,10 +11,11 @@ from backend import create_app
 # register ve login akışlarındaki edge case'ler
 @pytest.fixture
 def client():
-    app = create_app()
-    app.config['TESTING'] = True
-    app.config['DATABASE'] = ':memory:'
-    return app.test_client()
+    db_fd, db_path = tempfile.mkstemp()
+    app = create_app({'TESTING': True, 'DATABASE': db_path})
+    yield app.test_client()
+    os.close(db_fd)
+    os.unlink(db_path)
 
 # geçerli bilgilerde = 201
 def test_register_success(client):
