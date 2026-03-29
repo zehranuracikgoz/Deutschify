@@ -5,3 +5,9 @@ __pycache__/
 *.pyc
 venv/
 instance/
+
+# android icin
+DeutschifyApp/.gradle/
+DeutschifyApp/build/
+DeutschifyApp/app/build/
+DeutschifyApp/local.properties
