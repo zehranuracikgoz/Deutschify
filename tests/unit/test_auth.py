@@ -12,7 +12,7 @@ from backend import create_app
 @pytest.fixture
 def client():
     db_fd, db_path = tempfile.mkstemp()
-    app = create_app({'TESTING': True, 'DATABASE': db_path})
+    app = create_app({'TESTING': True, 'DATABASE': db_path, 'JWT_SECRET_KEY': 'a' * 32})
     yield app.test_client()
     os.close(db_fd)
     os.unlink(db_path)
@@ -69,3 +69,43 @@ def test_login_missing_fields(client):
         'email': 'missing@test.com'
     })
     assert response.status_code == 400
+
+# login sonrası responseda access_token olmalı
+def test_login_returns_access_token(client):
+    client.post('/auth/register', json={
+        'username': 'tokenuser',
+        'email': 'token@test.com',
+        'password': 'Test123!'
+    })
+    response = client.post('/auth/login', json={
+        'email': 'token@test.com',
+        'password': 'Test123!'
+    })
+    data = response.get_json()
+    assert 'access_token' in data
+    assert 'user_id' in data
+    assert 'username' in data
+
+# geçerli token ile /auth/me = 200
+def test_me_with_valid_token(client):
+    client.post('/auth/register', json={
+        'username': 'meuser',
+        'email': 'me@test.com',
+        'password': 'Test123!'
+    })
+    login_res = client.post('/auth/login', json={
+        'email': 'me@test.com',
+        'password': 'Test123!'
+    })
+    token = login_res.get_json()['access_token']
+    response = client.get('/auth/me', headers={'Authorization': f'Bearer {token}'})
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data['username'] == 'meuser'
+    assert data['email'] == 'me@test.com'
+    assert 'total_xp' in data
+
+# token olmadan /auth/me = 401
+def test_me_without_token(client):
+    response = client.get('/auth/me')
+    assert response.status_code == 401
