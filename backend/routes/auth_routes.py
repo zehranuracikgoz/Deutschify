@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from ..auth import register_user, authenticate_user
+from ..database import get_db
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -36,5 +38,23 @@ def login():
 
     user = authenticate_user(email, password)
     if user:
-        return jsonify({'message': 'Giriş başarılı', 'user_id': user['id']}), 200
+        access_token = create_access_token(identity=str(user['id']))
+        return jsonify({
+            'access_token': access_token,
+            'user_id': user['id'],
+            'username': user['username'],
+        }), 200
     return jsonify({'error': 'Geçersiz email veya şifre'}), 401
+
+@auth_bp.route('/me', methods=['GET'])
+@jwt_required()
+def me():
+    user_id = int(get_jwt_identity())
+    with get_db() as conn:
+        user = conn.execute(
+            'SELECT id, username, email, total_xp FROM users WHERE id = ?',
+            (user_id,)
+        ).fetchone()
+    if user is None:
+        return jsonify({'error': 'Kullanıcı bulunamadı'}), 401
+    return jsonify(dict(user)), 200
