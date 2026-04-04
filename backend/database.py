@@ -83,7 +83,7 @@ def init_db():
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS words (
                 id                  INTEGER PRIMARY KEY AUTOINCREMENT,
-                german_word         VARCHAR NOT NULL,
+                german_word         VARCHAR NOT NULL UNIQUE,
                 turkish_meaning     VARCHAR NOT NULL,
                 example_sentence_de TEXT,
                 example_sentence_tr TEXT,
@@ -91,6 +91,7 @@ def init_db():
                 article_id          INTEGER,
                 category_id         INTEGER,
                 type_id             INTEGER,
+                level               VARCHAR DEFAULT 'A1',
                 FOREIGN KEY (article_id)  REFERENCES articles(id),
                 FOREIGN KEY (category_id) REFERENCES word_categories(id),
                 FOREIGN KEY (type_id)     REFERENCES word_types(id)
