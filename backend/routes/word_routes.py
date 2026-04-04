@@ -1,14 +1,21 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from ..database import get_db
 
 word_bp = Blueprint('words', __name__, url_prefix='/words')
 
 @word_bp.route('/', methods=['GET'])
 def get_words():
+    level = request.args.get('level')
     with get_db() as conn:
-        words = conn.execute(
-            'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr, audio_url FROM words'
-        ).fetchall()
+        if level:
+            words = conn.execute(
+                'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr, audio_url FROM words WHERE level = ?',
+                (level.upper(),)
+            ).fetchall()
+        else:
+            words = conn.execute(
+                'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr, audio_url FROM words'
+            ).fetchall()
     return jsonify([dict(w) for w in words]), 200
 
 @word_bp.route('/<int:word_id>', methods=['GET'])
