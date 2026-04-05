@@ -10,6 +10,14 @@ study_bp = Blueprint('study', __name__, url_prefix='/study')
 def get_queue(user_id):
     try:
         today = date.today().isoformat()
+
+        try:
+            limit = int(request.args.get('limit', 10))
+            if limit < 1:
+                return jsonify({'error': 'limit en az 1 olmalı'}), 400
+        except ValueError:
+            return jsonify({'error': 'limit geçerli bir tam sayı olmalı'}), 400
+
         with get_db() as conn:
             # next_review_date <=bugün olan kayıtlar icin
             due_rows = conn.execute(
@@ -40,6 +48,7 @@ def get_queue(user_id):
             ).fetchall()
 
         queue = [dict(r) for r in due_rows] + [dict(r) for r in new_rows]
+        queue = queue[:limit]
 
         if not queue:
             return jsonify({'queue': [], 'message': 'Bugün çalışılacak kelime yok'}), 200
@@ -64,7 +73,7 @@ def submit_answer():
         if any(v is None for v in [user_id, word_id, quality]):
             return jsonify({'error': 'user_id, word_id ve quality zorunlu'}), 400
 
-        if not isinstance(quality, int) or quality < 0 or quality > 5:
+        if not isinstance(quality, int) or quality < 1 or quality > 5:
             return jsonify({'error': 'quality 0 ile 5 arasında bir tam sayı olmalı'}), 400
 
         today = date.today()

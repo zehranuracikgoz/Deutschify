@@ -60,6 +60,21 @@ def test_queue_returns_new_words(seeded_client):
     assert data['queue'][0]['status'] == 'new'
     assert data['queue'][0]['german_word'] == 'Hund'
 
+# limit parametresi çalışıyor mu
+def test_queue_limit_parameter(seeded_client):
+    response = seeded_client.get('/study/queue/1?limit=1')
+    assert response.status_code == 200
+    data = response.get_json()
+    assert len(data['queue']) <= 1
+
+
+# geçersiz limit=400
+def test_queue_invalid_limit(seeded_client):
+    response = seeded_client.get('/study/queue/1?limit=0')
+    assert response.status_code == 400
+
+    response = seeded_client.get('/study/queue/1?limit=abc')
+    assert response.status_code == 400
 
 # hiç kelime yoksa boş kuyruk ve mesaj döner
 def test_queue_empty_when_no_words(client):
@@ -103,6 +118,15 @@ def test_submit_answer_invalid_quality(seeded_client):
         'user_id': 1,
         'word_id': 1,
         'quality': 9
+    })
+    assert response.status_code == 400
+
+# quality 0 geçersiz (min 1)
+def test_submit_answer_quality_0_invalid(seeded_client):
+    response = seeded_client.post('/study/answer', json={
+        'user_id': 1,
+        'word_id': 1,
+        'quality': 0
     })
     assert response.status_code == 400
 
