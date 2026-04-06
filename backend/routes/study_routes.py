@@ -69,6 +69,7 @@ def submit_answer():
         user_id = data.get('user_id')
         word_id = data.get('word_id')
         quality = data.get('quality')
+        session_id = data.get('session_id')
 
         if any(v is None for v in [user_id, word_id, quality]):
             return jsonify({'error': 'user_id, word_id ve quality zorunlu'}), 400
@@ -125,6 +126,18 @@ def submit_answer():
                     'UPDATE users SET total_xp = total_xp + ? WHERE id = ?',
                     (xp_earned, user_id)
                 )
+
+            if session_id:
+                if quality >= 3:
+                    conn.execute(
+                        'UPDATE study_sessions SET correct_answers = correct_answers + 1 WHERE id = ?',
+                        (session_id,)
+                    )
+                else:
+                    conn.execute(
+                        'UPDATE study_sessions SET wrong_answers = wrong_answers + 1 WHERE id = ?',
+                        (session_id,)
+                    )
 
         return jsonify({
             'message': 'ok',
