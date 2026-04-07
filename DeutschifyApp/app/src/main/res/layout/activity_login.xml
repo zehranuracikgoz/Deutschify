@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0f1b3d"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="72dp"
+        android:paddingBottom="40dp">
+
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:text="D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#e8a838"
+            android:gravity="center"
+            android:background="@drawable/bg_icon_amber"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deutschify"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:letterSpacing="-0.02"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Akıllı öğrenme, hızlı ilerleme"
+            android:textSize="13sp"
+            android:textColor="#8899cc"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-POSTA"
+            android:textSize="12sp"
+            android:textColor="#8899cc"
+            android:letterSpacing="0.07"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- mail -->
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ornek@email.com"
+            android:inputType="textEmailAddress"
+            android:textColor="#ffffff"
+            android:textColorHint="#4a6090"
+            android:background="@drawable/bg_input"
+            android:padding="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ŞİFRE"
+            android:textSize="12sp"
+            android:textColor="#8899cc"
+            android:letterSpacing="0.07"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- sifre -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_input">
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="••••••••"
+                android:inputType="textPassword"
+                android:textColor="#ffffff"
+                android:textColorHint="#4a6090"
+                android:background="@android:color/transparent"
+                android:padding="14dp"
+                android:paddingEnd="60dp"
+                android:layout_toStartOf="@+id/tv_show_password"/>
+
+            <TextView
+                android:id="@+id/tv_show_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="göster"
+                android:textSize="12sp"
+                android:textColor="#8899cc"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingEnd="14dp"
+                android:paddingStart="8dp"/>
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Giriş Yap"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:letterSpacing="0.02"
+            android:background="@drawable/bg_button_primary"
+            android:stateListAnimator="@null"
+            android:layout_marginTop="28dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="20dp">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#2a3d6e"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="veya"
+                android:textSize="12sp"
+                android:textColor="#8899cc"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="#2a3d6e"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_go_to_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hesabın yok mu? Kayıt ol"
+            android:textSize="13sp"
+            android:textColor="#e8a838"
+            android:layout_marginTop="12dp"
+            android:padding="8dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şifreni mi unuttun? "
+                android:textSize="12sp"
+                android:textColor="#4a6090"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sıfırla"
+                android:textSize="12sp"
+                android:textColor="#e8a838"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

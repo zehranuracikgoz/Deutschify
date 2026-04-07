@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0f1b3d"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="72dp"
+        android:paddingBottom="40dp">
+
+        <!-- gecici ikon -->
+        <TextView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:text="D"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#e8a838"
+            android:gravity="center"
+            android:background="@drawable/bg_icon_amber"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hesap Oluştur"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:letterSpacing="-0.02"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Öğrenmeye hemen başla"
+            android:textSize="13sp"
+            android:textColor="#8899cc"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="KULLANICI ADI"
+            android:textSize="12sp"
+            android:textColor="#8899cc"
+            android:letterSpacing="0.07"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/et_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="kullanici_adi"
+            android:inputType="text"
+            android:textColor="#ffffff"
+            android:textColorHint="#4a6090"
+            android:background="@drawable/bg_input"
+            android:padding="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-POSTA"
+            android:textSize="12sp"
+            android:textColor="#8899cc"
+            android:letterSpacing="0.07"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ornek@email.com"
+            android:inputType="textEmailAddress"
+            android:textColor="#ffffff"
+            android:textColorHint="#4a6090"
+            android:background="@drawable/bg_input"
+            android:padding="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ŞİFRE"
+            android:textSize="12sp"
+            android:textColor="#8899cc"
+            android:letterSpacing="0.07"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="••••••••"
+            android:inputType="textPassword"
+            android:textColor="#ffffff"
+            android:textColorHint="#4a6090"
+            android:background="@drawable/bg_input"
+            android:padding="14dp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Kayıt Ol"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:letterSpacing="0.02"
+            android:background="@drawable/bg_button_primary"
+            android:stateListAnimator="@null"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:id="@+id/tv_go_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Zaten hesabın var mı? Giriş yap"
+            android:textSize="13sp"
+            android:textColor="#e8a838"
+            android:layout_marginTop="24dp"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
