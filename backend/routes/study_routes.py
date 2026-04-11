@@ -75,7 +75,7 @@ def submit_answer():
             return jsonify({'error': 'user_id, word_id ve quality zorunlu'}), 400
 
         if not isinstance(quality, int) or quality < 1 or quality > 5:
-            return jsonify({'error': 'quality 0 ile 5 arasında bir tam sayı olmalı'}), 400
+            return jsonify({'error': 'quality 1 ile 5 arasında bir tam sayı olmalı'}), 400
 
         today = date.today()
 
