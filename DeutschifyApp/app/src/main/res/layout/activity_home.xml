@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1B1F5E">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deutschify"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Akıllı öğrenme, hızlı ilerleme"
+                android:textSize="12sp"
+                android:textColor="#8899cc"
+                android:layout_marginBottom="20dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_light"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Günün Kelimesi"
+                    android:textSize="11sp"
+                    android:textAllCaps="true"
+                    android:textColor="#2D1B69"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="lernen"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:textColor="#B794D6"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="öğrenmek"
+                    android:textSize="13sp"
+                    android:textColor="#8899cc"
+                    android:layout_marginBottom="14dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_example_home"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ich lerne Deutsch jeden Tag."
+                        android:textSize="13sp"
+                        android:textStyle="italic"
+                        android:textColor="#2D1B69"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Ben her gün Almanca öğreniyorum."
+                        android:textColor="#B794D6"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:id="@+id/btn_dil_bilgisi"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_module_purple"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_book"
+                        android:contentDescription="Dil Bilgisi"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dil Bilgisi"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginTop="6dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kuralları Öğren"
+                        android:textSize="10sp"
+                        android:textColor="#ddd0ff"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_artikeller"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_module_teal"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_shuffle"
+                        android:contentDescription="Artikeller"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Artikeller"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginTop="6dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Der / Die / Das"
+                        android:textSize="10sp"
+                        android:textColor="#ccffee"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:id="@+id/btn_kelime_kartlari"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_module_pink"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_credit_card"
+                        android:contentDescription="Kelime Kartları"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kelime Kartları"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginTop="6dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pratik Yap"
+                        android:textSize="10sp"
+                        android:textColor="#ffccdd"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_tekrar"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_module_violet"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:src="@drawable/ic_bolt"
+                        android:contentDescription="Tekrar"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tekrar"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginTop="6dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hataları İncele"
+                        android:textSize="10sp"
+                        android:textColor="#e0d0ff"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card_light"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Haftalık Aktivite"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#2D1B69"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3sa 20dk"
+                        android:textSize="12sp"
+                        android:textColor="#e8a838"/>
+                </LinearLayout>
+
+                <!-- bar chart icin -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:orientation="horizontal"
+                    android:gravity="bottom">
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:layout_width="match_parent" android:layout_height="32dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:layout_width="match_parent" android:layout_height="50dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:layout_width="match_parent" android:layout_height="22dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:layout_width="match_parent" android:layout_height="40dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:layout_width="match_parent" android:layout_height="36dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_fill_active"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:layout_width="match_parent" android:layout_height="18dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:background="@drawable/bg_nav_bar"
+        android:orientation="horizontal"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_home"
+                android:contentDescription="Ana Sayfa"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_stats"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_stats"
+                android:contentDescription="İstatistikler"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_history"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_history"
+                android:contentDescription="Geçmiş"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/ic_profile"
+                android:contentDescription="Profil"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
