@@ -3,7 +3,7 @@
 .pytest_cache/
 .env
 __pycache__/
-*.pyc
+*.py[cod]
 venv/
 instance/
 
@@ -13,3 +13,5 @@ DeutschifyApp/build/
 DeutschifyApp/app/build/
 DeutschifyApp/local.properties
 DeutschifyApp/.idea/
+
+*.log
