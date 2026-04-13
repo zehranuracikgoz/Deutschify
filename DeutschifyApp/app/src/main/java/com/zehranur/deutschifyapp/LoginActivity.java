@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(v -> attemptLogin());
 
         viewModel.loginSuccess.observe(this, loginResponse -> {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         });
 
