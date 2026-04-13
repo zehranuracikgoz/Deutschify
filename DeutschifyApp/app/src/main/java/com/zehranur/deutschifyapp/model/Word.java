@@ -16,6 +16,9 @@ public class Word {
     @SerializedName("example_sentence_de")
     private String exampleSentenceDe;
 
+    @SerializedName("example_sentence_tr")
+    private String exampleSentenceTr;
+
     @SerializedName("ease_factor")
     private float easeFactor;
 
@@ -32,6 +35,7 @@ public class Word {
     public String getGermanWord() { return germanWord; }
     public String getTurkishMeaning() { return turkishMeaning; }
     public String getExampleSentenceDe() { return exampleSentenceDe; }
+    public String getExampleSentenceTr() { return exampleSentenceTr; }
     public float getEaseFactor() { return easeFactor; }
     public int getIntervalDays() { return intervalDays; }
     public int getRepetitionCount() { return repetitionCount; }
