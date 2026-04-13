@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.DeutschifyApp" parent="Base.Theme.DeutschifyApp" />
+    <style name="Theme.DeutschifyApp" parent="Base.Theme.DeutschifyApp">
+        <item name="android:fontFamily">@font/nunito</item>
+    </style>
 </resources>
