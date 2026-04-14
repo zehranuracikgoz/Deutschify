@@ -15,3 +15,6 @@ DeutschifyApp/local.properties
 DeutschifyApp/.idea/
 
 *.log
+
+.postman/
+postman/
