@@ -17,10 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.zehranur.deutschifyapp.model.AnswerRequest;
 import com.zehranur.deutschifyapp.model.AnswerResponse;
 import com.zehranur.deutschifyapp.model.QueueResponse;
+import com.zehranur.deutschifyapp.model.SessionStartResponse;
 import com.zehranur.deutschifyapp.model.Word;
 import com.zehranur.deutschifyapp.network.ApiService;
 import com.zehranur.deutschifyapp.network.RetrofitClient;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,6 +47,7 @@ public class WordCardActivity extends AppCompatActivity {
     private List<Word> wordQueue;
     private int currentIndex = 0;
     private int userId;
+    private int sessionId = -1;
     private boolean isFlipped = false;
     private boolean isAnimating = false;
 
@@ -90,6 +94,7 @@ public class WordCardActivity extends AppCompatActivity {
                     wordQueue = response.body().getQueue();
                     if (wordQueue != null && !wordQueue.isEmpty()) {
                         progressBar.setMax(wordQueue.size());
+                        startStudySession();
                         showWord(0);
                     } else {
                         tvGermanWord.setText("Bugün çalışılacak kelime yok!");
@@ -104,6 +109,24 @@ public class WordCardActivity extends AppCompatActivity {
             public void onFailure(Call<QueueResponse> call, Throwable t) {
                 Toast.makeText(WordCardActivity.this,
                         "Bağlantı hatası: " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void startStudySession() {
+        Map<String, Integer> body = new HashMap<>();
+        body.put("user_id", userId);
+        api.startSession(body).enqueue(new Callback<SessionStartResponse>() {
+            @Override
+            public void onResponse(Call<SessionStartResponse> call, Response<SessionStartResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    sessionId = response.body().getSessionId();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SessionStartResponse> call, Throwable t) {
+                // session_id olmadan devam et
             }
         });
     }
@@ -167,8 +190,11 @@ public class WordCardActivity extends AppCompatActivity {
     private void submitAnswer(int quality) {
         layoutDifficulty.setVisibility(View.INVISIBLE);
 
-        api.submitAnswer(new AnswerRequest(userId, wordQueue.get(currentIndex).getWordId(), quality))
-                .enqueue(new Callback<AnswerResponse>() {
+        AnswerRequest request = sessionId != -1
+                ? new AnswerRequest(userId, wordQueue.get(currentIndex).getWordId(), quality, sessionId)
+                : new AnswerRequest(userId, wordQueue.get(currentIndex).getWordId(), quality);
+
+        api.submitAnswer(request).enqueue(new Callback<AnswerResponse>() {
                     @Override
                     public void onResponse(Call<AnswerResponse> call, Response<AnswerResponse> response) {
                         int next = currentIndex + 1;
@@ -178,10 +204,7 @@ public class WordCardActivity extends AppCompatActivity {
                             progressBar.setProgress(wordQueue.size());
                             Toast.makeText(WordCardActivity.this,
                                     "Oturum tamamlandı!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(WordCardActivity.this, HomeActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            finish();
+                            endStudySession();
                         }
                     }
 
@@ -192,5 +215,30 @@ public class WordCardActivity extends AppCompatActivity {
                                 "Hata: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void endStudySession() {
+        if (sessionId == -1) {
+            navigateHome();
+            return;
+        }
+        api.endSession(sessionId).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                navigateHome();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                navigateHome();
+            }
+        });
+    }
+
+    private void navigateHome() {
+        Intent intent = new Intent(WordCardActivity.this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

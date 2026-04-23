@@ -7,10 +7,12 @@ import com.zehranur.deutschifyapp.model.LoginResponse;
 import com.zehranur.deutschifyapp.model.QueueResponse;
 import com.zehranur.deutschifyapp.model.RegisterRequest;
 import com.zehranur.deutschifyapp.model.RegisterResponse;
+import com.zehranur.deutschifyapp.model.SessionStartResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -21,6 +23,12 @@ public interface ApiService {
 
     @POST("study/answer")
     Call<AnswerResponse> submitAnswer(@Body AnswerRequest body);
+
+    @POST("study/session/start")
+    Call<SessionStartResponse> startSession(@Body java.util.Map<String, Integer> body);
+
+    @PUT("study/session/{session_id}/end")
+    Call<Void> endSession(@Path("session_id") int sessionId);
 
     @POST("auth/login")
     Call<LoginResponse> login(@Body LoginRequest body);

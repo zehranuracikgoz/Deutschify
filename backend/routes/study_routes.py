@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from flask import Blueprint, request, jsonify
 from backend.database import get_db
 from backend.srs import calculate_next_review
@@ -145,6 +145,57 @@ def submit_answer():
             'xp_earned': xp_earned,
             'status': result['status'],
         }), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@study_bp.route('/session/start', methods=['POST'])
+def start_session():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'JSON verisi gerekli'}), 400
+
+        user_id = data.get('user_id')
+        if user_id is None:
+            return jsonify({'error': 'user_id zorunlu'}), 400
+
+        session_start = datetime.now().isoformat()
+
+        with get_db() as conn:
+            cursor = conn.execute(
+                'INSERT INTO study_sessions (user_id, session_start) VALUES (?, ?)',
+                (user_id, session_start)
+            )
+            session_id = cursor.lastrowid
+
+        return jsonify({'session_id': session_id, 'message': 'Session started'}), 201
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@study_bp.route('/session/<int:session_id>/end', methods=['PUT'])
+def end_session(session_id):
+    try:
+        session_end = datetime.now().isoformat()
+
+        with get_db() as conn:
+            existing = conn.execute(
+                'SELECT id FROM study_sessions WHERE id = ?',
+                (session_id,)
+            ).fetchone()
+
+            if not existing:
+                return jsonify({'error': 'Session bulunamadı'}), 404
+
+            conn.execute(
+                'UPDATE study_sessions SET session_end = ? WHERE id = ?',
+                (session_end, session_id)
+            )
+
+        return jsonify({'message': 'Session ended'}), 200
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
