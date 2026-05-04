@@ -94,8 +94,7 @@ public class WordCardActivity extends AppCompatActivity {
                     wordQueue = response.body().getQueue();
                     if (wordQueue != null && !wordQueue.isEmpty()) {
                         progressBar.setMax(wordQueue.size());
-                        startStudySession();
-                        showWord(0);
+                        startStudySession(() -> showWord(0));
                     } else {
                         tvGermanWord.setText("Bugün çalışılacak kelime yok!");
                     }
@@ -113,7 +112,7 @@ public class WordCardActivity extends AppCompatActivity {
         });
     }
 
-    private void startStudySession() {
+    private void startStudySession(Runnable onReady) {
         Map<String, Integer> body = new HashMap<>();
         body.put("user_id", userId);
         api.startSession(body).enqueue(new Callback<SessionStartResponse>() {
@@ -122,11 +121,12 @@ public class WordCardActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     sessionId = response.body().getSessionId();
                 }
+                runOnUiThread(onReady::run);
             }
 
             @Override
             public void onFailure(Call<SessionStartResponse> call, Throwable t) {
-                // session_id olmadan devam et
+                runOnUiThread(onReady::run);
             }
         });
     }
