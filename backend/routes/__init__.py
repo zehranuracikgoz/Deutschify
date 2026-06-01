@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify
 from .auth_routes import auth_bp
 from .word_routes import word_bp
 from .study_routes import study_bp
+from .tts_routes import tts_bp
 
 main_bp = Blueprint('main', __name__)
 
@@ -14,3 +15,4 @@ def register_blueprints(app):
     app.register_blueprint(auth_bp)
     app.register_blueprint(word_bp)
     app.register_blueprint(study_bp)
+    app.register_blueprint(tts_bp)
