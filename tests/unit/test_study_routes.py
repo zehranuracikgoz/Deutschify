@@ -136,3 +136,17 @@ def test_submit_answer_missing_fields(seeded_client):
         'user_id': 1
     })
     assert response.status_code == 400
+
+
+def test_start_session_returns_201_and_session_id(seeded_client):
+    response = seeded_client.post('/study/session/start', json={'user_id': 1})
+    assert response.status_code == 201
+    data = response.get_json()
+    assert 'session_id' in data
+
+
+def test_end_session_returns_200(seeded_client):
+    start = seeded_client.post('/study/session/start', json={'user_id': 1})
+    session_id = start.get_json()['session_id']
+    response = seeded_client.put(f'/study/session/{session_id}/end')
+    assert response.status_code == 200
