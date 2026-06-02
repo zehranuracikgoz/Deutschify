@@ -80,35 +80,57 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_card_white"
             android:orientation="vertical"
-            android:gravity="center">
+            android:padding="16dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ALMANCA"
-                android:textSize="11sp"
-                android:textAllCaps="true"
-                android:textColor="#5c6bc0"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:id="@+id/tv_german_word"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="..."
-                android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="#1a2d6e"
-                android:gravity="center"/>
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ALMANCA"
+                    android:textSize="11sp"
+                    android:textAllCaps="true"
+                    android:textColor="#5c6bc0"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
+                    android:id="@+id/tv_german_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="..."
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#1a2d6e"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kartı çevirmek için dokun"
+                    android:textSize="12sp"
+                    android:textColor="#aab0cc"
+                    android:layout_marginTop="16dp"/>
+            </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kartı çevirmek için dokun"
-                android:textSize="12sp"
-                android:textColor="#aab0cc"
-                android:layout_marginTop="16dp"/>
+                android:id="@+id/btn_telaffuz"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="🔊 TELAFFUZ"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:background="@drawable/bg_telaffuz_btn"
+                android:layout_marginTop="12dp"
+                android:clickable="true"
+                android:focusable="true"/>
         </LinearLayout>
 
         <LinearLayout
@@ -185,20 +207,6 @@
                         android:textColor="#8899cc"/>
                 </LinearLayout>
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/btn_telafuz"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="🔊 TELAFUZ"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:background="@drawable/bg_telafuz_btn"
-                android:layout_marginTop="12dp"
-                android:clickable="true"
-                android:focusable="true"/>
         </LinearLayout>
     </FrameLayout>
 

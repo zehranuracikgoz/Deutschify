@@ -8,9 +8,11 @@ import com.zehranur.deutschifyapp.model.QueueResponse;
 import com.zehranur.deutschifyapp.model.RegisterRequest;
 import com.zehranur.deutschifyapp.model.RegisterResponse;
 import com.zehranur.deutschifyapp.model.SessionStartResponse;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -35,4 +37,8 @@ public interface ApiService {
 
     @POST("auth/register")
     Call<RegisterResponse> register(@Body RegisterRequest body);
+
+    @GET("tts/{word}")
+    Call<ResponseBody> getWordAudio(@Path("word") String word,
+                                    @Header("Authorization") String token);
 }

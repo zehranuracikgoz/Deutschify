@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
@@ -14,6 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import okhttp3.ResponseBody;
 import com.zehranur.deutschifyapp.model.AnswerRequest;
 import com.zehranur.deutschifyapp.model.AnswerResponse;
 import com.zehranur.deutschifyapp.model.QueueResponse;
@@ -50,6 +55,7 @@ public class WordCardActivity extends AppCompatActivity {
     private int sessionId = -1;
     private boolean isFlipped = false;
     private boolean isAnimating = false;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +80,11 @@ public class WordCardActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_back).setOnClickListener(v -> finish());
         cardContainer.setOnClickListener(v -> flipCard());
-        findViewById(R.id.btn_telafuz).setOnClickListener(v ->
-                Toast.makeText(this, "Telafuz yakında!", Toast.LENGTH_SHORT).show());
+        findViewById(R.id.btn_telaffuz).setOnClickListener(v -> {
+            if (wordQueue != null && currentIndex < wordQueue.size()) {
+                playWordAudio(wordQueue.get(currentIndex).getGermanWord());
+            }
+        });
 
         findViewById(R.id.btn_quality_1).setOnClickListener(v -> submitAnswer(1));
         findViewById(R.id.btn_quality_2).setOnClickListener(v -> submitAnswer(2));
@@ -235,10 +244,62 @@ public class WordCardActivity extends AppCompatActivity {
         });
     }
 
+    private void playWordAudio(String word) {
+        SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
+        String token = prefs.getString("access_token", null);
+        if (token == null) {
+            Toast.makeText(this, "Ses yüklenemedi", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        api.getWordAudio(word, "Bearer " + token).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (!response.isSuccessful() || response.body() == null) {
+                    Toast.makeText(WordCardActivity.this, "Ses yüklenemedi", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                try {
+                    File tempFile = File.createTempFile("tts_", ".mp3", getCacheDir());
+                    try (FileOutputStream fos = new FileOutputStream(tempFile)) {
+                        fos.write(response.body().bytes());
+                    }
+                    if (mediaPlayer != null) {
+                        mediaPlayer.release();
+                    }
+                    mediaPlayer = new MediaPlayer();
+                    mediaPlayer.setDataSource(tempFile.getAbsolutePath());
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                    mediaPlayer.setOnCompletionListener(mp -> {
+                        mp.release();
+                        mediaPlayer = null;
+                        tempFile.delete();
+                    });
+                } catch (IOException e) {
+                    Toast.makeText(WordCardActivity.this, "Ses yüklenemedi", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(WordCardActivity.this, "Ses yüklenemedi", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void navigateHome() {
         Intent intent = new Intent(WordCardActivity.this, HomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
