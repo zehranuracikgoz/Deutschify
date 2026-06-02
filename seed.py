@@ -11,13 +11,14 @@ def seed_data():
 
         for cat in (
             'Temel Kelimeler', 'Hayvanlar', 'Aile',
-            'Yiyecek & İçecek', 'Renkler', 'Zaman', 'Eylemler', 'Sıfatlar'
+            'Yiyecek & İçecek', 'Renkler', 'Zaman', 'Eylemler', 'Sıfatlar',
+            'Sayılar', 'Vücut'
         ):
             conn.execute("INSERT OR IGNORE INTO word_categories (name) VALUES (?)", (cat,))
 
         # article_id : 1=der  2=die  3=das  None=fiil/sıfat/zarf
         # type_id    : 1=Noun 2=Verb 3=Adjective 4=Adverb
-        # category_id: 1=Temel 2=Hayvanlar 3=Aile 4=Yiyecek 5=Renkler 6=Zaman 7=Eylemler 8=Sıfatlar
+        # category_id: 1=Temel 2=Hayvanlar 3=Aile 4=Yiyecek 5=Renkler 6=Zaman 7=Eylemler 8=Sıfatlar 9=Sayılar 10=Vücut
 
         # (german_word, turkish_meaning, example_sentence_de, example_sentence_tr,
         #  article_id, category_id, type_id, level)
@@ -229,6 +230,63 @@ def seed_data():
             ('gefährlich',  'tehlikeli', 'Das ist gefährlich.',           'Bu tehlikeli.',            None, 8, 3, 'A2'),
         ]
 
+        cat_id = {row[0]: row[1] for row in conn.execute('SELECT name, id FROM word_categories').fetchall()}
+        C_SAYI = cat_id['Sayılar']
+        C_VUCUT = cat_id['Vücut']
+        C_ZAMAN = cat_id['Zaman']
+        C_SIFAT = cat_id['Sıfatlar']
+
+        new_words = [
+            # Sayılar (A1)
+            ('null',     'sıfır',     'Null ist eine Zahl.',                 'Sıfır bir sayıdır.',              None, C_SAYI, 1, 'A1'),
+            ('eins',     'bir',       'Eins plus eins ist zwei.',            'Bir artı bir iki eder.',          None, C_SAYI, 1, 'A1'),
+            ('zwei',     'iki',       'Ich habe zwei Katzen.',               'İki kedim var.',                  None, C_SAYI, 1, 'A1'),
+            ('drei',     'üç',        'Das Kind ist drei Jahre alt.',        'Çocuk üç yaşında.',               None, C_SAYI, 1, 'A1'),
+            ('vier',     'dört',      'Wir haben vier Jahreszeiten.',        'Dört mevsimimiz var.',            None, C_SAYI, 1, 'A1'),
+            ('fünf',     'beş',       'Ich kaufe fünf Äpfel.',              'Beş elma satın alıyorum.',        None, C_SAYI, 1, 'A1'),
+            ('sechs',    'altı',      'Die Schule beginnt um sechs.',        'Okul altıda başlıyor.',           None, C_SAYI, 1, 'A1'),
+            ('sieben',   'yedi',      'Die Woche hat sieben Tage.',          'Haftanın yedi günü vardır.',      None, C_SAYI, 1, 'A1'),
+            ('acht',     'sekiz',     'Ich schlafe acht Stunden.',           'Sekiz saat uyuyorum.',            None, C_SAYI, 1, 'A1'),
+            ('neun',     'dokuz',     'Es ist neun Uhr.',                    'Saat dokuz.',                     None, C_SAYI, 1, 'A1'),
+            ('zehn',     'on',        'Ich habe zehn Finger.',               'On parmağım var.',                None, C_SAYI, 1, 'A1'),
+            ('zwanzig',  'yirmi',     'Er ist zwanzig Jahre alt.',           'O yirmi yaşında.',                None, C_SAYI, 1, 'A1'),
+            ('hundert',  'yüz',       'Das kostet hundert Euro.',            'Bu yüz Euro tutar.',              None, C_SAYI, 1, 'A1'),
+
+            ('Montag',     'pazartesi', 'Montag ist der erste Wochentag.',   'Pazartesi haftanın ilk günüdür.', 1, C_ZAMAN, 1, 'A1'),
+            ('Dienstag',   'salı',      'Am Dienstag gehe ich zum Arzt.',    'Salı günü doktora gidiyorum.',    1, C_ZAMAN, 1, 'A1'),
+            ('Mittwoch',   'çarşamba',  'Mittwoch ist die Wochenmitte.',     'Çarşamba haftanın ortasıdır.',    1, C_ZAMAN, 1, 'A1'),
+            ('Donnerstag', 'perşembe',  'Am Donnerstag koche ich.',          'Perşembe günü yemek yapıyorum.',  1, C_ZAMAN, 1, 'A1'),
+            ('Freitag',    'cuma',      'Der Freitag ist mein Lieblingstag.','Cuma benim favori günüm.',        1, C_ZAMAN, 1, 'A1'),
+            ('Samstag',    'cumartesi', 'Am Samstag schlafe ich lang.',      'Cumartesi günü geç uyuyorum.',    1, C_ZAMAN, 1, 'A1'),
+            ('Sonntag',    'pazar',     'Der Sonntag ist ein Ruhetag.',      'Pazar bir dinlenme günüdür.',     1, C_ZAMAN, 1, 'A1'),
+
+            ('Januar',    'ocak',      'Der Januar ist sehr kalt.',          'Ocak çok soğuktur.',              1, C_ZAMAN, 1, 'A2'),
+            ('Februar',   'şubat',     'Im Februar schneit es oft.',         'Şubat\'ta çok kar yağar.',        1, C_ZAMAN, 1, 'A2'),
+            ('März',      'mart',      'Der März ist windig.',               'Mart rüzgârlıdır.',               1, C_ZAMAN, 1, 'A2'),
+            ('April',     'nisan',     'Im April regnet es viel.',           'Nisan\'da çok yağmur yağar.',     1, C_ZAMAN, 1, 'A2'),
+            ('Mai',       'mayıs',     'Der Mai ist schön und warm.',        'Mayıs güzel ve sıcaktır.',        1, C_ZAMAN, 1, 'A2'),
+            ('Juni',      'haziran',   'Im Juni ist es warm.',               'Haziran\'da hava sıcaktır.',      1, C_ZAMAN, 1, 'A2'),
+            ('Juli',      'temmuz',    'Der Juli ist der heißeste Monat.',   'Temmuz en sıcak aydır.',          1, C_ZAMAN, 1, 'A2'),
+            ('August',    'ağustos',   'Im August fahren wir in Urlaub.',    'Ağustos\'ta tatile gidiyoruz.',   1, C_ZAMAN, 1, 'A2'),
+            ('September', 'eylül',     'Der September ist kühl.',            'Eylül serindir.',                 1, C_ZAMAN, 1, 'A2'),
+            ('Oktober',   'ekim',      'Im Oktober fallen die Blätter.',     'Ekim\'de yapraklar düşer.',       1, C_ZAMAN, 1, 'A2'),
+            ('November',  'kasım',     'Der November ist grau und kalt.',    'Kasım gri ve soğuktur.',          1, C_ZAMAN, 1, 'A2'),
+            ('Dezember',  'aralık',    'Im Dezember ist es sehr kalt.',      'Aralık\'ta hava çok soğuktur.',   1, C_ZAMAN, 1, 'A2'),
+
+            ('Kopf',  'baş',    'Mein Kopf tut weh.',        'Başım ağrıyor.',    1,    C_VUCUT, 1, 'A1'),
+            ('Auge',  'göz',    'Das Auge ist blau.',         'Göz mavi.',         3,    C_VUCUT, 1, 'A1'),
+            ('Ohr',   'kulak',  'Das Ohr ist klein.',         'Kulak küçük.',      3,    C_VUCUT, 1, 'A1'),
+            ('Nase',  'burun',  'Die Nase ist rot.',          'Burun kırmızı.',    2,    C_VUCUT, 1, 'A1'),
+            ('Mund',  'ağız',   'Der Mund ist offen.',        'Ağız açık.',        1,    C_VUCUT, 1, 'A1'),
+            ('Hand',  'el',     'Die Hand ist sauber.',       'El temiz.',         2,    C_VUCUT, 1, 'A1'),
+            ('Fuß',   'ayak',   'Mein Fuß tut weh.',          'Ayağım ağrıyor.',   1,    C_VUCUT, 1, 'A1'),
+            ('Arm',   'kol',    'Der Arm ist stark.',         'Kol güçlü.',        1,    C_VUCUT, 1, 'A1'),
+            ('Bein',  'bacak',  'Das Bein ist lang.',         'Bacak uzun.',       3,    C_VUCUT, 1, 'A1'),
+            ('Herz',  'kalp',   'Das Herz ist gesund.',       'Kalp sağlıklı.',    3,    C_VUCUT, 1, 'A1'),
+
+            ('leicht', 'hafif/kolay', 'Die Aufgabe ist leicht.',  'Görev kolaydır.', None, C_SIFAT, 3, 'A1'),
+        ]
+
         # NOT: örnek cümleler şimdilik statik placeholder.
         # Final aşamasında T5 modeli ile otomatik üretilip güncellenecek.
         conn.executemany(
@@ -236,10 +294,14 @@ def seed_data():
                (german_word, turkish_meaning, example_sentence_de, example_sentence_tr,
                 article_id, category_id, type_id, level)
                VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
-            a1_words + a2_words
+            a1_words + a2_words + new_words
         )
 
-    print(f"Veriler başarıyla eklendi. ({len(a1_words)} A1 + {len(a2_words)} A2 = {len(a1_words)+len(a2_words)} kelime)")
+    # total = len(a1_words) + len(a2_words) + len(new_words)
+    # print(f"Veriler başarıyla eklendi.")
+    # print(f"  Mevcut : {len(a1_words)} A1 + {len(a2_words)} A2 = {len(a1_words)+len(a2_words)} kelime")
+    # print(f"  Yeni   : {len(new_words)} kelime")
+    # print(f"  Toplam : {total} kelime")
 
 
 if __name__ == '__main__':
