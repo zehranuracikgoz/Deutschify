@@ -1,0 +1,4882 @@
+[
+  {
+    "input": "örnek_üret: Abend",
+    "output": "Heute Abend gehen wir in die Kirche."
+  },
+  {
+    "input": "örnek_üret: Abend",
+    "output": "Er verbrachte den Abend damit, ein Buch zu lesen."
+  },
+  {
+    "input": "örnek_üret: Abend",
+    "output": "Ich füttere jeden Morgen und jeden Abend meinen Kater."
+  },
+  {
+    "input": "örnek_üret: Abend",
+    "output": "Guten Abend, wie geht es Ihnen?"
+  },
+  {
+    "input": "örnek_üret: Abend",
+    "output": "Frag Trang, ob er heute Abend ausgeht."
+  },
+  {
+    "input": "örnek_üret: Adresse",
+    "output": "Teile mir bitte deine Adresse mit."
+  },
+  {
+    "input": "örnek_üret: Adresse",
+    "output": "Er hat der Polizei einen falschen Namen und eine falsche Adresse gegeben."
+  },
+  {
+    "input": "örnek_üret: Adresse",
+    "output": "Können Sie es an diese Adresse schicken?"
+  },
+  {
+    "input": "örnek_üret: Adresse",
+    "output": "Name und Adresse, bitte."
+  },
+  {
+    "input": "örnek_üret: Adresse",
+    "output": "Würden Sie bitte hier Ihren Namen, Ihre Adresse und Ihre Telefonnummer hinschreiben."
+  },
+  {
+    "input": "örnek_üret: Affe",
+    "output": "Hey, schau' mal, ein Affe mit drei Köpfen!"
+  },
+  {
+    "input": "örnek_üret: Affe",
+    "output": "Ein Affe klettert auf einen großen Baum."
+  },
+  {
+    "input": "örnek_üret: Affe",
+    "output": "Das ist kein Schwein; das ist ein Affe."
+  },
+  {
+    "input": "örnek_üret: Affe",
+    "output": "Er kletterte wie ein Affe auf den Baum."
+  },
+  {
+    "input": "örnek_üret: Affe",
+    "output": "Mein Affe ist fortgelaufen."
+  },
+  {
+    "input": "örnek_üret: Antwort",
+    "output": "Musst du wirklich die Frage stellen, um die Antwort zu erfahren?"
+  },
+  {
+    "input": "örnek_üret: Antwort",
+    "output": "Keine Antwort ist auch eine."
+  },
+  {
+    "input": "örnek_üret: Antwort",
+    "output": "Wenn ich keine Antwort gegeben hätte, hätte ich nicht gesprochen."
+  },
+  {
+    "input": "örnek_üret: Antwort",
+    "output": "Die Antwort führt uns in einen Teufelskreis."
+  },
+  {
+    "input": "örnek_üret: Antwort",
+    "output": "Deine Antwort ist bei Weitem nicht perfekt."
+  },
+  {
+    "input": "örnek_üret: Apfel",
+    "output": "Ich muss in den sauren Apfel beißen."
+  },
+  {
+    "input": "örnek_üret: Apfel",
+    "output": "Dieser Apfel ist sehr rot."
+  },
+  {
+    "input": "örnek_üret: Apfel",
+    "output": "Der Apfel schmeckt süß."
+  },
+  {
+    "input": "örnek_üret: Apfel",
+    "output": "Dieser Apfel schmeckt sauer."
+  },
+  {
+    "input": "örnek_üret: Apfel",
+    "output": "Wer hat den Apfel gestohlen?"
+  },
+  {
+    "input": "örnek_üret: April",
+    "output": "Die Schule beginnt am zehnten April."
+  },
+  {
+    "input": "örnek_üret: April",
+    "output": "Die Schule beginnt am 8. April."
+  },
+  {
+    "input": "örnek_üret: April",
+    "output": "Er wird Japan im April verlassen."
+  },
+  {
+    "input": "örnek_üret: April",
+    "output": "Wir kehrten am 2. April nach Osaka zurück."
+  },
+  {
+    "input": "örnek_üret: April",
+    "output": "Das Gesetz wird am ersten April in Kraft treten."
+  },
+  {
+    "input": "örnek_üret: Arm",
+    "output": "Willst du mich verdammt nochmal auf den Arm nehmen?!"
+  },
+  {
+    "input": "örnek_üret: Arm",
+    "output": "Mein ganzer Arm ist voller Mückenstiche."
+  },
+  {
+    "input": "örnek_üret: Arm",
+    "output": "Er ist nicht zu arm, um ein Fahrrad zu kaufen."
+  },
+  {
+    "input": "örnek_üret: Arm",
+    "output": "Ich bin lieber arm als reich."
+  },
+  {
+    "input": "örnek_üret: Arm",
+    "output": "Jemand packte mich am Arm."
+  },
+  {
+    "input": "örnek_üret: Auge",
+    "output": "Die Schönheit liegt im Auge des Betrachters."
+  },
+  {
+    "input": "örnek_üret: Auge",
+    "output": "Auge um Auge, Zahn um Zahn."
+  },
+  {
+    "input": "örnek_üret: Auge",
+    "output": "Das Kleid im Schaufenster ist mir ins Auge gefallen."
+  },
+  {
+    "input": "örnek_üret: Auge",
+    "output": "Das Auge ist der Spiegel der Seele."
+  },
+  {
+    "input": "örnek_üret: Auge",
+    "output": "Ich habe Sand im Auge."
+  },
+  {
+    "input": "örnek_üret: August",
+    "output": "Im August ist kein Unterricht."
+  },
+  {
+    "input": "örnek_üret: August",
+    "output": "Jack wurde am zehnten August geboren."
+  },
+  {
+    "input": "örnek_üret: August",
+    "output": "Sein Geburtstag ist am 21. August."
+  },
+  {
+    "input": "örnek_üret: August",
+    "output": "Im August gehe ich mit meiner Freundin nach Japan."
+  },
+  {
+    "input": "örnek_üret: August",
+    "output": "Ich werde im August mit meiner Freundin nach Japan fahren."
+  },
+  {
+    "input": "örnek_üret: Auto",
+    "output": "Das Auto fuhr gegen die Mauer."
+  },
+  {
+    "input": "örnek_üret: Auto",
+    "output": "Sie dürfen Ihr Auto hier nicht parken."
+  },
+  {
+    "input": "örnek_üret: Auto",
+    "output": "Was... du kannst immer noch nicht Auto fahren?"
+  },
+  {
+    "input": "örnek_üret: Auto",
+    "output": "Ich werde das Auto nehmen."
+  },
+  {
+    "input": "örnek_üret: Auto",
+    "output": "Wenn das Auto weg ist, kann er nicht im Büro sein."
+  },
+  {
+    "input": "örnek_üret: Baby",
+    "output": "Er schläft wie ein Baby."
+  },
+  {
+    "input": "örnek_üret: Baby",
+    "output": "Das Baby schläft tief und fest."
+  },
+  {
+    "input": "örnek_üret: Baby",
+    "output": "Ein Baby kann sich nicht selbst versorgen."
+  },
+  {
+    "input": "örnek_üret: Baby",
+    "output": "Als es mich sah, begann das Baby zu weinen."
+  },
+  {
+    "input": "örnek_üret: Baby",
+    "output": "Das Baby weint schon seit fast zehn Minuten."
+  },
+  {
+    "input": "örnek_üret: Bahnhof",
+    "output": "Wie lange braucht man bis zum Bahnhof?"
+  },
+  {
+    "input": "örnek_üret: Bahnhof",
+    "output": "Der Zug aus Genf wird in den Bahnhof einfahren."
+  },
+  {
+    "input": "örnek_üret: Bahnhof",
+    "output": "Man braucht 10 Minuten zum Bahnhof."
+  },
+  {
+    "input": "örnek_üret: Bahnhof",
+    "output": "Vor dem Bahnhof traf ich einen alten Freund von mir."
+  },
+  {
+    "input": "örnek_üret: Bahnhof",
+    "output": "Zum Bahnhof fährt man zehn Minuten von hier."
+  },
+  {
+    "input": "örnek_üret: Baum",
+    "output": "Er ist vom Baum heruntergefallen."
+  },
+  {
+    "input": "örnek_üret: Baum",
+    "output": "Ein Bär kann auf einen Baum klettern."
+  },
+  {
+    "input": "örnek_üret: Baum",
+    "output": "Sie saß unter einem Baum."
+  },
+  {
+    "input": "örnek_üret: Baum",
+    "output": "Ein reifer Apfel fiel vom Baum."
+  },
+  {
+    "input": "örnek_üret: Baum",
+    "output": "Ein Affe klettert auf einen großen Baum."
+  },
+  {
+    "input": "örnek_üret: Bein",
+    "output": "Er fiel aufs Eis und verletzte sich sein Bein."
+  },
+  {
+    "input": "örnek_üret: Bein",
+    "output": "Leider hat er sich bei dem Unfall das Bein gebrochen."
+  },
+  {
+    "input": "örnek_üret: Bein",
+    "output": "Ich habe mir das rechte Bein gebrochen."
+  },
+  {
+    "input": "örnek_üret: Bein",
+    "output": "Er wurde am linken Bein operiert."
+  },
+  {
+    "input": "örnek_üret: Bein",
+    "output": "Alle wissen, dass er sein Bein im Krieg verloren hat."
+  },
+  {
+    "input": "örnek_üret: Bibliothek",
+    "output": "Morgen werde ich in der Bibliothek lernen."
+  },
+  {
+    "input": "örnek_üret: Bibliothek",
+    "output": "Ich bin in der Bibliothek auf deine Mutter gestoßen."
+  },
+  {
+    "input": "örnek_üret: Bibliothek",
+    "output": "Auf dem Weg zur Bibliothek habe ich meinen Freund getroffen."
+  },
+  {
+    "input": "örnek_üret: Bibliothek",
+    "output": "Es war kein Problem, die Kindergruppe zur Bibliothek mitzunehmen."
+  },
+  {
+    "input": "örnek_üret: Bibliothek",
+    "output": "Wir dürfen in der Bibliothek nicht reden."
+  },
+  {
+    "input": "örnek_üret: Blume",
+    "output": "Bienen fliegen von Blume zu Blume."
+  },
+  {
+    "input": "örnek_üret: Blume",
+    "output": "Wie schön diese Blume ist!"
+  },
+  {
+    "input": "örnek_üret: Blume",
+    "output": "Was für eine schöne Blume!"
+  },
+  {
+    "input": "örnek_üret: Blume",
+    "output": "Diese Blume ist die schönste von allen."
+  },
+  {
+    "input": "örnek_üret: Blume",
+    "output": "Mary hat eine Blume in der Hand."
+  },
+  {
+    "input": "örnek_üret: Brot",
+    "output": "Bitte schneiden Sie den Laib Brot für mich."
+  },
+  {
+    "input": "örnek_üret: Brot",
+    "output": "Wenn du Hunger hast, kannst du dieses Brot essen."
+  },
+  {
+    "input": "örnek_üret: Brot",
+    "output": "Er mag Brot und Butter."
+  },
+  {
+    "input": "örnek_üret: Brot",
+    "output": "Ein Stück Brot reichte nicht, seinen Hunger zu stillen."
+  },
+  {
+    "input": "örnek_üret: Brot",
+    "output": "Warten Sie, bis das Brot vollständig abgekühlt ist, bevor Sie es verzehren."
+  },
+  {
+    "input": "örnek_üret: Bruder",
+    "output": "Mein kleiner Bruder sieht fern."
+  },
+  {
+    "input": "örnek_üret: Bruder",
+    "output": "Mein Bruder ist sehr wichtig. Zumindest denkt er das."
+  },
+  {
+    "input": "örnek_üret: Bruder",
+    "output": "Kann Ihr Bruder Auto fahren?"
+  },
+  {
+    "input": "örnek_üret: Bruder",
+    "output": "Es ist schwer, dich von deinem Bruder zu unterscheiden."
+  },
+  {
+    "input": "örnek_üret: Bruder",
+    "output": "Es gehört meinem Bruder."
+  },
+  {
+    "input": "örnek_üret: Buch",
+    "output": "Nimm ein Buch und lies es!"
+  },
+  {
+    "input": "örnek_üret: Buch",
+    "output": "Ich habe während des Essens ein Buch gelesen."
+  },
+  {
+    "input": "örnek_üret: Buch",
+    "output": "Er verbrachte den Abend damit, ein Buch zu lesen."
+  },
+  {
+    "input": "örnek_üret: Buch",
+    "output": "Ich muss das Buch vor Samstag zurückgeben."
+  },
+  {
+    "input": "örnek_üret: Buch",
+    "output": "Das ist ein Buch über Sterne."
+  },
+  {
+    "input": "örnek_üret: Butter",
+    "output": "Im Geschäft werden Nahrungsmittel verkauft wie Butter, Käse und Zucker."
+  },
+  {
+    "input": "örnek_üret: Butter",
+    "output": "Er mag Brot und Butter."
+  },
+  {
+    "input": "örnek_üret: Butter",
+    "output": "Die Butter riecht gut."
+  },
+  {
+    "input": "örnek_üret: Butter",
+    "output": "Bitte reiche mir die Butter."
+  },
+  {
+    "input": "örnek_üret: Butter",
+    "output": "Um einen Kuchen zu backen, müsst ihr Eier, Butter und Zucker verwenden."
+  },
+  {
+    "input": "örnek_üret: Büro",
+    "output": "Wenn das Auto weg ist, kann er nicht im Büro sein."
+  },
+  {
+    "input": "örnek_üret: Büro",
+    "output": "Der Drucker im Büro von Peter ist kaputt und druckt nicht mehr."
+  },
+  {
+    "input": "örnek_üret: Büro",
+    "output": "Mein Büro ist im fünften Stock."
+  },
+  {
+    "input": "örnek_üret: Büro",
+    "output": "Sally und ich arbeiten im selben Büro."
+  },
+  {
+    "input": "örnek_üret: Büro",
+    "output": "Ruft mich nicht an, wenn ich im Büro bin."
+  },
+  {
+    "input": "örnek_üret: Computer",
+    "output": "Mein Computer muss mir zu etwas nützen."
+  },
+  {
+    "input": "örnek_üret: Computer",
+    "output": "Computer machen die Leute dumm."
+  },
+  {
+    "input": "örnek_üret: Computer",
+    "output": "Aaah!! Mein Computer ist kaputt!"
+  },
+  {
+    "input": "örnek_üret: Computer",
+    "output": "Ich brauche einen neuen Computer."
+  },
+  {
+    "input": "örnek_üret: Computer",
+    "output": "Das ist der Computer, auf dem er seine Artikel schreibt."
+  },
+  {
+    "input": "örnek_üret: Cousin",
+    "output": "Er ist nicht mein Cousin."
+  },
+  {
+    "input": "örnek_üret: Cousin",
+    "output": "Helen, dies ist mein Cousin."
+  },
+  {
+    "input": "örnek_üret: Cousin",
+    "output": "John ist nicht mein Bruder, sondern mein Cousin."
+  },
+  {
+    "input": "örnek_üret: Cousin",
+    "output": "Ich habe mir von meinem Cousin tausend Yen geliehen."
+  },
+  {
+    "input": "örnek_üret: Cousin",
+    "output": "Mein Cousin ist der Vorletzte in der Reihe."
+  },
+  {
+    "input": "örnek_üret: Cousine",
+    "output": "Helen, dies ist meine Cousine."
+  },
+  {
+    "input": "örnek_üret: Cousine",
+    "output": "Das Mädchen, das im Becken schwimmt, ist meine Cousine."
+  },
+  {
+    "input": "örnek_üret: Cousine",
+    "output": "Er hat meine Cousine geheiratet."
+  },
+  {
+    "input": "örnek_üret: Cousine",
+    "output": "Ich habe mir von meiner Cousine tausend Yen geliehen."
+  },
+  {
+    "input": "örnek_üret: Cousine",
+    "output": "Er verlobte sich mit meiner Cousine."
+  },
+  {
+    "input": "örnek_üret: Dezember",
+    "output": "Dezember ist der letzte Monat des Jahres."
+  },
+  {
+    "input": "örnek_üret: Dezember",
+    "output": "Japan erklärte den Vereinigten Staaten im Dezember 1941 den Krieg."
+  },
+  {
+    "input": "örnek_üret: Dezember",
+    "output": "Maciek ist im Dezember gestorben."
+  },
+  {
+    "input": "örnek_üret: Dezember",
+    "output": "Findest du nicht, dass es ziemlich warm für Dezember ist?"
+  },
+  {
+    "input": "örnek_üret: Dezember",
+    "output": "Heute ist Samstag, der 11. Dezember 2010."
+  },
+  {
+    "input": "örnek_üret: Dienstag",
+    "output": "Die Party ist auf nächsten Dienstag verschoben worden."
+  },
+  {
+    "input": "örnek_üret: Dienstag",
+    "output": "Komm am Dienstag, wenn es möglich ist."
+  },
+  {
+    "input": "örnek_üret: Dienstag",
+    "output": "Am Dienstag war es wirklich kalt."
+  },
+  {
+    "input": "örnek_üret: Dienstag",
+    "output": "Hast du am Dienstag frei?"
+  },
+  {
+    "input": "örnek_üret: Dienstag",
+    "output": "Am Dienstag tagt das Parlament."
+  },
+  {
+    "input": "örnek_üret: Donnerstag",
+    "output": "Ihre Mutter ist seit letztem Donnerstag krank."
+  },
+  {
+    "input": "örnek_üret: Donnerstag",
+    "output": "Donnerstag Nacht ist Freibiernacht."
+  },
+  {
+    "input": "örnek_üret: Donnerstag",
+    "output": "Mutter ist seit letztem Donnerstag krank."
+  },
+  {
+    "input": "örnek_üret: Donnerstag",
+    "output": "Es regnet schon seit letztem Donnerstag."
+  },
+  {
+    "input": "örnek_üret: Donnerstag",
+    "output": "Nächsten Donnerstag ist Feiertag."
+  },
+  {
+    "input": "örnek_üret: Ehefrau",
+    "output": "Einen Mann, dessen Ehefrau gestorben ist, nennt man Witwer."
+  },
+  {
+    "input": "örnek_üret: Ehefrau",
+    "output": "Er hat Glück, so eine gute Ehefrau zu haben."
+  },
+  {
+    "input": "örnek_üret: Ehefrau",
+    "output": "Ted liebt seine Ehefrau Elizabeth."
+  },
+  {
+    "input": "örnek_üret: Ehefrau",
+    "output": "Ehemann und Ehefrau müssen sich zeit ihres Lebens gegenseitig helfen."
+  },
+  {
+    "input": "örnek_üret: Ehefrau",
+    "output": "Seine Ehefrau ist Französin."
+  },
+  {
+    "input": "örnek_üret: Ehemann",
+    "output": "Eine Frau, deren Ehemann gestorben ist, nennt man Witwe."
+  },
+  {
+    "input": "örnek_üret: Ehemann",
+    "output": "Es war Glück für sie, dass ihr Ehemann in diesem Augenblick ankam."
+  },
+  {
+    "input": "örnek_üret: Ehemann",
+    "output": "Er ist ein idealer Ehemann für mich."
+  },
+  {
+    "input": "örnek_üret: Ehemann",
+    "output": "Sie pflegte ihren kranken Ehemann."
+  },
+  {
+    "input": "örnek_üret: Ehemann",
+    "output": "Ihr Ehemann ist seit drei Jahren im Gefängnis."
+  },
+  {
+    "input": "örnek_üret: Ei",
+    "output": "Ich esse jeden Tag zum Frühstück ein gekochtes Ei."
+  },
+  {
+    "input": "örnek_üret: Ei",
+    "output": "Bitte kochen Sie mein Ei hart."
+  },
+  {
+    "input": "örnek_üret: Ei",
+    "output": "Sein Zimmer ist immer wie aus dem Ei gepellt."
+  },
+  {
+    "input": "örnek_üret: Ei",
+    "output": "Lieber heute ein Ei als morgen ein Huhn."
+  },
+  {
+    "input": "örnek_üret: Ei",
+    "output": "Was war zuerst da: das Huhn oder das Ei?"
+  },
+  {
+    "input": "örnek_üret: Elefant",
+    "output": "Ein Elefant ist ein sehr großes Tier."
+  },
+  {
+    "input": "örnek_üret: Elefant",
+    "output": "Der Elefant wurde vom Jäger getötet."
+  },
+  {
+    "input": "örnek_üret: Elefant",
+    "output": "Ein Elefant hat eine lange Nase."
+  },
+  {
+    "input": "örnek_üret: Elefant",
+    "output": "Der Elefant wurde zum Zoo gebracht."
+  },
+  {
+    "input": "örnek_üret: Elefant",
+    "output": "Der Elefant wird von kleinen Kindern gemocht."
+  },
+  {
+    "input": "örnek_üret: Ente",
+    "output": "Wir aßen Peking-Ente im China-Restaurant."
+  },
+  {
+    "input": "örnek_üret: Ente",
+    "output": "Es sieht aus wie eine Ente."
+  },
+  {
+    "input": "örnek_üret: Ente",
+    "output": "Kannst du eine Ente von einer Gans unterscheiden?"
+  },
+  {
+    "input": "örnek_üret: Ente",
+    "output": "Unsere Ente ist liegengeblieben."
+  },
+  {
+    "input": "örnek_üret: Ente",
+    "output": "Ich ziele auf jene Ente."
+  },
+  {
+    "input": "örnek_üret: Erfahrung",
+    "output": "Es mangelt ihm an Erfahrung, nicht?"
+  },
+  {
+    "input": "örnek_üret: Erfahrung",
+    "output": "Es mangelt ihm an Erfahrung."
+  },
+  {
+    "input": "örnek_üret: Erfahrung",
+    "output": "Er hat sehr viel Erfahrung."
+  },
+  {
+    "input": "örnek_üret: Erfahrung",
+    "output": "Menschen lernen aus Erfahrung."
+  },
+  {
+    "input": "örnek_üret: Erfahrung",
+    "output": "Ich sage das auf Grund meiner eigenen Erfahrung."
+  },
+  {
+    "input": "örnek_üret: Familie",
+    "output": "Ich bin immer stolz auf meine Familie."
+  },
+  {
+    "input": "örnek_üret: Familie",
+    "output": "Ich bin der erste Musiker in meiner Familie."
+  },
+  {
+    "input": "örnek_üret: Familie",
+    "output": "Keiko ist stolz auf ihre Familie."
+  },
+  {
+    "input": "örnek_üret: Familie",
+    "output": "Seiner Familie fehlt es an nichts."
+  },
+  {
+    "input": "örnek_üret: Familie",
+    "output": "Wenn da nicht meine Familie wäre, würde ich diese Arbeit hinschmeißen."
+  },
+  {
+    "input": "örnek_üret: Februar",
+    "output": "Der Karneval in Rio findet im Februar statt."
+  },
+  {
+    "input": "örnek_üret: Februar",
+    "output": "Er hat uns seit Februar nicht mehr geschrieben."
+  },
+  {
+    "input": "örnek_üret: Februar",
+    "output": "Sie wird im Februar siebzehn."
+  },
+  {
+    "input": "örnek_üret: Februar",
+    "output": "Ich bin am 14. Februar 1960 geboren."
+  },
+  {
+    "input": "örnek_üret: Februar",
+    "output": "Im Februar hatten wir einen kurzen Urlaub."
+  },
+  {
+    "input": "örnek_üret: Feiertag",
+    "output": "Der nächste Montag ist ein Feiertag."
+  },
+  {
+    "input": "örnek_üret: Feiertag",
+    "output": "Der nächste Feiertag fällt auf einen Sonntag."
+  },
+  {
+    "input": "örnek_üret: Feiertag",
+    "output": "Heute ist ein Feiertag."
+  },
+  {
+    "input": "örnek_üret: Feiertag",
+    "output": "Wenn ein Feiertag auf einen Sonntag fällt, haben wir am Montag frei."
+  },
+  {
+    "input": "örnek_üret: Feiertag",
+    "output": "Nächsten Donnerstag ist Feiertag."
+  },
+  {
+    "input": "örnek_üret: Fenster",
+    "output": "Wir konnten den Sonnenuntergang vom Fenster aus sehen."
+  },
+  {
+    "input": "örnek_üret: Fenster",
+    "output": "Er ist aus dem Fenster gesprungen."
+  },
+  {
+    "input": "örnek_üret: Fenster",
+    "output": "Sie zog ihren Kopf von einem Fenster zurück."
+  },
+  {
+    "input": "örnek_üret: Fenster",
+    "output": "Öffne das Fenster, hier drinnen geht man vor Hitze ein."
+  },
+  {
+    "input": "örnek_üret: Fenster",
+    "output": "Habt ihr das Fenster offen gelassen?"
+  },
+  {
+    "input": "örnek_üret: Fisch",
+    "output": "Ich bin kein echter Fisch, ich bin nur ein einfaches Plüschtier."
+  },
+  {
+    "input": "örnek_üret: Fisch",
+    "output": "Ich wäre lieber ein Vogel als ein Fisch."
+  },
+  {
+    "input": "örnek_üret: Fisch",
+    "output": "Sie fragte, wie man Fisch zubereitet."
+  },
+  {
+    "input": "örnek_üret: Fisch",
+    "output": "Luft ist für den Menschen, was Wasser für den Fisch ist."
+  },
+  {
+    "input": "örnek_üret: Fisch",
+    "output": "Wir essen oft rohen Fisch."
+  },
+  {
+    "input": "örnek_üret: Fleisch",
+    "output": "Der Geist ist willig, aber das Fleisch ist schwach."
+  },
+  {
+    "input": "örnek_üret: Fleisch",
+    "output": "Das Fleisch ist gut gebraten."
+  },
+  {
+    "input": "örnek_üret: Fleisch",
+    "output": "Ich will kein Fleisch."
+  },
+  {
+    "input": "örnek_üret: Fleisch",
+    "output": "Der Preis für Fleisch ist gefallen."
+  },
+  {
+    "input": "örnek_üret: Fleisch",
+    "output": "Ich kann kein Fleisch essen."
+  },
+  {
+    "input": "örnek_üret: Flughafen",
+    "output": "Wie lange braucht der Flughafenbus bis zum Flughafen?"
+  },
+  {
+    "input": "örnek_üret: Flughafen",
+    "output": "Ich werde Sie zum Flughafen fahren."
+  },
+  {
+    "input": "örnek_üret: Flughafen",
+    "output": "Ich bin jetzt am Flughafen."
+  },
+  {
+    "input": "örnek_üret: Flughafen",
+    "output": "Wie weit ist es vom Flughafen zum Hotel?"
+  },
+  {
+    "input": "örnek_üret: Flughafen",
+    "output": "Der Bus bringt die Fahrgäste vom Hotel bis zum Flughafen."
+  },
+  {
+    "input": "örnek_üret: Frage",
+    "output": "Ich muss dir eine dumme Frage stellen."
+  },
+  {
+    "input": "örnek_üret: Frage",
+    "output": "Musst du wirklich die Frage stellen, um die Antwort zu erfahren?"
+  },
+  {
+    "input": "örnek_üret: Frage",
+    "output": "Könnte ich eine Frage stellen?"
+  },
+  {
+    "input": "örnek_üret: Frage",
+    "output": "Ich frage mich, wie lange es dauern wird."
+  },
+  {
+    "input": "örnek_üret: Frage",
+    "output": "Ich frage mich, ob ich für diese Welt gemacht bin."
+  },
+  {
+    "input": "örnek_üret: Frau",
+    "output": "Warum heiratet man eine Frau, wenn man Männer liebt?"
+  },
+  {
+    "input": "örnek_üret: Frau",
+    "output": "Wie weckt man die Begierde einer Frau?"
+  },
+  {
+    "input": "örnek_üret: Frau",
+    "output": "Seine Frau ist Französin."
+  },
+  {
+    "input": "örnek_üret: Frau",
+    "output": "Meine Frau hasst Katzen."
+  },
+  {
+    "input": "örnek_üret: Frau",
+    "output": "Meine Frau versucht zu schlafen."
+  },
+  {
+    "input": "örnek_üret: Freitag",
+    "output": "Ich schlage vor, dass wir am Freitag ausgehen."
+  },
+  {
+    "input": "örnek_üret: Freitag",
+    "output": "Das Museum ist Montag bis Freitag geöffnet."
+  },
+  {
+    "input": "örnek_üret: Freitag",
+    "output": "Ich erinnere mich nicht genau, aber ich vermute, es war letzten Freitag."
+  },
+  {
+    "input": "örnek_üret: Freitag",
+    "output": "Es schneite von Montag bis Freitag."
+  },
+  {
+    "input": "örnek_üret: Freitag",
+    "output": "Lies bis Freitag Kapitel 4."
+  },
+  {
+    "input": "örnek_üret: Freund",
+    "output": "Nein, er ist nicht mein neuer Freund."
+  },
+  {
+    "input": "örnek_üret: Freund",
+    "output": "Er ist schon seit der Studentenzeit mein unzertrennlicher Freund."
+  },
+  {
+    "input": "örnek_üret: Freund",
+    "output": "Vor dem Bahnhof traf ich einen alten Freund von mir."
+  },
+  {
+    "input": "örnek_üret: Freund",
+    "output": "Das Mädchen war damit beschäftigt, Tee für ihren Freund zu kochen."
+  },
+  {
+    "input": "örnek_üret: Freund",
+    "output": "Ich habe gestern meinen Freund Tom besucht."
+  },
+  {
+    "input": "örnek_üret: Freundin",
+    "output": "Das ist meine Freundin Rachel, wir sind zusammen ins Gymnasium gegangen."
+  },
+  {
+    "input": "örnek_üret: Freundin",
+    "output": "Er zieht mit seiner Freundin um."
+  },
+  {
+    "input": "örnek_üret: Freundin",
+    "output": "Bei einem Spaziergang im Park begegnete sie zufällig ihrer alten Freundin."
+  },
+  {
+    "input": "örnek_üret: Freundin",
+    "output": "Sie ist eher eine Bekanntschaft als eine Freundin."
+  },
+  {
+    "input": "örnek_üret: Freundin",
+    "output": "Er wurde von seiner Freundin begleitet."
+  },
+  {
+    "input": "örnek_üret: Frühling",
+    "output": "Der Frühling kommt nach dem Winter."
+  },
+  {
+    "input": "örnek_üret: Frühling",
+    "output": "Der Frühling ist meine liebste Jahreszeit."
+  },
+  {
+    "input": "örnek_üret: Frühling",
+    "output": "Nach dem Frühling kommt der Sommer."
+  },
+  {
+    "input": "örnek_üret: Frühling",
+    "output": "Ich mag den Frühling nicht."
+  },
+  {
+    "input": "örnek_üret: Frühling",
+    "output": "Einige Blumen blühen im Frühling und andere im Herbst."
+  },
+  {
+    "input": "örnek_üret: Fuß",
+    "output": "Ich gehe zu Fuß."
+  },
+  {
+    "input": "örnek_üret: Fuß",
+    "output": "Mein rechter Fuß ist eingeschlafen."
+  },
+  {
+    "input": "örnek_üret: Fuß",
+    "output": "Er hat sich beim Fallen den rechten Fuß verletzt."
+  },
+  {
+    "input": "örnek_üret: Fuß",
+    "output": "Da keine Taxis da waren, sind wir zu Fuß zurückgekehrt."
+  },
+  {
+    "input": "örnek_üret: Fuß",
+    "output": "Ich gehe zu Fuß zur Schule."
+  },
+  {
+    "input": "örnek_üret: Geld",
+    "output": "Ist es nötig, dass ich dir Geld gebe?"
+  },
+  {
+    "input": "örnek_üret: Geld",
+    "output": "Bleibt nicht im Bett, sofern ihr nicht im Bett Geld verdienen könnt."
+  },
+  {
+    "input": "örnek_üret: Geld",
+    "output": "Er ist reich, er braucht kein Geld!"
+  },
+  {
+    "input": "örnek_üret: Geld",
+    "output": "Wenn man hingegen um Geld bittet, muss man gewisse Bedingungen annehmen."
+  },
+  {
+    "input": "örnek_üret: Geld",
+    "output": "Sie schwimmt im Geld."
+  },
+  {
+    "input": "örnek_üret: Gemüse",
+    "output": "Warum isst du kein Gemüse?"
+  },
+  {
+    "input": "örnek_üret: Gemüse",
+    "output": "Obst und Gemüse sind unentbehrlich für eine ausgewogene Ernährung."
+  },
+  {
+    "input": "örnek_üret: Gemüse",
+    "output": "Als Kind wurde ich von meiner Mutter gezwungen, Gemüse zu essen."
+  },
+  {
+    "input": "örnek_üret: Gemüse",
+    "output": "Hier ist ein Korb voller Gemüse."
+  },
+  {
+    "input": "örnek_üret: Gemüse",
+    "output": "Sie hat gestern Gemüse gekauft."
+  },
+  {
+    "input": "örnek_üret: Großmutter",
+    "output": "Sie wurde von ihrer Großmutter aufgezogen."
+  },
+  {
+    "input": "örnek_üret: Großmutter",
+    "output": "Meine Großmutter mütterlicherseits trägt immerzu dieses altmodische Kleid."
+  },
+  {
+    "input": "örnek_üret: Großmutter",
+    "output": "Die Asche von Großmutter ist in einer Urne im Tempel."
+  },
+  {
+    "input": "örnek_üret: Großmutter",
+    "output": "Wir fuhren nach Hakata um meine Großmutter zu besuchen."
+  },
+  {
+    "input": "örnek_üret: Großmutter",
+    "output": "Meine Großmutter war eine Bäuerin."
+  },
+  {
+    "input": "örnek_üret: Großvater",
+    "output": "Sein Großvater ist vor einem Jahr an Krebs gestorben."
+  },
+  {
+    "input": "örnek_üret: Großvater",
+    "output": "Mein Großvater wurde 1920 geboren."
+  },
+  {
+    "input": "örnek_üret: Großvater",
+    "output": "Mein Großvater spricht manchmal mit sich selbst, wenn er allein ist."
+  },
+  {
+    "input": "örnek_üret: Großvater",
+    "output": "Wie alt ist dein Großvater?"
+  },
+  {
+    "input": "örnek_üret: Großvater",
+    "output": "Mein Großvater kommt aus Osaka."
+  },
+  {
+    "input": "örnek_üret: Hand",
+    "output": "Ich will nicht um deine Hand anhalten!"
+  },
+  {
+    "input": "örnek_üret: Hand",
+    "output": "Mein Vater legte seine Hand auf meine Schulter."
+  },
+  {
+    "input": "örnek_üret: Hand",
+    "output": "Sie leben von der Hand in den Mund."
+  },
+  {
+    "input": "örnek_üret: Hand",
+    "output": "Er hat sich mit einem Messer die linke Hand verletzt."
+  },
+  {
+    "input": "örnek_üret: Hand",
+    "output": "Sie schreibt mit der linken Hand."
+  },
+  {
+    "input": "örnek_üret: Handy",
+    "output": "Wie kannst du einen Laptop und kein Handy haben?"
+  },
+  {
+    "input": "örnek_üret: Handy",
+    "output": "Das iPhone ist ein außergewöhnliches Handy."
+  },
+  {
+    "input": "örnek_üret: Handy",
+    "output": "Kannst du mir deine Handy-Nummer geben?"
+  },
+  {
+    "input": "örnek_üret: Handy",
+    "output": "Hast du ein Handy?"
+  },
+  {
+    "input": "örnek_üret: Handy",
+    "output": "Haben Sie ein Handy?"
+  },
+  {
+    "input": "örnek_üret: Haus",
+    "output": "Zwei Familien leben im gleichen Haus."
+  },
+  {
+    "input": "örnek_üret: Haus",
+    "output": "Das ist das Haus, wo er wohnt."
+  },
+  {
+    "input": "örnek_üret: Haus",
+    "output": "Dieses Haus gehört Herrn Yamada."
+  },
+  {
+    "input": "örnek_üret: Haus",
+    "output": "Ohne Liebe ist ein Haus nicht mehr als ein Körper ohne Seele."
+  },
+  {
+    "input": "örnek_üret: Haus",
+    "output": "Vor meinem Haus ist ein kleiner Garten."
+  },
+  {
+    "input": "örnek_üret: Herbst",
+    "output": "In diesem Herbst gibt es viele Taifune."
+  },
+  {
+    "input": "örnek_üret: Herbst",
+    "output": "Im Herbst werden die Blätter gelb."
+  },
+  {
+    "input": "örnek_üret: Herbst",
+    "output": "Die Blätter fallen im Herbst."
+  },
+  {
+    "input": "örnek_üret: Herbst",
+    "output": "Im Herbst wird das Laub gelb."
+  },
+  {
+    "input": "örnek_üret: Herbst",
+    "output": "Einige Blumen blühen im Frühling und andere im Herbst."
+  },
+  {
+    "input": "örnek_üret: Herz",
+    "output": "Mein Herz war voller Freude."
+  },
+  {
+    "input": "örnek_üret: Herz",
+    "output": "Du hast kein Herz."
+  },
+  {
+    "input": "örnek_üret: Herz",
+    "output": "Mein Herz hörte auf zu schlagen."
+  },
+  {
+    "input": "örnek_üret: Herz",
+    "output": "Sein Herz ist gebrochen."
+  },
+  {
+    "input": "örnek_üret: Herz",
+    "output": "George hatte ein gebrochenes Herz."
+  },
+  {
+    "input": "örnek_üret: Hotel",
+    "output": "Zum Hilton Hotel bitte."
+  },
+  {
+    "input": "örnek_üret: Hotel",
+    "output": "Nehmen Sie ein Taxi zum Hotel."
+  },
+  {
+    "input": "örnek_üret: Hotel",
+    "output": "Wie weit ist es vom Flughafen zum Hotel?"
+  },
+  {
+    "input": "örnek_üret: Hotel",
+    "output": "Der Bus bringt die Fahrgäste vom Hotel bis zum Flughafen."
+  },
+  {
+    "input": "örnek_üret: Hotel",
+    "output": "Sie kam spät nachts im Hotel an."
+  },
+  {
+    "input": "örnek_üret: Hund",
+    "output": "Ist dein Hund bissig?"
+  },
+  {
+    "input": "örnek_üret: Hund",
+    "output": "Der Hund sieht hungrig aus."
+  },
+  {
+    "input": "örnek_üret: Hund",
+    "output": "Er geht gewöhnlich in den Park mit seinem Hund."
+  },
+  {
+    "input": "örnek_üret: Hund",
+    "output": "Sein Hund folgt ihm, wo auch immer er hingeht."
+  },
+  {
+    "input": "örnek_üret: Hund",
+    "output": "Ein Hund kann manchmal ein gefährliches Tier sein."
+  },
+  {
+    "input": "örnek_üret: Idee",
+    "output": "Es war eine schlechte Idee, sich abzumelden."
+  },
+  {
+    "input": "örnek_üret: Idee",
+    "output": "Das ist eine gute Idee!"
+  },
+  {
+    "input": "örnek_üret: Idee",
+    "output": "Wie bist du auf diese verrückte Idee gekommen?"
+  },
+  {
+    "input": "örnek_üret: Idee",
+    "output": "Die Einvernehmlichkeit deutet darauf hin, dass wir gegen die vorgeschlagene Idee sind."
+  },
+  {
+    "input": "örnek_üret: Idee",
+    "output": "Schließlich hatte ich eine geniale Idee."
+  },
+  {
+    "input": "örnek_üret: Internet",
+    "output": "Es ist einfacher, Leute im Internet anzubaggern als auf der Straße."
+  },
+  {
+    "input": "örnek_üret: Internet",
+    "output": "Im Internet zu sein, ist kein Luxus."
+  },
+  {
+    "input": "örnek_üret: Internet",
+    "output": "Ich habe gestern bis spät in die Nacht im Internet gesurft."
+  },
+  {
+    "input": "örnek_üret: Internet",
+    "output": "Welche Art Information findet man im Internet?"
+  },
+  {
+    "input": "örnek_üret: Internet",
+    "output": "Eine Firewall garantiert Ihre Sicherheit im Internet."
+  },
+  {
+    "input": "örnek_üret: Jahr",
+    "output": "Letztes Jahr sind wir nach London gegangen."
+  },
+  {
+    "input": "örnek_üret: Jahr",
+    "output": "1980 ist das Jahr, in dem ich geboren wurde."
+  },
+  {
+    "input": "örnek_üret: Jahr",
+    "output": "Nächstes Jahr werde ich nach Amerika gehen."
+  },
+  {
+    "input": "örnek_üret: Jahr",
+    "output": "Sein Großvater ist vor einem Jahr an Krebs gestorben."
+  },
+  {
+    "input": "örnek_üret: Jahr",
+    "output": "Letztes Jahr hatte er lange Haare."
+  },
+  {
+    "input": "örnek_üret: Januar",
+    "output": "Der Januar ist normalerweise der kälteste Monat."
+  },
+  {
+    "input": "örnek_üret: Januar",
+    "output": "Im Januar schneit es."
+  },
+  {
+    "input": "örnek_üret: Januar",
+    "output": "Bei uns schneit es im Januar."
+  },
+  {
+    "input": "örnek_üret: Januar",
+    "output": "Ich plane, im Januar eine Prüfung zu machen."
+  },
+  {
+    "input": "örnek_üret: Januar",
+    "output": "Vom 5. bis zum 15. Januar, bitte."
+  },
+  {
+    "input": "örnek_üret: Juli",
+    "output": "Er ist am 28. Juli 1888 geboren."
+  },
+  {
+    "input": "örnek_üret: Juli",
+    "output": "Ich werde am ersten Juli anfangen zu arbeiten."
+  },
+  {
+    "input": "örnek_üret: Juli",
+    "output": "Wir leben hier seit Juli."
+  },
+  {
+    "input": "örnek_üret: Juli",
+    "output": "Die Sommerferien beginnen im Juli."
+  },
+  {
+    "input": "örnek_üret: Juli",
+    "output": "Sie wurde am 17. Juli um sechs Uhr morgens geboren."
+  },
+  {
+    "input": "örnek_üret: Juni",
+    "output": "Heute ist der 18. Juni und das ist der Geburtstag von Muiriel!"
+  },
+  {
+    "input": "örnek_üret: Juni",
+    "output": "Ich wurde am 4. Juni 1974 geboren."
+  },
+  {
+    "input": "örnek_üret: Juni",
+    "output": "Wir haben im Juni viele Regentage."
+  },
+  {
+    "input": "örnek_üret: Juni",
+    "output": "Er wird im Juni Tokyo verlassen und nach Kansai kommen."
+  },
+  {
+    "input": "örnek_üret: Juni",
+    "output": "Sie wird am 4. Juni Hrn. Johnson heiraten."
+  },
+  {
+    "input": "örnek_üret: Kaffee",
+    "output": "Möchten Sie eine Tasse Kaffee?"
+  },
+  {
+    "input": "örnek_üret: Kaffee",
+    "output": "Ich hätte gern eine Tasse Kaffee."
+  },
+  {
+    "input": "örnek_üret: Kaffee",
+    "output": "Er hat eine Tasse Kaffee getrunken."
+  },
+  {
+    "input": "örnek_üret: Kaffee",
+    "output": "Dieser Kaffee schmeckt bitter."
+  },
+  {
+    "input": "örnek_üret: Kaffee",
+    "output": "Dieser Kaffee schmeckt verbrannt."
+  },
+  {
+    "input": "örnek_üret: Kaninchen",
+    "output": "Das war ein böses Kaninchen."
+  },
+  {
+    "input": "örnek_üret: Kaninchen",
+    "output": "„Was ist los?“ fragte das kleine weiße Kaninchen."
+  },
+  {
+    "input": "örnek_üret: Kaninchen",
+    "output": "\"Was ist dein Wunsch?\", fragte das kleine weiße Kaninchen."
+  },
+  {
+    "input": "örnek_üret: Kaninchen",
+    "output": "Ein Kaninchen hat lange Ohren und einen kurzen Schwanz."
+  },
+  {
+    "input": "örnek_üret: Kaninchen",
+    "output": "Kaninchen haben große Ohren."
+  },
+  {
+    "input": "örnek_üret: Katze",
+    "output": "„Eine Katze?“ fragte der alte Mann."
+  },
+  {
+    "input": "örnek_üret: Katze",
+    "output": "In der Küche ist eine Katze."
+  },
+  {
+    "input": "örnek_üret: Katze",
+    "output": "Eine Katze hat neun Leben."
+  },
+  {
+    "input": "örnek_üret: Katze",
+    "output": "Ich wurde von der Katze gekratzt."
+  },
+  {
+    "input": "örnek_üret: Katze",
+    "output": "Ein Tiger ist größer und stärker als eine Katze."
+  },
+  {
+    "input": "örnek_üret: Kind",
+    "output": "Ein Kind braucht Liebe."
+  },
+  {
+    "input": "örnek_üret: Kind",
+    "output": "Willst du, dass wir erst heiraten oder erst ein Kind machen?"
+  },
+  {
+    "input": "örnek_üret: Kind",
+    "output": "Durch strenge Erziehung ist das Kind zu einem ganz anderen Menschen geworden."
+  },
+  {
+    "input": "örnek_üret: Kind",
+    "output": "Sie riskierte ihr Leben, um ihr Kind zu schützen."
+  },
+  {
+    "input": "örnek_üret: Kind",
+    "output": "Sie las dem Kind eine lustige Geschichte vor."
+  },
+  {
+    "input": "örnek_üret: Kopf",
+    "output": "Mir gehen in diesen Tagen zu viele Dinge durch den Kopf."
+  },
+  {
+    "input": "örnek_üret: Kopf",
+    "output": "Du hast mir den Kopf verdreht."
+  },
+  {
+    "input": "örnek_üret: Kopf",
+    "output": "Sie zog ihren Kopf von einem Fenster zurück."
+  },
+  {
+    "input": "örnek_üret: Kopf",
+    "output": "Ich schüttelte den Kopf."
+  },
+  {
+    "input": "örnek_üret: Kopf",
+    "output": "Vater nahm seinen Platz am Kopf des Tisches ein."
+  },
+  {
+    "input": "örnek_üret: Krankenhaus",
+    "output": "Ich bin im Krankenhaus. Ich wurde vom Blitz getroffen."
+  },
+  {
+    "input": "örnek_üret: Krankenhaus",
+    "output": "Wir müssen ihn dringend ins Krankenhaus bringen, er ist schwer verletzt!"
+  },
+  {
+    "input": "örnek_üret: Krankenhaus",
+    "output": "Alle Krankenschwestern in diesem Krankenhaus sind sehr nett."
+  },
+  {
+    "input": "örnek_üret: Krankenhaus",
+    "output": "Seine Frau ist im Krankenhaus, sie wurde bei einem Autounfall verletzt."
+  },
+  {
+    "input": "örnek_üret: Krankenhaus",
+    "output": "Jim muss sofort ins Krankenhaus gebracht werden."
+  },
+  {
+    "input": "örnek_üret: Kuchen",
+    "output": "Dieser Kuchen schmeckt nach Käse."
+  },
+  {
+    "input": "örnek_üret: Kuchen",
+    "output": "Der Kuchen schmeckt süß."
+  },
+  {
+    "input": "örnek_üret: Kuchen",
+    "output": "Dieser Kuchen ist süß."
+  },
+  {
+    "input": "örnek_üret: Kuchen",
+    "output": "Wer hat diesen Kuchen gemacht?"
+  },
+  {
+    "input": "örnek_üret: Kuchen",
+    "output": "Dieser Kuchen schmeckt mir zu süß."
+  },
+  {
+    "input": "örnek_üret: Kuh",
+    "output": "Unsere Kuh gibt uns keine Milch."
+  },
+  {
+    "input": "örnek_üret: Kuh",
+    "output": "Bisher habe ich nie eine echte Kuh gesehen."
+  },
+  {
+    "input": "örnek_üret: Kuh",
+    "output": "Die Kuh sah groß und sanftmütig aus."
+  },
+  {
+    "input": "örnek_üret: Kuh",
+    "output": "Die Kuh gibt uns Milch."
+  },
+  {
+    "input": "örnek_üret: Kuh",
+    "output": "Ich habe noch nie eine echte Kuh gesehen."
+  },
+  {
+    "input": "örnek_üret: Käse",
+    "output": "Dieser Kuchen schmeckt nach Käse."
+  },
+  {
+    "input": "örnek_üret: Käse",
+    "output": "Im Geschäft werden Nahrungsmittel verkauft wie Butter, Käse und Zucker."
+  },
+  {
+    "input": "örnek_üret: Käse",
+    "output": "Ich habe Käse und ein bisschen Milch gekauft."
+  },
+  {
+    "input": "örnek_üret: Käse",
+    "output": "Tom mag keinen Käse."
+  },
+  {
+    "input": "örnek_üret: Käse",
+    "output": "Geben Sie die geriebene Karotte und den gewürfelten Käse hinzu."
+  },
+  {
+    "input": "örnek_üret: Küche",
+    "output": "In der Küche ist eine Katze."
+  },
+  {
+    "input": "örnek_üret: Küche",
+    "output": "Paula muss ihrem Vater in der Küche helfen."
+  },
+  {
+    "input": "örnek_üret: Küche",
+    "output": "Unsere Katze ist in der Küche."
+  },
+  {
+    "input": "örnek_üret: Küche",
+    "output": "Ist Vater in der Küche?"
+  },
+  {
+    "input": "örnek_üret: Küche",
+    "output": "Das Feuer ist in der Küche ausgebrochen."
+  },
+  {
+    "input": "örnek_üret: Lehrer",
+    "output": "Der Lehrer ist für die Klasse im dritten Jahr zuständig."
+  },
+  {
+    "input": "örnek_üret: Lehrer",
+    "output": "Die Schüler haben dem Lehrer die Übung gegeben."
+  },
+  {
+    "input": "örnek_üret: Lehrer",
+    "output": "Unser Lehrer schien überrascht zu sein."
+  },
+  {
+    "input": "örnek_üret: Lehrer",
+    "output": "Die Lehrer unterrichten den ganzen Tag lang."
+  },
+  {
+    "input": "örnek_üret: Lehrer",
+    "output": "Sind Sie hier Lehrer oder Schüler?"
+  },
+  {
+    "input": "örnek_üret: Löwe",
+    "output": "Ein lebender Hund ist besser als ein toter Löwe."
+  },
+  {
+    "input": "örnek_üret: Löwe",
+    "output": "Der Löwe ist der König des Dschungels."
+  },
+  {
+    "input": "örnek_üret: Löwe",
+    "output": "Der Löwe ist ein Tier."
+  },
+  {
+    "input": "örnek_üret: Löwe",
+    "output": "Ein Löwe ist stark."
+  },
+  {
+    "input": "örnek_üret: Löwe",
+    "output": "Ein Löwe ist ein Tier."
+  },
+  {
+    "input": "örnek_üret: Mai",
+    "output": "Er fuhr Ende Mai nach Paris."
+  },
+  {
+    "input": "örnek_üret: Mai",
+    "output": "Regnet's im Mai, ist der April vorbei."
+  },
+  {
+    "input": "örnek_üret: Mai",
+    "output": "Ich werde sechzehn im Mai."
+  },
+  {
+    "input": "örnek_üret: Mai",
+    "output": "Ich werde am 23. Mai kommen."
+  },
+  {
+    "input": "örnek_üret: Mai",
+    "output": "Es geschah am 1. Mai."
+  },
+  {
+    "input": "örnek_üret: Mann",
+    "output": "Beim Verlassen des Bahnhofs sah ich einen Mann."
+  },
+  {
+    "input": "örnek_üret: Mann",
+    "output": "„Eine Katze?“ fragte der alte Mann."
+  },
+  {
+    "input": "örnek_üret: Mann",
+    "output": "Mann bist du doof! Ich muss dir echt alles erklären!"
+  },
+  {
+    "input": "örnek_üret: Mann",
+    "output": "Er ist schon ein Mann."
+  },
+  {
+    "input": "örnek_üret: Mann",
+    "output": "Der Mann, der vor einer Stunde angerufen hat, war Frank."
+  },
+  {
+    "input": "örnek_üret: Maus",
+    "output": "Diese Maus wurde von meiner Katze getötet."
+  },
+  {
+    "input": "örnek_üret: Maus",
+    "output": "Die Katze spielt mit einer lebendigen Maus."
+  },
+  {
+    "input": "örnek_üret: Maus",
+    "output": "Das war eine Maus."
+  },
+  {
+    "input": "örnek_üret: Maus",
+    "output": "Die Katze hat die Maus verfolgt."
+  },
+  {
+    "input": "örnek_üret: Maus",
+    "output": "Ist die Maus tot oder lebendig?"
+  },
+  {
+    "input": "örnek_üret: Meinung",
+    "output": "Was hat dich dazu gebracht, deine Meinung zu ändern?"
+  },
+  {
+    "input": "örnek_üret: Meinung",
+    "output": "Eine Meinung ist nur dann schockierend, wenn sie eine Überzeugung ist."
+  },
+  {
+    "input": "örnek_üret: Meinung",
+    "output": "Jede Meinung ist eine Mischung aus Wahrheit und Irrtum."
+  },
+  {
+    "input": "örnek_üret: Meinung",
+    "output": "Das ist meine Meinung."
+  },
+  {
+    "input": "örnek_üret: Meinung",
+    "output": "Herr Meier ist der Meinung, dass Neumanns im Urlaub sind."
+  },
+  {
+    "input": "örnek_üret: Milch",
+    "output": "Er hat Eier und Milch bei einem Bauern gekauft."
+  },
+  {
+    "input": "örnek_üret: Milch",
+    "output": "Diese Milch hat einen seltsamen Geschmack."
+  },
+  {
+    "input": "örnek_üret: Milch",
+    "output": "Ich habe Käse und ein bisschen Milch gekauft."
+  },
+  {
+    "input": "örnek_üret: Milch",
+    "output": "Die Milch ist sauer geworden."
+  },
+  {
+    "input": "örnek_üret: Milch",
+    "output": "Milch macht uns stark."
+  },
+  {
+    "input": "örnek_üret: Minute",
+    "output": "Eine Minute entspricht sechzig Sekunden."
+  },
+  {
+    "input": "örnek_üret: Minute",
+    "output": "Er hat seinen Zug um eine Minute verpasst."
+  },
+  {
+    "input": "örnek_üret: Minute",
+    "output": "Entschuldige mich bitte eine Minute."
+  },
+  {
+    "input": "örnek_üret: Minute",
+    "output": "Ich kann 50 Wörter pro Minute tippen."
+  },
+  {
+    "input": "örnek_üret: Minute",
+    "output": "Ich kann diesen Lärm nicht eine Minute länger ertragen."
+  },
+  {
+    "input": "örnek_üret: Mittwoch",
+    "output": "Sie ist seit letztem Mittwoch krank."
+  },
+  {
+    "input": "örnek_üret: Mittwoch",
+    "output": "Mein Vater reist am Mittwoch in die Vereinigten Staaten aus."
+  },
+  {
+    "input": "örnek_üret: Mittwoch",
+    "output": "Heute ist Mittwoch. Ich lese gerade."
+  },
+  {
+    "input": "örnek_üret: Mittwoch",
+    "output": "Sie ist seit vorigen Mittwoch abwesend."
+  },
+  {
+    "input": "örnek_üret: Mittwoch",
+    "output": "Ich muss unsere Verabredung auf Mittwoch verschieben."
+  },
+  {
+    "input": "örnek_üret: Monat",
+    "output": "Ich habe mehr als einen Monat lang in Nagoya gelebt."
+  },
+  {
+    "input": "örnek_üret: Monat",
+    "output": "Ich habe für einen Monat ein Zimmer in Paris gemietet."
+  },
+  {
+    "input": "örnek_üret: Monat",
+    "output": "Der Januar ist normalerweise der kälteste Monat."
+  },
+  {
+    "input": "örnek_üret: Monat",
+    "output": "Es ist unmöglich, in einem Monat Englisch zu lernen."
+  },
+  {
+    "input": "örnek_üret: Monat",
+    "output": "Nächsten Monat wohne ich seit zehn Jahren hier."
+  },
+  {
+    "input": "örnek_üret: Montag",
+    "output": "Die Schule beginnt nächsten Montag."
+  },
+  {
+    "input": "örnek_üret: Montag",
+    "output": "Das Museum ist Montag bis Freitag geöffnet."
+  },
+  {
+    "input": "örnek_üret: Montag",
+    "output": "Der Abgabetermin für die Hausaufgabe ist nächste Woche Montag."
+  },
+  {
+    "input": "örnek_üret: Montag",
+    "output": "Sie hat mich nicht am Sonntag besucht, sondern am Montag."
+  },
+  {
+    "input": "örnek_üret: Montag",
+    "output": "Die Sommerferien beginnen nächste Woche Montag."
+  },
+  {
+    "input": "örnek_üret: Morgen",
+    "output": "Ich werde sie morgen anrufen, wenn ich zurückkomme."
+  },
+  {
+    "input": "örnek_üret: Morgen",
+    "output": "Damals im Gymnasium bin ich jeden Morgen um 6 Uhr aufgestanden."
+  },
+  {
+    "input": "örnek_üret: Morgen",
+    "output": "Morgen wird er auf dem Mond landen."
+  },
+  {
+    "input": "örnek_üret: Morgen",
+    "output": "Sehen wir uns morgen?"
+  },
+  {
+    "input": "örnek_üret: Morgen",
+    "output": "\"Guten Morgen\", sagte Tom mit einem Lächeln."
+  },
+  {
+    "input": "örnek_üret: Mund",
+    "output": "Der Mund blieb ihnen offen stehen."
+  },
+  {
+    "input": "örnek_üret: Mund",
+    "output": "Öffnen Sie den Mund!"
+  },
+  {
+    "input": "örnek_üret: Mund",
+    "output": "Morgenstund hat Gold im Mund."
+  },
+  {
+    "input": "örnek_üret: Mund",
+    "output": "Du sollst nicht mit vollem Mund sprechen."
+  },
+  {
+    "input": "örnek_üret: Mund",
+    "output": "Dieses Kind hat mich mit offenem Mund angestarrt."
+  },
+  {
+    "input": "örnek_üret: Museum",
+    "output": "Dieses Museum ist einen Besuch wert."
+  },
+  {
+    "input": "örnek_üret: Museum",
+    "output": "Sie ist mit dem Taxi zum Museum gefahren."
+  },
+  {
+    "input": "örnek_üret: Museum",
+    "output": "Ist das Museum heute geöffnet?"
+  },
+  {
+    "input": "örnek_üret: Museum",
+    "output": "Das Museum ist Montag bis Freitag geöffnet."
+  },
+  {
+    "input": "örnek_üret: Museum",
+    "output": "Das Museum ist montags nicht geöffnet."
+  },
+  {
+    "input": "örnek_üret: Mutter",
+    "output": "Meine Mutter spricht nicht sehr gut Englisch."
+  },
+  {
+    "input": "örnek_üret: Mutter",
+    "output": "Spensers Mutter überprüft oft jeden kleinen Fehler, den er macht."
+  },
+  {
+    "input": "örnek_üret: Mutter",
+    "output": "Meine Mutter hat zwei Flaschen Orangensaft gekauft."
+  },
+  {
+    "input": "örnek_üret: Mutter",
+    "output": "Meine Mutter zieht die willkürliche Auswahl der Lotteriegeräte meinen Glückszahlen vor."
+  },
+  {
+    "input": "örnek_üret: Mutter",
+    "output": "Das Mädchen ähnelte seiner Mutter."
+  },
+  {
+    "input": "örnek_üret: März",
+    "output": "Bitte bestätigen Sie noch einmal die Reservierung vom 10. März."
+  },
+  {
+    "input": "örnek_üret: März",
+    "output": "Ich bin am 5. März 1977 in Osaka geboren."
+  },
+  {
+    "input": "örnek_üret: März",
+    "output": "Am 15. März sind wir 20 Jahre verheiratet."
+  },
+  {
+    "input": "örnek_üret: März",
+    "output": "Mein Geburtstag ist am 22. März."
+  },
+  {
+    "input": "örnek_üret: März",
+    "output": "Der 15. März wird mein letzter Schultag sein."
+  },
+  {
+    "input": "örnek_üret: Nacht",
+    "output": "Nun gut, die Nacht ist sehr lang, oder?"
+  },
+  {
+    "input": "örnek_üret: Nacht",
+    "output": "Ich möchte eine Nacht bleiben."
+  },
+  {
+    "input": "örnek_üret: Nacht",
+    "output": "Gute Nacht. Träum was Schönes."
+  },
+  {
+    "input": "örnek_üret: Nacht",
+    "output": "Es hat die ganze Nacht geschneit."
+  },
+  {
+    "input": "örnek_üret: Nacht",
+    "output": "Ich konnte letzte Nacht nicht schlafen."
+  },
+  {
+    "input": "örnek_üret: Name",
+    "output": "Mir fällt sein Name gerade nicht ein."
+  },
+  {
+    "input": "örnek_üret: Name",
+    "output": "Sein Name ist Ken."
+  },
+  {
+    "input": "örnek_üret: Name",
+    "output": "Sein Name entfällt mir oft."
+  },
+  {
+    "input": "örnek_üret: Name",
+    "output": "Sein Name wird bald vergessen sein."
+  },
+  {
+    "input": "örnek_üret: Name",
+    "output": "Sein Name ist Tomoyuki Ogura."
+  },
+  {
+    "input": "örnek_üret: Nase",
+    "output": "Ich hab die Nase voll von diesem feuchten Wetter."
+  },
+  {
+    "input": "örnek_üret: Nase",
+    "output": "Die Katze hat ihre Nase gegen das Fenster gedrückt."
+  },
+  {
+    "input": "örnek_üret: Nase",
+    "output": "Er hat eine lange Nase."
+  },
+  {
+    "input": "örnek_üret: Nase",
+    "output": "Ich rieche mit meiner Nase."
+  },
+  {
+    "input": "örnek_üret: Nase",
+    "output": "Putz dir mit diesem Taschentuch die Nase."
+  },
+  {
+    "input": "örnek_üret: Neffe",
+    "output": "Mein Neffe hat eine Blutgerinnungsstörung."
+  },
+  {
+    "input": "örnek_üret: Neffe",
+    "output": "Ein Neffe ist der Sohn eines Bruders oder einer Schwester."
+  },
+  {
+    "input": "örnek_üret: Neffe",
+    "output": "John ist mein Neffe."
+  },
+  {
+    "input": "örnek_üret: Neffe",
+    "output": "Mein Neffe reagiert allergisch auf Eier."
+  },
+  {
+    "input": "örnek_üret: Neffe",
+    "output": "Sein Neffe war in das brillante Feuerwerk vertieft."
+  },
+  {
+    "input": "örnek_üret: Nichte",
+    "output": "Seine Nichte ist attraktiv und reif für ihr Alter."
+  },
+  {
+    "input": "örnek_üret: Nichte",
+    "output": "Der Unfall machte alle seine Hoffnungen auf Erfolg zu nichte."
+  },
+  {
+    "input": "örnek_üret: Nichte",
+    "output": "Meine Nichte ist ein ernstes Mädchen."
+  },
+  {
+    "input": "örnek_üret: Nichte",
+    "output": "Maria ist meine Nichte."
+  },
+  {
+    "input": "örnek_üret: Nichte",
+    "output": "Maria schnitt zusammen mit ihrer kleinen Nichte Scherenmännchen aus."
+  },
+  {
+    "input": "örnek_üret: November",
+    "output": "Ich würde gerne an der Feier am 1. November teilnehmen."
+  },
+  {
+    "input": "örnek_üret: November",
+    "output": "In Tokio beginnt die kalte Jahreszeit Mitte November."
+  },
+  {
+    "input": "örnek_üret: November",
+    "output": "Die Amerikaner wählten am 2. November 2004."
+  },
+  {
+    "input": "örnek_üret: November",
+    "output": "Ich bin am 22. November 1948 geboren."
+  },
+  {
+    "input": "örnek_üret: November",
+    "output": "Ich habe am 10. November Geburtstag."
+  },
+  {
+    "input": "örnek_üret: Nudeln",
+    "output": "Kinder mögen gern Nudeln mit Tomatensoße."
+  },
+  {
+    "input": "örnek_üret: Nudeln",
+    "output": "Weil meine Freundin zum Essen kommt, muss ich heute glutenfreie Nudeln kaufen."
+  },
+  {
+    "input": "örnek_üret: Nudeln",
+    "output": "Ich esse gerade Nudeln."
+  },
+  {
+    "input": "örnek_üret: Nudeln",
+    "output": "Reis, Nudeln und Kartoffeln sind typische Sättigungsbeilagen."
+  },
+  {
+    "input": "örnek_üret: Nudeln",
+    "output": "Nudeln kochen ist einfach."
+  },
+  {
+    "input": "örnek_üret: Obst",
+    "output": "Obst und Gemüse sind unentbehrlich für eine ausgewogene Ernährung."
+  },
+  {
+    "input": "örnek_üret: Obst",
+    "output": "Du solltest mehr Obst essen."
+  },
+  {
+    "input": "örnek_üret: Obst",
+    "output": "Welches Obst magst du am liebsten?"
+  },
+  {
+    "input": "örnek_üret: Obst",
+    "output": "Möchten Sie nicht etwas Obst essen?"
+  },
+  {
+    "input": "örnek_üret: Obst",
+    "output": "Bitte bedienen Sie sich beim Obst."
+  },
+  {
+    "input": "örnek_üret: Ohr",
+    "output": "Er drückte sein Ohr gegen die Wand."
+  },
+  {
+    "input": "örnek_üret: Ohr",
+    "output": "Er wisperte ihr zärtliche Worte ins Ohr."
+  },
+  {
+    "input": "örnek_üret: Ohr",
+    "output": "Ich bin ganz Ohr."
+  },
+  {
+    "input": "örnek_üret: Ohr",
+    "output": "Ihre schöne Stimme war sehr angenehm fürs Ohr."
+  },
+  {
+    "input": "örnek_üret: Ohr",
+    "output": "Er leiht meinen Ratschlägen keinerlei Ohr."
+  },
+  {
+    "input": "örnek_üret: Oktober",
+    "output": "Ich wurde am 10. Oktober 1972 geboren."
+  },
+  {
+    "input": "örnek_üret: Oktober",
+    "output": "Der Deutschkurs fängt am 5. Oktober an."
+  },
+  {
+    "input": "örnek_üret: Oktober",
+    "output": "Heute ist der dritte Oktober."
+  },
+  {
+    "input": "örnek_üret: Oktober",
+    "output": "Wir haben den 3. Oktober."
+  },
+  {
+    "input": "örnek_üret: Oktober",
+    "output": "Im Oktober beginnen die Blätter zu fallen."
+  },
+  {
+    "input": "örnek_üret: Onkel",
+    "output": "Was ich heute bin, verdanke ich meinem Onkel."
+  },
+  {
+    "input": "örnek_üret: Onkel",
+    "output": "Der Mann, den du gestern gesehen hast, ist mein Onkel."
+  },
+  {
+    "input": "örnek_üret: Onkel",
+    "output": "Onkel Tom ist der Bruder meiner Mutter."
+  },
+  {
+    "input": "örnek_üret: Onkel",
+    "output": "Kens Onkel hat eine große Hühnerfarm."
+  },
+  {
+    "input": "örnek_üret: Onkel",
+    "output": "Mein Onkel besucht mich von Zeit zu Zeit."
+  },
+  {
+    "input": "örnek_üret: Papagei",
+    "output": "Jack hält sich zuhause eine Katze und einen Papagei."
+  },
+  {
+    "input": "örnek_üret: Papagei",
+    "output": "Mein Papagei kann Shakespeare zitieren!"
+  },
+  {
+    "input": "örnek_üret: Papagei",
+    "output": "Der Papagei ist tot."
+  },
+  {
+    "input": "örnek_üret: Papagei",
+    "output": "Ein Papagei spart sich einen Kommentar... niemals; er pfeift auf Stille."
+  },
+  {
+    "input": "örnek_üret: Papagei",
+    "output": "Sie ist wie ein Papagei, plappert mir alles nach."
+  },
+  {
+    "input": "örnek_üret: Pferd",
+    "output": "Es ist einsam im Sattel, seit das Pferd gestorben ist."
+  },
+  {
+    "input": "örnek_üret: Pferd",
+    "output": "Ein Pferd kann sehr schnell rennen."
+  },
+  {
+    "input": "örnek_üret: Pferd",
+    "output": "Ich sah ein Pferd auf mich zu galoppieren."
+  },
+  {
+    "input": "örnek_üret: Pferd",
+    "output": "Das Pferd ist ein nützliches Tier."
+  },
+  {
+    "input": "örnek_üret: Pferd",
+    "output": "Ich setze 10 Dollar auf das Pferd."
+  },
+  {
+    "input": "örnek_üret: Problem",
+    "output": "Dann haben wir ein Problem..."
+  },
+  {
+    "input": "örnek_üret: Problem",
+    "output": "Es gibt da ein Problem, das du nicht siehst."
+  },
+  {
+    "input": "örnek_üret: Problem",
+    "output": "Wo ist das Problem?"
+  },
+  {
+    "input": "örnek_üret: Problem",
+    "output": "Dort liegt das Problem."
+  },
+  {
+    "input": "örnek_üret: Problem",
+    "output": "Wer kennt dieses Problem nicht?!"
+  },
+  {
+    "input": "örnek_üret: Rathaus",
+    "output": "Das muss das Rathaus sein."
+  },
+  {
+    "input": "örnek_üret: Rathaus",
+    "output": "Weißt du, wie weit der Bahnhof vom Rathaus entfernt ist?"
+  },
+  {
+    "input": "örnek_üret: Rathaus",
+    "output": "Das Rathaus ist im Stadtzentrum."
+  },
+  {
+    "input": "örnek_üret: Rathaus",
+    "output": "Das Rathaus befindet sich gleich um die Ecke."
+  },
+  {
+    "input": "örnek_üret: Rathaus",
+    "output": "Die Demonstration am Rathaus begann außer Kontrolle zu geraten."
+  },
+  {
+    "input": "örnek_üret: Reis",
+    "output": "Ich mag Curry mit Reis."
+  },
+  {
+    "input": "örnek_üret: Reis",
+    "output": "Der Reis soll die ganze Flüssigkeit aufnehmen."
+  },
+  {
+    "input": "örnek_üret: Reis",
+    "output": "Wir Japaner ernähren uns von Reis."
+  },
+  {
+    "input": "örnek_üret: Reis",
+    "output": "Curry mit Reis ist mein Lieblingsgericht."
+  },
+  {
+    "input": "örnek_üret: Reis",
+    "output": "Kochen Sie den Reis."
+  },
+  {
+    "input": "örnek_üret: Restaurant",
+    "output": "Man kann den ganzen Park vom Restaurant aus sehen."
+  },
+  {
+    "input": "örnek_üret: Restaurant",
+    "output": "Ich gehe alle zwei Tage ins Restaurant."
+  },
+  {
+    "input": "örnek_üret: Restaurant",
+    "output": "Gestern Abend habe ich meinen Lehrer im Restaurant zufällig getroffen."
+  },
+  {
+    "input": "örnek_üret: Restaurant",
+    "output": "Dies ist das beste Restaurant das ich kenne."
+  },
+  {
+    "input": "örnek_üret: Restaurant",
+    "output": "Ich habe dieses Restaurant zufällig gefunden."
+  },
+  {
+    "input": "örnek_üret: Saft",
+    "output": "Blut ist ein ganz besondrer Saft."
+  },
+  {
+    "input": "örnek_üret: Saft",
+    "output": "Dieser Saft schmeckt sauer."
+  },
+  {
+    "input": "örnek_üret: Saft",
+    "output": "Ich mag lieber Milch als Saft."
+  },
+  {
+    "input": "örnek_üret: Saft",
+    "output": "Gleich nach dem heißen Bad trank ich einen Saft."
+  },
+  {
+    "input": "örnek_üret: Saft",
+    "output": "Ich mag Milch mehr als Saft."
+  },
+  {
+    "input": "örnek_üret: Salat",
+    "output": "Geben Sie den Schnittlauch hinzu und würzen Sie den Salat."
+  },
+  {
+    "input": "örnek_üret: Salat",
+    "output": "Meine Mutter vergaß, den Salat zu salzen."
+  },
+  {
+    "input": "örnek_üret: Salat",
+    "output": "Du hast die Wahl zwischen Suppe und Salat."
+  },
+  {
+    "input": "örnek_üret: Salat",
+    "output": "Dieser Salat schmeckt nach Zitrone."
+  },
+  {
+    "input": "örnek_üret: Salat",
+    "output": "Meine Mutter hat vergessen, zum Salat Salz hinzuzufügen."
+  },
+  {
+    "input": "örnek_üret: Salz",
+    "output": "Salz ist notwendig zum Kochen."
+  },
+  {
+    "input": "örnek_üret: Salz",
+    "output": "Könnten Sie mir bitte das Salz reichen?"
+  },
+  {
+    "input": "örnek_üret: Salz",
+    "output": "Kannst du mir das Salz geben, wenn du fertig bist?"
+  },
+  {
+    "input": "örnek_üret: Salz",
+    "output": "Sie hat Zucker und Salz verwechselt."
+  },
+  {
+    "input": "örnek_üret: Salz",
+    "output": "Sollen wir ein bisschen mehr Salz hinzufügen?"
+  },
+  {
+    "input": "örnek_üret: Samstag",
+    "output": "Ich muss das Buch vor Samstag zurückgeben."
+  },
+  {
+    "input": "örnek_üret: Samstag",
+    "output": "Wir spielten jeden Samstag nach dem Unterricht Tennis."
+  },
+  {
+    "input": "örnek_üret: Samstag",
+    "output": "Wir spielen jeden Samstag Fußball."
+  },
+  {
+    "input": "örnek_üret: Samstag",
+    "output": "Gestern war Sonntag, nicht Samstag."
+  },
+  {
+    "input": "örnek_üret: Samstag",
+    "output": "Für mich würde Samstag gut passen."
+  },
+  {
+    "input": "örnek_üret: Schaf",
+    "output": "In jeder Herde gibt es ein schwarzes Schaf."
+  },
+  {
+    "input": "örnek_üret: Schaf",
+    "output": "Zeichne mir ein Schaf!"
+  },
+  {
+    "input": "örnek_üret: Schaf",
+    "output": "Wir können zuhause kein Schaf halten. Was sollten wir mit ihm machen?"
+  },
+  {
+    "input": "örnek_üret: Schaf",
+    "output": "Ich bin das schwarze Schaf der Familie."
+  },
+  {
+    "input": "örnek_üret: Schaf",
+    "output": "Er ist das schwarze Schaf in der Familie."
+  },
+  {
+    "input": "örnek_üret: Schlange",
+    "output": "Die Schlange häutet sich."
+  },
+  {
+    "input": "örnek_üret: Schlange",
+    "output": "Sie wich zurück, als sie eine Schlange sah."
+  },
+  {
+    "input": "örnek_üret: Schlange",
+    "output": "Sie musste sich ans Ende der Schlange anstellen."
+  },
+  {
+    "input": "örnek_üret: Schlange",
+    "output": "Beim Zoll gibt es bestimmt eine lange Schlange."
+  },
+  {
+    "input": "örnek_üret: Schlange",
+    "output": "Vor dem Kino warten schon viele Leute in einer Schlange."
+  },
+  {
+    "input": "örnek_üret: Schokolade",
+    "output": "Denk nicht mal dran, meine Schokolade zu essen!"
+  },
+  {
+    "input": "örnek_üret: Schokolade",
+    "output": "Wer will heiße Schokolade?"
+  },
+  {
+    "input": "örnek_üret: Schokolade",
+    "output": "Zweiundfünfzig Prozent der britischen Frauen ziehen Schokolade dem Sex vor."
+  },
+  {
+    "input": "örnek_üret: Schokolade",
+    "output": "Ann hat eine Schwäche für Schokolade."
+  },
+  {
+    "input": "örnek_üret: Schokolade",
+    "output": "Mein Lieblingsgeschmack ist Schokolade."
+  },
+  {
+    "input": "örnek_üret: Schule",
+    "output": "Ich kann in 10 Minuten zur Schule gehen."
+  },
+  {
+    "input": "örnek_üret: Schule",
+    "output": "Ich will nicht in die Schule gehen."
+  },
+  {
+    "input": "örnek_üret: Schule",
+    "output": "Ich bin zu spät in die Schule gekommen."
+  },
+  {
+    "input": "örnek_üret: Schule",
+    "output": "Ich mag die Schule nicht."
+  },
+  {
+    "input": "örnek_üret: Schule",
+    "output": "Das ist unsere Schule."
+  },
+  {
+    "input": "örnek_üret: Schwester",
+    "output": "Beim Pizzaessen ärgerte er seine Schwester."
+  },
+  {
+    "input": "örnek_üret: Schwester",
+    "output": "Meine Schwester war eine wunderschöne Frau."
+  },
+  {
+    "input": "örnek_üret: Schwester",
+    "output": "Meine Schwester weint oft."
+  },
+  {
+    "input": "örnek_üret: Schwester",
+    "output": "Nehmen Sie sich ein Beispiel an Ihrer Schwester."
+  },
+  {
+    "input": "örnek_üret: Schwester",
+    "output": "Folgen Sie dem Beispiel Ihrer Schwester."
+  },
+  {
+    "input": "örnek_üret: September",
+    "output": "Die Schule öffnet wieder im September."
+  },
+  {
+    "input": "örnek_üret: September",
+    "output": "Die Schlacht bei Marignano fand am 13. und 14. September 1515 statt."
+  },
+  {
+    "input": "örnek_üret: September",
+    "output": "Das Oktoberfest endet oft schon im September."
+  },
+  {
+    "input": "örnek_üret: September",
+    "output": "Sie blieben bis September in Rom."
+  },
+  {
+    "input": "örnek_üret: September",
+    "output": "Im September gibt es im Meer viele Quallen."
+  },
+  {
+    "input": "örnek_üret: Sohn",
+    "output": "Wie der Vater, so der Sohn."
+  },
+  {
+    "input": "örnek_üret: Sohn",
+    "output": "Mein Sohn kann jetzt bis hundert zählen."
+  },
+  {
+    "input": "örnek_üret: Sohn",
+    "output": "Er hat einen Sohn in deinem Alter."
+  },
+  {
+    "input": "örnek_üret: Sohn",
+    "output": "Er besucht meinen Sohn ab und an."
+  },
+  {
+    "input": "örnek_üret: Sohn",
+    "output": "Sein Sohn wurde von der Schule geworfen."
+  },
+  {
+    "input": "örnek_üret: Sommer",
+    "output": "Diesen Sommer gehe ich nach Amerika."
+  },
+  {
+    "input": "örnek_üret: Sommer",
+    "output": "Eine Reise nach Amerika in diesem Sommer kommt nicht in Frage."
+  },
+  {
+    "input": "örnek_üret: Sommer",
+    "output": "Der Sommer ist vorbei."
+  },
+  {
+    "input": "örnek_üret: Sommer",
+    "output": "Ich wollte diesen Sommer arbeiten."
+  },
+  {
+    "input": "örnek_üret: Sommer",
+    "output": "Ich werde niemals meinen Besuch in Paris letzten Sommer vergessen."
+  },
+  {
+    "input": "örnek_üret: Sonntag",
+    "output": "Es regnet seit letztem Sonntag."
+  },
+  {
+    "input": "örnek_üret: Sonntag",
+    "output": "Nächsten Sonntag gehen wir unsere Tante besuchen."
+  },
+  {
+    "input": "örnek_üret: Sonntag",
+    "output": "Als Kind habe ich ihn öfter am Sonntag besucht."
+  },
+  {
+    "input": "örnek_üret: Sonntag",
+    "output": "Seine Eltern gehen jeden Sonntag in die Kirche."
+  },
+  {
+    "input": "örnek_üret: Sonntag",
+    "output": "Ich werde ihn fragen, wo er letzten Sonntag hingegangen ist."
+  },
+  {
+    "input": "örnek_üret: Sprache",
+    "output": "Arabisch ist eine sehr wichtige Sprache."
+  },
+  {
+    "input": "örnek_üret: Sprache",
+    "output": "Deutsch ist keine einfache Sprache."
+  },
+  {
+    "input": "örnek_üret: Sprache",
+    "output": "Englisch ist eine internationale Sprache geworden."
+  },
+  {
+    "input": "örnek_üret: Sprache",
+    "output": "Englisch ist eine internationale Sprache."
+  },
+  {
+    "input": "örnek_üret: Sprache",
+    "output": "Niemand spricht diese Sprache mehr."
+  },
+  {
+    "input": "örnek_üret: Stadt",
+    "output": "Paris ist die schönste Stadt der Welt."
+  },
+  {
+    "input": "örnek_üret: Stadt",
+    "output": "Das ist die Stadt, von der ich dir erzählt habe."
+  },
+  {
+    "input": "örnek_üret: Stadt",
+    "output": "Florenz ist die schönste Stadt Italiens."
+  },
+  {
+    "input": "örnek_üret: Stadt",
+    "output": "Nara ist eine ruhige und schöne Stadt."
+  },
+  {
+    "input": "örnek_üret: Stadt",
+    "output": "In jeder amerikanischen Stadt gibt es eine Bücherei."
+  },
+  {
+    "input": "örnek_üret: Straße",
+    "output": "Es ist einfacher, Leute im Internet anzubaggern als auf der Straße."
+  },
+  {
+    "input": "örnek_üret: Straße",
+    "output": "Wie heißt diese Straße, bitte?"
+  },
+  {
+    "input": "örnek_üret: Straße",
+    "output": "Wegen des dichten Nebels wurde die Straße schwer erkennbar."
+  },
+  {
+    "input": "örnek_üret: Straße",
+    "output": "Sie haben die Straße eingeebnet."
+  },
+  {
+    "input": "örnek_üret: Straße",
+    "output": "Auf der Straße des Lebens gibt es kein Zurück."
+  },
+  {
+    "input": "örnek_üret: Stuhl",
+    "output": "Nimm den anderen Stuhl!"
+  },
+  {
+    "input": "örnek_üret: Stuhl",
+    "output": "Setz dich bitte auf diesen Stuhl."
+  },
+  {
+    "input": "örnek_üret: Stuhl",
+    "output": "Holt bitte einen Stuhl aus dem Nebenraum."
+  },
+  {
+    "input": "örnek_üret: Stuhl",
+    "output": "Dieser Stuhl ist sehr bequem."
+  },
+  {
+    "input": "örnek_üret: Stuhl",
+    "output": "Der Junge saß auf einem Stuhl."
+  },
+  {
+    "input": "örnek_üret: Stunde",
+    "output": "Ich muss einkaufen gehen, ich komme in einer Stunde zurück."
+  },
+  {
+    "input": "örnek_üret: Stunde",
+    "output": "Ich habe so viel Arbeit, dass ich eine Stunde länger bleibe."
+  },
+  {
+    "input": "örnek_üret: Stunde",
+    "output": "Ich werde dich in einer Stunde anrufen."
+  },
+  {
+    "input": "örnek_üret: Stunde",
+    "output": "Der Mann, der vor einer Stunde angerufen hat, war Frank."
+  },
+  {
+    "input": "örnek_üret: Stunde",
+    "output": "Er wird in einer Stunde zurück sein."
+  },
+  {
+    "input": "örnek_üret: Supermarkt",
+    "output": "Was für ein großer Supermarkt!"
+  },
+  {
+    "input": "örnek_üret: Supermarkt",
+    "output": "Wie oft gehst du pro Woche im Supermarkt einkaufen?"
+  },
+  {
+    "input": "örnek_üret: Supermarkt",
+    "output": "Es ist möglich, dass sie heute in den Supermarkt gehen."
+  },
+  {
+    "input": "örnek_üret: Supermarkt",
+    "output": "Mama lässt mich oft im Supermarkt einkaufen."
+  },
+  {
+    "input": "örnek_üret: Supermarkt",
+    "output": "Frau im Rollstuhl verschanzt sich im Supermarkt."
+  },
+  {
+    "input": "örnek_üret: Suppe",
+    "output": "In dieser Suppe ist zu viel Salz."
+  },
+  {
+    "input": "örnek_üret: Suppe",
+    "output": "Du hast die Wahl zwischen Suppe und Salat."
+  },
+  {
+    "input": "örnek_üret: Suppe",
+    "output": "Wie salzig diese Suppe ist!"
+  },
+  {
+    "input": "örnek_üret: Suppe",
+    "output": "Diese Suppe ist wirklich gut."
+  },
+  {
+    "input": "örnek_üret: Suppe",
+    "output": "Ich möchte eine warme Suppe essen."
+  },
+  {
+    "input": "örnek_üret: Tag",
+    "output": "Ich verdiene 100 Euro pro Tag."
+  },
+  {
+    "input": "örnek_üret: Tag",
+    "output": "Warum sagt man \"Guten Tag!\", wenn der Tag nicht gut ist?"
+  },
+  {
+    "input": "örnek_üret: Tag",
+    "output": "Das war der schönste Tag in meinem Leben."
+  },
+  {
+    "input": "örnek_üret: Tag",
+    "output": "Ich mache jeden Tag das Mittagessen."
+  },
+  {
+    "input": "örnek_üret: Tag",
+    "output": "Wie oft am Tag schaust du dich im Spiegel an?"
+  },
+  {
+    "input": "örnek_üret: Tante",
+    "output": "Meine Tante hat drei Kinder."
+  },
+  {
+    "input": "örnek_üret: Tante",
+    "output": "Da der Apfelkuchen seiner Tante köstlich war, nahm er sich nach."
+  },
+  {
+    "input": "örnek_üret: Tante",
+    "output": "Meine Tante gab mir eine Kamera."
+  },
+  {
+    "input": "örnek_üret: Tante",
+    "output": "Meine Tante sieht jung aus."
+  },
+  {
+    "input": "örnek_üret: Tante",
+    "output": "Nächsten Sonntag gehen wir unsere Tante besuchen."
+  },
+  {
+    "input": "örnek_üret: Tee",
+    "output": "Mir ist Kaffee lieber als Tee."
+  },
+  {
+    "input": "örnek_üret: Tee",
+    "output": "Dieser Tee schmeckt gut."
+  },
+  {
+    "input": "örnek_üret: Tee",
+    "output": "Dieser Tee nennt sich grüner Tee."
+  },
+  {
+    "input": "örnek_üret: Tee",
+    "output": "Sie machte gerade Tee."
+  },
+  {
+    "input": "örnek_üret: Tee",
+    "output": "Wir importieren Tee aus Indien."
+  },
+  {
+    "input": "örnek_üret: Telefon",
+    "output": "Könnten Sie für mich wählen? Das Telefon hängt zu hoch."
+  },
+  {
+    "input": "örnek_üret: Telefon",
+    "output": "Ich wollte gerade gehen, als das Telefon klingelte."
+  },
+  {
+    "input": "örnek_üret: Telefon",
+    "output": "Hr. Yamada, Sie werden am Telefon gewünscht."
+  },
+  {
+    "input": "örnek_üret: Telefon",
+    "output": "Das Telefon hat mehrmals geklingelt."
+  },
+  {
+    "input": "örnek_üret: Telefon",
+    "output": "Darf ich dein Telefon benutzen?"
+  },
+  {
+    "input": "örnek_üret: Tiger",
+    "output": "Ein Tiger ist größer und stärker als eine Katze."
+  },
+  {
+    "input": "örnek_üret: Tiger",
+    "output": "Der Tiger lag in der Mitte des Käfigs."
+  },
+  {
+    "input": "örnek_üret: Tiger",
+    "output": "John fing einen Tiger und schoß zwei Löwen."
+  },
+  {
+    "input": "örnek_üret: Tiger",
+    "output": "In Afrika trifft man nicht auf wildlebende Tiger."
+  },
+  {
+    "input": "örnek_üret: Tiger",
+    "output": "Manche Tiere, wie z.B. Tiger, essen Fleisch."
+  },
+  {
+    "input": "örnek_üret: Tisch",
+    "output": "Diese Tassen gefallen mir nicht, die auf dem Tisch gefallen mir besser."
+  },
+  {
+    "input": "örnek_üret: Tisch",
+    "output": "Nehmen Sie sich bei Tisch nach?"
+  },
+  {
+    "input": "örnek_üret: Tisch",
+    "output": "Er hat einen Tisch und zwei Sessel für uns hergestellt."
+  },
+  {
+    "input": "örnek_üret: Tisch",
+    "output": "Ist eine Katze unter dem Tisch?"
+  },
+  {
+    "input": "örnek_üret: Tisch",
+    "output": "Eine Gabel ist vom Tisch gefallen."
+  },
+  {
+    "input": "örnek_üret: Tochter",
+    "output": "Er verheiratete seine Tochter mit einem reichen Mann."
+  },
+  {
+    "input": "örnek_üret: Tochter",
+    "output": "Wahrheit ist eine Tochter der Zeit."
+  },
+  {
+    "input": "örnek_üret: Tochter",
+    "output": "Meine Tochter ist noch ein Kind."
+  },
+  {
+    "input": "örnek_üret: Tochter",
+    "output": "Er hat seine Tochter mit einem Anwalt verheiratet."
+  },
+  {
+    "input": "örnek_üret: Tochter",
+    "output": "Seine Tochter ist eine schöne Frau geworden."
+  },
+  {
+    "input": "örnek_üret: Tür",
+    "output": "Warte mal, jemand klopft an meiner Tür."
+  },
+  {
+    "input": "örnek_üret: Tür",
+    "output": "Sie warten vor der Tür auf dich."
+  },
+  {
+    "input": "örnek_üret: Tür",
+    "output": "Sie haben vergessen, die Tür abzuschließen."
+  },
+  {
+    "input": "örnek_üret: Tür",
+    "output": "Schließen Sie bitte die Tür, wenn Sie hinausgehen."
+  },
+  {
+    "input": "örnek_üret: Tür",
+    "output": "Mit klopfendem Herzen öffnete sie die Tür."
+  },
+  {
+    "input": "örnek_üret: Uhr",
+    "output": "Damals im Gymnasium bin ich jeden Morgen um 6 Uhr aufgestanden."
+  },
+  {
+    "input": "örnek_üret: Uhr",
+    "output": "Das fängt nicht vor acht Uhr dreißig an."
+  },
+  {
+    "input": "örnek_üret: Uhr",
+    "output": "Es ist schon 11 Uhr."
+  },
+  {
+    "input": "örnek_üret: Uhr",
+    "output": "Wie viel Uhr ist es?"
+  },
+  {
+    "input": "örnek_üret: Uhr",
+    "output": "Es ist erst 5 Uhr morgens und trotzdem ist es hell."
+  },
+  {
+    "input": "örnek_üret: Urlaub",
+    "output": "Ich kann es gar nicht erwarten, in den Urlaub zu fahren."
+  },
+  {
+    "input": "örnek_üret: Urlaub",
+    "output": "Herr Meier ist der Meinung, dass Neumanns im Urlaub sind."
+  },
+  {
+    "input": "örnek_üret: Urlaub",
+    "output": "Ich habe bezahlten Urlaub."
+  },
+  {
+    "input": "örnek_üret: Urlaub",
+    "output": "Nimm 2 oder 3 Tage Urlaub."
+  },
+  {
+    "input": "örnek_üret: Urlaub",
+    "output": "Nimm bitte ein paar Tage Urlaub."
+  },
+  {
+    "input": "örnek_üret: Vater",
+    "output": "Wie der Vater, so der Sohn."
+  },
+  {
+    "input": "örnek_üret: Vater",
+    "output": "Mein Vater spielte an diesem Sonntagmorgen Golf."
+  },
+  {
+    "input": "örnek_üret: Vater",
+    "output": "Gestern habe ich meinem Vater geholfen."
+  },
+  {
+    "input": "örnek_üret: Vater",
+    "output": "Manchmal höre ich meinen Vater, wie er im Bad singt."
+  },
+  {
+    "input": "örnek_üret: Vater",
+    "output": "Der Vater erzählte den Kindern eine schöne Geschichte."
+  },
+  {
+    "input": "örnek_üret: Vogel",
+    "output": "Ich wäre lieber ein Vogel als ein Fisch."
+  },
+  {
+    "input": "örnek_üret: Vogel",
+    "output": "Niemand hat den Vogel fliegen sehen."
+  },
+  {
+    "input": "örnek_üret: Vogel",
+    "output": "Als wir Okinawa besuchten, sahen wir den Vogel."
+  },
+  {
+    "input": "örnek_üret: Vogel",
+    "output": "Ein Vogel hat Flügel."
+  },
+  {
+    "input": "örnek_üret: Vogel",
+    "output": "Ein Vogel flog hoch in der Luft."
+  },
+  {
+    "input": "örnek_üret: Wasser",
+    "output": "Was ist passiert? Überall in der Wohnung ist Wasser."
+  },
+  {
+    "input": "örnek_üret: Wasser",
+    "output": "Wasser gefriert bei null Grad Celsius, oder?"
+  },
+  {
+    "input": "örnek_üret: Wasser",
+    "output": "Ein Schwamm saugt Wasser auf."
+  },
+  {
+    "input": "örnek_üret: Wasser",
+    "output": "Er hat drei Gläser Wasser getrunken."
+  },
+  {
+    "input": "örnek_üret: Wasser",
+    "output": "Ohne Wasser könnten wir nicht leben."
+  },
+  {
+    "input": "örnek_üret: Wein",
+    "output": "Wein ist in Flaschen gefüllte Poesie."
+  },
+  {
+    "input": "örnek_üret: Wein",
+    "output": "Wieso bringen wir ihm nicht eine Flasche Wein mit?"
+  },
+  {
+    "input": "örnek_üret: Wein",
+    "output": "Dieser Wein rankt sich um die Bäume."
+  },
+  {
+    "input": "örnek_üret: Wein",
+    "output": "Trauben werden zu Wein verarbeitet."
+  },
+  {
+    "input": "örnek_üret: Wein",
+    "output": "Er trank eine Flasche Wein."
+  },
+  {
+    "input": "örnek_üret: Winter",
+    "output": "Der Winter ist meine Lieblingsjahreszeit."
+  },
+  {
+    "input": "örnek_üret: Winter",
+    "output": "Im Winter schlafe ich mit zwei Decken."
+  },
+  {
+    "input": "örnek_üret: Winter",
+    "output": "Der Winter ist die kälteste Jahreszeit."
+  },
+  {
+    "input": "örnek_üret: Winter",
+    "output": "Schwarze Mäntel sind diesen Winter in Mode."
+  },
+  {
+    "input": "örnek_üret: Winter",
+    "output": "Der Frühling kommt nach dem Winter."
+  },
+  {
+    "input": "örnek_üret: Woche",
+    "output": "Nächste Woche wird es vielleicht Frost geben."
+  },
+  {
+    "input": "örnek_üret: Woche",
+    "output": "Du wärst überrascht, was man in einer Woche lernen kann."
+  },
+  {
+    "input": "örnek_üret: Woche",
+    "output": "Ich habe letzte Woche begonnen, Chinesisch zu lernen."
+  },
+  {
+    "input": "örnek_üret: Woche",
+    "output": "Ich hoffe, dass ich nächste Woche nicht mehr krank bin."
+  },
+  {
+    "input": "örnek_üret: Woche",
+    "output": "Nächste Woche bin ich zur Arbeit in Tokyo."
+  },
+  {
+    "input": "örnek_üret: Wochenende",
+    "output": "Sie ist an diesem Wochenende krank geworden."
+  },
+  {
+    "input": "örnek_üret: Wochenende",
+    "output": "Lasst uns dieses Wochenende eine Wanderung machen."
+  },
+  {
+    "input": "örnek_üret: Wochenende",
+    "output": "Hattest du ein schönes Wochenende?"
+  },
+  {
+    "input": "örnek_üret: Wochenende",
+    "output": "Wie war dein Wochenende?"
+  },
+  {
+    "input": "örnek_üret: Wochenende",
+    "output": "Jimmy kommt mich oft am Wochenende besuchen."
+  },
+  {
+    "input": "örnek_üret: Wort",
+    "output": "Es ist ein Wort, für das ich gerne einen Ersatz finden würde."
+  },
+  {
+    "input": "örnek_üret: Wort",
+    "output": "Er hat sein Wort gebrochen."
+  },
+  {
+    "input": "örnek_üret: Wort",
+    "output": "Ich gebe dir mein Wort."
+  },
+  {
+    "input": "örnek_üret: Wort",
+    "output": "Ich erinnere mich an das Wort."
+  },
+  {
+    "input": "örnek_üret: Wort",
+    "output": "Da ihre Unterhaltung auf Französisch war, konnte ich kein Wort verstehen."
+  },
+  {
+    "input": "örnek_üret: Zeitung",
+    "output": "Bevor du dich versiehst, wirst du in der Zeitung sein."
+  },
+  {
+    "input": "örnek_üret: Zeitung",
+    "output": "Er liest jeden Morgen die Zeitung."
+  },
+  {
+    "input": "örnek_üret: Zeitung",
+    "output": "Er arbeitet für eine große Zeitung, deren Auflage sehr hoch ist."
+  },
+  {
+    "input": "örnek_üret: Zeitung",
+    "output": "Mein Mann liest die Zeitung während er sein Frühstück isst."
+  },
+  {
+    "input": "örnek_üret: Zeitung",
+    "output": "Diese Zeitung ist kostenlos."
+  },
+  {
+    "input": "örnek_üret: Zimmer",
+    "output": "Ich habe für einen Monat ein Zimmer in Paris gemietet."
+  },
+  {
+    "input": "örnek_üret: Zimmer",
+    "output": "Das ist Zimmer 839."
+  },
+  {
+    "input": "örnek_üret: Zimmer",
+    "output": "Sie haben das Zimmer sehr leise verlassen."
+  },
+  {
+    "input": "örnek_üret: Zimmer",
+    "output": "Ist das dein Zimmer?"
+  },
+  {
+    "input": "örnek_üret: Zimmer",
+    "output": "Mein Bruder und ich teilten uns ein Zimmer."
+  },
+  {
+    "input": "örnek_üret: Zucker",
+    "output": "Im Geschäft werden Nahrungsmittel verkauft wie Butter, Käse und Zucker."
+  },
+  {
+    "input": "örnek_üret: Zucker",
+    "output": "Ist noch Zucker da?"
+  },
+  {
+    "input": "örnek_üret: Zucker",
+    "output": "Gib mir bitte den Zucker."
+  },
+  {
+    "input": "örnek_üret: Zucker",
+    "output": "Wir haben keinen Zucker."
+  },
+  {
+    "input": "örnek_üret: Zucker",
+    "output": "Zucker löst sich in Wasser."
+  },
+  {
+    "input": "örnek_üret: acht",
+    "output": "Das fängt nicht vor acht Uhr dreißig an."
+  },
+  {
+    "input": "örnek_üret: acht",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: acht",
+    "output": "Shinkos Bruder ist acht."
+  },
+  {
+    "input": "örnek_üret: acht",
+    "output": "Es ist acht Uhr morgens."
+  },
+  {
+    "input": "örnek_üret: acht",
+    "output": "Die Wanderung wird mindestens acht Stunden dauern."
+  },
+  {
+    "input": "örnek_üret: alt",
+    "output": "Wie alt bist du?"
+  },
+  {
+    "input": "örnek_üret: alt",
+    "output": "Wie alt sind Sie?"
+  },
+  {
+    "input": "örnek_üret: alt",
+    "output": "Er ist genauso alt wie ich."
+  },
+  {
+    "input": "örnek_üret: alt",
+    "output": "Man ist niemals zu alt zum Lernen."
+  },
+  {
+    "input": "örnek_üret: alt",
+    "output": "John ist so alt wie mein Bruder."
+  },
+  {
+    "input": "örnek_üret: anrufen",
+    "output": "Ich werde sie morgen anrufen, wenn ich zurückkomme."
+  },
+  {
+    "input": "örnek_üret: anrufen",
+    "output": "Sag ihnen, dass sie mich anrufen sollen, bevor sie losgehen."
+  },
+  {
+    "input": "örnek_üret: anrufen",
+    "output": "Ich werde dich in einer Stunde anrufen."
+  },
+  {
+    "input": "örnek_üret: anrufen",
+    "output": "Ich werde Sie um sechs Uhr anrufen."
+  },
+  {
+    "input": "örnek_üret: anrufen",
+    "output": "Wenn er anrufen sollte, sag ihm, dass ich beschäftigt bin."
+  },
+  {
+    "input": "örnek_üret: arbeiten",
+    "output": "Er hat einen interessanten Beruf, für den er viel arbeiten muss."
+  },
+  {
+    "input": "örnek_üret: arbeiten",
+    "output": "Ich wollte diesen Sommer arbeiten."
+  },
+  {
+    "input": "örnek_üret: arbeiten",
+    "output": "Ich sollte lieber an meiner Diplomarbeit arbeiten."
+  },
+  {
+    "input": "örnek_üret: arbeiten",
+    "output": "Er ist daran gewöhnt, hart zu arbeiten."
+  },
+  {
+    "input": "örnek_üret: arbeiten",
+    "output": "Ich muss hart arbeiten, um die verlorene Zeit aufzuholen."
+  },
+  {
+    "input": "örnek_üret: besuchen",
+    "output": "Warum kommst du uns nicht besuchen?"
+  },
+  {
+    "input": "örnek_üret: besuchen",
+    "output": "Du kannst mich besuchen, wann immer du willst."
+  },
+  {
+    "input": "örnek_üret: besuchen",
+    "output": "Komm mich besuchen, wenn du Zeit hast."
+  },
+  {
+    "input": "örnek_üret: besuchen",
+    "output": "Wann kann ich dich besuchen?"
+  },
+  {
+    "input": "örnek_üret: besuchen",
+    "output": "Ich werde sie morgen besuchen."
+  },
+  {
+    "input": "örnek_üret: billig",
+    "output": "Dieser Pullover kostet nicht viel. Er ist sehr billig."
+  },
+  {
+    "input": "örnek_üret: billig",
+    "output": "Die Halskette ist, für einhundert Dollar, billig."
+  },
+  {
+    "input": "örnek_üret: billig",
+    "output": "Fisch ist heute billig."
+  },
+  {
+    "input": "örnek_üret: billig",
+    "output": "Für einen japanischen Hamburger ist er billig."
+  },
+  {
+    "input": "örnek_üret: billig",
+    "output": "Ich wünschte, ich könnte das Haus billig erwerben."
+  },
+  {
+    "input": "örnek_üret: blau",
+    "output": "Ich würde gerne den blau gestreiften Rock anprobieren."
+  },
+  {
+    "input": "örnek_üret: blau",
+    "output": "Wie blau der Himmel ist!"
+  },
+  {
+    "input": "örnek_üret: blau",
+    "output": "Seine Augen sind blau."
+  },
+  {
+    "input": "örnek_üret: blau",
+    "output": "Der Himmel ist blau."
+  },
+  {
+    "input": "örnek_üret: blau",
+    "output": "Er denkt, dass Blau die schönste Farbe ist."
+  },
+  {
+    "input": "örnek_üret: brauchen",
+    "output": "Wir brauchen einen Krankenwagen."
+  },
+  {
+    "input": "örnek_üret: brauchen",
+    "output": "So wie wir frische Luft brauchen, so brauchen die Fische sauberes Wasser."
+  },
+  {
+    "input": "örnek_üret: brauchen",
+    "output": "Unsere Augen brauchen Zeit, um sich an die Dunkelheit zu gewöhnen."
+  },
+  {
+    "input": "örnek_üret: brauchen",
+    "output": "Wir brauchen noch eine Person zum Kartenspielen."
+  },
+  {
+    "input": "örnek_üret: brauchen",
+    "output": "Kinder brauchen viel Schlaf."
+  },
+  {
+    "input": "örnek_üret: braun",
+    "output": "Ich habe extrem weiße Haut und ich werde überhaupt nicht braun."
+  },
+  {
+    "input": "örnek_üret: braun",
+    "output": "Seine Schuhe sind braun."
+  },
+  {
+    "input": "örnek_üret: braun",
+    "output": "Ich will nicht braun werden."
+  },
+  {
+    "input": "örnek_üret: braun",
+    "output": "Sie kennen nicht zufälligerweise einen Herrn namens Braun?"
+  },
+  {
+    "input": "örnek_üret: braun",
+    "output": "Kennen Sie zufällig einen Professor Braun?"
+  },
+  {
+    "input": "örnek_üret: drei",
+    "output": "Entschuldigung, erlauben Sie mir, auf drei Fehler in dem obigen Artikel hinzuweisen."
+  },
+  {
+    "input": "örnek_üret: drei",
+    "output": "Hey, schau' mal, ein Affe mit drei Köpfen!"
+  },
+  {
+    "input": "örnek_üret: drei",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: drei",
+    "output": "Die Summe von zwei plus drei plus vier ist neun."
+  },
+  {
+    "input": "örnek_üret: drei",
+    "output": "Er hat drei Gläser Wasser getrunken."
+  },
+  {
+    "input": "örnek_üret: dürfen",
+    "output": "Sie dürfen Ihr Auto hier nicht parken."
+  },
+  {
+    "input": "örnek_üret: dürfen",
+    "output": "Wir dürfen unsere Energievorräte nicht verschwenden."
+  },
+  {
+    "input": "örnek_üret: dürfen",
+    "output": "Er ist alt genug, um fahren zu dürfen."
+  },
+  {
+    "input": "örnek_üret: dürfen",
+    "output": "Wir dürfen in der Bibliothek nicht reden."
+  },
+  {
+    "input": "örnek_üret: dürfen",
+    "output": "Wir dürfen unser Versprechen nicht brechen."
+  },
+  {
+    "input": "örnek_üret: einfach",
+    "output": "Ich weiß einfach nicht, was ich sagen soll."
+  },
+  {
+    "input": "örnek_üret: einfach",
+    "output": "Du läufst einfach vor den Problemen des Lebens davon."
+  },
+  {
+    "input": "örnek_üret: einfach",
+    "output": "Nur, dass es hier nicht so einfach ist."
+  },
+  {
+    "input": "örnek_üret: einfach",
+    "output": "Eine mathematische Wahrheit ist weder einfach noch kompliziert, sie ist."
+  },
+  {
+    "input": "örnek_üret: einfach",
+    "output": "Mathematik ist nicht einfach das Auswendiglernen von Formeln."
+  },
+  {
+    "input": "örnek_üret: eins",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: eins",
+    "output": "Er leerte sein Bier und bestellte noch eins."
+  },
+  {
+    "input": "örnek_üret: eins",
+    "output": "Sie schnitt den Kuchen in 6 Stücke und gab jedem Kind eins."
+  },
+  {
+    "input": "örnek_üret: eins",
+    "output": "Ich kann es mir leisten, eins zu kaufen, aber nicht beide."
+  },
+  {
+    "input": "örnek_üret: eins",
+    "output": "Wählen Sie eins dieser beiden T-Shirts aus."
+  },
+  {
+    "input": "örnek_üret: erinnern",
+    "output": "Ich kann mich an das erste Mal erinnern."
+  },
+  {
+    "input": "örnek_üret: erinnern",
+    "output": "Seine Augen erinnern mich an die einer Katze."
+  },
+  {
+    "input": "örnek_üret: erinnern",
+    "output": "Ich kann mich nicht erinnern, wo ich es gekauft habe."
+  },
+  {
+    "input": "örnek_üret: erinnern",
+    "output": "Wie war nochmal der Name des Hotels? Ich kann mich nicht erinnern."
+  },
+  {
+    "input": "örnek_üret: erinnern",
+    "output": "Erinnern Sie sich an Ihre Ausweisnummer?"
+  },
+  {
+    "input": "örnek_üret: erklären",
+    "output": "Es würde ewig dauern, alles zu erklären."
+  },
+  {
+    "input": "örnek_üret: erklären",
+    "output": "Ich kann es auch nicht erklären."
+  },
+  {
+    "input": "örnek_üret: erklären",
+    "output": "Es ist mir unmöglich, es dir zu erklären."
+  },
+  {
+    "input": "örnek_üret: erklären",
+    "output": "Mann bist du doof! Ich muss dir echt alles erklären!"
+  },
+  {
+    "input": "örnek_üret: erklären",
+    "output": "Könnten Sie uns erklären, wie die Spülmaschine funktioniert?"
+  },
+  {
+    "input": "örnek_üret: essen",
+    "output": "Denk nicht mal dran, meine Schokolade zu essen!"
+  },
+  {
+    "input": "örnek_üret: essen",
+    "output": "Wann essen wir? Ich habe Hunger!"
+  },
+  {
+    "input": "örnek_üret: essen",
+    "output": "Ich habe es satt, Fastfood zu essen."
+  },
+  {
+    "input": "örnek_üret: essen",
+    "output": "Wer nicht arbeitet, hat kein Recht zu essen."
+  },
+  {
+    "input": "örnek_üret: essen",
+    "output": "Was möchtest du zum Essen?"
+  },
+  {
+    "input": "örnek_üret: fahren",
+    "output": "Ich kann es gar nicht erwarten, in den Urlaub zu fahren."
+  },
+  {
+    "input": "örnek_üret: fahren",
+    "output": "Was... du kannst immer noch nicht Auto fahren?"
+  },
+  {
+    "input": "örnek_üret: fahren",
+    "output": "Es ist gefährlich, gleichzeitig zu telefonieren und zu fahren."
+  },
+  {
+    "input": "örnek_üret: fahren",
+    "output": "Man sollte nicht auf dem Bürgersteig Fahrrad fahren."
+  },
+  {
+    "input": "örnek_üret: fahren",
+    "output": "Kann Ihr Bruder Auto fahren?"
+  },
+  {
+    "input": "örnek_üret: falsch",
+    "output": "Alles, was falsch verstanden werden kann, wird falsch verstanden werden."
+  },
+  {
+    "input": "örnek_üret: falsch",
+    "output": "Wer hat das gesagt? Das ist völlig falsch!"
+  },
+  {
+    "input": "örnek_üret: falsch",
+    "output": "Er hat den Pullover falsch herum angezogen."
+  },
+  {
+    "input": "örnek_üret: falsch",
+    "output": "Diese Daten sind falsch."
+  },
+  {
+    "input": "örnek_üret: falsch",
+    "output": "Da er falsch adressiert war, kam der Brief nie bei ihm an."
+  },
+  {
+    "input": "örnek_üret: fleißig",
+    "output": "Angespornt durch die Worte ihres Lehrers studierte Mary fleißig."
+  },
+  {
+    "input": "örnek_üret: fleißig",
+    "output": "Du musst fleißig arbeiten."
+  },
+  {
+    "input": "örnek_üret: fleißig",
+    "output": "Im Allgemeinen sind Japaner fleißig."
+  },
+  {
+    "input": "örnek_üret: fleißig",
+    "output": "Lerne fleißig, dann wirst du Erfolg haben."
+  },
+  {
+    "input": "örnek_üret: fleißig",
+    "output": "Wenn du in der Schule gut sein willst, musst du fleißig lernen."
+  },
+  {
+    "input": "örnek_üret: froh",
+    "output": "Er wäre froh, das zu hören."
+  },
+  {
+    "input": "örnek_üret: froh",
+    "output": "Froh sind diejenigen, die Blumen lieben."
+  },
+  {
+    "input": "örnek_üret: froh",
+    "output": "Ich bin sehr froh, dass du nächsten Monat Tokio besuchst."
+  },
+  {
+    "input": "örnek_üret: froh",
+    "output": "Ich kann nicht sagen, wie froh ich über diese Nachricht war."
+  },
+  {
+    "input": "örnek_üret: froh",
+    "output": "Ich kann nicht sagen, wie froh ich war, das zu hören."
+  },
+  {
+    "input": "örnek_üret: fünf",
+    "output": "Es wird fünf bis zehn Jahre dauern, bis die Technologie bereit ist."
+  },
+  {
+    "input": "örnek_üret: fünf",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: fünf",
+    "output": "Im Alter von 25 hatte sie in fünf verschiedenen Ländern gelebt."
+  },
+  {
+    "input": "örnek_üret: fünf",
+    "output": "Das ist etwa fünf Meilen von hier entfernt."
+  },
+  {
+    "input": "örnek_üret: fünf",
+    "output": "Es ist fünf Jahre her, dass mein Vater gestorben ist."
+  },
+  {
+    "input": "örnek_üret: gefährlich",
+    "output": "Es ist gefährlich, gleichzeitig zu telefonieren und zu fahren."
+  },
+  {
+    "input": "örnek_üret: gefährlich",
+    "output": "Es ist sehr gefährlich, in diesem Fluss zu schwimmen."
+  },
+  {
+    "input": "örnek_üret: gefährlich",
+    "output": "Es ist gefährlich für dich, in diesem Fluss zu schwimmen."
+  },
+  {
+    "input": "örnek_üret: gefährlich",
+    "output": "Wegen des dichten Nebels ist es gefährlich zu fliegen."
+  },
+  {
+    "input": "örnek_üret: gefährlich",
+    "output": "Alkohol am Steuer kann gefährlich sein."
+  },
+  {
+    "input": "örnek_üret: gehen",
+    "output": "Ich muss schlafen gehen."
+  },
+  {
+    "input": "örnek_üret: gehen",
+    "output": "Ich wünschte, ich könnte nach Japan gehen."
+  },
+  {
+    "input": "örnek_üret: gehen",
+    "output": "Ich muss ins Bett gehen."
+  },
+  {
+    "input": "örnek_üret: gehen",
+    "output": "Mir gehen in diesen Tagen zu viele Dinge durch den Kopf."
+  },
+  {
+    "input": "örnek_üret: gehen",
+    "output": "Du entscheidest, ob wir dahin gehen oder nicht."
+  },
+  {
+    "input": "örnek_üret: gelb",
+    "output": "Im Herbst werden die Blätter gelb."
+  },
+  {
+    "input": "örnek_üret: gelb",
+    "output": "Das Laub des Baumes wurde gelb."
+  },
+  {
+    "input": "örnek_üret: gelb",
+    "output": "Im Herbst wird das Laub gelb."
+  },
+  {
+    "input": "örnek_üret: gelb",
+    "output": "Seine Zähne sind vom Tabak gelb geworden."
+  },
+  {
+    "input": "örnek_üret: gelb",
+    "output": "Die Blätter begannen rot und gelb zu werden."
+  },
+  {
+    "input": "örnek_üret: gesund",
+    "output": "Ich verdanke es meinen Eltern, dass ich so gesund bin."
+  },
+  {
+    "input": "örnek_üret: gesund",
+    "output": "Mein Großvater ist 90 Jahre alt und sehr gesund."
+  },
+  {
+    "input": "örnek_üret: gesund",
+    "output": "Ich meine, dass er gesund ist."
+  },
+  {
+    "input": "örnek_üret: gesund",
+    "output": "Mein Vater ist nach wie vor gesund."
+  },
+  {
+    "input": "örnek_üret: gesund",
+    "output": "Obwohl er älter geworden ist, ist er nach wie vor gesund."
+  },
+  {
+    "input": "örnek_üret: glücklich",
+    "output": "Ich war noch nie so glücklich."
+  },
+  {
+    "input": "örnek_üret: glücklich",
+    "output": "Ich werde sie glücklich machen."
+  },
+  {
+    "input": "örnek_üret: glücklich",
+    "output": "Er hat seine Eltern glücklich gemacht."
+  },
+  {
+    "input": "örnek_üret: glücklich",
+    "output": "Sie scheint glücklich zu sein."
+  },
+  {
+    "input": "örnek_üret: glücklich",
+    "output": "Sie ist arm, aber sie ist glücklich."
+  },
+  {
+    "input": "örnek_üret: grau",
+    "output": "Nachts sind alle Katzen grau."
+  },
+  {
+    "input": "örnek_üret: grau",
+    "output": "Papas Haare sind grau geworden."
+  },
+  {
+    "input": "örnek_üret: grau",
+    "output": "Seine Socken sind grau."
+  },
+  {
+    "input": "örnek_üret: grau",
+    "output": "Sein Pulli ist grau."
+  },
+  {
+    "input": "örnek_üret: grau",
+    "output": "Sein Hemd war grau und seine Krawatte gelb."
+  },
+  {
+    "input": "örnek_üret: groß",
+    "output": "Wenn ich groß bin, will ich ein König sein."
+  },
+  {
+    "input": "örnek_üret: groß",
+    "output": "Wenn wir klein sind, kommt uns alles so groß vor."
+  },
+  {
+    "input": "örnek_üret: groß",
+    "output": "Wie groß sind Sie?"
+  },
+  {
+    "input": "örnek_üret: groß",
+    "output": "Mein Haus ist groß."
+  },
+  {
+    "input": "örnek_üret: groß",
+    "output": "Dieses Land ist ungefähr zweimal so groß wie Japan."
+  },
+  {
+    "input": "örnek_üret: grün",
+    "output": "Die Bäume sind grün."
+  },
+  {
+    "input": "örnek_üret: grün",
+    "output": "Grün steht dir total gut."
+  },
+  {
+    "input": "örnek_üret: grün",
+    "output": "Grün erinnert einen an Gras."
+  },
+  {
+    "input": "örnek_üret: grün",
+    "output": "Der Hügel ist immer grün."
+  },
+  {
+    "input": "örnek_üret: grün",
+    "output": "Berge sind nicht unbedingt grün."
+  },
+  {
+    "input": "örnek_üret: gut",
+    "output": "Meine Mutter spricht nicht sehr gut Englisch."
+  },
+  {
+    "input": "örnek_üret: gut",
+    "output": "Ich spreche nicht gut genug Französisch!"
+  },
+  {
+    "input": "örnek_üret: gut",
+    "output": "Nun gut, die Nacht ist sehr lang, oder?"
+  },
+  {
+    "input": "örnek_üret: gut",
+    "output": "Du bist an meiner Seite, jetzt ist alles gut."
+  },
+  {
+    "input": "örnek_üret: gut",
+    "output": "Es gefällt mir sehr gut."
+  },
+  {
+    "input": "örnek_üret: haben",
+    "output": "Dann haben wir ein Problem..."
+  },
+  {
+    "input": "örnek_üret: haben",
+    "output": "Ich habe mich immer gefragt, wie es wäre, Geschwister zu haben."
+  },
+  {
+    "input": "örnek_üret: haben",
+    "output": "Eine Million Menschen haben im Krieg ihr Leben verloren."
+  },
+  {
+    "input": "örnek_üret: haben",
+    "output": "Da du nicht überrascht bist, denke ich, musst du es gewusst haben."
+  },
+  {
+    "input": "örnek_üret: haben",
+    "output": "Nicht wollen ist das Gleiche wie haben."
+  },
+  {
+    "input": "örnek_üret: helfen",
+    "output": "Könnten Sie mir helfen, meine Schlüssel zu suchen?"
+  },
+  {
+    "input": "örnek_üret: helfen",
+    "output": "Eine gute Brille wird Ihnen beim Lesen helfen."
+  },
+  {
+    "input": "örnek_üret: helfen",
+    "output": "Sie bestand darauf, mir zu helfen."
+  },
+  {
+    "input": "örnek_üret: helfen",
+    "output": "Ich habe Ken gebeten, mir zu helfen."
+  },
+  {
+    "input": "örnek_üret: helfen",
+    "output": "Ich werde dir helfen, wenn du in Schwierigkeiten steckst."
+  },
+  {
+    "input": "örnek_üret: hundert",
+    "output": "Mein Sohn kann jetzt bis hundert zählen."
+  },
+  {
+    "input": "örnek_üret: hundert",
+    "output": "Wenige Menschen leben länger als hundert Jahre."
+  },
+  {
+    "input": "örnek_üret: hundert",
+    "output": "Ein Jahrhundert hat hundert Jahre."
+  },
+  {
+    "input": "örnek_üret: hundert",
+    "output": "Hundert Jahre nennt man ein Jahrhundert."
+  },
+  {
+    "input": "örnek_üret: hundert",
+    "output": "Bitte von der Nachricht einen Auszug von hundert Wörtern machen."
+  },
+  {
+    "input": "örnek_üret: höflich",
+    "output": "Es ist nicht höflich, mit dem Finger auf andere zu zeigen."
+  },
+  {
+    "input": "örnek_üret: höflich",
+    "output": "Er ist intelligent, und außerdem ist er höflich."
+  },
+  {
+    "input": "örnek_üret: höflich",
+    "output": "Er ist heute furchtbar höflich."
+  },
+  {
+    "input": "örnek_üret: höflich",
+    "output": "Er ist höflich und, wichtiger noch, sehr ehrlich."
+  },
+  {
+    "input": "örnek_üret: höflich",
+    "output": "In Japan ist es höflich, sich zu verbeugen, wenn man jemanden trifft."
+  },
+  {
+    "input": "örnek_üret: hören",
+    "output": "Er wäre froh, das zu hören."
+  },
+  {
+    "input": "örnek_üret: hören",
+    "output": "Die meisten Leute wollen nur ihre eigene Wahrheit hören."
+  },
+  {
+    "input": "örnek_üret: hören",
+    "output": "Ich freue mich darauf, Ihre Gedanken zu diesem Thema zu hören."
+  },
+  {
+    "input": "örnek_üret: hören",
+    "output": "Ich will dein Gejammer nicht mehr hören."
+  },
+  {
+    "input": "örnek_üret: hören",
+    "output": "Musik zu hören macht sehr viel Spaß."
+  },
+  {
+    "input": "örnek_üret: interessant",
+    "output": "Das scheint mir interessant!"
+  },
+  {
+    "input": "örnek_üret: interessant",
+    "output": "„Das sieht ziemlich interessant aus“, sagt Hiroshi."
+  },
+  {
+    "input": "örnek_üret: interessant",
+    "output": "Ich finde Fremdsprachen sehr interessant."
+  },
+  {
+    "input": "örnek_üret: interessant",
+    "output": "Das klingt interessant. Was hast du ihr erzählt?"
+  },
+  {
+    "input": "örnek_üret: interessant",
+    "output": "Englisch ist nicht einfach, aber es ist interessant."
+  },
+  {
+    "input": "örnek_üret: jung",
+    "output": "Es ist wahr, dass sie jung ist, aber sie ist weise."
+  },
+  {
+    "input": "örnek_üret: jung",
+    "output": "Er ist jung, aber erfahren."
+  },
+  {
+    "input": "örnek_üret: jung",
+    "output": "Seine Schwester sieht jung aus."
+  },
+  {
+    "input": "örnek_üret: jung",
+    "output": "Ich spielte oft Fußball, als ich jung war."
+  },
+  {
+    "input": "örnek_üret: jung",
+    "output": "Man ist nur einmal jung."
+  },
+  {
+    "input": "örnek_üret: kalt",
+    "output": "Ihre Wangen waren kalt wie Eis."
+  },
+  {
+    "input": "örnek_üret: kalt",
+    "output": "Es ist heute sehr kalt."
+  },
+  {
+    "input": "örnek_üret: kalt",
+    "output": "Mir ist kalt an den Füßen."
+  },
+  {
+    "input": "örnek_üret: kalt",
+    "output": "Es ist sehr kalt diesen Winter."
+  },
+  {
+    "input": "örnek_üret: kalt",
+    "output": "Mann, ist das kalt!"
+  },
+  {
+    "input": "örnek_üret: kaufen",
+    "output": "Eines Tages werde ich eine Zuckerwattemaschine kaufen."
+  },
+  {
+    "input": "örnek_üret: kaufen",
+    "output": "Ich werde mir eine neue Kamera kaufen, dieses Mal eine digitale."
+  },
+  {
+    "input": "örnek_üret: kaufen",
+    "output": "Diese Gitarre ist so teuer, dass ich sie nicht kaufen kann."
+  },
+  {
+    "input": "örnek_üret: kaufen",
+    "output": "Ich werde ein Auto kaufen."
+  },
+  {
+    "input": "örnek_üret: kaufen",
+    "output": "Er hatte kein Geld und konnte daher keine Lebensmittel kaufen."
+  },
+  {
+    "input": "örnek_üret: klein",
+    "output": "Meine Schuhe sind zu klein, ich brauche neue."
+  },
+  {
+    "input": "örnek_üret: klein",
+    "output": "Wenn wir klein sind, kommt uns alles so groß vor."
+  },
+  {
+    "input": "örnek_üret: klein",
+    "output": "Als ich klein war, trug ich nur Hosen."
+  },
+  {
+    "input": "örnek_üret: klein",
+    "output": "In diesem Haus habe ich gelebt, als ich noch klein war."
+  },
+  {
+    "input": "örnek_üret: klein",
+    "output": "Als er klein war, ging er sonntags fischen."
+  },
+  {
+    "input": "örnek_üret: klug",
+    "output": "Aus Fehlern wird man klug. Darum ist einer nicht genug."
+  },
+  {
+    "input": "örnek_üret: klug",
+    "output": "Durch Schaden wird man klug."
+  },
+  {
+    "input": "örnek_üret: klug",
+    "output": "Es war klug von dir, sein Angebot anzunehmen."
+  },
+  {
+    "input": "örnek_üret: klug",
+    "output": "Er ist zwar jung, aber auch klug."
+  },
+  {
+    "input": "örnek_üret: klug",
+    "output": "Es war sehr klug von ihr, das andere zu wählen."
+  },
+  {
+    "input": "örnek_üret: kommen",
+    "output": "Ich fragte mich, ob du heute kommen würdest."
+  },
+  {
+    "input": "örnek_üret: kommen",
+    "output": "Hauen wir ab von hier, die Bullen kommen."
+  },
+  {
+    "input": "örnek_üret: kommen",
+    "output": "Popmusiker kommen durch die Schmeichelei ihrer treuen Fans zur vollen Entfaltung."
+  },
+  {
+    "input": "örnek_üret: kommen",
+    "output": "Mehr als 90 Prozent der Besuche einer Website kommen von den Suchmaschinen."
+  },
+  {
+    "input": "örnek_üret: kommen",
+    "output": "Würdest du gerne kommen?"
+  },
+  {
+    "input": "örnek_üret: krank",
+    "output": "Sie ist an diesem Wochenende krank geworden."
+  },
+  {
+    "input": "örnek_üret: krank",
+    "output": "Du bist krank, du musst dich ausruhen."
+  },
+  {
+    "input": "örnek_üret: krank",
+    "output": "Ann scheint krank zu sein."
+  },
+  {
+    "input": "örnek_üret: krank",
+    "output": "Ich hoffe, dass ich nächste Woche nicht mehr krank bin."
+  },
+  {
+    "input": "örnek_üret: krank",
+    "output": "Ich bin zu Hause geblieben, da ich krank war."
+  },
+  {
+    "input": "örnek_üret: können",
+    "output": "Ich hätte es ohne dich nicht machen können. Danke."
+  },
+  {
+    "input": "örnek_üret: können",
+    "output": "Wir können wegen des Lärms nicht schlafen."
+  },
+  {
+    "input": "örnek_üret: können",
+    "output": "Was glauben Sie ist wahr, obwohl Sie es nicht beweisen können?"
+  },
+  {
+    "input": "örnek_üret: können",
+    "output": "Freiheit besteht darin, alles machen zu können, was keinem anderen schadet."
+  },
+  {
+    "input": "örnek_üret: können",
+    "output": "Tut mir leid, ich denke nicht, dass ich können werde."
+  },
+  {
+    "input": "örnek_üret: langsam",
+    "output": "Sie verschwand langsam im nebeligen Wald."
+  },
+  {
+    "input": "örnek_üret: langsam",
+    "output": "Seine Kraft nahm langsam ab."
+  },
+  {
+    "input": "örnek_üret: langsam",
+    "output": "Der Schmerz lässt jetzt langsam nach."
+  },
+  {
+    "input": "örnek_üret: langsam",
+    "output": "Sie schloss langsam ihre Augen."
+  },
+  {
+    "input": "örnek_üret: langsam",
+    "output": "\"Schnell\" ist das Gegenteil von \"langsam\"."
+  },
+  {
+    "input": "örnek_üret: langweilig",
+    "output": "Los, spiel' mit mir, mir ist so langweilig!"
+  },
+  {
+    "input": "örnek_üret: langweilig",
+    "output": "Der Film war langweilig; der beste Moment war das Ende."
+  },
+  {
+    "input": "örnek_üret: langweilig",
+    "output": "Die Party war total langweilig."
+  },
+  {
+    "input": "örnek_üret: langweilig",
+    "output": "Ich fand das Buch langweilig."
+  },
+  {
+    "input": "örnek_üret: langweilig",
+    "output": "Ehrlich gesagt sind seine Reden immer langweilig."
+  },
+  {
+    "input": "örnek_üret: laut",
+    "output": "Sprich nicht so laut!"
+  },
+  {
+    "input": "örnek_üret: laut",
+    "output": "Perry hat sich angewöhnt, laut zu denken."
+  },
+  {
+    "input": "örnek_üret: laut",
+    "output": "Laut Radio wird es morgen regnen."
+  },
+  {
+    "input": "örnek_üret: laut",
+    "output": "Schrei doch nicht so. Ich höre dich laut und deutlich."
+  },
+  {
+    "input": "örnek_üret: laut",
+    "output": "Laut Wettervorhersage wird es morgen schneien."
+  },
+  {
+    "input": "örnek_üret: lecker",
+    "output": "Diese Kuchen sind lecker. Bitte probiere doch einen."
+  },
+  {
+    "input": "örnek_üret: lecker",
+    "output": "Was man von weit herholt, ist lecker."
+  },
+  {
+    "input": "örnek_üret: lecker",
+    "output": "Dein Kuchen ist lecker."
+  },
+  {
+    "input": "örnek_üret: lecker",
+    "output": "Chinesisches Essen ist genauso lecker wie französisches Essen."
+  },
+  {
+    "input": "örnek_üret: lecker",
+    "output": "Das italienische Essen war lecker."
+  },
+  {
+    "input": "örnek_üret: leicht",
+    "output": "Ich erkälte mich leicht."
+  },
+  {
+    "input": "örnek_üret: leicht",
+    "output": "Das ist alles andere als leicht."
+  },
+  {
+    "input": "örnek_üret: leicht",
+    "output": "Linda ist sechzehn, geht aber leicht für eine Zwanzigjährige durch."
+  },
+  {
+    "input": "örnek_üret: leicht",
+    "output": "Mir ist leicht ums Herz."
+  },
+  {
+    "input": "örnek_üret: leicht",
+    "output": "Es ist leicht, 5 zu 10 zu addieren."
+  },
+  {
+    "input": "örnek_üret: leise",
+    "output": "Sie haben das Zimmer sehr leise verlassen."
+  },
+  {
+    "input": "örnek_üret: leise",
+    "output": "Sie sprachen leise, um das Baby nicht aufzuwecken."
+  },
+  {
+    "input": "örnek_üret: leise",
+    "output": "Er lief leise auf Zehenspitzen, damit niemand ihn hören konnte."
+  },
+  {
+    "input": "örnek_üret: leise",
+    "output": "In der Ferne höre ich den Laut leise rauschender Wege."
+  },
+  {
+    "input": "örnek_üret: leise",
+    "output": "Könnten Sie das Radio leise stellen?"
+  },
+  {
+    "input": "örnek_üret: lernen",
+    "output": "Letztendlich muss jeder selbst lernen."
+  },
+  {
+    "input": "örnek_üret: lernen",
+    "output": "Ich werde mir Mühe geben, dich nicht beim Lernen zu stören."
+  },
+  {
+    "input": "örnek_üret: lernen",
+    "output": "Ich dachte, du würdest gerne neue Sachen lernen."
+  },
+  {
+    "input": "örnek_üret: lernen",
+    "output": "Du wärst überrascht, was man in einer Woche lernen kann."
+  },
+  {
+    "input": "örnek_üret: lernen",
+    "output": "Morgen werde ich in der Bibliothek lernen."
+  },
+  {
+    "input": "örnek_üret: lesen",
+    "output": "Er verbrachte den Abend damit, ein Buch zu lesen."
+  },
+  {
+    "input": "örnek_üret: lesen",
+    "output": "Ich möchte etwas zum Lesen."
+  },
+  {
+    "input": "örnek_üret: lesen",
+    "output": "Du solltest nicht ohne Erlaubnis die privaten Briefe anderer Leute lesen."
+  },
+  {
+    "input": "örnek_üret: lesen",
+    "output": "Ich möchte einige Bücher über Lincoln lesen."
+  },
+  {
+    "input": "örnek_üret: lesen",
+    "output": "Ich habe immer weniger Zeit zum Lesen."
+  },
+  {
+    "input": "örnek_üret: lila",
+    "output": "Diese Farbe ist eher lila als rosa."
+  },
+  {
+    "input": "örnek_üret: lila",
+    "output": "Wusstest du, dass, wenn man rote und blaue Farbe mischt, Lila herauskommt?"
+  },
+  {
+    "input": "örnek_üret: lila",
+    "output": "Das lila Fahrrad kostet weniger als das gelbe."
+  },
+  {
+    "input": "örnek_üret: lila",
+    "output": "Mit einem lila Schlips wird dieses Hemd gut aussehen."
+  },
+  {
+    "input": "örnek_üret: lila",
+    "output": "Mein Pullover ist lila."
+  },
+  {
+    "input": "örnek_üret: machen",
+    "output": "Du kannst das machen!"
+  },
+  {
+    "input": "örnek_üret: machen",
+    "output": "Ausländer machen mich neugierig."
+  },
+  {
+    "input": "örnek_üret: machen",
+    "output": "Zuerst werde ich ein Schema meiner neuen Website machen."
+  },
+  {
+    "input": "örnek_üret: machen",
+    "output": "Ich hätte es ohne dich nicht machen können. Danke."
+  },
+  {
+    "input": "örnek_üret: machen",
+    "output": "Lasst es mich wissen, wenn ich irgendwelche Änderungen machen muss."
+  },
+  {
+    "input": "örnek_üret: mögen",
+    "output": "Wir mögen den Regen nicht."
+  },
+  {
+    "input": "örnek_üret: mögen",
+    "output": "Sie mögen Tsuneoki Ikeda."
+  },
+  {
+    "input": "örnek_üret: mögen",
+    "output": "Die meisten Kinder mögen Eis."
+  },
+  {
+    "input": "örnek_üret: mögen",
+    "output": "Wir mögen sie alle."
+  },
+  {
+    "input": "örnek_üret: mögen",
+    "output": "Wir mögen ihn alle."
+  },
+  {
+    "input": "örnek_üret: müde",
+    "output": "Ich bin so müde, dass ich kaum gehen kann."
+  },
+  {
+    "input": "örnek_üret: müde",
+    "output": "Bist du nicht müde?"
+  },
+  {
+    "input": "örnek_üret: müde",
+    "output": "Sie waren wirklich müde, nachdem sie den ganzen Tag gearbeitet hatten."
+  },
+  {
+    "input": "örnek_üret: müde",
+    "output": "Ich bin überhaupt nicht müde."
+  },
+  {
+    "input": "örnek_üret: müde",
+    "output": "Ich war heute sehr müde."
+  },
+  {
+    "input": "örnek_üret: müssen",
+    "output": "Die Ausgewählten werden umfassende medizinische und psychologische Tests machen müssen."
+  },
+  {
+    "input": "örnek_üret: müssen",
+    "output": "Wenn Sie uns nicht zuhören, werden wir auf Zwang zurückgreifen müssen."
+  },
+  {
+    "input": "örnek_üret: müssen",
+    "output": "Wir müssen lernen, Widrigkeiten anmutig zu begegnen."
+  },
+  {
+    "input": "örnek_üret: müssen",
+    "output": "Wir müssen ihn dringend ins Krankenhaus bringen, er ist schwer verletzt!"
+  },
+  {
+    "input": "örnek_üret: müssen",
+    "output": "Meine schwarzen Schuhe müssen an den Absätzen gerichtet werden."
+  },
+  {
+    "input": "örnek_üret: nett",
+    "output": "\"Das ist sehr nett von Ihnen\", antwortete Willie."
+  },
+  {
+    "input": "örnek_üret: nett",
+    "output": "Das ist der Mann, dessen Kinder so nett sind."
+  },
+  {
+    "input": "örnek_üret: nett",
+    "output": "Alle Krankenschwestern in diesem Krankenhaus sind sehr nett."
+  },
+  {
+    "input": "örnek_üret: nett",
+    "output": "Eine Frau war so nett, mir den Weg zu zeigen."
+  },
+  {
+    "input": "örnek_üret: nett",
+    "output": "Sie ist nett zu allen."
+  },
+  {
+    "input": "örnek_üret: neu",
+    "output": "Oh, meine weiße Hose! Sie war neu."
+  },
+  {
+    "input": "örnek_üret: neu",
+    "output": "Der Computer ist neu."
+  },
+  {
+    "input": "örnek_üret: neu",
+    "output": "Diese Bücher sind neu."
+  },
+  {
+    "input": "örnek_üret: neu",
+    "output": "Das Auto ist ziemlich neu."
+  },
+  {
+    "input": "örnek_üret: neu",
+    "output": "Können Sie es sofort neu ausstellen?"
+  },
+  {
+    "input": "örnek_üret: neun",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: neun",
+    "output": "Die Summe von zwei plus drei plus vier ist neun."
+  },
+  {
+    "input": "örnek_üret: neun",
+    "output": "Eine Katze hat neun Leben."
+  },
+  {
+    "input": "örnek_üret: neun",
+    "output": "Ich möchte um neun kommen."
+  },
+  {
+    "input": "örnek_üret: neun",
+    "output": "Können Sie um neun vorbeikommen?"
+  },
+  {
+    "input": "örnek_üret: null",
+    "output": "Wasser gefriert bei null Grad Celsius, oder?"
+  },
+  {
+    "input": "örnek_üret: null",
+    "output": "Die Temperatur lag seit mehreren Tagen unter Null."
+  },
+  {
+    "input": "örnek_üret: null",
+    "output": "Es sind jetzt zehn Grad unter null."
+  },
+  {
+    "input": "örnek_üret: null",
+    "output": "Die Null kommt vor der Eins."
+  },
+  {
+    "input": "örnek_üret: null",
+    "output": "Heute Morgen war es zehn Grad unter Null."
+  },
+  {
+    "input": "örnek_üret: offen",
+    "output": "Der Mund blieb ihnen offen stehen."
+  },
+  {
+    "input": "örnek_üret: offen",
+    "output": "Peter sieht, dass das Garagentor offen ist."
+  },
+  {
+    "input": "örnek_üret: offen",
+    "output": "Er hat die Tür offen gelassen."
+  },
+  {
+    "input": "örnek_üret: offen",
+    "output": "Habt ihr das Fenster offen gelassen?"
+  },
+  {
+    "input": "örnek_üret: offen",
+    "output": "Haben Sie das Fenster offen gelassen?"
+  },
+  {
+    "input": "örnek_üret: orange",
+    "output": "Kann ich diese Orange haben?"
+  },
+  {
+    "input": "örnek_üret: orange",
+    "output": "Meine Krawatte ist orange."
+  },
+  {
+    "input": "örnek_üret: orange",
+    "output": "Diese Frucht hat die Form einer Orange und den Geschmack einer Ananas."
+  },
+  {
+    "input": "örnek_üret: orange",
+    "output": "Ein Mädchen tauschte mit mir eine Orange für ein Stückchen Kuchen."
+  },
+  {
+    "input": "örnek_üret: orange",
+    "output": "Das ist auch keine Orange."
+  },
+  {
+    "input": "örnek_üret: reisen",
+    "output": "Ich habe niemanden, der mit mir reisen würde."
+  },
+  {
+    "input": "örnek_üret: reisen",
+    "output": "Sie ist vor einigen Tagen auf Reisen gegangen."
+  },
+  {
+    "input": "örnek_üret: reisen",
+    "output": "Hast du \"Gullivers Reisen\" gelesen?"
+  },
+  {
+    "input": "örnek_üret: reisen",
+    "output": "Er wird nächstes Jahr ins Ausland reisen."
+  },
+  {
+    "input": "örnek_üret: reisen",
+    "output": "Er ist alt genug, um alleine zu reisen."
+  },
+  {
+    "input": "örnek_üret: richtig",
+    "output": "Überprüfe, dass dein Benutzername und dein Passwort richtig geschrieben sind."
+  },
+  {
+    "input": "örnek_üret: richtig",
+    "output": "Das ist nicht ganz richtig."
+  },
+  {
+    "input": "örnek_üret: richtig",
+    "output": "Mach's, wie du es für richtig hältst."
+  },
+  {
+    "input": "örnek_üret: richtig",
+    "output": "Ich wollte eine richtig reife Frau treffen."
+  },
+  {
+    "input": "örnek_üret: richtig",
+    "output": "Es ist nicht richtig, Leute hinter ihrem Rücken zu kritisieren."
+  },
+  {
+    "input": "örnek_üret: rosa",
+    "output": "Rosa Montero ist eine außergewöhnliche Frau."
+  },
+  {
+    "input": "örnek_üret: rosa",
+    "output": "Diese Farbe ist eher lila als rosa."
+  },
+  {
+    "input": "örnek_üret: rosa",
+    "output": "Ihre Wangen hatten eine zart rosa Farbe."
+  },
+  {
+    "input": "örnek_üret: rosa",
+    "output": "Sie trug einen rosa Gürtel, der genauso teuer wie hässlich war."
+  },
+  {
+    "input": "örnek_üret: rosa",
+    "output": "Wer ist das Mädchen in dem rosa Kleid?"
+  },
+  {
+    "input": "örnek_üret: rot",
+    "output": "Dieser Apfel ist sehr rot."
+  },
+  {
+    "input": "örnek_üret: rot",
+    "output": "Meine Lieblingsfarbe ist Rot."
+  },
+  {
+    "input": "örnek_üret: rot",
+    "output": "Sein Auto war blau, ihres war rot."
+  },
+  {
+    "input": "örnek_üret: rot",
+    "output": "Das kalte Wetter hat die Blätter rot gefärbt."
+  },
+  {
+    "input": "örnek_üret: rot",
+    "output": "Ihre Wangen waren rot."
+  },
+  {
+    "input": "örnek_üret: sagen",
+    "output": "Ich weiß einfach nicht, was ich sagen soll."
+  },
+  {
+    "input": "örnek_üret: sagen",
+    "output": "Ich weiß nicht, was ich sagen soll, um dich zu trösten."
+  },
+  {
+    "input": "örnek_üret: sagen",
+    "output": "Haben Sie Schwierigkeiten zu verstehen, was Ihnen Frauen oder kleine Kinder sagen?"
+  },
+  {
+    "input": "örnek_üret: sagen",
+    "output": "Wann kann man sagen, dass ein Mensch Alkoholprobleme hat?"
+  },
+  {
+    "input": "örnek_üret: sagen",
+    "output": "Sagen Sie uns bitte, wo ein Lebensmittelgeschäft ist."
+  },
+  {
+    "input": "örnek_üret: schlafen",
+    "output": "Ich muss schlafen gehen."
+  },
+  {
+    "input": "örnek_üret: schlafen",
+    "output": "Wir können wegen des Lärms nicht schlafen."
+  },
+  {
+    "input": "örnek_üret: schlafen",
+    "output": "Ich denke, ich werde schlafen gehen."
+  },
+  {
+    "input": "örnek_üret: schlafen",
+    "output": "Sie gibt nur vor zu schlafen, deswegen schnarcht sie nicht."
+  },
+  {
+    "input": "örnek_üret: schlafen",
+    "output": "Meine Frau versucht zu schlafen."
+  },
+  {
+    "input": "örnek_üret: schlecht",
+    "output": "Donnerwetter! Das ist nicht schlecht!"
+  },
+  {
+    "input": "örnek_üret: schlecht",
+    "output": "Rauchen ist schlecht für die Gesundheit."
+  },
+  {
+    "input": "örnek_üret: schlecht",
+    "output": "Viele Schüler sind schlecht in Algebra."
+  },
+  {
+    "input": "örnek_üret: schlecht",
+    "output": "Ich fühle mich heute schlecht."
+  },
+  {
+    "input": "örnek_üret: schlecht",
+    "output": "Einige der Äpfel in der Schachtel waren schlecht."
+  },
+  {
+    "input": "örnek_üret: schnell",
+    "output": "Du bist nicht schnell genug."
+  },
+  {
+    "input": "örnek_üret: schnell",
+    "output": "Die Zeit ist sehr schnell vergangen."
+  },
+  {
+    "input": "örnek_üret: schnell",
+    "output": "Kann ein zwei Jahre alter Junge so schnell rennen?"
+  },
+  {
+    "input": "örnek_üret: schnell",
+    "output": "Die Polizei hat den zu schnell fahrenden Motorradfahrer angehalten."
+  },
+  {
+    "input": "örnek_üret: schnell",
+    "output": "Mein Bruder spricht sehr schnell."
+  },
+  {
+    "input": "örnek_üret: schreiben",
+    "output": "Die meisten Menschen schreiben über ihr Alltagsleben."
+  },
+  {
+    "input": "örnek_üret: schreiben",
+    "output": "Ich verabscheue förmliches Schreiben zutiefst!"
+  },
+  {
+    "input": "örnek_üret: schreiben",
+    "output": "Ich muss einen Brief schreiben. Hast du Papier?"
+  },
+  {
+    "input": "örnek_üret: schreiben",
+    "output": "Schreiben Sie gerade einen Brief?"
+  },
+  {
+    "input": "örnek_üret: schreiben",
+    "output": "Muss Tom diesen Brief heute noch schreiben?"
+  },
+  {
+    "input": "örnek_üret: schwarz",
+    "output": "Ich habe zwei Hunde. Der eine ist weiß, der andere schwarz."
+  },
+  {
+    "input": "örnek_üret: schwarz",
+    "output": "Ich habe eine Frau in Schwarz gesehen."
+  },
+  {
+    "input": "örnek_üret: schwarz",
+    "output": "Schwarz steht dir gut."
+  },
+  {
+    "input": "örnek_üret: schwarz",
+    "output": "Tafeln sind nicht immer schwarz."
+  },
+  {
+    "input": "örnek_üret: schwarz",
+    "output": "Er hat zwei Katzen: Die eine ist schwarz und die andere weiß."
+  },
+  {
+    "input": "örnek_üret: schwierig",
+    "output": "Es ist ziemlich schwierig, Französisch nach 2, 3 Jahren zu beherrschen."
+  },
+  {
+    "input": "örnek_üret: schwierig",
+    "output": "Es ist schwierig, großartige Ideen zu haben."
+  },
+  {
+    "input": "örnek_üret: schwierig",
+    "output": "Es war mit Sicherheit schwierig für sie, diesen Pullover zu stricken."
+  },
+  {
+    "input": "örnek_üret: schwierig",
+    "output": "Eine Fremdsprache zu lernen, ist schwierig."
+  },
+  {
+    "input": "örnek_üret: schwierig",
+    "output": "Es ist schwierig, ihn zufriedenzustellen."
+  },
+  {
+    "input": "örnek_üret: schön",
+    "output": "Nur die Wahrheit ist schön."
+  },
+  {
+    "input": "örnek_üret: schön",
+    "output": "Das Leben ist schön."
+  },
+  {
+    "input": "örnek_üret: schön",
+    "output": "Das ist zu schön, um wahr zu sein."
+  },
+  {
+    "input": "örnek_üret: schön",
+    "output": "Keine Liebe ist hässlich, kein Gefängnis schön."
+  },
+  {
+    "input": "örnek_üret: schön",
+    "output": "Wie schön du bist!"
+  },
+  {
+    "input": "örnek_üret: sechs",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: sechs",
+    "output": "Es ist zwanzig nach sechs."
+  },
+  {
+    "input": "örnek_üret: sechs",
+    "output": "Ich schlafe im Schnitt sechs Stunden pro Tag."
+  },
+  {
+    "input": "örnek_üret: sechs",
+    "output": "Ich habe vor sechs Monaten aufgehört zu rauchen."
+  },
+  {
+    "input": "örnek_üret: sechs",
+    "output": "Ich werde Sie um sechs Uhr anrufen."
+  },
+  {
+    "input": "örnek_üret: sehen",
+    "output": "Wir sehen die Dinge nicht, wie sie sind, sondern wie wir sind."
+  },
+  {
+    "input": "örnek_üret: sehen",
+    "output": "Sehen wir uns morgen?"
+  },
+  {
+    "input": "örnek_üret: sehen",
+    "output": "Wir konnten den Sonnenuntergang vom Fenster aus sehen."
+  },
+  {
+    "input": "örnek_üret: sehen",
+    "output": "Es gibt 1000 Filme, die man sehen muss, bevor man stirbt."
+  },
+  {
+    "input": "örnek_üret: sehen",
+    "output": "Sehen wir uns schon früher?"
+  },
+  {
+    "input": "örnek_üret: sein",
+    "output": "Ich werde bald zurück sein."
+  },
+  {
+    "input": "örnek_üret: sein",
+    "output": "Es kann sein, dass ich bald aufgebe und stattdessen ein Nickerchen mache."
+  },
+  {
+    "input": "örnek_üret: sein",
+    "output": "Das liegt daran, dass du nicht allein sein willst."
+  },
+  {
+    "input": "örnek_üret: sein",
+    "output": "Manchmal kann er ein seltsamer Junge sein."
+  },
+  {
+    "input": "örnek_üret: sein",
+    "output": "Wenn ich so sein könnte..."
+  },
+  {
+    "input": "örnek_üret: sieben",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: sieben",
+    "output": "Er schaut wie sieben Tage Regenwetter."
+  },
+  {
+    "input": "örnek_üret: sieben",
+    "output": "Wir haben vor sieben Jahren geheiratet."
+  },
+  {
+    "input": "örnek_üret: sieben",
+    "output": "Er geht immer um sieben aus dem Haus."
+  },
+  {
+    "input": "örnek_üret: sieben",
+    "output": "Ich komme um halb sieben zurück."
+  },
+  {
+    "input": "örnek_üret: sollen",
+    "output": "Ich sagte ihnen, sie sollen mir ein neues Ticket schicken."
+  },
+  {
+    "input": "örnek_üret: sollen",
+    "output": "Du hättest mir zuhören sollen."
+  },
+  {
+    "input": "örnek_üret: sollen",
+    "output": "Sag ihnen, dass sie mich anrufen sollen, bevor sie losgehen."
+  },
+  {
+    "input": "örnek_üret: sollen",
+    "output": "So einen ungerechten Vorschlag hättest du ablehnen sollen."
+  },
+  {
+    "input": "örnek_üret: sollen",
+    "output": "Die Finanzexperten wissen nicht, was sie von diesem Trend halten sollen."
+  },
+  {
+    "input": "örnek_üret: spielen",
+    "output": "Ich werde also Sudoku spielen, anstatt dich weiter zu stören."
+  },
+  {
+    "input": "örnek_üret: spielen",
+    "output": "Ich habe mit zehn gelernt, Gitarre zu spielen."
+  },
+  {
+    "input": "örnek_üret: spielen",
+    "output": "Katzen spielen gerne in der Sonne."
+  },
+  {
+    "input": "örnek_üret: spielen",
+    "output": "Ich höre sie oft Klavier spielen."
+  },
+  {
+    "input": "örnek_üret: spielen",
+    "output": "Es ist zu dunkel, um draußen zu spielen."
+  },
+  {
+    "input": "örnek_üret: sprechen",
+    "output": "Du wolltest mit mir über Freiheit sprechen?"
+  },
+  {
+    "input": "örnek_üret: sprechen",
+    "output": "Könnte ich Fräulein Brown sprechen?"
+  },
+  {
+    "input": "örnek_üret: sprechen",
+    "output": "Sprechen Sie bitte langsamer!"
+  },
+  {
+    "input": "örnek_üret: sprechen",
+    "output": "Das wäre zu cool, wenn ich zehn Sprachen sprechen könnte!"
+  },
+  {
+    "input": "örnek_üret: sprechen",
+    "output": "Sie will nicht darüber sprechen."
+  },
+  {
+    "input": "örnek_üret: stark",
+    "output": "Dieser Kaffee ist zu stark für mich."
+  },
+  {
+    "input": "örnek_üret: stark",
+    "output": "Der Tee schmeckt zu stark. Gieß noch etwas Wasser hinzu."
+  },
+  {
+    "input": "örnek_üret: stark",
+    "output": "Die Wirtschaft Japans ist sehr stark gewachsen."
+  },
+  {
+    "input": "örnek_üret: stark",
+    "output": "Milch macht uns stark."
+  },
+  {
+    "input": "örnek_üret: stark",
+    "output": "Der Wind weht sehr stark."
+  },
+  {
+    "input": "örnek_üret: teuer",
+    "output": "Immer, wenn ich etwas finde, das mir gefällt, ist es zu teuer."
+  },
+  {
+    "input": "örnek_üret: teuer",
+    "output": "Das ist zu teuer!"
+  },
+  {
+    "input": "örnek_üret: teuer",
+    "output": "Der Journalist hat eine Wohnung gemietet, die sehr teuer ist."
+  },
+  {
+    "input": "örnek_üret: teuer",
+    "output": "Diese Gitarre ist so teuer, dass ich sie nicht kaufen kann."
+  },
+  {
+    "input": "örnek_üret: teuer",
+    "output": "Das Problem ist, dass es zu teuer ist."
+  },
+  {
+    "input": "örnek_üret: traurig",
+    "output": "Als ich aufgewacht bin, war ich traurig."
+  },
+  {
+    "input": "örnek_üret: traurig",
+    "output": "Abschiede sind immer traurig."
+  },
+  {
+    "input": "örnek_üret: traurig",
+    "output": "Ich war überrascht und wurde traurig."
+  },
+  {
+    "input": "örnek_üret: traurig",
+    "output": "Sie ist traurig, seit ihre Katze gestorben ist."
+  },
+  {
+    "input": "örnek_üret: traurig",
+    "output": "Als ich die Nachricht hörte, habe ich mich sehr traurig gefühlt."
+  },
+  {
+    "input": "örnek_üret: trinken",
+    "output": "Willst du etwas zum Trinken?"
+  },
+  {
+    "input": "örnek_üret: trinken",
+    "output": "Ich bin mit Freunden ein Bier trinken gegangen."
+  },
+  {
+    "input": "örnek_üret: trinken",
+    "output": "Bitte geben Sie mir irgendetwas zu trinken."
+  },
+  {
+    "input": "örnek_üret: trinken",
+    "output": "Möchtest du noch eine Tasse Kaffee trinken?"
+  },
+  {
+    "input": "örnek_üret: trinken",
+    "output": "Du darfst dich nicht dem Trinken hingeben."
+  },
+  {
+    "input": "örnek_üret: vergessen",
+    "output": "Du wirst mich eines Tages vergessen."
+  },
+  {
+    "input": "örnek_üret: vergessen",
+    "output": "Vergessen Sie den Kassenzettel nicht."
+  },
+  {
+    "input": "örnek_üret: vergessen",
+    "output": "Sie haben vergessen, die Tür abzuschließen."
+  },
+  {
+    "input": "örnek_üret: vergessen",
+    "output": "Jemand hat eine Tasche auf der Bank vergessen."
+  },
+  {
+    "input": "örnek_üret: vergessen",
+    "output": "Du erinnerst dich nicht; ich werde es nie vergessen."
+  },
+  {
+    "input": "örnek_üret: verstehen",
+    "output": "Überrascht sein, sich wundern, heißt anfangen, zu verstehen."
+  },
+  {
+    "input": "örnek_üret: verstehen",
+    "output": "Haben Sie Schwierigkeiten zu verstehen, was Ihnen Frauen oder kleine Kinder sagen?"
+  },
+  {
+    "input": "örnek_üret: verstehen",
+    "output": "Die Leute müssen verstehen, dass sich die Welt ändert."
+  },
+  {
+    "input": "örnek_üret: verstehen",
+    "output": "Da ihre Unterhaltung auf Französisch war, konnte ich kein Wort verstehen."
+  },
+  {
+    "input": "örnek_üret: verstehen",
+    "output": "Wir sollten versuchen, uns gegenseitig zu verstehen."
+  },
+  {
+    "input": "örnek_üret: vier",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: vier",
+    "output": "Die Summe von zwei plus drei plus vier ist neun."
+  },
+  {
+    "input": "örnek_üret: vier",
+    "output": "Zwei mal zwei ist vier."
+  },
+  {
+    "input": "örnek_üret: vier",
+    "output": "Er hat mir versprochen, um vier zu kommen."
+  },
+  {
+    "input": "örnek_üret: vier",
+    "output": "Sechs und vier macht zehn."
+  },
+  {
+    "input": "örnek_üret: warm",
+    "output": "Es ist warm für diese Jahreszeit."
+  },
+  {
+    "input": "örnek_üret: warm",
+    "output": "Diese Handschuhe hielten ihre Hände warm."
+  },
+  {
+    "input": "örnek_üret: warm",
+    "output": "Dieser Mantel ist warm."
+  },
+  {
+    "input": "örnek_üret: warm",
+    "output": "Gestern war es warm."
+  },
+  {
+    "input": "örnek_üret: warm",
+    "output": "Es ist ganz schön warm heute."
+  },
+  {
+    "input": "örnek_üret: weiß",
+    "output": "Ich weiß einfach nicht, was ich sagen soll."
+  },
+  {
+    "input": "örnek_üret: weiß",
+    "output": "Ich weiß nicht, ob ich Zeit dazu habe."
+  },
+  {
+    "input": "örnek_üret: weiß",
+    "output": "Ich weiß nicht, was du meinst."
+  },
+  {
+    "input": "örnek_üret: weiß",
+    "output": "Ich weiß nicht mehr, was ich tun soll."
+  },
+  {
+    "input": "örnek_üret: weiß",
+    "output": "Ich weiß nicht, ob ich es noch habe."
+  },
+  {
+    "input": "örnek_üret: wohnen",
+    "output": "Wir werden nächsten Monat hier wohnen."
+  },
+  {
+    "input": "örnek_üret: wohnen",
+    "output": "Sie sind die Leute, die nebenan wohnen."
+  },
+  {
+    "input": "örnek_üret: wohnen",
+    "output": "Wo wohnen Sie jetzt?"
+  },
+  {
+    "input": "örnek_üret: wohnen",
+    "output": "Nächsten April wohnen wir seit zwei Jahren hier."
+  },
+  {
+    "input": "örnek_üret: wohnen",
+    "output": "Meine Eltern wohnen in Kyoto."
+  },
+  {
+    "input": "örnek_üret: wollen",
+    "output": "Alle wollen dich kennenlernen. Du bist berühmt!"
+  },
+  {
+    "input": "örnek_üret: wollen",
+    "output": "Nicht wollen ist das Gleiche wie haben."
+  },
+  {
+    "input": "örnek_üret: wollen",
+    "output": "Die meisten Leute wollen nur ihre eigene Wahrheit hören."
+  },
+  {
+    "input": "örnek_üret: wollen",
+    "output": "Wieso wollen Sie heute abfahren?"
+  },
+  {
+    "input": "örnek_üret: wollen",
+    "output": "Wollen Sie mir ein paar Minuten zuhören?"
+  },
+  {
+    "input": "örnek_üret: zehn",
+    "output": "Das wäre zu cool, wenn ich zehn Sprachen sprechen könnte!"
+  },
+  {
+    "input": "örnek_üret: zehn",
+    "output": "Es wird fünf bis zehn Jahre dauern, bis die Technologie bereit ist."
+  },
+  {
+    "input": "örnek_üret: zehn",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: zehn",
+    "output": "Zum ersten Mal in zehn Jahren kam er nach Hause zurück."
+  },
+  {
+    "input": "örnek_üret: zehn",
+    "output": "Ich habe mit zehn gelernt, Gitarre zu spielen."
+  },
+  {
+    "input": "örnek_üret: zwanzig",
+    "output": "Es ist zwanzig nach sechs."
+  },
+  {
+    "input": "örnek_üret: zwanzig",
+    "output": "Er verdient zwanzig Dollar pro Tag."
+  },
+  {
+    "input": "örnek_üret: zwanzig",
+    "output": "Das Gebäude hat zwanzig Stockwerke."
+  },
+  {
+    "input": "örnek_üret: zwanzig",
+    "output": "Zehn, elf, zwölf, dreizehn, vierzehn, fünfzehn, sechzehn, siebzehn, achtzehn, neunzehn, zwanzig."
+  },
+  {
+    "input": "örnek_üret: zwanzig",
+    "output": "Ich rufe in zwanzig Minuten wieder an."
+  },
+  {
+    "input": "örnek_üret: zwei",
+    "output": "Ich habe über zwei Stunden gebraucht, um einige Seiten Englisch zu übersetzen."
+  },
+  {
+    "input": "örnek_üret: zwei",
+    "output": "Ich bin verheiratet und habe zwei Kinder."
+  },
+  {
+    "input": "örnek_üret: zwei",
+    "output": "Meine Mutter hat zwei Flaschen Orangensaft gekauft."
+  },
+  {
+    "input": "örnek_üret: zwei",
+    "output": "Eins, zwei, drei, vier, fünf, sechs, sieben, acht, neun, zehn."
+  },
+  {
+    "input": "örnek_üret: zwei",
+    "output": "So schlage ich zwei Fliegen mit einer Klappe."
+  }
+]
