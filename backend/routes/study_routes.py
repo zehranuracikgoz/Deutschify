@@ -2,6 +2,9 @@ from datetime import date, datetime, timedelta
 from flask import Blueprint, request, jsonify
 from backend.database import get_db
 from backend.srs import calculate_next_review
+from flask_jwt_extended import jwt_required, get_jwt_identity
+import requests
+import os
 
 study_bp = Blueprint('study', __name__, url_prefix='/study')
 
@@ -199,3 +202,26 @@ def end_session(session_id):
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+
+@study_bp.route('/example', methods=['POST'])
+@jwt_required()
+def get_example_sentence():
+    data = request.get_json()
+    word = data.get('word', '').strip()
+    if not word:
+        return jsonify({'error': 'word gerekli'}), 400
+
+    api_url = "https://api-inference.huggingface.co/models/zehranuracikgoz/deutschify-t5-small"
+    headers = {"Authorization": f"Bearer {os.environ.get('HF_TOKEN')}"}
+    payload = {"inputs": f"örnek_üret: {word}"}
+
+    response = requests.post(api_url, headers=headers, json=payload)
+
+    if response.status_code != 200:
+        return jsonify({'error': 'Model servisi yanıt vermedi'}), 503
+
+    result = response.json()
+    sentence = result[0].get('generated_text', '')
+
+    return jsonify({'word': word, 'example_sentence': sentence}), 200
