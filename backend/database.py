@@ -2,6 +2,7 @@ import os
 import psycopg2
 import psycopg2.extras
 from contextlib import contextmanager
+from flask import current_app
 
 @contextmanager
 def get_db():
@@ -23,7 +24,10 @@ def get_db():
     else:
         # lokalde sqlite
         import sqlite3
-        db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db')
+        try:
+            db_path = current_app.config.get('DATABASE', os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db'))
+        except RuntimeError:
+            db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db')
         os.makedirs(os.path.dirname(os.path.abspath(db_path)), exist_ok=True)
         conn = sqlite3.connect(db_path)
         conn.row_factory = sqlite3.Row
