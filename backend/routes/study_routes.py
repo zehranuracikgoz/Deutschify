@@ -234,3 +234,45 @@ def get_example_sentence():
     sentence = result[0].get('generated_text', '')
 
     return jsonify({'word': word, 'example_sentence': sentence}), 200
+
+
+@study_bp.route('/stats', methods=['GET'])
+@jwt_required()
+def get_stats():
+    user_id = int(get_jwt_identity())
+    with get_db() as conn:
+        cursor = conn.cursor()
+
+        # Toplam XP ve streak
+        cursor.execute("""
+            SELECT total_xp, daily_streak
+            FROM users WHERE id = %s
+        """, (user_id,))
+        row = cursor.fetchone()
+        total_xp = row[0] if row else 0
+        daily_streak = row[1] if row else 0
+
+        # Toplam çalışılan kelime sayısı
+        cursor.execute("""
+            SELECT COUNT(*) FROM user_progress WHERE user_id = %s
+        """, (user_id,))
+        total_words = cursor.fetchone()[0]
+
+        # Son 7 günlük oturum sayısı
+        cursor.execute("""
+            SELECT DATE(session_start) as day, COUNT(*) as count
+            FROM study_sessions
+            WHERE user_id = %s
+            AND session_start >= NOW() - INTERVAL '7 days'
+            GROUP BY DATE(session_start)
+            ORDER BY day ASC
+        """, (user_id,))
+        rows = cursor.fetchall()
+        weekly_sessions = [{"day": str(r[0]), "count": r[1]} for r in rows]
+
+    return jsonify({
+        "total_xp": total_xp,
+        "daily_streak": daily_streak,
+        "total_words_studied": total_words,
+        "weekly_sessions": weekly_sessions
+    }), 200
