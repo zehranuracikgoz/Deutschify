@@ -14,16 +14,17 @@ def seeded_client():
     app = create_app({'TESTING': True, 'DATABASE': db_path})
     with app.app_context():
         with get_db() as conn:
-            conn.execute("INSERT INTO articles (name) VALUES ('der')")
-            conn.execute("INSERT INTO word_categories (name) VALUES ('Temel')")
-            conn.execute("INSERT INTO word_types (name) VALUES ('Noun')")
-            conn.execute(
-                '''INSERT INTO words
+            cursor = conn.cursor()
+            cursor.execute("INSERT OR IGNORE INTO articles (name) VALUES ('der')")
+            cursor.execute("INSERT OR IGNORE INTO word_categories (name) VALUES ('Temel')")
+            cursor.execute("INSERT OR IGNORE INTO word_types (name) VALUES ('Noun')")
+            cursor.execute(
+                '''INSERT OR IGNORE INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id)
                    VALUES ('Hund', 'köpek', 'Der Hund ist groß.', 1, 1, 1)'''
             )
-            conn.execute(
-                '''INSERT INTO words
+            cursor.execute(
+                '''INSERT OR IGNORE INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id)
                    VALUES ('Katze', 'kedi', 'Die Katze schläft.', 1, 1, 1)'''
             )
@@ -67,16 +68,17 @@ def level_seeded_client():
     app = create_app({'TESTING': True, 'DATABASE': db_path})
     with app.app_context():
         with get_db() as conn:
-            conn.execute("INSERT INTO articles (name) VALUES ('der')")
-            conn.execute("INSERT INTO word_categories (name) VALUES ('Temel')")
-            conn.execute("INSERT INTO word_types (name) VALUES ('Noun')")
-            conn.execute(
-                '''INSERT INTO words
+            cursor = conn.cursor()
+            cursor.execute("INSERT OR IGNORE INTO articles (name) VALUES ('der')")
+            cursor.execute("INSERT OR IGNORE INTO word_categories (name) VALUES ('Temel')")
+            cursor.execute("INSERT OR IGNORE INTO word_types (name) VALUES ('Noun')")
+            cursor.execute(
+                '''INSERT OR IGNORE INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id, level)
                    VALUES ('Hund', 'köpek', 'Der Hund ist groß.', 1, 1, 1, 'A1')'''
             )
-            conn.execute(
-                '''INSERT INTO words
+            cursor.execute(
+                '''INSERT OR IGNORE INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id, level)
                    VALUES ('kaufen', 'satın almak', 'Ich kaufe Brot.', 1, 1, 1, 'A2')'''
             )

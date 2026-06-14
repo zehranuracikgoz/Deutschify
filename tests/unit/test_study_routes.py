@@ -32,17 +32,18 @@ def seeded_client():
         from backend.database import get_db
         with app.app_context():
             with get_db() as conn:
-                conn.execute(
-                    "INSERT INTO articles (name) VALUES ('der')"
+                cursor = conn.cursor()
+                cursor.execute(
+                    "INSERT OR IGNORE INTO articles (name) VALUES ('der')"
                 )
-                conn.execute(
-                    "INSERT INTO word_categories (name) VALUES ('Temel')"
+                cursor.execute(
+                    "INSERT OR IGNORE INTO word_categories (name) VALUES ('Temel')"
                 )
-                conn.execute(
-                    "INSERT INTO word_types (name) VALUES ('Noun')"
+                cursor.execute(
+                    "INSERT OR IGNORE INTO word_types (name) VALUES ('Noun')"
                 )
-                conn.execute(
-                    '''INSERT INTO words
+                cursor.execute(
+                    '''INSERT OR IGNORE INTO words
                        (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id)
                        VALUES ('Hund', 'köpek', 'Der Hund ist groß.', 1, 1, 1)'''
                 )
