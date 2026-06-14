@@ -3,18 +3,19 @@ from backend.database import get_db
 
 def seed_data():
     with get_db() as conn:
+        cursor = conn.cursor()
         for article in ('der', 'die', 'das'):
-            conn.execute("INSERT OR IGNORE INTO articles (name) VALUES (?)", (article,))
+            cursor.execute("INSERT INTO articles (name) VALUES (%s) ON CONFLICT DO NOTHING", (article,))
 
         for wt in ('Noun', 'Verb', 'Adjective', 'Adverb'):
-            conn.execute("INSERT OR IGNORE INTO word_types (name) VALUES (?)", (wt,))
+            cursor.execute("INSERT INTO word_types (name) VALUES (%s) ON CONFLICT DO NOTHING", (wt,))
 
         for cat in (
             'Temel Kelimeler', 'Hayvanlar', 'Aile',
             'Yiyecek & İçecek', 'Renkler', 'Zaman', 'Eylemler', 'Sıfatlar',
             'Sayılar', 'Vücut'
         ):
-            conn.execute("INSERT OR IGNORE INTO word_categories (name) VALUES (?)", (cat,))
+            cursor.execute("INSERT INTO word_categories (name) VALUES (%s) ON CONFLICT DO NOTHING", (cat,))
 
         # article_id : 1=der  2=die  3=das  None=fiil/sıfat/zarf
         # type_id    : 1=Noun 2=Verb 3=Adjective 4=Adverb
@@ -230,7 +231,8 @@ def seed_data():
             ('gefährlich',  'tehlikeli', 'Das ist gefährlich.',           'Bu tehlikeli.',            None, 8, 3, 'A2'),
         ]
 
-        cat_id = {row[0]: row[1] for row in conn.execute('SELECT name, id FROM word_categories').fetchall()}
+        cursor.execute('SELECT name, id FROM word_categories')
+        cat_id = {row[0]: row[1] for row in cursor.fetchall()}
         C_SAYI = cat_id['Sayılar']
         C_VUCUT = cat_id['Vücut']
         C_ZAMAN = cat_id['Zaman']
@@ -287,21 +289,13 @@ def seed_data():
             ('leicht', 'hafif/kolay', 'Die Aufgabe ist leicht.',  'Görev kolaydır.', None, C_SIFAT, 3, 'A1'),
         ]
 
-        # NOT: örnek cümleler şimdilik statik placeholder.
-        # Final aşamasında T5 modeli ile otomatik üretilip güncellenecek.
-        conn.executemany(
-            '''INSERT OR IGNORE INTO words
+        cursor.executemany(
+            '''INSERT INTO words
                (german_word, turkish_meaning, example_sentence_de, example_sentence_tr,
                 article_id, category_id, type_id, level)
-               VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+               VALUES (%s, %s, %s, %s, %s, %s, %s, %s) ON CONFLICT DO NOTHING''',
             a1_words + a2_words + new_words
         )
-
-    # total = len(a1_words) + len(a2_words) + len(new_words)
-    # print(f"Veriler başarıyla eklendi.")
-    # print(f"  Mevcut : {len(a1_words)} A1 + {len(a2_words)} A2 = {len(a1_words)+len(a2_words)} kelime")
-    # print(f"  Yeni   : {len(new_words)} kelime")
-    # print(f"  Toplam : {total} kelime")
 
 
 if __name__ == '__main__':
