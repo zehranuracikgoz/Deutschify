@@ -1,21 +1,22 @@
 import sys
 import os
-import tempfile
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
 
 import pytest
 from backend import create_app
+from backend.database import get_db
 
 # auth endpointleri için http kodları için
 # register ve login akışlarındaki edge case'ler
 @pytest.fixture
 def client():
-    db_fd, db_path = tempfile.mkstemp()
-    app = create_app({'TESTING': True, 'DATABASE': db_path, 'JWT_SECRET_KEY': 'a' * 32})
+    app = create_app({'TESTING': True, 'JWT_SECRET_KEY': 'a' * 32})
     yield app.test_client()
-    os.close(db_fd)
-    os.unlink(db_path)
+    with app.app_context():
+        with get_db() as conn:
+            cursor = conn.cursor()
+            cursor.execute("TRUNCATE TABLE user_progress, study_sessions, words, users, articles, word_categories, word_types CASCADE")
 
 # geçerli bilgilerde = 201
 def test_register_success(client):

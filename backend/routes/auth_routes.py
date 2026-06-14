@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import psycopg2.extras
 from ..auth import register_user, authenticate_user
 from ..database import get_db
 
@@ -51,10 +52,12 @@ def login():
 def me():
     user_id = int(get_jwt_identity())
     with get_db() as conn:
-        user = conn.execute(
-            'SELECT id, username, email, total_xp FROM users WHERE id = ?',
+        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        cursor.execute(
+            'SELECT id, username, email, total_xp FROM users WHERE id = %s',
             (user_id,)
-        ).fetchone()
+        )
+        user = cursor.fetchone()
     if user is None:
         return jsonify({'error': 'Kullanıcı bulunamadı'}), 401
     return jsonify(dict(user)), 200

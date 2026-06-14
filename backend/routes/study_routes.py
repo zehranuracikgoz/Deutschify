@@ -1,5 +1,6 @@
 from datetime import date, datetime, timedelta
 from flask import Blueprint, request, jsonify
+import psycopg2.extras
 from backend.database import get_db
 from backend.srs import calculate_next_review
 from flask_jwt_extended import jwt_required, get_jwt_identity
@@ -22,21 +23,23 @@ def get_queue(user_id):
             return jsonify({'error': 'limit geçerli bir tam sayı olmalı'}), 400
 
         with get_db() as conn:
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
             # next_review_date <=bugün olan kayıtlar icin
-            due_rows = conn.execute(
+            cursor.execute(
                 '''
                 SELECT w.id AS word_id, w.german_word, w.turkish_meaning,
                        w.example_sentence_de,
                        up.ease_factor, up.interval_days, up.repetition_count, up.status
                 FROM user_progress up
                 JOIN words w ON w.id = up.word_id
-                WHERE up.user_id = ? AND up.next_review_date <= ?
+                WHERE up.user_id = %s AND up.next_review_date <= %s
                 ''',
                 (user_id, today)
-            ).fetchall()
+            )
+            due_rows = cursor.fetchall()
 
             # user_progress kaydı yoksa kelimeler → "new"
-            new_rows = conn.execute(
+            cursor.execute(
                 '''
                 SELECT w.id AS word_id, w.german_word, w.turkish_meaning,
                        w.example_sentence_de,
@@ -44,11 +47,12 @@ def get_queue(user_id):
                        0 AS repetition_count, 'new' AS status
                 FROM words w
                 WHERE w.id NOT IN (
-                    SELECT word_id FROM user_progress WHERE user_id = ?
+                    SELECT word_id FROM user_progress WHERE user_id = %s
                 )
                 ''',
                 (user_id,)
-            ).fetchall()
+            )
+            new_rows = cursor.fetchall()
 
         queue = [dict(r) for r in due_rows] + [dict(r) for r in new_rows]
         queue = queue[:limit]
@@ -83,10 +87,12 @@ def submit_answer():
         today = date.today()
 
         with get_db() as conn:
-            existing = conn.execute(
-                'SELECT * FROM user_progress WHERE user_id = ? AND word_id = ?',
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor.execute(
+                'SELECT * FROM user_progress WHERE user_id = %s AND word_id = %s',
                 (user_id, word_id)
-            ).fetchone()
+            )
+            existing = cursor.fetchone()
 
             if existing:
                 ef = existing['ease_factor']
@@ -99,24 +105,24 @@ def submit_answer():
             next_review = (today + timedelta(days=result['interval_days'])).isoformat()
 
             if existing:
-                conn.execute(
+                cursor.execute(
                     '''
                     UPDATE user_progress
-                    SET ease_factor = ?, interval_days = ?, repetition_count = ?,
-                        status = ?, last_review_date = ?, next_review_date = ?
-                    WHERE user_id = ? AND word_id = ?
+                    SET ease_factor = %s, interval_days = %s, repetition_count = %s,
+                        status = %s, last_review_date = %s, next_review_date = %s
+                    WHERE user_id = %s AND word_id = %s
                     ''',
                     (result['ease_factor'], result['interval_days'], result['repetition_count'],
                      result['status'], today.isoformat(), next_review,
                      user_id, word_id)
                 )
             else:
-                conn.execute(
+                cursor.execute(
                     '''
                     INSERT INTO user_progress
                         (user_id, word_id, ease_factor, interval_days, repetition_count,
                          status, last_review_date, next_review_date)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
                     ''',
                     (user_id, word_id, result['ease_factor'], result['interval_days'],
                      result['repetition_count'], result['status'],
@@ -125,20 +131,20 @@ def submit_answer():
 
             xp_earned = 10 if quality >= 3 else 0
             if xp_earned > 0:
-                conn.execute(
-                    'UPDATE users SET total_xp = total_xp + ? WHERE id = ?',
+                cursor.execute(
+                    'UPDATE users SET total_xp = total_xp + %s WHERE id = %s',
                     (xp_earned, user_id)
                 )
 
             if session_id:
                 if quality >= 3:
-                    conn.execute(
-                        'UPDATE study_sessions SET correct_answers = correct_answers + 1 WHERE id = ?',
+                    cursor.execute(
+                        'UPDATE study_sessions SET correct_answers = correct_answers + 1 WHERE id = %s',
                         (session_id,)
                     )
                 else:
-                    conn.execute(
-                        'UPDATE study_sessions SET wrong_answers = wrong_answers + 1 WHERE id = ?',
+                    cursor.execute(
+                        'UPDATE study_sessions SET wrong_answers = wrong_answers + 1 WHERE id = %s',
                         (session_id,)
                     )
 
@@ -167,11 +173,12 @@ def start_session():
         session_start = datetime.now().isoformat()
 
         with get_db() as conn:
-            cursor = conn.execute(
-                'INSERT INTO study_sessions (user_id, session_start) VALUES (?, ?)',
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor.execute(
+                'INSERT INTO study_sessions (user_id, session_start) VALUES (%s, %s) RETURNING id',
                 (user_id, session_start)
             )
-            session_id = cursor.lastrowid
+            session_id = cursor.fetchone()['id']
 
         return jsonify({'session_id': session_id, 'message': 'Session started'}), 201
 
@@ -185,16 +192,18 @@ def end_session(session_id):
         session_end = datetime.now().isoformat()
 
         with get_db() as conn:
-            existing = conn.execute(
-                'SELECT id FROM study_sessions WHERE id = ?',
+            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor.execute(
+                'SELECT id FROM study_sessions WHERE id = %s',
                 (session_id,)
-            ).fetchone()
+            )
+            existing = cursor.fetchone()
 
             if not existing:
                 return jsonify({'error': 'Session bulunamadı'}), 404
 
-            conn.execute(
-                'UPDATE study_sessions SET session_end = ? WHERE id = ?',
+            cursor.execute(
+                'UPDATE study_sessions SET session_end = %s WHERE id = %s',
                 (session_end, session_id)
             )
 
