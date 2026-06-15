@@ -7,17 +7,25 @@ word_bp = Blueprint('words', __name__, url_prefix='/words')
 @word_bp.route('/', methods=['GET'])
 def get_words():
     level = request.args.get('level')
+    has_article = request.args.get('has_article', '').lower() == 'true'
+
+    conditions = []
+    params = []
+    if level:
+        conditions.append('level = %s')
+        params.append(level.upper())
+    if has_article:
+        conditions.append('article_id IS NOT NULL')
+
+    where_clause = ('WHERE ' + ' AND '.join(conditions)) if conditions else ''
+    query = (
+        'SELECT id, german_word, turkish_meaning, example_sentence_de, '
+        'example_sentence_tr, audio_url, article_id FROM words ' + where_clause
+    )
+
     with get_db() as conn:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-        if level:
-            cursor.execute(
-                'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr, audio_url FROM words WHERE level = %s',
-                (level.upper(),)
-            )
-        else:
-            cursor.execute(
-                'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr, audio_url FROM words'
-            )
+        cursor.execute(query, params)
         words = cursor.fetchall()
     return jsonify([dict(w) for w in words]), 200
 

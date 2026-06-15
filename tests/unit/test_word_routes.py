@@ -13,28 +13,28 @@ def seeded_client():
     app = create_app({'TESTING': True})
     with app.app_context():
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO articles (name) VALUES ('der') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id")
-            article_id = cursor.fetchone()['id']
+            article_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO word_categories (name) VALUES ('Temel') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id")
-            category_id = cursor.fetchone()['id']
+            category_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO word_types (name) VALUES ('Noun') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id")
-            type_id = cursor.fetchone()['id']
+            type_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute(
                 '''INSERT INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id)
                    VALUES ('Hund', 'köpek', 'Der Hund ist groß.', %s, %s, %s) ON CONFLICT (german_word) DO UPDATE SET german_word=EXCLUDED.german_word RETURNING id''',
                 (article_id, category_id, type_id)
             )
-            word_id = cursor.fetchone()['id']
+            word_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute(
                 '''INSERT INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id)
@@ -46,7 +46,14 @@ def seeded_client():
     with app.app_context():
         with get_db() as conn:
             cursor = conn.cursor()
-            cursor.execute("TRUNCATE TABLE user_progress, study_sessions, words, users, articles, word_categories, word_types CASCADE")
+            cursor.execute("DELETE FROM study_sessions")
+            cursor.execute("DELETE FROM user_progress")
+            cursor.execute("DELETE FROM words")
+            cursor.execute("DELETE FROM users")
+            cursor.execute("DELETE FROM word_categories")
+            cursor.execute("DELETE FROM word_types")
+            cursor.execute("DELETE FROM articles")
+            cursor.execute("DELETE FROM levels")
 
 # GET /words/ tüm kelimeleri = 200
 def test_get_all_words_returns_200(seeded_client):
@@ -86,19 +93,19 @@ def level_seeded_client():
     app = create_app({'TESTING': True})
     with app.app_context():
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO articles (name) VALUES ('der') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id")
-            article_id = cursor.fetchone()['id']
+            article_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO word_categories (name) VALUES ('Temel') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id")
-            category_id = cursor.fetchone()['id']
+            category_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute("INSERT INTO word_types (name) VALUES ('Noun') ON CONFLICT (name) DO UPDATE SET name=EXCLUDED.name RETURNING id")
-            type_id = cursor.fetchone()['id']
+            type_id = cursor.fetchone()[0]
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute(
                 '''INSERT INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id, level)
@@ -106,7 +113,7 @@ def level_seeded_client():
                 (article_id, category_id, type_id)
             )
         with get_db() as conn:
-            cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+            cursor = conn.cursor()
             cursor.execute(
                 '''INSERT INTO words
                    (german_word, turkish_meaning, example_sentence_de, article_id, category_id, type_id, level)
@@ -118,7 +125,14 @@ def level_seeded_client():
     with app.app_context():
         with get_db() as conn:
             cursor = conn.cursor()
-            cursor.execute("TRUNCATE TABLE user_progress, study_sessions, words, users, articles, word_categories, word_types CASCADE")
+            cursor.execute("DELETE FROM study_sessions")
+            cursor.execute("DELETE FROM user_progress")
+            cursor.execute("DELETE FROM words")
+            cursor.execute("DELETE FROM users")
+            cursor.execute("DELETE FROM word_categories")
+            cursor.execute("DELETE FROM word_types")
+            cursor.execute("DELETE FROM articles")
+            cursor.execute("DELETE FROM levels")
 
 # GET /words/?level=A1 -- sadece A1 kelimeleri
 def test_get_words_filter_by_level_A1(level_seeded_client):

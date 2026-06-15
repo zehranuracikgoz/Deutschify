@@ -1,44 +1,22 @@
 import os
 import psycopg2
-import psycopg2.extras
 from contextlib import contextmanager
-from flask import current_app
 
 @contextmanager
 def get_db():
     database_url = os.environ.get('DATABASE_URL')
-
-    if database_url:
-        # productionda postgresql
-        conn = psycopg2.connect(database_url)
-        conn.autocommit = False
-        cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
-        try:
-            yield conn
-            conn.commit()
-        except Exception as e:
-            conn.rollback()
-            raise e
-        finally:
-            conn.close()
-    else:
-        # lokalde sqlite
-        import sqlite3
-        try:
-            db_path = current_app.config.get('DATABASE', os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db'))
-        except RuntimeError:
-            db_path = os.path.join(os.path.dirname(__file__), '..', 'instance', 'deutschify.db')
-        os.makedirs(os.path.dirname(os.path.abspath(db_path)), exist_ok=True)
-        conn = sqlite3.connect(db_path)
-        conn.row_factory = sqlite3.Row
-        try:
-            yield conn
-            conn.commit()
-        except Exception as e:
-            conn.rollback()
-            raise e
-        finally:
-            conn.close()
+    if not database_url:
+        raise RuntimeError('DATABASE_URL environment variable is not set')
+    conn = psycopg2.connect(database_url)
+    conn.autocommit = False
+    try:
+        yield conn
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        raise e
+    finally:
+        conn.close()
 
 def init_db():
     with get_db() as conn:

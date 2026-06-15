@@ -194,7 +194,7 @@ def end_session(session_id):
         with get_db() as conn:
             cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
             cursor.execute(
-                'SELECT id FROM study_sessions WHERE id = %s',
+                'SELECT id, user_id FROM study_sessions WHERE id = %s',
                 (session_id,)
             )
             existing = cursor.fetchone()
@@ -202,10 +202,44 @@ def end_session(session_id):
             if not existing:
                 return jsonify({'error': 'Session bulunamadı'}), 404
 
+            user_id = existing['user_id']
+
             cursor.execute(
                 'UPDATE study_sessions SET session_end = %s WHERE id = %s',
                 (session_end, session_id)
             )
+
+            # Streak güncelle: bugün (UTC) başka oturum var mı?
+            cursor.execute(
+                '''
+                SELECT COUNT(*) FROM study_sessions
+                WHERE user_id = %s AND DATE(session_start) = CURRENT_DATE AND id != %s
+                ''',
+                (user_id, session_id)
+            )
+            today_count = cursor.fetchone()['count']
+
+            if today_count == 0:
+                # Bugün ilk oturum — dün oturum var mıydı?
+                cursor.execute(
+                    '''
+                    SELECT COUNT(*) FROM study_sessions
+                    WHERE user_id = %s AND DATE(session_start) = CURRENT_DATE - 1
+                    ''',
+                    (user_id,)
+                )
+                yesterday_count = cursor.fetchone()['count']
+
+                if yesterday_count > 0:
+                    cursor.execute(
+                        'UPDATE users SET daily_streak = daily_streak + 1 WHERE id = %s',
+                        (user_id,)
+                    )
+                else:
+                    cursor.execute(
+                        'UPDATE users SET daily_streak = 1 WHERE id = %s',
+                        (user_id,)
+                    )
 
         return jsonify({'message': 'Session ended'}), 200
 
@@ -261,6 +295,40 @@ def get_history():
     return jsonify({"sessions": result}), 200
 
 
+@study_bp.route('/review', methods=['GET'])
+@jwt_required()
+def get_review_words():
+    user_id = int(get_jwt_identity())
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT w.id, w.german_word, w.turkish_meaning,
+                   w.example_sentence_de, w.example_sentence_tr,
+                   up.ease_factor, up.repetition_count
+            FROM user_progress up
+            JOIN words w ON up.word_id = w.id
+            WHERE up.user_id = %s AND up.ease_factor < 2.5
+            ORDER BY up.ease_factor ASC
+            LIMIT 20
+        """, (user_id,))
+        rows = cursor.fetchall()
+
+    if not rows:
+        return jsonify({'words': [], 'message': 'Henüz tekrar edilecek kelime yok'}), 200
+
+    result = [{
+        'id': row[0],
+        'german_word': row[1],
+        'turkish_meaning': row[2],
+        'example_sentence_de': row[3],
+        'example_sentence_tr': row[4],
+        'ease_factor': float(row[5]),
+        'repetitions': row[6]
+    } for row in rows]
+
+    return jsonify({'words': result}), 200
+
+
 @study_bp.route('/stats', methods=['GET'])
 @jwt_required()
 def get_stats():
@@ -290,8 +358,8 @@ def get_stats():
         # Toplam doğru ve yanlış
         cursor.execute("""
             SELECT
-                SUM(correct_answers) as total_correct,
-                SUM(wrong_answers) as total_wrong
+                COALESCE(SUM(correct_answers), 0) as total_correct,
+                COALESCE(SUM(wrong_answers), 0) as total_wrong
             FROM study_sessions
             WHERE user_id = %s
         """, (user_id,))

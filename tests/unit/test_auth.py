@@ -16,7 +16,14 @@ def client():
     with app.app_context():
         with get_db() as conn:
             cursor = conn.cursor()
-            cursor.execute("TRUNCATE TABLE user_progress, study_sessions, words, users, articles, word_categories, word_types CASCADE")
+            cursor.execute("DELETE FROM study_sessions")
+            cursor.execute("DELETE FROM user_progress")
+            cursor.execute("DELETE FROM words")
+            cursor.execute("DELETE FROM users")
+            cursor.execute("DELETE FROM word_categories")
+            cursor.execute("DELETE FROM word_types")
+            cursor.execute("DELETE FROM articles")
+            cursor.execute("DELETE FROM levels")
 
 # geçerli bilgilerde = 201
 def test_register_success(client):
