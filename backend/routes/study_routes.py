@@ -236,6 +236,31 @@ def get_example_sentence():
     return jsonify({'word': word, 'example_sentence': sentence}), 200
 
 
+@study_bp.route('/history', methods=['GET'])
+@jwt_required()
+def get_history():
+    user_id = int(get_jwt_identity())
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute("""
+            SELECT session_start, correct_answers, wrong_answers
+            FROM study_sessions
+            WHERE user_id = %s
+            ORDER BY session_start DESC
+            LIMIT 20
+        """, (user_id,))
+        rows = cursor.fetchall()
+    result = [
+        {
+            "date": str(row[0])[:10],
+            "correct": row[1] or 0,
+            "wrong": row[2] or 0
+        }
+        for row in rows
+    ]
+    return jsonify({"sessions": result}), 200
+
+
 @study_bp.route('/stats', methods=['GET'])
 @jwt_required()
 def get_stats():
@@ -246,33 +271,49 @@ def get_stats():
         # Toplam XP ve streak
         cursor.execute("""
             SELECT total_xp, daily_streak
-            FROM users WHERE id = %s
+            FROM users
+            WHERE id = %s
         """, (user_id,))
-        row = cursor.fetchone()
-        total_xp = row[0] if row else 0
-        daily_streak = row[1] if row else 0
-
-        # Toplam çalışılan kelime sayısı
-        cursor.execute("""
-            SELECT COUNT(*) FROM user_progress WHERE user_id = %s
-        """, (user_id,))
-        total_words = cursor.fetchone()[0]
+        user = cursor.fetchone()
 
         # Son 7 günlük oturum sayısı
         cursor.execute("""
             SELECT DATE(session_start) as day, COUNT(*) as count
             FROM study_sessions
             WHERE user_id = %s
-            AND session_start >= NOW() - INTERVAL '7 days'
+              AND session_start >= NOW() - INTERVAL '7 days'
             GROUP BY DATE(session_start)
             ORDER BY day ASC
         """, (user_id,))
-        rows = cursor.fetchall()
-        weekly_sessions = [{"day": str(r[0]), "count": r[1]} for r in rows]
+        sessions = cursor.fetchall()
+
+        # Toplam doğru ve yanlış
+        cursor.execute("""
+            SELECT
+                SUM(correct_answers) as total_correct,
+                SUM(wrong_answers) as total_wrong
+            FROM study_sessions
+            WHERE user_id = %s
+        """, (user_id,))
+        totals = cursor.fetchone()
+
+    # Son 7 günü doldur (veri olmayan günler 0)
+    from datetime import datetime, timedelta
+    today = datetime.utcnow().date()
+    days = [(today - timedelta(days=6-i)) for i in range(7)]
+    session_map = {row[0]: row[1] for row in sessions}
+    weekly = [session_map.get(day, 0) for day in days]
+
+    total_correct = totals[0] or 0
+    total_wrong = totals[1] or 0
+    total_answers = total_correct + total_wrong
+    success_rate = round((total_correct / total_answers) * 100) if total_answers > 0 else 0
 
     return jsonify({
-        "total_xp": total_xp,
-        "daily_streak": daily_streak,
-        "total_words_studied": total_words,
-        "weekly_sessions": weekly_sessions
+        'total_xp':      user[0] if user else 0,
+        'daily_streak':  user[1] if user else 0,
+        'weekly_sessions': weekly,
+        'total_correct': total_correct,
+        'total_wrong':   total_wrong,
+        'success_rate':  success_rate
     }), 200
