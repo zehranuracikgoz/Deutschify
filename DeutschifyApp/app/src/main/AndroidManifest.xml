@@ -27,6 +27,9 @@
         <activity android:name=".WordCardActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".HistoryActivity" />
     </application>
 
 </manifest>
