@@ -4,18 +4,25 @@ from backend.database import get_db
 def seed_data():
     with get_db() as conn:
         cursor = conn.cursor()
-        for article in ('der', 'die', 'das'):
-            cursor.execute("INSERT INTO articles (name) VALUES (%s) ON CONFLICT DO NOTHING", (article,))
+        cursor.execute("""
+            INSERT INTO articles (id, name) VALUES
+            (1, 'der'), (2, 'die'), (3, 'das')
+            ON CONFLICT (id) DO NOTHING
+        """)
 
-        for wt in ('Noun', 'Verb', 'Adjective', 'Adverb'):
-            cursor.execute("INSERT INTO word_types (name) VALUES (%s) ON CONFLICT DO NOTHING", (wt,))
+        cursor.execute("""
+            INSERT INTO word_types (id, name) VALUES
+            (1, 'Noun'), (2, 'Verb'), (3, 'Adjective'), (4, 'Adverb')
+            ON CONFLICT (id) DO NOTHING
+        """)
 
-        for cat in (
-            'Temel Kelimeler', 'Hayvanlar', 'Aile',
-            'Yiyecek & İçecek', 'Renkler', 'Zaman', 'Eylemler', 'Sıfatlar',
-            'Sayılar', 'Vücut'
-        ):
-            cursor.execute("INSERT INTO word_categories (name) VALUES (%s) ON CONFLICT DO NOTHING", (cat,))
+        cursor.execute("""
+            INSERT INTO word_categories (id, name) VALUES
+            (1, 'Temel Kelimeler'), (2, 'Hayvanlar'), (3, 'Aile'),
+            (4, 'Yiyecek & İçecek'), (5, 'Renkler'), (6, 'Zaman'),
+            (7, 'Eylemler'), (8, 'Sıfatlar'), (9, 'Sayılar'), (10, 'Vücut')
+            ON CONFLICT (id) DO NOTHING
+        """)
 
         # article_id : 1=der  2=die  3=das  None=fiil/sıfat/zarf
         # type_id    : 1=Noun 2=Verb 3=Adjective 4=Adverb
