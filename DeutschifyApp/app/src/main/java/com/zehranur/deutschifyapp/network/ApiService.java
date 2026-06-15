@@ -1,6 +1,9 @@
 package com.zehranur.deutschifyapp.network;
 
 import com.zehranur.deutschifyapp.model.AnswerRequest;
+import com.zehranur.deutschifyapp.model.HistoryResponse;
+import com.zehranur.deutschifyapp.model.MeResponse;
+import com.zehranur.deutschifyapp.model.StatsResponse;
 import com.zehranur.deutschifyapp.model.AnswerResponse;
 import com.zehranur.deutschifyapp.model.LoginRequest;
 import com.zehranur.deutschifyapp.model.LoginResponse;
@@ -41,4 +44,19 @@ public interface ApiService {
     @GET("tts/{word}")
     Call<ResponseBody> getWordAudio(@Path("word") String word,
                                     @Header("Authorization") String token);
+
+    @GET("auth/me")
+    Call<MeResponse> getMe(@Header("Authorization") String token);
+
+    @GET("study/stats")
+    Call<StatsResponse> getStats(@Header("Authorization") String token);
+
+    @GET("study/history")
+    Call<HistoryResponse> getHistory(@Header("Authorization") String token);
+
+    @GET("study/queue")
+    Call<QueueResponse> getStudyQueue(
+        @Header("Authorization") String token,
+        @Query("limit") int limit
+    );
 }

@@ -12,5 +12,6 @@ public class QueueResponse {
     private String message;
 
     public List<Word> getQueue() { return queue; }
+    public List<Word> getWords() { return queue; }
     public String getMessage() { return message; }
 }
