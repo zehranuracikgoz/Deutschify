@@ -7,7 +7,12 @@ from .routes import register_blueprints
 
 
 def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__,
+                static_folder='static',
+                static_url_path='/static',
+                instance_relative_config=True)
+    import logging
+    logging.warning(f"Static folder: {app.static_folder}")
     CORS(app)
     app.config.from_mapping(
         SECRET_KEY=os.environ.get('SECRET_KEY', 'dev'),
