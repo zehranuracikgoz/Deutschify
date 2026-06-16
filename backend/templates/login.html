@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-wrap">
+    <div class="auth-title">Deutschify</div>
+    <div class="auth-sub">Akıllı Almanca öğrenme uygulaması</div>
+
+    <div class="field">
+        <label>E-posta</label>
+        <input id="li-email" type="email" placeholder="ornek@mail.com" autocomplete="email">
+    </div>
+    <div class="field">
+        <label>Şifre</label>
+        <input id="li-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <div class="err" id="li-err"></div>
+    <button class="btn-primary" onclick="doLogin()">Giriş Yap</button>
+    <div class="auth-link">
+        Hesabın yok mu? <a href="/web/register">Kayıt Ol</a>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+if (localStorage.getItem('access_token')) { window.location.href = '/web/'; }
+document.getElementById('li-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('li-pass').focus();
+});
+document.getElementById('li-pass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+});
+</script>
+{% endblock %}

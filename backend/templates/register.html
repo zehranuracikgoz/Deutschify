@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="auth-wrap">
+    <div class="auth-title">Kayıt Ol</div>
+    <div class="auth-sub">Yeni hesap oluştur</div>
+
+    <div class="field">
+        <label>Kullanıcı Adı</label>
+        <input id="re-uname" type="text" placeholder="kullanici_adi" autocomplete="username">
+    </div>
+    <div class="field">
+        <label>E-posta</label>
+        <input id="re-email" type="email" placeholder="ornek@mail.com" autocomplete="email">
+    </div>
+    <div class="field">
+        <label>Şifre</label>
+        <input id="re-pass" type="password" placeholder="••••••••" autocomplete="new-password">
+    </div>
+    <div class="err" id="re-err"></div>
+    <button class="btn-primary" onclick="doRegister()">Kayıt Ol</button>
+    <div class="auth-link">
+        Zaten hesabın var mı? <a href="/web/login">Giriş Yap</a>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+if (localStorage.getItem('access_token')) { window.location.href = '/web/'; }
+document.getElementById('re-uname').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('re-email').focus();
+});
+document.getElementById('re-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('re-pass').focus();
+});
+document.getElementById('re-pass').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doRegister();
+});
+</script>
+{% endblock %}
