@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="fc-page">
+    <div class="fc-header">
+        <button class="fc-back" id="fc-back" onclick="exitFlashcards()" aria-label="Geri">
+            <svg viewBox="0 0 24 24"><path d="M20,11H7.83l5.59,-5.59L12,4l-8,8 8,8 1.41,-1.41L7.83,13H20v-2z"/></svg>
+        </button>
+        <div class="fc-title">Tekrar</div>
+        <div class="fc-counter" id="fc-counter">KART 1</div>
+    </div>
+
+    <div class="fc-progress-track">
+        <div class="fc-progress-fill" id="fc-progress-fill"></div>
+    </div>
+
+    <div class="fc-empty fc-empty-rich" id="fc-empty">
+        <svg class="fc-empty-icon" viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12s4.47,10 10,10 10,-4.47 10,-10S17.53,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8z"/></svg>
+        <div>Henüz tekrar edilecek kelime yok, önce kelime çalışın!</div>
+    </div>
+
+    <div class="fc-card-area" id="fc-card-area">
+        <div class="fc-card-container" id="fc-card-container" onclick="flipCard()">
+            <div class="fc-card fc-card-front">
+                <div class="fc-card-body">
+                    <div class="fc-label">ALMANCA</div>
+                    <div class="fc-word" id="fc-word-de">…</div>
+                    <div class="fc-hint">Kartı çevirmek için dokun</div>
+                </div>
+            </div>
+            <div class="fc-card fc-card-back">
+                <div class="fc-card-body">
+                    <div class="fc-label">TÜRKÇE</div>
+                    <div class="fc-word-tr" id="fc-word-tr"></div>
+                    <div class="fc-example-box">
+                        <div class="fc-label-sm">ÖRNEK</div>
+                        <div class="fc-example-de" id="fc-example-de"></div>
+                        <div class="fc-example-tr" id="fc-example-tr"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fc-difficulty" id="fc-difficulty">
+            <div class="fc-difficulty-labels">
+                <span class="fc-diff-hard">ZOR</span>
+                <span class="fc-diff-easy">KOLAY</span>
+            </div>
+            <div class="fc-difficulty-btns">
+                <button class="fc-diff-btn fc-diff-1" onclick="submitQuality(1)">1</button>
+                <button class="fc-diff-btn fc-diff-2" onclick="submitQuality(2)">2</button>
+                <button class="fc-diff-btn fc-diff-3" onclick="submitQuality(3)">3</button>
+                <button class="fc-diff-btn fc-diff-4" onclick="submitQuality(4)">4</button>
+                <button class="fc-diff-btn fc-diff-5" onclick="submitQuality(5)">5</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fc-summary-overlay" id="fc-summary-overlay">
+    <div class="fc-summary-card">
+        <svg class="complete-icon fc-summary-icon" viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12s4.47,10 10,10 10,-4.47 10,-10S17.53,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8z"/></svg>
+        <div class="fc-summary-title">Tekrar Tamamlandı</div>
+        <div class="fc-summary-stats">
+            <div class="fc-summary-stat">
+                <div class="fc-summary-num" id="fc-summary-cards">0</div>
+                <div class="fc-summary-lbl">Kart</div>
+            </div>
+            <div class="fc-summary-stat">
+                <div class="fc-summary-num" id="fc-summary-xp">0</div>
+                <div class="fc-summary-lbl">XP</div>
+            </div>
+        </div>
+        <button class="btn-primary" onclick="window.location.href='/web/'">Ana Sayfaya Dön</button>
+    </div>
+</div>
+
+<nav class="bot-nav">
+    <button class="nav-btn" onclick="window.location.href='/web/'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10,20v-6h4v6h5v-8h3L12,3 2,12h3v8z"/></svg>
+        <span class="nav-tooltip">Ana Sayfa</span>
+    </button>
+    <button class="nav-btn" onclick="window.location.href='/web/dashboard'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M5,9.2h3V19H5zM10.6,5h2.8v14h-2.8zM16.2,13h2.8v6h-2.8z"/></svg>
+        <span class="nav-tooltip">İstatistikler</span>
+    </button>
+    <button class="nav-btn" onclick="window.location.href='/web/history'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M13,3c-4.97,0 -9,4.03 -9,9L1,12l3.89,3.89 0.07,0.14L9,12L6,12c0,-3.87 3.13,-7 7,-7s7,3.13 7,7 -3.13,7 -7,7c-1.93,0 -3.68,-0.79 -4.94,-2.06l-1.42,1.42C8.27,19.99 10.51,21 13,21c4.97,0 9,-4.03 9,-9s-4.03,-9 -9,-9zM12,8v5l4.28,2.54 0.72,-1.21 -3.5,-2.08L13.5,8z"/></svg>
+        <span class="nav-tooltip">Geçmiş</span>
+    </button>
+    <button class="nav-btn" onclick="window.location.href='/web/profile'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12,12c2.21,0 4,-1.79 4,-4s-1.79,-4 -4,-4 -4,1.79 -4,4 1.79,4 4,4zM12,14c-2.67,0 -8,1.34 -8,4v2h16v-2c0,-2.66 -5.33,-4 -8,-4z"/></svg>
+        <span class="nav-tooltip">Profil</span>
+    </button>
+</nav>
+{% endblock %}
+{% block scripts %}
+<script>
+if (requireAuth()) { loadReview(); }
+</script>
+{% endblock %}

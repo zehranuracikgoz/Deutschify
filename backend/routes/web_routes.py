@@ -31,3 +31,18 @@ def profile():
 @web_bp.route('/history')
 def history():
     return render_template('history.html')
+
+
+@web_bp.route('/flashcards')
+def flashcards():
+    return render_template('flashcards.html')
+
+
+@web_bp.route('/review')
+def review():
+    return render_template('review.html')
+
+
+@web_bp.route('/artikel')
+def artikel():
+    return render_template('artikel.html')

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="fc-page">
+    <div class="fc-header">
+        <button class="fc-back" id="art-back" onclick="exitArtikel()" aria-label="Geri">
+            <svg viewBox="0 0 24 24"><path d="M20,11H7.83l5.59,-5.59L12,4l-8,8 8,8 1.41,-1.41L7.83,13H20v-2z"/></svg>
+        </button>
+        <div class="fc-title">Artikeller</div>
+        <div class="fc-counter" id="art-counter">SORU 1</div>
+    </div>
+
+    <div class="fc-progress-track">
+        <div class="fc-progress-fill" id="art-progress-fill"></div>
+    </div>
+
+    <div class="art-area">
+        <div class="art-card" id="art-card">
+            <div class="art-feedback-badge" id="art-feedback-badge"></div>
+            <div class="art-word-de" id="art-word-de">…</div>
+            <div class="art-word-tr" id="art-word-tr"></div>
+        </div>
+        <div class="art-drag-hint">Doğru artikeli kelimeye sürükle</div>
+
+        <div class="art-drop-zone">
+            <div class="art-drop" data-article-id="1">DER</div>
+            <div class="art-drop" data-article-id="2">DIE</div>
+            <div class="art-drop" data-article-id="3">DAS</div>
+        </div>
+    </div>
+</div>
+
+<div class="fc-summary-overlay" id="art-summary-overlay">
+    <div class="fc-summary-card">
+        <svg class="complete-icon fc-summary-icon" viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12s4.47,10 10,10 10,-4.47 10,-10S17.53,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8z"/></svg>
+        <div class="fc-summary-title">Oturum Tamamlandı</div>
+        <div class="fc-summary-stats">
+            <div class="fc-summary-stat">
+                <div class="fc-summary-num correct" id="art-summary-correct">0</div>
+                <div class="fc-summary-lbl">Doğru</div>
+            </div>
+            <div class="fc-summary-stat">
+                <div class="fc-summary-num wrong" id="art-summary-wrong">0</div>
+                <div class="fc-summary-lbl">Yanlış</div>
+            </div>
+        </div>
+        <button class="btn-primary" onclick="window.location.href='/web/'">Ana Sayfaya Dön</button>
+    </div>
+</div>
+
+<nav class="bot-nav">
+    <button class="nav-btn" onclick="window.location.href='/web/'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10,20v-6h4v6h5v-8h3L12,3 2,12h3v8z"/></svg>
+        <span class="nav-tooltip">Ana Sayfa</span>
+    </button>
+    <button class="nav-btn" onclick="window.location.href='/web/dashboard'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M5,9.2h3V19H5zM10.6,5h2.8v14h-2.8zM16.2,13h2.8v6h-2.8z"/></svg>
+        <span class="nav-tooltip">İstatistikler</span>
+    </button>
+    <button class="nav-btn" onclick="window.location.href='/web/history'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M13,3c-4.97,0 -9,4.03 -9,9L1,12l3.89,3.89 0.07,0.14L9,12L6,12c0,-3.87 3.13,-7 7,-7s7,3.13 7,7 -3.13,7 -7,7c-1.93,0 -3.68,-0.79 -4.94,-2.06l-1.42,1.42C8.27,19.99 10.51,21 13,21c4.97,0 9,-4.03 9,-9s-4.03,-9 -9,-9zM12,8v5l4.28,2.54 0.72,-1.21 -3.5,-2.08L13.5,8z"/></svg>
+        <span class="nav-tooltip">Geçmiş</span>
+    </button>
+    <button class="nav-btn" onclick="window.location.href='/web/profile'">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12,12c2.21,0 4,-1.79 4,-4s-1.79,-4 -4,-4 -4,1.79 -4,4 1.79,4 4,4zM12,14c-2.67,0 -8,1.34 -8,4v2h16v-2c0,-2.66 -5.33,-4 -8,-4z"/></svg>
+        <span class="nav-tooltip">Profil</span>
+    </button>
+</nav>
+{% endblock %}
+{% block scripts %}
+<script>
+if (requireAuth()) { loadArtikel(); }
+</script>
+{% endblock %}
