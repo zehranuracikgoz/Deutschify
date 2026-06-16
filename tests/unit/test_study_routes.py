@@ -190,3 +190,52 @@ def test_end_session_returns_200(seeded_client):
     session_id = start.get_json()['session_id']
     response = client.put(f'/study/session/{session_id}/end')
     assert response.status_code == 200
+
+
+# token olmadan /study/stats = 401
+def test_stats_requires_auth(seeded_client):
+    client, user_id, word_id = seeded_client
+    response = client.get('/study/stats')
+    assert response.status_code == 401
+
+
+# bitmiş oturumun süresi weekly_minutes'a dakika olarak yansıması için
+def test_stats_returns_weekly_minutes(seeded_client):
+    client, user_id, word_id = seeded_client
+    login_res = client.post('/auth/login', json={'email': 'study@test.com', 'password': 'Test123!'})
+    token = login_res.get_json()['access_token']
+
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            """INSERT INTO study_sessions (user_id, session_start, session_end, correct_answers, wrong_answers)
+               VALUES (%s, NOW() - INTERVAL '30 minutes', NOW(), 0, 0)""",
+            (user_id,)
+        )
+
+    response = client.get('/study/stats', headers={'Authorization': f'Bearer {token}'})
+    assert response.status_code == 200
+    data = response.get_json()
+    assert 'weekly_minutes' in data
+    assert len(data['weekly_minutes']) == 7
+    assert data['weekly_minutes'][-1] == 30
+
+
+# session_end NULL olan (bitmemiş) oturumlar dakika hesabına dahil edilmemesin
+def test_stats_ignores_unfinished_sessions_in_minutes(seeded_client):
+    client, user_id, word_id = seeded_client
+    login_res = client.post('/auth/login', json={'email': 'study@test.com', 'password': 'Test123!'})
+    token = login_res.get_json()['access_token']
+
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            """INSERT INTO study_sessions (user_id, session_start, session_end, correct_answers, wrong_answers)
+               VALUES (%s, NOW(), NULL, 0, 0)""",
+            (user_id,)
+        )
+
+    response = client.get('/study/stats', headers={'Authorization': f'Bearer {token}'})
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data['weekly_minutes'][-1] == 0

@@ -332,56 +332,77 @@ def get_review_words():
 @study_bp.route('/stats', methods=['GET'])
 @jwt_required()
 def get_stats():
-    user_id = int(get_jwt_identity())
-    with get_db() as conn:
-        cursor = conn.cursor()
+    try:
+        user_id = int(get_jwt_identity())
+        with get_db() as conn:
+            cursor = conn.cursor()
 
-        # Toplam XP ve streak
-        cursor.execute("""
-            SELECT total_xp, daily_streak
-            FROM users
-            WHERE id = %s
-        """, (user_id,))
-        user = cursor.fetchone()
+            # Toplam XP ve streak
+            cursor.execute("""
+                SELECT total_xp, daily_streak
+                FROM users
+                WHERE id = %s
+            """, (user_id,))
+            user = cursor.fetchone()
 
-        # Son 7 günlük oturum sayısı
-        cursor.execute("""
-            SELECT DATE(session_start) as day, COUNT(*) as count
-            FROM study_sessions
-            WHERE user_id = %s
-              AND session_start >= NOW() - INTERVAL '7 days'
-            GROUP BY DATE(session_start)
-            ORDER BY day ASC
-        """, (user_id,))
-        sessions = cursor.fetchall()
+            # Son 7 günlük oturum sayısı
+            cursor.execute("""
+                SELECT DATE(session_start) as day, COUNT(*) as count
+                FROM study_sessions
+                WHERE user_id = %s
+                  AND session_start >= NOW() - INTERVAL '7 days'
+                GROUP BY DATE(session_start)
+                ORDER BY day ASC
+            """, (user_id,))
+            sessions = cursor.fetchall()
 
-        # Toplam doğru ve yanlış
-        cursor.execute("""
-            SELECT
-                COALESCE(SUM(correct_answers), 0) as total_correct,
-                COALESCE(SUM(wrong_answers), 0) as total_wrong
-            FROM study_sessions
-            WHERE user_id = %s
-        """, (user_id,))
-        totals = cursor.fetchone()
+            # Son 7 günlük çalışma süresi (dakika) — sadece bitmiş oturumlar
+            cursor.execute("""
+                SELECT DATE(session_start) as day,
+                       COALESCE(SUM(EXTRACT(EPOCH FROM (session_end - session_start)) / 60), 0) as minutes
+                FROM study_sessions
+                WHERE user_id = %s
+                  AND session_start >= NOW() - INTERVAL '7 days'
+                  AND session_end IS NOT NULL
+                GROUP BY DATE(session_start)
+                ORDER BY day ASC
+            """, (user_id,))
+            durations = cursor.fetchall()
 
-    # Son 7 günü doldur (veri olmayan günler 0)
-    from datetime import datetime, timedelta
-    today = datetime.utcnow().date()
-    days = [(today - timedelta(days=6-i)) for i in range(7)]
-    session_map = {row[0]: row[1] for row in sessions}
-    weekly = [session_map.get(day, 0) for day in days]
+            # Toplam doğru ve yanlış
+            cursor.execute("""
+                SELECT
+                    COALESCE(SUM(correct_answers), 0) as total_correct,
+                    COALESCE(SUM(wrong_answers), 0) as total_wrong
+                FROM study_sessions
+                WHERE user_id = %s
+            """, (user_id,))
+            totals = cursor.fetchone()
 
-    total_correct = totals[0] or 0
-    total_wrong = totals[1] or 0
-    total_answers = total_correct + total_wrong
-    success_rate = round((total_correct / total_answers) * 100) if total_answers > 0 else 0
+        # Son 7 günü doldur (veri olmayan günler 0)
+        from datetime import datetime, timedelta
+        today = datetime.utcnow().date()
+        days = [(today - timedelta(days=6-i)) for i in range(7)]
+        session_map = {row[0]: row[1] for row in sessions}
+        weekly = [session_map.get(day, 0) for day in days]
 
-    return jsonify({
-        'total_xp':      user[0] if user else 0,
-        'daily_streak':  user[1] if user else 0,
-        'weekly_sessions': weekly,
-        'total_correct': total_correct,
-        'total_wrong':   total_wrong,
-        'success_rate':  success_rate
-    }), 200
+        duration_map = {row[0]: row[1] for row in durations}
+        weekly_minutes = [round(float(duration_map.get(day, 0))) for day in days]
+
+        total_correct = totals[0] or 0
+        total_wrong = totals[1] or 0
+        total_answers = total_correct + total_wrong
+        success_rate = round((total_correct / total_answers) * 100) if total_answers > 0 else 0
+
+        return jsonify({
+            'total_xp':        user[0] if user else 0,
+            'daily_streak':    user[1] if user else 0,
+            'weekly_sessions': weekly,
+            'weekly_minutes':  weekly_minutes,
+            'total_correct':   total_correct,
+            'total_wrong':     total_wrong,
+            'success_rate':    success_rate
+        }), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
