@@ -8,7 +8,7 @@ from .routes import register_blueprints
 
 def create_app(test_config=None):
     app = Flask(__name__,
-                static_folder='static',
+                static_folder=os.path.join(os.path.dirname(__file__), 'static'),
                 static_url_path='/static',
                 instance_relative_config=True)
     import logging
