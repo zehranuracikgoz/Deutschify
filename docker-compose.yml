@@ -3,10 +3,8 @@ services:
     build: .
     ports:
       - "5000:10000"
-    environment:
-      - SECRET_KEY=dev-secret
-      - JWT_SECRET_KEY=dev-jwt-secret
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/deutschify
+    env_file:
+      - .env
     depends_on:
       db:
         condition: service_healthy

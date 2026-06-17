@@ -14,9 +14,15 @@ def create_app(test_config=None):
     import logging
     logging.warning(f"Static folder: {app.static_folder}")
     CORS(app)
+
+    secret_key = os.environ.get('SECRET_KEY')
+    jwt_secret = os.environ.get('JWT_SECRET_KEY')
+    if not secret_key or not jwt_secret:
+        raise RuntimeError('SECRET_KEY ve JWT_SECRET_KEY ortam değişkenleri zorunludur')
+
     app.config.from_mapping(
-        SECRET_KEY=os.environ.get('SECRET_KEY', 'dev'),
-        JWT_SECRET_KEY=os.environ.get('JWT_SECRET_KEY', 'dev-secret'),
+        SECRET_KEY=secret_key,
+        JWT_SECRET_KEY=jwt_secret,
     )
 
     if test_config:
