@@ -139,8 +139,11 @@ def submit_answer():
             if session_id:
                 if quality >= 3:
                     cursor.execute(
-                        'UPDATE study_sessions SET correct_answers = correct_answers + 1 WHERE id = %s',
-                        (session_id,)
+                        '''UPDATE study_sessions
+                           SET correct_answers = correct_answers + 1,
+                               xp_earned = COALESCE(xp_earned, 0) + %s
+                           WHERE id = %s''',
+                        (xp_earned, session_id)
                     )
                 else:
                     cursor.execute(
@@ -170,13 +173,14 @@ def start_session():
         if user_id is None:
             return jsonify({'error': 'user_id zorunlu'}), 400
 
+        module_type   = data.get('module_type')
         session_start = datetime.now().isoformat()
 
         with get_db() as conn:
             cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
             cursor.execute(
-                'INSERT INTO study_sessions (user_id, session_start) VALUES (%s, %s) RETURNING id',
-                (user_id, session_start)
+                'INSERT INTO study_sessions (user_id, module_type, session_start) VALUES (%s, %s, %s) RETURNING id',
+                (user_id, module_type, session_start)
             )
             session_id = cursor.fetchone()['id']
 
@@ -277,7 +281,7 @@ def get_history():
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
-            SELECT session_start, correct_answers, wrong_answers
+            SELECT id, module_type,session_start, xp_earned, correct_answers, wrong_answers
             FROM study_sessions
             WHERE user_id = %s
             ORDER BY session_start DESC
@@ -286,9 +290,13 @@ def get_history():
         rows = cursor.fetchall()
     result = [
         {
-            "date": str(row[0])[:10],
-            "correct": row[1] or 0,
-            "wrong": row[2] or 0
+            "session_id": row[0],
+            "module_type": row[1] or 'flashcard',
+            "date": str(row[2])[:10],
+            "time": str(row[2])[11:16] if row[2] else '',
+            "xp_earned": row[3] or 0,
+            "correct": row[4] or 0,
+            "wrong": row[5] or 0
         }
         for row in rows
     ]
@@ -309,7 +317,7 @@ def get_review_words():
             JOIN words w ON up.word_id = w.id
             WHERE up.user_id = %s AND up.ease_factor < 2.5
             ORDER BY up.ease_factor ASC
-            LIMIT 20
+            LIMIT 5
         """, (user_id,))
         rows = cursor.fetchall()
 

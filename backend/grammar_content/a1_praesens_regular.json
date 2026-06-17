@@ -1,0 +1,59 @@
+{
+  "topic": {
+    "title": "Düzenli Fiillerin Şimdiki/Geniş Zaman Çekimi",
+    "slug": "praesens-regelmaessige-verben",
+    "level": "A1",
+    "display_order": 2,
+    "explanation": "<h2>Düzenli Fiillerin Çekimi (Präsens)</h2><p>Almancada düzenli (zayıf) fiilleri çekmek aslında oldukça basit. Tek yapman gereken fiilin sonundaki <em>-en</em> mastar ekini atıp kökünü bulmak ve özneye uygun şu ekleri getirmek:</p><table class=\"grammar-table\"><thead><tr><th>Özne</th><th>Ek</th><th>Örnek (lernen)</th></tr></thead><tbody><tr><td>ich</td><td>-e</td><td>lerne</td></tr><tr><td>du</td><td>-st</td><td>lernst</td></tr><tr><td>er / sie / es</td><td>-t</td><td>lernt</td></tr><tr><td>wir</td><td>-en</td><td>lernen</td></tr><tr><td>ihr</td><td>-t</td><td>lernt</td></tr><tr><td>sie / Sie</td><td>-en</td><td>lernen</td></tr></tbody></table><p><strong>Minik Bir İpucu:</strong> Eğer fiilin kökü <em>-t</em> veya <em>-d</em> ile bitiyorsa (mesela <em>arbeiten</em> gibi), telaffuzu kolaylaştırmak için 'du' ve 'er/sie/es' çekimlerinde araya bir <strong>-e-</strong> harfi ekliyoruz: <em>du arbeitest</em>, <em>er arbeitet</em>.</p><p><strong>Örnekler:</strong><br>Ich <em>lerne</em> Deutsch. → Almanca öğreniyorum.<br>Du <em>spielst</em> Fußball. → Futbol oynuyorsun.<br>Sie <em>wohnt</em> in Hamburg. → O, Hamburg'da yaşıyor.</p>"
+  },
+  "exercises": [
+    {
+      "question": "Ich ___ Deutsch. (lernen - öğrenmek)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "lerne",
+      "explanation": "lernen fiilinin kökü 'lern-'dir. 'ich' için -e ekini getiriyoruz: lerne.",
+      "display_order": 1
+    },
+    {
+      "question": "Du ___ Fußball. (spielen - oynamak)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "spielst",
+      "explanation": "Fiil kökü 'spiel-'. 'du' için -st ekini eklediğimizde 'spielst' olur.",
+      "display_order": 2
+    },
+    {
+      "question": "Er ___ in München. (wohnen - yaşamak)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "wohnt",
+      "explanation": "Kök 'wohn-'. 'er' (o) öznesi için -t ekini getiriyoruz: wohnt.",
+      "display_order": 3
+    },
+    {
+      "question": "Wir ___ täglich. (arbeiten - çalışmak)",
+      "type": "multiple_choice",
+      "options": ["arbeiten", "arbeitest", "arbeitet", "arbeite"],
+      "correct_answer": "arbeiten",
+      "explanation": "'wir' (biz) için çekim genellikle mastar haliyle aynıdır, yani -en ekini koruruz.",
+      "display_order": 4
+    },
+    {
+      "question": "Ihr ___ oft Musik. (hören - dinlemek)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "hört",
+      "explanation": "Kök 'hör-'. 'ihr' (sizler) için -t ekini ekliyoruz: hört.",
+      "display_order": 5
+    },
+    {
+      "question": "\"machen\" fiilinin \"du\" çekimi hangisidir?",
+      "type": "multiple_choice",
+      "options": ["macht", "mache", "machst", "machen"],
+      "correct_answer": "machst",
+      "explanation": "Fiil kökü 'mach-'. 'du' öznesiyle -st takısını birleştirince 'machst' olur.",
+      "display_order": 6
+    }
+  ]
+}

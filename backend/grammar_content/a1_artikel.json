@@ -1,0 +1,59 @@
+{
+  "topic": {
+    "title": "Almancada Artikel: der, die, das",
+    "slug": "artikel-der-die-das",
+    "level": "A1",
+    "display_order": 3,
+    "explanation": "<h2>Almancada Artikel (Tanımlıklar)</h2><p>Almancada her ismin bir <strong>cinsi</strong> vardır: <em>eril (maskulin)</em>, <em>dişil (feminin)</em> veya <em>nötr (neutral)</em>. Kelimenin önündeki tanımlık (artikel) bu cinse göre belirlenir.</p><table class=\"grammar-table\"><thead><tr><th>Cins</th><th>Belirli Artikel</th><th>Belirsiz Artikel</th><th>Örnek</th></tr></thead><tbody><tr><td>Eril (maskulin)</td><td>der</td><td>ein</td><td>der Mann / ein Mann</td></tr><tr><td>Dişil (feminin)</td><td>die</td><td>eine</td><td>die Frau / eine Frau</td></tr><tr><td>Nötr (neutral)</td><td>das</td><td>ein</td><td>das Kind / ein Kind</td></tr><tr><td>Çoğul</td><td>die</td><td>—</td><td>die Männer</td></tr></tbody></table><p><strong>Aklında Bulunsun:</strong></p><ul><li><em>-ung, -heit, -keit, -tion</em> ile biten kelimeler genellikle <strong>die</strong> takısını alır.</li><li><em>-chen, -lein</em> ile biten küçük/sevimli yapıdaki kelimeler genelde <strong>das</strong> olur.</li><li>Erkek kişileri ifade eden kelimeler genellikle <strong>der</strong> alır.</li></ul><p>Maalesef her şey için bir kural yok; bu yüzden en iyi yöntem kelimeleri artikelleriyle (paket halinde) ezberlemektir.</p>"
+  },
+  "exercises": [
+    {
+      "question": "\"Buch\" (kitap) için doğru belirli artikel hangisidir?",
+      "type": "multiple_choice",
+      "options": ["der", "die", "das", "ein"],
+      "correct_answer": "das",
+      "explanation": "Buch nötr bir kelimedir: das Buch.",
+      "display_order": 1
+    },
+    {
+      "question": "\"Frau\" (kadın) için doğru belirli artikel hangisidir?",
+      "type": "multiple_choice",
+      "options": ["der", "die", "das", "eine"],
+      "correct_answer": "die",
+      "explanation": "Frau dişil bir kelimedir: die Frau.",
+      "display_order": 2
+    },
+    {
+      "question": "\"Mann\" (erkek) için doğru belirli artikel hangisidir?",
+      "type": "multiple_choice",
+      "options": ["der", "die", "das", "ein"],
+      "correct_answer": "der",
+      "explanation": "Mann eril bir kelimedir: der Mann.",
+      "display_order": 3
+    },
+    {
+      "question": "___ Kind spielt im Garten. (Çocuk bahçede oynuyor.)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "Das",
+      "explanation": "Kind nötr bir isimdir, bu yüzden belirli artikel olarak \"das\" kullanmalıyız.",
+      "display_order": 4
+    },
+    {
+      "question": "\"Auto\" (araba) için doğru belirsiz artikel kullanımı hangisidir?",
+      "type": "multiple_choice",
+      "options": ["ein Auto", "eine Auto", "der Auto", "das Auto"],
+      "correct_answer": "ein Auto",
+      "explanation": "Auto nötr bir isimdir. Nötr isimlerin belirsiz artikeli \"ein\" olur.",
+      "display_order": 5
+    },
+    {
+      "question": "___ Schule ist groß. (Okul büyük.)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "Die",
+      "explanation": "Schule dişil bir isimdir (ipucu: -e ile bitiyor). Belirli artikel olarak \"die\" gelir.",
+      "display_order": 6
+    }
+  ]
+}

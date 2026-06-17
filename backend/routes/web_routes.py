@@ -46,3 +46,13 @@ def review():
 @web_bp.route('/artikel')
 def artikel():
     return render_template('artikel.html')
+
+
+@web_bp.route ('/grammar')
+def grammar():
+    return render_template('grammar.html')
+
+
+@web_bp.route('/grammar/<slug>')
+def grammar_detail(slug):
+    return render_template('grammar_detail.html')

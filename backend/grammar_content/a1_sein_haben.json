@@ -1,0 +1,67 @@
+{
+  "topic": {
+    "title": "Sein ve Haben: En Temel Fiiller",
+    "slug": "praesens-sein-haben",
+    "level": "A1",
+    "display_order": 1,
+    "explanation": "<h2>Olmak (Sein) ve Sahip Olmak (Haben)</h2><p>Almancaya girişin iki anahtarı bunlardır: <strong>sein</strong> (olmak) ve <strong>haben</strong> (sahip olmak). Bu fiiller biraz 'asi' davranırlar; yani düzenli fiil kurallarına uymazlar, bu yüzden onları olduğu gibi, bir kalıp olarak hafızana alman en sağlıklısı.</p><table class=\"grammar-table\"><thead><tr><th>Özne</th><th>sein (olmak)</th><th>haben (sahip olmak)</th></tr></thead><tbody><tr><td>ich (ben)</td><td>bin</td><td>habe</td></tr><tr><td>du (sen)</td><td>bist</td><td>hast</td></tr><tr><td>er / sie / es (o)</td><td>ist</td><td>hat</td></tr><tr><td>wir (biz)</td><td>sind</td><td>haben</td></tr><tr><td>ihr (siz)</td><td>seid</td><td>habt</td></tr><tr><td>sie / Sie (onlar / Siz)</td><td>sind</td><td>haben</td></tr></tbody></table><p><strong>Minik Örnekler:</strong><br>Ich <em>bin</em> müde. → Yorgunum.<br>Du <em>hast</em> einen Hund. → Bir köpeğin var.<br>Er <em>ist</em> Lehrer. → O, bir öğretmen.<br>Wir <em>haben</em> Zeit. → Vaktimiz var.</p>"
+  },
+  "exercises": [
+    {
+      "question": "Ich ___ müde. (Ben yorgunum.)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "bin",
+      "explanation": "'ich' öznesiyle 'sein' fiili her zaman 'bin' halini alır.",
+      "display_order": 1
+    },
+    {
+      "question": "Du ___ einen Bruder. (Senin bir erkek kardeşin var.)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "hast",
+      "explanation": "'du' öznesiyle 'haben' fiili 'hast' olarak çekilir.",
+      "display_order": 2
+    },
+    {
+      "question": "Er ___ Arzt. (O doktor.)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "ist",
+      "explanation": "Tekil üçüncü şahıslar için (er/sie/es) 'sein' fiili 'ist' olur.",
+      "display_order": 3
+    },
+    {
+      "question": "Wir ___ Hunger. (Bizim açlığımız var.)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "haben",
+      "explanation": "'wir' (biz) öznesinde 'haben' fiili tıpkı mastar hali gibi kalır: haben.",
+      "display_order": 4
+    },
+    {
+      "question": "Ihr ___ in Berlin. (Siz Berlin'desiniz.)",
+      "type": "multiple_choice",
+      "options": ["sind", "seid", "habt", "bist"],
+      "correct_answer": "seid",
+      "explanation": "'ihr' (sizler) için 'sein' fiilinin çekimi 'seid'dir.",
+      "display_order": 5
+    },
+    {
+      "question": "Sie (onlar) ___ glücklich. (Onlar mutlu.)",
+      "type": "multiple_choice",
+      "options": ["bin", "bist", "ist", "sind"],
+      "correct_answer": "sind",
+      "explanation": "Çoğul olan 'sie' (onlar) öznesiyle 'sind' kullanılır.",
+      "display_order": 6
+    },
+    {
+      "question": "Maria ___ eine Katze. (Maria'nın bir kedisi var.)",
+      "type": "multiple_choice",
+      "options": ["hat", "hast", "haben", "habt"],
+      "correct_answer": "hat",
+      "explanation": "Maria tekil bir şahıstır ('o' yani 'sie'), bu yüzden 'haben' fiili 'hat' olur.",
+      "display_order": 7
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "topic": {
+    "title": "Geçmiş Zaman: Perfekt",
+    "slug": "vergangenheit-perfekt",
+    "level": "A2",
+    "display_order": 4,
+    "explanation": "<h2>Perfekt: Günlük Geçmiş Zaman</h2><p>Almancada geçmişte kalan olayları anlatırken günlük dilde en çok <strong>Perfekt</strong>'i kullanırız. Kurulumu aslında oldukça keyifli bir bulmaca gibidir:</p><p style=\"text-align:center\"><strong>Yardımcı fiil (haben / sein) + Partizip II (Fiilin 3. hali)</strong></p><table class=\"grammar-table\"><thead><tr><th>Fiil Türü</th><th>Partizip II Mantığı</th><th>Örnek</th></tr></thead><tbody><tr><td>Düzenli</td><td>ge- + fiil kökü + -t</td><td>machen → gemacht</td></tr><tr><td>Düzensiz</td><td>ge- + (değişen kök) + -en</td><td>fahren → gefahren</td></tr></tbody></table><p><strong>Peki, yardımcı fiil olarak hangisini seçeceğiz?</strong></p><ul><li><strong>sein</strong>: Bir yerden bir yere gitmek (hareket) veya hal değiştirmek (örn. uyumak -> uyanmak) gibi durumlarda tercih edilir (gehen, fahren, kommen, aufstehen...).</li><li><strong>haben</strong>: Geriye kalan hemen hemen tüm fiiller için 'haben' kullanırız.</li></ul><p><strong>Örnekler:</strong><br>Ich habe Deutsch <em>gelernt</em>. (Almanca öğrendim.)<br>Er ist nach Berlin <em>gefahren</em>. (Berlin'e gitti.)<br>Wir haben Pizza <em>gegessen</em>. (Pizza yedik.)</p>"
+  },
+  "exercises": [
+    {
+      "question": "Ich habe das Buch ___. (lesen - okumak)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "gelesen",
+      "explanation": "lesen düzensiz bir fiildir. 3. hali 'gelesen' olur ve 'haben' ile kullanılır.",
+      "display_order": 1
+    },
+    {
+      "question": "Er ist nach Berlin ___. (fahren - gitmek/sürmek)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "gefahren",
+      "explanation": "Yer değiştirme olduğu için 'sein' gelir ve 'fahren' fiilinin 3. hali 'gefahren' olur.",
+      "display_order": 2
+    },
+    {
+      "question": "Wir haben Deutsch ___. (lernen - öğrenmek)",
+      "type": "multiple_choice",
+      "options": ["gelernt", "gelernten", "lernte", "gelernen"],
+      "correct_answer": "gelernt",
+      "explanation": "Düzenli fiillerin kuralı: 'ge-' takısını başa, '-t' takısını sona ekliyoruz.",
+      "display_order": 3
+    },
+    {
+      "question": "Sie ist nach Hause ___. (gehen - gitmek)",
+      "type": "multiple_choice",
+      "options": ["gegangen", "gegeht", "gegehen", "geht"],
+      "correct_answer": "gegangen",
+      "explanation": "Hareket bildiren bir fiil olduğu için 'sein' ile kullanılır ve 3. hali 'gegangen'dir.",
+      "display_order": 4
+    },
+    {
+      "question": "\"Ich ___ gestern ins Kino gegangen.\" cümlesinde boşluğa ne gelir?",
+      "type": "multiple_choice",
+      "options": ["habe", "bin", "hat", "ist"],
+      "correct_answer": "bin",
+      "explanation": "'gehen' harekettir, 'sein' kullanmalıyız. 'ich' öznesiyle 'sein' çekimi 'bin' olur.",
+      "display_order": 5
+    },
+    {
+      "question": "Du hast das Brot ___. (essen - yemek)",
+      "type": "fill_blank",
+      "options": null,
+      "correct_answer": "gegessen",
+      "explanation": "Essen düzensizdir; 3. hali 'gegessen' olur ve 'haben' ile kullanılır.",
+      "display_order": 6
+    }
+  ]
+}

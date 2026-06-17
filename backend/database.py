@@ -138,3 +138,40 @@ def init_db():
                 FOREIGN KEY (word_id) REFERENCES words(id)
             )
         ''')
+
+        cursor.execute('''
+            ALTER TABLE study_sessions
+                ADD COLUMN IF NOT EXISTS module_type VARCHAR,
+                ADD COLUMN IF NOT EXISTS xp_earned   INTEGER DEFAULT 0
+        ''')
+
+        # 10. grammar_topics tablosu
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS grammar_topics (
+                id            SERIAL PRIMARY KEY,
+                title         VARCHAR NOT NULL,
+                slug          VARCHAR NOT NULL UNIQUE,
+                level         VARCHAR NOT NULL,
+                explanation   TEXT,
+                display_order INTEGER DEFAULT 0
+            )
+        ''')
+
+        # 11. grammar_exercises tablosu
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS grammar_exercises (
+                id             SERIAL PRIMARY KEY,
+                topic_id       INTEGER NOT NULL REFERENCES grammar_topics(id) ON DELETE CASCADE,
+                question       TEXT NOT NULL,
+                exercise_type  VARCHAR NOT NULL,
+                options        JSONB,
+                correct_answer TEXT NOT NULL,
+                explanation    TEXT,
+                display_order  INTEGER DEFAULT 0
+            )
+        ''')
+
+        cursor.execute('''
+            CREATE INDEX IF NOT EXISTS idx_grammar_exercises_topic_id
+            ON grammar_exercises(topic_id)
+        ''')
