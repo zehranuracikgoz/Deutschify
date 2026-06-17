@@ -145,6 +145,19 @@ def init_db():
                 ADD COLUMN IF NOT EXISTS xp_earned   INTEGER DEFAULT 0
         ''')
 
+        cursor.execute('''
+            UPDATE study_sessions
+            SET correct_answers = 0 WHERE correct_answers IS NULL
+        ''')
+        cursor.execute('''
+            UPDATE study_sessions
+            SET wrong_answers = 0 WHERE wrong_answers IS NULL
+        ''')
+        cursor.execute('''
+            ALTER TABLE study_sessions
+                ADD COLUMN IF NOT EXISTS max_streak INTEGER DEFAULT  0
+        ''')
+
         # 10. grammar_topics tablosu
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS grammar_topics (

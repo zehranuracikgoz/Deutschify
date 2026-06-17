@@ -1,4 +1,6 @@
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
+
+TZ_TR = timezone(timedelta(hours=3))
 from flask import Blueprint, request, jsonify
 import psycopg2.extras
 from backend.database import get_db
@@ -140,14 +142,16 @@ def submit_answer():
                 if quality >= 3:
                     cursor.execute(
                         '''UPDATE study_sessions
-                           SET correct_answers = correct_answers + 1,
-                               xp_earned = COALESCE(xp_earned, 0) + %s
+                           SET correct_answers = COALESCE(correct_answers, 0) + 1,
+                               xp_earned       = COALESCE(xp_earned, 0) + %s
                            WHERE id = %s''',
                         (xp_earned, session_id)
                     )
                 else:
                     cursor.execute(
-                        'UPDATE study_sessions SET wrong_answers = wrong_answers + 1 WHERE id = %s',
+                        '''UPDATE study_sessions
+                           SET wrong_answers = COALESCE(wrong_answers, 0) + 1
+                           WHERE id = %s''',
                         (session_id,)
                     )
 
@@ -174,7 +178,7 @@ def start_session():
             return jsonify({'error': 'user_id zorunlu'}), 400
 
         module_type   = data.get('module_type')
-        session_start = datetime.now().isoformat()
+        session_start = datetime.now(timezone.utc).isoformat()
 
         with get_db() as conn:
             cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
@@ -193,7 +197,9 @@ def start_session():
 @study_bp.route('/session/<int:session_id>/end', methods=['PUT'])
 def end_session(session_id):
     try:
-        session_end = datetime.now().isoformat()
+        session_end = datetime.now(timezone.utc).isoformat()
+        data = request.get_json(silent=True) or {}
+        max_streak = data.get('max_streak')
 
         with get_db() as conn:
             cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
@@ -208,10 +214,16 @@ def end_session(session_id):
 
             user_id = existing['user_id']
 
-            cursor.execute(
-                'UPDATE study_sessions SET session_end = %s WHERE id = %s',
-                (session_end, session_id)
-            )
+            if max_streak is not None:
+                cursor.execute(
+                    'UPDATE study_sessions SET session_end = %s, max_streak = %s WHERE id = %s',
+                    (session_end, int(max_streak), session_id )
+                )
+            else:
+                cursor.execute(
+                    'UPDATE study_sessions SET session_end=%s WHERE id = %s',
+                    (session_end, session_id)
+                )
 
             # Streak güncelle: bugün (UTC) başka oturum var mı?
             cursor.execute(
@@ -281,22 +293,36 @@ def get_history():
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
-            SELECT id, module_type,session_start, xp_earned, correct_answers, wrong_answers
+            SELECT id, module_type, session_start, xp_earned, correct_answers, wrong_answers
             FROM study_sessions
             WHERE user_id = %s
+              AND session_start >= NOW() - INTERVAL '30 days'
             ORDER BY session_start DESC
-            LIMIT 20
+            LIMIT 100
         """, (user_id,))
         rows = cursor.fetchall()
+
+    def calc_rate(correct, wrong):
+        total = (correct or 0) + (wrong or 0)
+        return round((correct / total) *100) if total > 0 else None
+
+    def to_tr(dt):
+        if dt is None:
+            return None
+        if dt.tzinfo is None:
+            dt =dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(TZ_TR)
+
     result = [
         {
             "session_id": row[0],
             "module_type": row[1] or 'flashcard',
-            "date": str(row[2])[:10],
-            "time": str(row[2])[11:16] if row[2] else '',
+            "date": to_tr(row[2]).strftime('%Y-%m-%d') if row[2] else '',
+            "time": to_tr(row[2]).strftime('%H:%M') if row[2] else '',
             "xp_earned": row[3] or 0,
             "correct": row[4] or 0,
-            "wrong": row[5] or 0
+            "wrong": row[5] or 0,
+            "success_rate": calc_rate(row[4], row[5])
         }
         for row in rows
     ]
@@ -312,12 +338,13 @@ def get_review_words():
         cursor.execute("""
             SELECT w.id, w.german_word, w.turkish_meaning,
                    w.example_sentence_de, w.example_sentence_tr,
-                   up.ease_factor, up.repetition_count
+                   up.ease_factor, up.repetition_count, up.next_review_date
             FROM user_progress up
             JOIN words w ON up.word_id = w.id
-            WHERE up.user_id = %s AND up.ease_factor < 2.5
-            ORDER BY up.ease_factor ASC
-            LIMIT 5
+            WHERE up.user_id = %s
+              AND (up.ease_factor <2.5 OR up.next_review_date < CURRENT_DATE)
+            ORDER BY up.ease_factor ASC, up.next_review_date ASC
+            LIMIT 20
         """, (user_id,))
         rows = cursor.fetchall()
 
@@ -330,8 +357,9 @@ def get_review_words():
         'turkish_meaning': row[2],
         'example_sentence_de': row[3],
         'example_sentence_tr': row[4],
-        'ease_factor': float(row[5]),
-        'repetitions': row[6]
+        'ease_factor': round(float(row[5]), 2),
+        'repetitions':row[6],
+        'next_review_date':str(row[7]) if row[7] else None
     } for row in rows]
 
     return jsonify({'words': result}), 200
@@ -364,14 +392,19 @@ def get_stats():
             """, (user_id,))
             sessions = cursor.fetchall()
 
-            # Son 7 günlük çalışma süresi (dakika) — sadece bitmiş oturumlar
+            # Son 7 günlük çalışma süresi (dakika)
             cursor.execute("""
                 SELECT DATE(session_start) as day,
-                       COALESCE(SUM(EXTRACT(EPOCH FROM (session_end - session_start)) / 60), 0) as minutes
+                       COALESCE(SUM(
+                           CASE
+                               WHEN session_end IS NOT NULL THEN
+                                   LEAST(EXTRACT(EPOCH FROM (session_end - session_start)) / 60, 120)
+                               ELSE 5
+                           END
+                       ), 0) as minutes
                 FROM study_sessions
                 WHERE user_id = %s
                   AND session_start >= NOW() - INTERVAL '7 days'
-                  AND session_end IS NOT NULL
                 GROUP BY DATE(session_start)
                 ORDER BY day ASC
             """, (user_id,))
@@ -387,6 +420,19 @@ def get_stats():
             """, (user_id,))
             totals = cursor.fetchone()
 
+            # En uzun doğru serisi (artikel + grammar)
+            try:
+                cursor.execute("""
+                    SELECT COALESCE(MAX(max_streak), 0)
+                    FROM study_sessions
+                    WHERE user_id = %s AND module_type IN ('artikel', 'grammar')
+                """, (user_id,))
+                max_streak_row=cursor.fetchone()
+                max_streak =int(max_streak_row[0]) if max_streak_row else 0
+            except Exception:
+                conn.rollback()
+                max_streak = 0
+
         # Son 7 günü doldur (veri olmayan günler 0)
         from datetime import datetime, timedelta
         today = datetime.utcnow().date()
@@ -394,8 +440,8 @@ def get_stats():
         session_map = {row[0]: row[1] for row in sessions}
         weekly = [session_map.get(day, 0) for day in days]
 
-        duration_map = {row[0]: row[1] for row in durations}
-        weekly_minutes = [round(float(duration_map.get(day, 0))) for day in days]
+        duration_map = {row[0]: float(row[1] or 0) for row in durations}
+        weekly_minutes = [round(duration_map.get(day, 0)) for day in days]
 
         total_correct = totals[0] or 0
         total_wrong = totals[1] or 0
@@ -409,7 +455,8 @@ def get_stats():
             'weekly_minutes':  weekly_minutes,
             'total_correct':   total_correct,
             'total_wrong':     total_wrong,
-            'success_rate':    success_rate
+            'success_rate':    success_rate,
+            'max_streak':      max_streak
         }), 200
 
     except Exception as e:

@@ -65,13 +65,24 @@ def me():
             return jsonify({'error': 'Kullanıcı bulunamadı'}), 401
         columns = [desc[0] for desc in cursor.description]
         user_dict = dict(zip(columns, user))
+
+        cursor.execute("""
+            SELECT COUNT(*) as total_sessions,
+                   COALESCE(SUM(correct_answers), 0) as total_correct
+            FROM study_sessions
+            WHERE user_id = %s
+        """, (user_id,))
+        stats = cursor.fetchone()
+
     return jsonify({
-        'id':                 user_dict['id'],
-        'username':           user_dict['username'],
-        'email':              user_dict['email'],
-        'total_xp':           user_dict['total_xp'],
-        'daily_streak':       user_dict['daily_streak'],
+        'id': user_dict['id'],
+        'username': user_dict['username'],
+        'email':  user_dict['email'],
+        'total_xp': user_dict['total_xp'],
+        'daily_streak':user_dict['daily_streak'],
         'preferred_daily_goal': user_dict['preferred_daily_goal'],
-        'created_at':         str(user_dict['created_at']),
-        'level_name':         user_dict['level_name'],
+        'created_at':str(user_dict['created_at']),
+        'level_name': user_dict['level_name'],
+        'total_sessions': stats[0] if stats else 0,
+        'total_correct': stats[1] if stats else 0,
     }), 200
