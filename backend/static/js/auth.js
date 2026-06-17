@@ -2,7 +2,7 @@
 
 const API_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:5000'
-  : 'https://deutschify.onrender.com';
+  : window.location.origin;
 
 let _toastTimer;
 function toast(msg) {
