@@ -46,7 +46,7 @@ async function loadHome() {
             document.getElementById('h-chart-time').textContent = formatDuration(weeklyMinutes.reduce((a, b) => a + b, 0));
             document.getElementById('greet-xp').textContent     = (stats.total_xp     ?? 0) + ' XP';
             document.getElementById('greet-streak').textContent = (stats.daily_streak ?? 0) + ' gün';
-            document.getElementById('h-correct').textContent    = stats.total_correct ?? 0;
+            document.getElementById('h-correct').textContent = stats.max_streak ?? 0;
             document.getElementById('h-rate').textContent       = (stats.success_rate ?? 0) + '%';
         }
     } catch { /* haftalık grafik olmadan da sayfa kullanılabilir */ }
@@ -64,7 +64,7 @@ async function loadDashboard() {
 
         document.getElementById('d-xp').textContent      = (d.total_xp    ?? 0) + ' XP';
         document.getElementById('d-streak').textContent  = (d.daily_streak ?? 0) + ' gün';
-        document.getElementById('d-correct').textContent = d.total_correct  ?? 0;
+        document.getElementById('d-correct').textContent = d.max_streak  ?? 0;
         document.getElementById('d-rate').textContent    = (d.success_rate  ?? 0) + '%';
 
         const weeklyMinutes = d.weekly_minutes || new Array(7).fill(0);
@@ -110,56 +110,53 @@ async function loadHistory() {
             return;
         }
 
-        const moduleLabels = { flashcard: 'Flashcard', review: 'Tekrar', artikel: 'Artikel' };
+        const moduleLabels = { flashcard: 'Flashcard', review: 'Tekrar', artikel: 'Artikel', grammar: 'Dil Bilgisi' };
 
+        const groups = {};
         sessions.forEach(s => {
-            const card = document.createElement('div');
-            card.className = 'session-card';
+            if (!groups[s.date]) groups[s.date] = [];
+            groups[s.date].push(s);
+        });
 
-            const header = document.createElement('div');
-            header.className = 'session-header';
+        Object.keys(groups).sort((a, b) =>b.localeCompare(a)).forEach(date => {
+            const dayHeader = document.createElement('div');
+            dayHeader.className = 'history-day-header';
+            dayHeader.textContent = formatHistoryDate(date);
+            container.appendChild(dayHeader);
 
-            const badge = document.createElement('span');
-            badge.className = 'session-module-badge';
-            badge.textContent = moduleLabels[s.module_type] || s.module_type;
+            groups[date].forEach(s => {
+                const rate = s.success_rate;
+                const hasData = s.correct + s.wrong > 0;
+                const showRate = s.module_type !== 'flashcard';
+                const rateHtml = showRate && hasData
+                    ? `<div class="session-rate-bar"><div class="session-rate-fill" style="width:${rate ?? 0}%"></div></div>
+                       <div class="session-rate-label">${rate ?? 0}% başarı &mdash; ${s.correct} doğru, ${s.wrong} yanlış</div>`
+                    : '';
 
-            const meta = document.createElement('span');
-            meta.className = 'session-meta';
-            meta.textContent = `${s.date}  ${s.time}`;
-
-            header.appendChild(badge);
-            header.appendChild(meta);
-
-            const row = document.createElement('div');
-            row.className = 'session-row';
-
-            const correctEl = document.createElement('span');
-            correctEl.className = 'session-correct';
-            correctEl.textContent = `Doğru: ${s.correct}`;
-
-            const wrongEl = document.createElement('span');
-            wrongEl.className = 'session-wrong';
-            wrongEl.textContent = `Yanlış: ${s.wrong}`;
-
-            const xpEl = document.createElement('span');
-            xpEl.className = 'session-xp';
-            xpEl.textContent = `+${s.xp_earned} XP`;
-
-            row.appendChild(correctEl);
-            row.appendChild(wrongEl);
-            row.appendChild(xpEl);
-
-            const reviewBtn = document.createElement('button');
-            reviewBtn.className = 'session-review-btn';
-            reviewBtn.textContent = 'Gözden Geçir';
-            reviewBtn.onclick = () => window.location.href = '/web/review';
-
-            card.appendChild(header);
-            card.appendChild(row);
-            card.appendChild(reviewBtn);
-            container.appendChild(card);
+                const card = document.createElement('div');
+                card.className = 'session-card';
+                card.innerHTML = `
+                    <div class="session-header">
+                        <span class="session-module-badge ${s.module_type}">${moduleLabels[s.module_type] || s.module_type}</span>
+                        <span class="session-meta">${s.time}</span>
+                        <span class="session-xp">+${s.xp_earned} XP</span>
+                    </div>
+                    ${rateHtml}
+                `;
+                container.appendChild(card);
+            });
         });
     } catch { toast('Bağlantı hatası.'); }
+}
+
+function formatHistoryDate(dateStr) {
+    const today     = new Date().toISOString().slice(0, 10);
+    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    if (dateStr === today)     return 'Bugün';
+    if (dateStr === yesterday) return 'Dün';
+    const d = new Date(dateStr + 'T00:00:00');
+    const months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+    return `${d.getDate()} ${months[d.getMonth()]}`;
 }
 
 async function loadProfile() {
@@ -170,11 +167,15 @@ async function loadProfile() {
         if (!res.ok) { toast('Profil yüklenemedi.'); return; }
         const d   = await res.json();
 
-        document.getElementById('pr-name').textContent   = d.username     || '—';
-        document.getElementById('pr-email').textContent  = d.email        || '—';
-        document.getElementById('pr-level').textContent  = d.level        || 'A1';
+        document.getElementById('pr-name').textContent   = d.username    || '—';
+        document.getElementById('pr-email').textContent  = d.email       || '—';
+        document.getElementById('pr-level').textContent  = d.level_name  || 'A1';
         document.getElementById('pr-xp').textContent     = (d.total_xp    ?? 0) + ' XP';
         document.getElementById('pr-streak').textContent = (d.daily_streak ?? 0) + ' gün';
+        if (document.getElementById('pr-correct'))
+            document.getElementById('pr-correct').textContent = d.total_correct ?? 0;
+        if (document.getElementById('pr-sessions'))
+            document.getElementById('pr-sessions').textContent = d.total_sessions ?? 0;
     } catch { toast('Bağlantı hatası.'); }
 }
 
@@ -182,9 +183,11 @@ let fcQueue = [];
 let fcIndex = 0;
 let fcSessionId = null;
 let fcXpEarned = 0;
+let fcCorrectCount = 0;
+let fcWrongCount   = 0;
 
 async function loadFlashcards() {
-    fcXpEarned = 0;
+    fcXpEarned = 0; fcCorrectCount = 0; fcWrongCount = 0;
     document.getElementById('fc-summary-overlay').classList.remove('show');
     document.getElementById('fc-card-area').style.display ='flex';
     document.getElementById('fc-empty').style.display = 'none';
@@ -215,7 +218,7 @@ async function loadFlashcards() {
     }
 }
 async function loadReview() {
-    fcXpEarned = 0;
+    fcXpEarned = 0; fcCorrectCount = 0; fcWrongCount = 0;
     document.getElementById('fc-summary-overlay').classList.remove('show');
     document.getElementById('fc-card-area').style.display = 'flex';
     document.getElementById('fc-empty').style.display= 'none';
@@ -227,9 +230,11 @@ async function loadReview() {
         fcQueue  = (data.words || []).map(w => ({
             word_id: w.id,
             german_word: w.german_word,
-            turkish_meaning: w.turkish_meaning,
+            turkish_meaning:     w.turkish_meaning,
             example_sentence_de: w.example_sentence_de,
-            example_sentence_tr: w.example_sentence_tr
+            example_sentence_tr: w.example_sentence_tr,
+            ease_factor:         w.ease_factor,
+            repetitions:         w.repetitions
         }));
 
         if (fcQueue.length ===0) {
@@ -256,17 +261,32 @@ async function loadReview() {
 
 function showCard(index) {
     fcIndex = index;
-    const word =fcQueue[index];
+    const word = fcQueue[index];
 
-    document.getElementById('fc-word-de').textContent   = word.german_word || '—';
-    document.getElementById('fc-word-tr').textContent  = word.turkish_meaning || '';
+    document.getElementById('fc-word-de').textContent    = word.german_word || '—';
+    document.getElementById('fc-word-tr').textContent   = word.turkish_meaning || '';
     document.getElementById('fc-example-de').textContent = word.example_sentence_de || '';
     document.getElementById('fc-example-tr').textContent = word.example_sentence_tr || '';
     document.getElementById('fc-counter').textContent    = `KART ${index + 1}`;
-    document.getElementById('fc-progress-fill').style.width = `${Math.round((index / fcQueue.length) *100)}%`;
+    document.getElementById('fc-progress-fill').style.width = `${Math.round((index / fcQueue.length) * 100)}%`;
 
     document.getElementById('fc-card-container').classList.remove('flipped');
     document.getElementById('fc-difficulty').classList.remove('show');
+
+    const badge = document.getElementById('fc-difficulty-badge');
+    if (badge) {
+        if (word.ease_factor !== undefined && word.ease_factor !== null) {
+            const ef = word.ease_factor;
+            const [label, cls] = ef < 1.5 ? ['Çok Zor', 'very-hard']
+                               : ef < 2.0 ? ['Zor',     'hard']
+                               :            ['Orta',    'medium'];
+            badge.textContent = label;
+            badge.className   = `fc-difficulty-badge ${cls}`;
+        } else {
+            badge.textContent = '';
+            badge.className   = 'fc-difficulty-badge';
+        }
+    }
 }
 
 function flipCard() {
@@ -279,6 +299,8 @@ async function submitQuality(quality) {
     const word = fcQueue[fcIndex];
     const body = { user_id: getUserId(), word_id: word.word_id, quality };
     if (fcSessionId) body.session_id = fcSessionId;
+
+    if (quality >= 3) fcCorrectCount++; else fcWrongCount++;
 
     try {
         const res  = await fetch(API_URL +'/study/answer', {
@@ -304,27 +326,34 @@ async function submitQuality(quality) {
 }
 
 async function finishFlashcardSession() {
-    if (fcSessionId ) {
+    if (fcSessionId) {
         try { await fetch(`${API_URL}/study/session/${fcSessionId}/end`, { method: 'PUT' }); } catch {}
     }
     document.getElementById('fc-summary-cards').textContent = fcQueue.length;
     document.getElementById('fc-summary-xp').textContent    = fcXpEarned;
+
+    const cEl = document.getElementById('fc-summary-correct');
+    const wEl = document.getElementById('fc-summary-wrong');
+    if (cEl) cEl.textContent = fcCorrectCount;
+    if (wEl) wEl.textContent = fcWrongCount;
+
+    const total = fcCorrectCount + fcWrongCount;
+    const rateEl = document.getElementById('fc-summary-rate');
+    if (rateEl && total > 0) {
+        const rate = Math.round((fcCorrectCount / total) * 100);
+        document.getElementById('fc-summary-rate-fill').style.width  = rate + '%';
+        document.getElementById('fc-summary-rate-label').textContent = rate + '% başarı';
+        rateEl.style.display = 'block';
+    }
+
     document.getElementById('fc-summary-overlay').classList.add('show');
 }
 
-async function playPronunciation() {
+function playPronunciation() {
     const word = fcQueue[fcIndex];
     if (!word) return;
-
-    try {
-        const res =await fetch(`${API_URL}/tts/${encodeURIComponent(word.german_word)}`, {
-            headers: { 'Authorization': 'Bearer ' + getToken() }
-        });
-        if (!res.ok) { toast('Ses yüklenemedi.'); return; }
-        const blob  = await res.blob();
-        const audio = new Audio(URL.createObjectURL(blob));
-        audio.play().catch(() => toast('Ses oynatılamadı.'));
-    } catch { toast('Ses yüklenemedi.'); }
+    const audio = new Audio(`${API_URL}/tts/${encodeURIComponent(word.german_word)}`);
+    audio.play().catch(() => toast('Ses oynatılamadı.'));
 }
 
 function exitFlashcards() {
@@ -348,6 +377,8 @@ let artWrongCount = 0;
 let artAnsweredCount = 0;
 let artAnswering = false;
 let artXpEarned =0;
+let artCurrentStreak =0;
+let artMaxStreak = 0;
 let artDragState = null;
 
 function shuffleArray(arr) {
@@ -365,6 +396,8 @@ async function loadArtikel() {
     artAnsweredCount = 0;
     artAnswering = false;
     artXpEarned =0;
+    artCurrentStreak = 0;
+    artMaxStreak = 0;
     document.getElementById('art-summary-overlay').classList.remove('show');
     document.getElementById('art-progress-fill').style.width='0%';
     initArtikelDrag();
@@ -469,10 +502,13 @@ function answerArtikel(articleId) {
     const isCorrect = word.article_id === articleId;
     if (isCorrect) {
         artCorrectCount++;
+        artCurrentStreak++;
+        if (artCurrentStreak > artMaxStreak) artMaxStreak = artCurrentStreak;
         card.classList.add('correct');
         badge.innerHTML = '<svg viewBox="0 0 24 24"><path d="M9,16.2L4.8,12l-1.4,1.4L9,19 21,7l-1.4,-1.4z"/></svg>';
     } else {
         artWrongCount++;
+        artCurrentStreak =0;
         card.classList.add('wrong');
         badge.textContent = ART_ARTICLE_NAMES[word.article_id] || '';
     }
@@ -507,7 +543,11 @@ function answerArtikel(articleId) {
 
 async function finishArtikelSession() {
     if (artSessionId) {
-        try { await fetch(`${API_URL}/study/session/${artSessionId}/end`, { method: 'PUT' }); } catch {}
+        try { await fetch(`${API_URL}/study/session/${artSessionId}/end`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ max_streak: artMaxStreak })
+        }); } catch {}
     }
     document.getElementById('art-summary-correct').textContent = artCorrectCount;
     document.getElementById('art-summary-wrong').textContent = artWrongCount;
@@ -520,7 +560,11 @@ function exitArtikel() {
 
     (async () => {
         if (artSessionId) {
-            try { await fetch(`${API_URL}/study/session/${artSessionId}/end`, { method: 'PUT' }); } catch {}
+            try { await fetch(`${API_URL}/study/session/${artSessionId}/end`, {
+                method: 'PUT',
+                headers: { 'Content-Type':  'application/json' },
+                body: JSON.stringify({ max_streak: artMaxStreak })
+            }); } catch {}
         }
         window.location.href = '/web/';
     })();
@@ -567,6 +611,9 @@ let grCorrect = 0;
 let grWrong = 0;
 let grXpEarned = 0;
 let grAnswered = false;
+let grSessionId = null;
+let grCurrentStreak = 0;
+let grMaxStreak = 0;
 
 async function loadGrammarDetail() {
     const parts = window.location.pathname.split('/').filter(Boolean);
@@ -586,12 +633,24 @@ async function loadGrammarDetail() {
     } catch { toast('Bağlantı hatası.'); }
 }
 
-function startGrammarExercises() {
+async function startGrammarExercises() {
     if (!grExercises.length){ toast('Bu konuda henüz alıştırma yok.'); return; }
     grIndex = 0;
     grCorrect = 0;
     grWrong = 0;
     grXpEarned = 0;
+    grCurrentStreak = 0;
+    grMaxStreak = 0;
+
+    try {
+        const sessionRes = await fetch(API_URL + '/study/session/start', {
+            method: 'POST',
+            headers:{ 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_id: getUserId(), module_type: 'grammar' })
+        });
+        const sessionData =await sessionRes.json();
+        grSessionId = sessionData.session_id ?? null;
+    } catch { grSessionId = null; }
 
     document.getElementById('gr-explain-view').style.display = 'none';
     document.getElementById('gr-exercise-view').style.display = 'flex';
@@ -670,7 +729,14 @@ async function doGrammarCheck(answer, clickedBtn) {
         if (!res.ok) { grAnswered = false; toast('Sunucu hatası.'); return; }
         const data = await res.json();
 
-        if (data.correct) { grCorrect++; grXpEarned += data.xp_earned || 0; } else grWrong++;
+        if (data.correct) {
+            grCorrect++; grXpEarned += data.xp_earned || 0;
+            grCurrentStreak++;
+            if (grCurrentStreak >grMaxStreak) grMaxStreak = grCurrentStreak;
+        } else {
+            grWrong++;
+            grCurrentStreak = 0;
+        }
 
         if (clickedBtn) {
             clickedBtn.classList.add(data.correct ? 'correct' : 'wrong');
@@ -701,9 +767,17 @@ async function doGrammarCheck(answer, clickedBtn) {
     } catch { grAnswered = false; toast('Bağlantı hatası.'); }
 }
 
-function nextGrammarQuestion() {
+async function nextGrammarQuestion() {
     grIndex++;
     if (grIndex >= grExercises.length) {
+        if (grSessionId) {
+            try { await fetch(`${API_URL}/study/session/${grSessionId}/end`, {
+                method:'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ max_streak: grMaxStreak })
+            }); } catch {}
+            grSessionId = null;
+        }
         document.getElementById('gr-exercise-view').style.display = 'none';
         document.getElementById('gr-progress-fill').style.width = '100%';
         document.getElementById('gr-summary-correct').textContent = grCorrect;
@@ -718,5 +792,9 @@ function exitGrammarDetail() {
     const inExercise =document.getElementById('gr-exercise-view') &&
                        document.getElementById('gr-exercise-view').style.display !== 'none';
     if (inExercise && !confirm('Alıştırmadan çıkmak istediğinize emin misiniz?')) return;
+    if (grSessionId) {
+        fetch(`${API_URL}/study/session/${grSessionId}/end`, { method: 'PUT' }).catch(() => {});
+        grSessionId =null;
+    }
     window.location.href = '/web/grammar';
 }

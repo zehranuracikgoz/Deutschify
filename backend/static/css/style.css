@@ -525,17 +525,31 @@ body {
     .profile-level  { font-size: 14px; }
 }
 
-/* geçmiş*/
+/* geçmiş */
+.history-day-header {
+    font-size: 11px;
+    font-weight:700;
+    text-transform: uppercase;
+    letter-spacing:0.8px;
+    color: #8899cc;
+    margin: 20px 0 8px ;
+}
+.history-day-header:first-child { margin-top: 4px; }
+
 .session-card {
     background: #ffffff;
     border-radius: 12px;
     padding: 12px 16px;
     margin-bottom: 8px;
 }
-.session-header { display: flex; align-items: center; gap: 10px; }
+.session-header {
+    display:flex;
+    align-items: center;
+    gap: 10px;
+}
 .session-module-badge {
     font-size:11px;
-    font-weight:700;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .5px;
     padding: 2px 8px;
@@ -543,30 +557,36 @@ body {
     background: #ede9ff;
     color: #2D1B69;
 }
-.session-meta { font-size: 12px; color: #8899cc; }
-.session-row  { margin-top: 8px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-.session-correct { font-size: 13px; color: #4CAF50; }
-.session-wrong  { font-size: 13px; color: #C0392B; }
-.session-xp  { font-size: 13px; color: #7C5CBF; font-weight: 600; }
-.session-review-btn {
+.session-module-badge.artikel  { background: #dbeafe; color: #1e40af; }
+.session-module-badge.review   { background: #fef3c7; color: #92400e; }
+.session-module-badge.grammar  { background: #d1fae5; color: #065f46; }
+
+.session-meta { font-size: 12px; color: #8899cc; flex: 1; }
+.session-xp   { font-size: 12px; color: #7C5CBF; font-weight: 700; margin-left: auto; }
+
+.session-rate-bar {
+    height:5px;
+    background: #e8e4f7 ;
+    border-radius: 3px;
     margin-top: 10px;
-    width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 8px;
-    background: #f0ebff;
-    color: #2D1B69;
-    font-size : 13px;
-    font-weight: 600;
-    cursor: pointer;
+    overflow:hidden;
 }
-.session-review-btn:hover { background: #ddd3ff; }
+.session-rate-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #5B7BF0, #7C5CBF) ;
+    border-radius: 3px;
+}
+.session-rate-label {
+    font-size: 11px;
+    color: #8899cc ;
+    margin-top: 5px;
+}
 
 .empty-state {
     font-size: 15px;
     color: #8899cc;
     text-align: center;
-    margin-top : 40px;
+    margin-top:40px;
     display: none;
 }
 
@@ -576,6 +596,10 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
         align-items: start;
+    }
+    .history-grid .history-day-header {
+        grid-column: 1 / -1;
+        margin-top: 16px;
     }
     .history-grid .session-card { margin-bottom: 0; }
 }
@@ -707,6 +731,20 @@ body {
     font-weight:bold;
     color: #1a2d6e;
 }
+
+.fc-difficulty-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin: 8px 0 4px;
+}
+.fc-difficulty-badge.very-hard { background: #fde8e8; color: #c0392b; }
+.fc-difficulty-badge.hard      { background: #fef3c7; color: #92400e; }
+.fc-difficulty-badge.medium    { background: #d1fae5; color: #065f46; }
 
 .fc-hint {
     font-size : 12px;

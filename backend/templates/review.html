@@ -24,8 +24,10 @@
                 <div class="fc-card-body">
                     <div class="fc-label">ALMANCA</div>
                     <div class="fc-word" id="fc-word-de">…</div>
+                    <div class="fc-difficulty-badge" id="fc-difficulty-badge"></div>
                     <div class="fc-hint">Kartı çevirmek için dokun</div>
                 </div>
+                <button class="fc-pronounce" onclick="event.stopPropagation(); playPronunciation();">🔊 TELAFFUZ</button>
             </div>
             <div class="fc-card fc-card-back">
                 <div class="fc-card-body">
@@ -62,9 +64,23 @@
         <div class="fc-summary-title">Tekrar Tamamlandı</div>
         <div class="fc-summary-stats">
             <div class="fc-summary-stat">
+                <div class="fc-summary-num" id="fc-summary-correct">0</div>
+                <div class="fc-summary-lbl" >Doğru</div>
+            </div>
+            <div class="fc-summary-stat">
+                <div class="fc-summary-num" id="fc-summary-wrong">0</div>
+                <div class="fc-summary-lbl">Yanlış</div>
+            </div>
+            <div class="fc-summary-stat">
                 <div class="fc-summary-num" id="fc-summary-cards">0</div>
                 <div class="fc-summary-lbl">Kart</div>
             </div>
+        </div>
+        <div class="fc-summary-rate" id="fc-summary-rate" style="display:none">
+            <div class="session-rate-bar" style="margin:0 0 6px">
+                <div class="session-rate-fill"  id="fc-summary-rate-fill"></div>
+            </div>
+            <div class="session-rate-label" id="fc-summary-rate-label"></div>
         </div>
        
         <div class="xp-reward">
