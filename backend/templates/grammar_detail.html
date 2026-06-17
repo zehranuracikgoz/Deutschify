@@ -2,52 +2,64 @@
 {% block content %}
 <div class="fc-page">
     <div class="fc-header">
-        <button class="fc-back" id="art-back" onclick="exitArtikel()" aria-label="Geri">
+        <button class="fc-back" onclick="exitGrammarDetail()" aria-label="Geri">
             <svg viewBox="0 0 24 24"><path d="M20,11H7.83l5.59,-5.59L12,4l-8,8 8,8 1.41,-1.41L7.83,13H20v-2z"/></svg>
         </button>
-        <div class="fc-title">Artikeller</div>
-        <div class="fc-counter" id="art-counter">SORU 1</div>
+        <div class="fc-title" id="gr-title">Dil Bilgisi</div>
+        <div class="fc-counter" id="gr-counter" style="display:none"></div>
     </div>
 
-    <div class="fc-progress-track">
-        <div class="fc-progress-fill" id="art-progress-fill"></div>
+    <div class="fc-progress-track" id="gr-progress-track" style="display:none">
+        <div class="fc-progress-fill" id="gr-progress-fill"></div>
+    </div>
+    <div id="gr-explain-view" class="gr-explain-view" style="display:none">
+        <div class="gr-explain-card" id="gr-explain-content"></div>
+        <button class="btn-primary" onclick="startGrammarExercises()">Alıştırmalara Başla</button>
     </div>
 
-    <div class="art-area">
-        <div class="art-card" id="art-card">
-            <div class="art-feedback-badge" id="art-feedback-badge"></div>
-            <div class="art-word-de" id="art-word-de">…</div>
-            <div class="art-word-tr" id="art-word-tr"></div>
+    <div id="gr-exercise-view" class="gr-exercise-view" style="display:none">
+        <div class="gr-question-card">
+            <div class="gr-question-text" id="gr-question-text">…</div>
+            <div id="gr-fill-area" class="gr-fill-area" style="display:none">
+                <input id="gr-fill-input" class="gr-fill-input" type="text"
+                       placeholder="Cevabınızı yazın..."
+                       onkeydown="if(event.key==='Enter') submitGrammarFill()">
+            </div>
+            <div id="gr-choice-area" class="gr-options" style="display:none"></div>
         </div>
-        <div class="art-drag-hint">Doğru artikeli kelimeye sürükle</div>
 
-        <div class="art-drop-zone">
-            <div class="art-drop" data-article-id="1">DER</div>
-            <div class="art-drop" data-article-id="2">DIE</div>
-            <div class="art-drop" data-article-id="3">DAS</div>
+        <div id="gr-feedback"  class="gr-feedback"></div>
+
+        <div class="gr-btn-row">
+            <button id="gr-submit-btn"  class="btn-primary" onclick="submitGrammarFill()" style="display:none">
+                Kontrol Et
+            </button>
+            <button id="gr-next-btn" class="btn-primary" onclick="nextGrammarQuestion()" style="display:none">
+                Sonraki Soru
+            </button>
         </div>
     </div>
 </div>
 
-<div class="fc-summary-overlay" id="art-summary-overlay">
+<div class="fc-summary-overlay" id="gr-summary-overlay">
     <div class="fc-summary-card">
         <svg class="complete-icon fc-summary-icon" viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12s4.47,10 10,10 10,-4.47 10,-10S17.53,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8z"/></svg>
-        <div class="fc-summary-title">Oturum Tamamlandı</div>
+        <div class="fc-summary-title">Konu Tamamlandı!</div>
         <div class="fc-summary-stats">
             <div class="fc-summary-stat">
-                <div class="fc-summary-num correct" id="art-summary-correct">0</div>
+                <div class="fc-summary-num correct" id="gr-summary-correct">0</div>
                 <div class="fc-summary-lbl">Doğru</div>
             </div>
             <div class="fc-summary-stat">
-                <div class="fc-summary-num wrong" id="art-summary-wrong">0</div>
+                <div class="fc-summary-num wrong" id="gr-summary-wrong">0</div>
                 <div class="fc-summary-lbl">Yanlış</div>
             </div>
         </div>
         <div class="xp-reward">
             <svg viewBox="0 0 24 24"><path d="M7,2v11h3v9l7,-12h-4l4,-8z"/></svg>
-            +<span id= "art-summary-xp">0</span> XP
+            +<span id="gr-summary-xp">0</span> XP
         </div>
-        <button class="btn-primary" onclick="window.location.href='/web/'">Ana Sayfaya Dön</button>
+        <button class="btn-primary" onclick="window.location.href='/web/grammar'">Konulara Dön</button>
     </div>
 </div>
 
@@ -72,6 +84,6 @@
 {% endblock %}
 {% block scripts %}
 <script>
-if (requireAuth()) { loadArtikel(); }
+if (requireAuth())  { loadGrammarDetail(); }
 </script>
 {% endblock %}
