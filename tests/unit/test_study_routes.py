@@ -221,8 +221,8 @@ def test_stats_returns_weekly_minutes(seeded_client):
     assert data['weekly_minutes'][-1] == 30
 
 
-# session_end NULL olan (bitmemiş) oturumlar dakika hesabına dahil edilmemesin
-def test_stats_ignores_unfinished_sessions_in_minutes(seeded_client):
+# session_end NULL olan (bitmemiş) oturumlar 5 dakika varsayılan ile sayılmalı
+def test_stats_counts_unfinished_sessions_as_default_minutes(seeded_client):
     client, user_id, word_id = seeded_client
     login_res = client.post('/auth/login', json={'email': 'study@test.com', 'password': 'Test123!'})
     token = login_res.get_json()['access_token']
@@ -238,4 +238,4 @@ def test_stats_ignores_unfinished_sessions_in_minutes(seeded_client):
     response = client.get('/study/stats', headers={'Authorization': f'Bearer {token}'})
     assert response.status_code == 200
     data = response.get_json()
-    assert data['weekly_minutes'][-1] == 0
+    assert data['weekly_minutes'][-1] == 5

@@ -225,24 +225,31 @@ def end_session(session_id):
                     (session_end, session_id)
                 )
 
-            # Streak güncelle: bugün (UTC) başka oturum var mı?
+            now_tr = datetime.now(TZ_TR)
+            today_tr = now_tr.date().isoformat()
+            yesterday_tr = (now_tr.date() - timedelta(days=1)).isoformat()
+
             cursor.execute(
                 '''
                 SELECT COUNT(*) FROM study_sessions
-                WHERE user_id = %s AND DATE(session_start) = CURRENT_DATE AND id != %s
+                WHERE user_id = %s
+                  AND DATE(session_start AT TIME ZONE 'Europe/Istanbul') = %s
+                  AND id != %s
+                  AND session_end IS NOT NULL
                 ''',
-                (user_id, session_id)
+                (user_id, today_tr, session_id)
             )
             today_count = cursor.fetchone()['count']
 
             if today_count == 0:
-                # Bugün ilk oturum — dün oturum var mıydı?
                 cursor.execute(
                     '''
                     SELECT COUNT(*) FROM study_sessions
-                    WHERE user_id = %s AND DATE(session_start) = CURRENT_DATE - 1
+                    WHERE user_id = %s
+                      AND DATE(session_start AT TIME ZONE 'Europe/Istanbul') = %s
+                      AND session_end IS NOT NULL
                     ''',
-                    (user_id,)
+                    (user_id, yesterday_tr)
                 )
                 yesterday_count = cursor.fetchone()['count']
 
