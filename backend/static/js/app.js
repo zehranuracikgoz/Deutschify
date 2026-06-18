@@ -294,6 +294,8 @@ function flipCard() {
     const flipped   = container.classList.toggle('flipped');
     document.getElementById('fc-difficulty').classList.toggle('show', flipped);
 }
+let fcAfterFeedback = null;
+
 async function submitQuality(quality) {
     document.getElementById('fc-difficulty').classList.remove('show');
     const word = fcQueue[fcIndex];
@@ -303,7 +305,7 @@ async function submitQuality(quality) {
     if (quality >= 3) fcCorrectCount++; else fcWrongCount++;
 
     try {
-        const res  = await fetch(API_URL +'/study/answer', {
+        const res = await fetch(API_URL + '/study/answer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
@@ -317,11 +319,72 @@ async function submitQuality(quality) {
     } catch { toast('Bağlantı hatası.'); }
 
     const next = fcIndex + 1;
-    if (next < fcQueue.length) {
-        showCard(next);
-    } else {
-        document.getElementById('fc-progress-fill').style.width = '100%';
-        await finishFlashcardSession();
+    const advance = async () => {
+        if (next < fcQueue.length) {
+            showCard(next);
+        } else {
+            document.getElementById('fc-progress-fill').style.width = '100%';
+            await finishFlashcardSession();
+        }
+    };
+
+    await advance();
+}
+
+async function showAiFeedbackModal(word, onContinue, overrideUserAnswer, overrideCorrectAnswer) {
+    const modal          = document.getElementById('ai-feedback-modal');
+    const textEl         = document.getElementById('ai-feedback-text');
+    const loadingEl      = document.getElementById('ai-feedback-loading');
+    const userAnswerEl   = document.getElementById('ai-user-answer');
+    const correctEl      = document.getElementById('ai-correct-answer');
+    const explainTitleEl = document.getElementById('ai-feedback-explain-title');
+
+    const userAnswer    = overrideUserAnswer    ?? 'bilmiyorum';
+    const correctAnswer = overrideCorrectAnswer ?? word.turkish_meaning;
+
+    userAnswerEl.textContent   = userAnswer;
+    correctEl.textContent      = correctAnswer;
+    explainTitleEl.textContent = `Neden doğru cevap "${correctAnswer}"?`;
+
+    textEl.textContent   = '';
+    textEl.style.display = 'none';
+    loadingEl.style.display = 'block';
+    modal.classList.add('show');
+    fcAfterFeedback = onContinue;
+
+    try {
+        const res = await fetch(API_URL + '/study/feedback', {
+            method: 'POST',
+            headers: { ...authHdr(), 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                word: word.german_word,
+                user_answer: userAnswer,
+                correct_answer: correctAnswer
+            })
+        });
+        if (res.ok) {
+            const data = await res.json();
+            loadingEl.style.display = 'none';
+            textEl.textContent   = data.feedback || '';
+            textEl.style.display = 'block';
+        } else {
+            loadingEl.style.display = 'none';
+            textEl.textContent   = 'Geri bildirim şu anda alınamadı.';
+            textEl.style.display = 'block';
+        }
+    } catch {
+        loadingEl.style.display = 'none';
+        textEl.textContent   = 'Geri bildirim şu anda alınamadı.';
+        textEl.style.display = 'block';
+    }
+}
+
+function closeAiFeedbackModal() {
+    document.getElementById('ai-feedback-modal').classList.remove('show');
+    if (fcAfterFeedback) {
+        const cb = fcAfterFeedback;
+        fcAfterFeedback = null;
+        cb();
     }
 }
 
@@ -354,6 +417,35 @@ function playPronunciation() {
     if (!word) return;
     const audio = new Audio(`${API_URL}/tts/${encodeURIComponent(word.german_word)}`);
     audio.play().catch(() => toast('Ses oynatılamadı.'));
+}
+
+async function fetchDynamicExample() {
+    const word = fcQueue[fcIndex];
+    if (!word) return;
+
+    const btn = document.getElementById('fc-example-refresh-btn');
+    btn.disabled =true;
+    btn.textContent = 'Üretiliyor…';
+
+    try {
+        const res = await fetch(API_URL + '/study/example', {
+            method: 'POST',
+            headers:{ ...authHdr(), 'Content-Type': 'application/json' },
+            body: JSON.stringify({ word: word.german_word })
+        });
+        if (res.ok) {
+            const data = await res.json();
+            document.getElementById('fc-example-de').textContent = data.example_sentence || '';
+            document.getElementById('fc-example-tr').textContent = '';
+        } else {
+            toast('Şu anda üretilemedi, statik cümle gösteriliyor.');
+        }
+    } catch {
+        toast('Şu anda üretilemedi, statik cümle gösteriliyor.');
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Yeni Örnek Cümle';
 }
 
 function exitFlashcards() {
@@ -526,17 +618,27 @@ function answerArtikel(articleId) {
         body: JSON.stringify(answerBody)
     }).then(r => r.json()).then(d => { artXpEarned += d.xp_earned || 0; }).catch(() => {});
 
-    setTimeout(() => {
-        artAnswering =false;
-        if (artAnsweredCount >= ART_SESSION_LIMIT) {
-            finishArtikelSession();
-        } else {
+    setTimeout(async () => {
+        artAnswering = false;
+        const advanceToNext = () => {
             artIndex++;
             if (artIndex >= artWords.length) {
                 artWords = shuffleArray(artWords);
                 artIndex = 0;
             }
             showArtikelWord();
+        };
+        if(artAnsweredCount >= ART_SESSION_LIMIT) {
+            finishArtikelSession();
+        } else if (!isCorrect) {
+            await showAiFeedbackModal(
+                { german_word:word.german_word, turkish_meaning: word.turkish_meaning },
+                advanceToNext,
+                ART_ARTICLE_NAMES[articleId] || '',
+                ART_ARTICLE_NAMES[word.article_id] || ''
+            );
+        } else {
+            advanceToNext();
         }
     }, 1200);
 }
@@ -763,6 +865,15 @@ async function doGrammarCheck(answer, clickedBtn) {
         const nextBtn = document.getElementById('gr-next-btn');
         nextBtn.textContent = (grIndex + 1 >= grExercises.length) ? 'Tamamla' : 'Sonraki Soru';
         nextBtn.style.display = 'block';
+
+        if (!data.correct) {
+            await showAiFeedbackModal(
+                { german_word: ex.question, turkish_meaning: data.correct_answer },
+                nextGrammarQuestion,
+                answer,
+                data.correct_answer
+            );
+        }
 
     } catch { grAnswered = false; toast('Bağlantı hatası.'); }
 }

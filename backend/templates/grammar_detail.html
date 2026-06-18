@@ -41,6 +41,37 @@
     </div>
 </div>
 
+<div class="ai-feedback-modal" id="ai-feedback-modal">
+    <div class="ai-feedback-card">
+        <div class="ai-feedback-header">
+            <div class="ai-feedback-icon-wrap">
+                <svg class="ai-feedback-icon" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+            </div>
+            <div class="ai-feedback-header-text">
+                <div class = "ai-feedback-title">Hata Analizi</div>
+                <div class = "ai-feedback-subtitle">AI Dil Mentörü</div>
+            </div>
+            <button class="ai-feedback-close" onclick="closeAiFeedbackModal()">×</button>
+        </div>
+        <div class="ai-feedback-answers">
+            <div class="ai-answer-box ai-answer-wrong">
+                <div class="ai-answer-label">SENİN CEVABIN</div>
+                <div class="ai-answer-value" id="ai-user-answer">—</div>
+            </div>
+            <div class="ai-answer-box ai-answer-correct">
+                <div class="ai-answer-label">DOĞRU CEVAP</div>
+                <div class="ai-answer-value" id="ai-correct-answer">—</div>
+            </div>
+        </div>
+        <div class="ai-feedback-explain">
+            <div class="ai-feedback-explain-title" id="ai-feedback-explain-title">Neden doğru cevap?</div>
+            <div class="ai-feedback-loading" id="ai-feedback-loading">Analiz ediliyor…</div>
+            <div class="ai-feedback-text" id="ai-feedback-text" style="display:none"></div>
+        </div>
+        <button class = "ai-feedback-btn" onclick="closeAiFeedbackModal()">Anladım, Tekrarla</button>
+    </div>
+</div>
+
 <div class="fc-summary-overlay" id="gr-summary-overlay">
     <div class="fc-summary-card">
         <svg class="complete-icon fc-summary-icon" viewBox="0 0 24 24"><path d="M12,2C6.47,2 2,6.47 2,12s4.47,10 10,10 10,-4.47 10,-10S17.53,2 12,2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8z"/></svg>
