@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify
 import psycopg2.extras
+from datetime import date, timedelta
 from backend.database import get_db
+from backend.srs import calculate_next_review
 
 grammar_bp = Blueprint('grammar', __name__, url_prefix='/grammar')
 
@@ -61,7 +63,7 @@ def check_answer():
     with get_db() as conn:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         cursor.execute(
-            'SELECT correct_answer , explanation FROM grammar_exercises WHERE id = %s',
+            'SELECT correct_answer, explanation FROM grammar_exercises WHERE id = %s',
             (exercise_id,)
         )
         exercise = cursor.fetchone()
@@ -69,26 +71,60 @@ def check_answer():
     if not exercise:
         return jsonify({'error': 'Soru bulunamadı'}), 404
 
-    correct = user_answer== exercise['correct_answer'].strip().lower()
-    xp_earned = 0
+    correct = user_answer == exercise['correct_answer'].strip().lower()
+    xp_earned = 5 if correct else 0
+    next_review_date = None
+    user_id = data.get('user_id')
 
-    if correct:
-        xp_earned = 5
-        user_id = data.get('user_id')
-        if user_id:
-            try:
-                with get_db() as conn:
-                    cursor =conn.cursor()
+    if user_id:
+        try:
+            quality =4 if correct else 1
+            today = date.today()
+
+            with get_db() as conn:
+                cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+
+                if correct:
                     cursor.execute(
                         'UPDATE users SET total_xp = total_xp + %s WHERE id = %s',
                         (xp_earned, int(user_id))
                     )
-            except Exception:
-                xp_earned = 5
+
+                cursor.execute(
+                    'SELECT ease_factor,  interval_days, repetition_count '
+                    'FROM user_grammar_progress WHERE user_id = %s AND exercise_id = %s',
+                    (int(user_id), exercise_id)
+                )
+                existing = cursor.fetchone()
+                ef       = existing['ease_factor']      if existing else 2.5
+                interval = existing['interval_days']    if existing else 0
+                rep      = existing['repetition_count'] if existing else 0
+
+                srs = calculate_next_review(ef, interval, rep, quality)
+                next_review = (today + timedelta(days=srs['interval_days'])).isoformat()
+                next_review_date = next_review
+
+                cursor.execute('''
+                    INSERT INTO user_grammar_progress
+                        (user_id, exercise_id, ease_factor, interval_days, repetition_count,
+                         next_review_date, last_review_date)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    ON CONFLICT (user_id, exercise_id) DO UPDATE SET
+                        ease_factor = EXCLUDED.ease_factor,
+                        interval_days= EXCLUDED.interval_days,
+                        repetition_count = EXCLUDED.repetition_count,
+                        next_review_date = EXCLUDED.next_review_date,
+                        last_review_date = EXCLUDED.last_review_date
+                ''', (int(user_id), exercise_id,
+                      srs['ease_factor'], srs['interval_days'], srs['repetition_count'],
+                      next_review, today.isoformat()))
+        except Exception:
+            pass
 
     return jsonify({
         'correct': correct,
         'correct_answer': exercise['correct_answer'],
-        'explanation' : exercise['explanation'],
-        'xp_earned': xp_earned
+        'explanation': exercise['explanation'],
+        'xp_earned': xp_earned,
+        'next_review_date': next_review_date
     })

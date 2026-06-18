@@ -195,3 +195,17 @@ def init_db():
             CREATE INDEX IF NOT EXISTS idx_grammar_exercises_topic_id
             ON grammar_exercises(topic_id)
         ''')
+
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS user_grammar_progress (
+                id SERIAL PRIMARY KEY,
+                user_id INTEGER NOT NULL REFERENCES users(id),
+                exercise_id INTEGER NOT NULL REFERENCES grammar_exercises(id),
+                ease_factor FLOAT   DEFAULT 2.5,
+                interval_days INTEGER DEFAULT 0,
+                repetition_count INTEGER DEFAULT 0,
+                next_review_date DATE DEFAULT CURRENT_DATE,
+                last_review_date DATE,
+                UNIQUE(user_id, exercise_id)
+            )
+        ''')
