@@ -158,6 +158,13 @@ def init_db():
                 ADD COLUMN IF NOT EXISTS max_streak INTEGER DEFAULT  0
         ''')
 
+        cursor.execute('''
+            ALTER TABLE ai_feedback_logs
+                ADD COLUMN IF NOT EXISTS word TEXT,
+                ADD COLUMN IF NOT EXISTS user_answer TEXT,
+                ADD COLUMN IF NOT EXISTS feedback_text TEXT
+        ''')
+
         # 10. grammar_topics tablosu
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS grammar_topics (

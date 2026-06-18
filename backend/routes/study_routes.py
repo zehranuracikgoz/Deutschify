@@ -8,6 +8,7 @@ from backend.srs import calculate_next_review
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import requests
 import os
+import google.generativeai as genai
 
 study_bp = Blueprint('study', __name__, url_prefix='/study')
 
@@ -30,7 +31,7 @@ def get_queue(user_id):
             cursor.execute(
                 '''
                 SELECT w.id AS word_id, w.german_word, w.turkish_meaning,
-                       w.example_sentence_de,
+                       w.example_sentence_de, w.example_sentence_tr,
                        up.ease_factor, up.interval_days, up.repetition_count, up.status
                 FROM user_progress up
                 JOIN words w ON w.id = up.word_id
@@ -44,7 +45,7 @@ def get_queue(user_id):
             cursor.execute(
                 '''
                 SELECT w.id AS word_id, w.german_word, w.turkish_meaning,
-                       w.example_sentence_de,
+                       w.example_sentence_de, w.example_sentence_tr,
                        2.5 AS ease_factor, 1 AS interval_days,
                        0 AS repetition_count, 'new' AS status
                 FROM words w
@@ -291,6 +292,51 @@ def get_example_sentence():
     sentence = result[0].get('generated_text', '')
 
     return jsonify({'word': word, 'example_sentence': sentence}), 200
+
+
+@study_bp.route('/feedback', methods=['POST'])
+@jwt_required()
+def get_ai_feedback():
+    user_id = int(get_jwt_identity())
+    data = request.get_json()
+    word= data.get('word', '').strip()
+    user_answer = data.get('user_answer', '').strip()
+    correct_answer =data.get('correct_answer', '').strip()
+
+    if not all([word, user_answer, correct_answer]):
+        return jsonify({'error': 'word, user_answer, correct_answer gerekli'}), 400
+
+    try:
+        genai.configure(api_key=os.environ.get('GEMINI_API_KEY'))
+        model =genai.GenerativeModel('gemini-2.5-flash-lite')
+
+        prompt = (
+            f"Bir Almanca öğrencisi '{word}' kelimesine '{user_answer}' cevabını verdi, "
+            f"doğru cevap '{correct_answer}' idi. Bu öğrenciye Türkçe, kısa (2-3 cümle), "
+            f"A1 seviyesine uygun, neden yanlış olduğunu açıklayan dostça bir gramer "
+            f"geri bildirimi ver. Teknik terim kullanma."
+        )
+
+        response = model.generate_content(prompt)
+        feedback_text =response.text
+
+        with get_db() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT id FROM words WHERE german_word = %s", (word,))
+            word_row = cursor.fetchone()
+            word_id = word_row[0] if word_row else None
+
+            if word_id is not None:
+                cursor.execute("""
+                    INSERT INTO ai_feedback_logs (user_id, word_id, word, user_answer, correct_answer, feedback_text, created_at)
+                    VALUES (%s, %s, %s, %s, %s, %s, NOW())
+                """, (user_id,word_id, word, user_answer, correct_answer, feedback_text))
+                conn.commit()
+
+        return jsonify({'feedback': feedback_text}), 200
+
+    except Exception as e:
+        return jsonify({'error': 'AI servisi şu anda kullanılamıyor', 'detail': str(e)}), 503
 
 
 @study_bp.route('/history', methods=['GET'])

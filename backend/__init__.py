@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from flask import Flask
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -23,6 +24,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY=secret_key,
         JWT_SECRET_KEY=jwt_secret,
+        JWT_ACCESS_TOKEN_EXPIRES=timedelta(hours=24),
     )
 
     if test_config:
