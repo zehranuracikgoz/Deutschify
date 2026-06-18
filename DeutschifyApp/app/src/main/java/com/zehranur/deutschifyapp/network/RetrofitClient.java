@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "https://deutschify.onrender.com/";
+    private static final String BASE_URL = "https://deutschify-1.onrender.com/";
 
     private static volatile RetrofitClient instance;
     private final Retrofit retrofit;

@@ -30,6 +30,10 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".HistoryActivity" />
+        <activity android:name=".ArtikelActivity" />
+        <activity android:name=".ReviewActivity" />
+        <activity android:name=".GrammarActivity" />
+        <activity android:name=".GrammarDetailActivity" />
     </application>
 
 </manifest>
