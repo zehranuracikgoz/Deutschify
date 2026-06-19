@@ -8,12 +8,14 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -56,6 +58,7 @@ public class WordCardActivity extends AppCompatActivity {
     private boolean isFlipped = false;
     private boolean isAnimating = false;
     private MediaPlayer mediaPlayer;
+    private int totalXpEarned =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +81,7 @@ public class WordCardActivity extends AppCompatActivity {
 
         api = RetrofitClient.getInstance().create(ApiService.class);
 
-        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
+        findViewById(R.id.btn_back).setOnClickListener(v -> showExitDialog());
         cardContainer.setOnClickListener(v -> flipCard());
         findViewById(R.id.btn_telaffuz).setOnClickListener(v -> {
             if (wordQueue != null && currentIndex < wordQueue.size()) {
@@ -206,14 +209,15 @@ public class WordCardActivity extends AppCompatActivity {
         api.submitAnswer(request).enqueue(new Callback<AnswerResponse>() {
                     @Override
                     public void onResponse(Call<AnswerResponse> call, Response<AnswerResponse> response) {
+                        if (response.isSuccessful()&&response.body() != null) {
+                            totalXpEarned += response.body().getXpEarned();
+                        }
                         int next = currentIndex + 1;
                         if (next < wordQueue.size()) {
                             showWord(next);
                         } else {
                             progressBar.setProgress(wordQueue.size());
-                            Toast.makeText(WordCardActivity.this,
-                                    "Oturum tamamlandı!", Toast.LENGTH_SHORT).show();
-                            endStudySession();
+                            showSessionComplete();
                         }
                     }
 
@@ -285,6 +289,37 @@ public class WordCardActivity extends AppCompatActivity {
                 Toast.makeText(WordCardActivity.this, "Ses yüklenemedi", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showSessionComplete() {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_session_complete, null);
+        ((TextView) dialogView.findViewById(R.id.tv_summary_cards)).setText(String.valueOf(wordQueue.size()));
+        ((TextView) dialogView.findViewById(R.id.tv_summary_xp)).setText("+" +totalXpEarned + " XP");
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setCancelable(false)
+                .create();
+
+        dialogView.findViewById(R.id.btn_summary_home).setOnClickListener(v -> {
+            dialog.dismiss();
+            endStudySession();
+        });
+
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+    }
+    private void showExitDialog() {
+        new AlertDialog.Builder(this)
+                .setMessage("Oturumdan çıkmak istediğinize emin misiniz?")
+                .setPositiveButton("Evet",(dialog, which) ->endStudySession())
+                .setNegativeButton("Hayır", (dialog, which) -> dialog.dismiss())
+                .show();
+    }
+    @Override
+    public void onBackPressed() {
+        showExitDialog();
     }
 
     private void navigateHome() {
