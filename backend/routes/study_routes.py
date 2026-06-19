@@ -12,6 +12,9 @@ import google.generativeai as genai
 
 study_bp = Blueprint('study', __name__, url_prefix='/study')
 
+_t5_tokenizer = None
+_t5_model = None
+
 
 @study_bp.route('/queue/<int:user_id>', methods=['GET'])
 def get_queue(user_id):
@@ -274,24 +277,64 @@ def end_session(session_id):
 @study_bp.route('/example', methods=['POST'])
 @jwt_required()
 def get_example_sentence():
+    global _t5_tokenizer, _t5_model
     data = request.get_json()
     word = data.get('word', '').strip()
     if not word:
         return jsonify({'error': 'word gerekli'}), 400
 
-    api_url = "https://api-inference.huggingface.co/models/zehranuracikgoz/deutschify-t5-small"
-    headers = {"Authorization": f"Bearer {os.environ.get('HF_TOKEN')}"}
-    payload = {"inputs": f"örnek_üret: {word}"}
+    # 1 - lokal T5 inference — sadece USE_LOCAL_T5=true ise etkin
+    if os.environ.get('USE_LOCAL_T5') == 'true':
+        try:
+            from transformers import T5Tokenizer, T5ForConditionalGeneration
+            import torch
+            if _t5_tokenizer is None or _t5_model is None:
+                _t5_tokenizer = T5Tokenizer.from_pretrained('zehranuracikgoz/deutschify-t5-small')
+                _t5_model = T5ForConditionalGeneration.from_pretrained('zehranuracikgoz/deutschify-t5-small')
+                _t5_model.eval()
+            inp = _t5_tokenizer(
+                f'generate sentence: {word}',
+                return_tensors='pt', max_length=64, truncation=True
+            )
+            with torch.no_grad():
+                out = _t5_model.generate(
+                    inp['input_ids'], max_new_tokens=60, num_beams=4, early_stopping=True
+                )
+            sentence = _t5_tokenizer.decode(out[0], skip_special_tokens=True)
+            if sentence:
+                return jsonify({'word': word, 'example_sentence': sentence}), 200
+        except ImportError:
+            pass  # transformers kurulu değilse HF API'ye düş
 
-    response = requests.post(api_url, headers=headers, json=payload)
+    # 2- HF Inference API fallback
+    try:
+        api_url = "https://api-inference.huggingface.co/models/zehranuracikgoz/deutschify-t5-small"
+        headers ={"Authorization": f"Bearer {os.environ.get('HF_TOKEN')}"}
+        payload = {"inputs": f"örnek_üret: {word}"}
+        response =requests.post(api_url, headers=headers, json=payload, timeout=10)
+        if response.status_code==200:
+            result = response.json()
+            sentence = result[0].get('generated_text', '')
+            if sentence:
+                return jsonify({'word': word, 'example_sentence': sentence}), 200
+    except Exception:
+        pass
 
-    if response.status_code != 200:
-        return jsonify({'error': 'Model servisi yanıt vermedi'}), 503
+    # 3- Statik fallback — DB deki example_sentence_de
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+        cur.execute(
+            'SELECT example_sentence_de FROM words WHERE german_word ILIKE %s LIMIT 1',
+            (word,)
+        )
+        row = cur.fetchone()
+        if row and row[0]:
+            return jsonify({'word': word, 'example_sentence': row[0]}), 200
+    except Exception:
+        pass
 
-    result = response.json()
-    sentence = result[0].get('generated_text', '')
-
-    return jsonify({'word': word, 'example_sentence': sentence}), 200
+    return jsonify({'error': 'Örnek cümle üretilemedi'}), 503
 
 
 @study_bp.route('/feedback', methods=['POST'])
