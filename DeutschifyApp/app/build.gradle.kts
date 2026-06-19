@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("jacoco")
 }
 
 android {
@@ -17,6 +18,9 @@ android {
     }
 
     buildTypes {
+        debug {
+            enableUnitTestCoverage = true
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -30,7 +34,49 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+}
+jacoco {
+    toolVersion = "0.8.11"
+}
 
+tasks.register<JacocoReport>("jacocoTestReport") {
+    dependsOn("testDebugUnitTest")
+
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
+
+    val uiExcludes = listOf(
+        "**/R.class",
+        "**/R\$*.class",
+        "**/BuildConfig.*",
+        "**/Manifest*.*",
+        "**/*Activity*.*",
+        "**/*ViewModel*.*",
+        "**/*Adapter*.*"
+    )
+
+    // util/ ve model/ paketleri — AGP 8.x class ara dizini için wildcard
+    val buildDir = layout.buildDirectory.get().asFile
+
+    val classDir = fileTree("$buildDir/intermediates/javac/debug") {
+        include(
+            "**/com/zehranur/deutschifyapp/util/**/*.class",
+            "**/com/zehranur/deutschifyapp/model/**/*.class"
+        )
+        exclude(uiExcludes)
+    }
+    sourceDirectories.setFrom(files("${projectDir}/src/main/java"))
+    classDirectories.setFrom(files(classDir))
+
+    // enableUnitTestCoverage=true ile AGP'nin ürettiği .exec dosyası
+    executionData.setFrom(fileTree(buildDir) {
+        include(
+            "outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec",
+            "jacoco/testDebugUnitTest.exec"
+        )
+    })
 }
 
 dependencies {
