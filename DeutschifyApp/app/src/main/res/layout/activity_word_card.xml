@@ -7,7 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="68dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp">
 
@@ -16,7 +16,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:text="←"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textColor="#ffffff"
             android:gravity="center"
             android:layout_centerVertical="true"
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kelime Kartları"
-            android:textSize="17sp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:layout_centerInParent="true"/>
@@ -265,6 +265,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:background="@drawable/bg_difficulty_btn"
+                android:backgroundTint="#E07878"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"/>
@@ -280,6 +281,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:background="@drawable/bg_difficulty_btn"
+                android:backgroundTint="#E0A078"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"/>
@@ -295,6 +297,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:background="@drawable/bg_difficulty_btn"
+                android:backgroundTint="#D9C478"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"/>
@@ -310,6 +313,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:background="@drawable/bg_difficulty_btn"
+                android:backgroundTint="#A8C982"
                 android:layout_marginEnd="8dp"
                 android:clickable="true"
                 android:focusable="true"/>
@@ -325,6 +329,7 @@
                 android:textColor="#ffffff"
                 android:gravity="center"
                 android:background="@drawable/bg_difficulty_btn"
+                android:backgroundTint="#7DD4A0 "
                 android:clickable="true"
                 android:focusable="true"/>
         </LinearLayout>

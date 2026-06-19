@@ -27,10 +27,10 @@ public class HomeViewModel extends ViewModel {
     public LiveData<Integer> getTotalXp() { return totalXp; }
     public LiveData<Integer> getDailyStreak() { return dailyStreak; }
 
-    public void loadHomeData(String token) {
+    public void loadHomeData(String token, int userId) {
         ApiService api = RetrofitClient.getInstance().create(ApiService.class);
 
-        api.getStudyQueue("Bearer " + token, 1).enqueue(new Callback<QueueResponse>() {
+        api.getStudyQueue(userId, 1).enqueue(new Callback<QueueResponse>() {
             @Override
             public void onResponse(Call<QueueResponse> call, Response<QueueResponse> response) {
                 if (response.isSuccessful() && response.body() != null

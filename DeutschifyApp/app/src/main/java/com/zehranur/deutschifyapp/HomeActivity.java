@@ -60,19 +60,20 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        homeViewModel.loadHomeData(token);
+        int userId = prefs.getInt("user_id", -1);
+        homeViewModel.loadHomeData(token, userId);
 
         findViewById(R.id.btn_kelime_kartlari).setOnClickListener(v ->
                 startActivity(new Intent(this, WordCardActivity.class)));
 
         findViewById(R.id.btn_dil_bilgisi).setOnClickListener(v ->
-                Toast.makeText(this, "Yakında!", Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(this, GrammarActivity.class)));
 
         findViewById(R.id.btn_artikeller).setOnClickListener(v ->
-                Toast.makeText(this, "Yakında!", Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(this, ArtikelActivity.class)));
 
         findViewById(R.id.btn_tekrar).setOnClickListener(v ->
-                Toast.makeText(this, "Yakında!", Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(this, ReviewActivity.class)));
 
         findViewById(R.id.nav_stats).setOnClickListener(v ->
                 startActivity(new Intent(this, DashboardActivity.class)));
