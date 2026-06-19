@@ -18,4 +18,8 @@ public class AiFeedbackRequest {
         this.userAnswer=userAnswer;
         this.correctAnswer=correctAnswer;
     }
+
+    public String getWord() { return word; }
+    public String getUserAnswer() { return userAnswer; }
+    public String getCorrectAnswer() { return correctAnswer; }
 }

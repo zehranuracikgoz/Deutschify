@@ -19,4 +19,7 @@ public class WordResponse {
     public String getGermanWord() {return germanWord; }
     public String getTurkishMeaning() { return turkishMeaning; }
     public Integer getArticleId() { return articleId; }
+
+    public void setGermanWord(String germanWord) { this.germanWord = germanWord; }
+    public void setArticleId(Integer articleId) { this.articleId = articleId; }
 }
