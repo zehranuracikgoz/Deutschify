@@ -16,6 +16,7 @@ def client():
     with app.app_context():
         with get_db() as conn:
             cursor = conn.cursor()
+            cursor.execute("DELETE FROM ai_feedback_logs")
             cursor.execute("DELETE FROM study_sessions")
             cursor.execute("DELETE FROM user_progress")
             cursor.execute("DELETE FROM words")
@@ -71,6 +72,7 @@ def seeded_client():
     with app.app_context():
         with get_db() as conn:
             cursor = conn.cursor()
+            cursor.execute("DELETE FROM ai_feedback_logs")
             cursor.execute("DELETE FROM study_sessions")
             cursor.execute("DELETE FROM user_progress")
             cursor.execute("DELETE FROM words")
@@ -239,3 +241,72 @@ def test_stats_counts_unfinished_sessions_as_default_minutes(seeded_client):
     assert response.status_code == 200
     data = response.get_json()
     assert data['weekly_minutes'][-1] == 5
+
+# quality=4 gönderilince user_progress'te next_review_date güncellenmeli
+def test_answer_quality4_updates_next_review_date(seeded_client):
+    client, user_id, word_id = seeded_client
+    response = client.post('/study/answer', json={
+        'user_id':user_id,
+        'word_id': word_id,
+        'quality': 4
+    })
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data['message'] == 'ok'
+    assert data['xp_earned'] == 10
+
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            'SELECT next_review_date, status FROM user_progress WHERE user_id = %s AND word_id = %s',
+            (user_id, word_id)
+        )
+        row = cursor.fetchone()
+
+    assert row is not None,"user_progress kaydı oluşturulmamış"
+    assert row[0] is not None, "next_review_date NULL olmamalı"
+    assert row[1] in ('learning', 'review'), f"Beklenmeyen status: {row[1]}"
+
+
+# daha önce cevaplanan kelime due_rows olarak kuyruğa girmeli
+def test_queue_includes_due_words_after_answer(seeded_client):
+    client, user_id, word_id = seeded_client
+    # önce kelimeyi cevapla — user_progress kaydı oluşsun, next_review_date bugün/geçmiş
+    client.post('/study/answer', json={
+        'user_id':user_id,
+        'word_id': word_id,
+        'quality': 1
+    })
+    # next_review_date'i geçmişe çek ki due olarak görünsün
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE user_progress SET next_review_date = CURRENT_DATE - 1 WHERE user_id = %s AND word_id = %s",
+            (user_id, word_id)
+        )
+    response = client.get(f'/study/queue/{user_id}')
+    assert response.status_code == 200
+    data = response.get_json()
+    assert 'queue' in data
+    assert len(data['queue']) > 0
+    assert any(w['word_id'] == word_id for w in data['queue'])
+
+
+# session/start DB'ye gerçekten kayıt yazmalı
+def test_session_start_inserts_db_record(seeded_client):
+    client, user_id, word_id = seeded_client
+    response = client.post('/study/session/start', json={'user_id': user_id})
+    assert response.status_code== 201
+    session_id = response.get_json()['session_id']
+
+    with get_db() as conn:
+        cursor = conn.cursor()
+        cursor.execute(
+            'SELECT user_id, session_end FROM study_sessions WHERE id = %s',
+            (session_id,)
+        )
+        row = cursor.fetchone()
+
+    assert row is not None, "study_sessions kaydı oluşturulmamış"
+    assert row[0]==user_id, "user_id eşleşmiyor"
+    assert row[1] is None, "Yeni oturumun session_end'i NULL olmalı"

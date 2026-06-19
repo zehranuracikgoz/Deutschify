@@ -27,6 +27,7 @@ def clean_db():
     conn = psycopg2.connect(database_url)
     try:
         cursor = conn.cursor()
+        cursor.execute("DELETE FROM ai_feedback_logs")
         cursor.execute("DELETE FROM study_sessions")
         cursor.execute("DELETE FROM user_progress")
         cursor.execute("DELETE FROM words")
