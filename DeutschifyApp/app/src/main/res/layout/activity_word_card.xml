@@ -205,6 +205,18 @@
                         android:textSize="11sp"
                         android:textStyle="italic"
                         android:textColor="#8899cc"/>
+
+                    <TextView
+                        android:id="@+id/btn_yeni_cumle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yeni örnek cümle"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="#5c6bc0"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

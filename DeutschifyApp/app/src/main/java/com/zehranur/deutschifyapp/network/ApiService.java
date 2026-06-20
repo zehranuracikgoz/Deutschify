@@ -81,4 +81,9 @@ public interface ApiService {
     @POST("study/feedback")
     Call<AiFeedbackResponse> getAiFeedback(@Header("Authorization") String token,
                                             @Body AiFeedbackRequest body);
+
+    @POST("study/example")
+    Call<com.zehranur.deutschifyapp.model.ExampleResponse> getExampleSentence(
+            @Header("Authorization") String token,
+            @Body com.zehranur.deutschifyapp.model.ExampleRequest request);
 }

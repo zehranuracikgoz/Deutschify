@@ -79,7 +79,6 @@ def init_db():
                 turkish_meaning     VARCHAR NOT NULL,
                 example_sentence_de TEXT,
                 example_sentence_tr TEXT,
-                audio_url           VARCHAR,
                 article_id          INTEGER,
                 category_id         INTEGER,
                 type_id             INTEGER,

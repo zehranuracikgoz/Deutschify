@@ -20,7 +20,7 @@ def get_words():
     where_clause = ('WHERE ' + ' AND '.join(conditions)) if conditions else ''
     query = (
         'SELECT id, german_word, turkish_meaning, example_sentence_de, '
-        'example_sentence_tr, audio_url, article_id FROM words ' + where_clause
+        'example_sentence_tr, article_id FROM words ' + where_clause
     )
 
     with get_db() as conn:
@@ -34,7 +34,7 @@ def get_word(word_id):
     with get_db() as conn:
         cursor = conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
         cursor.execute(
-            'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr, audio_url FROM words WHERE id = %s',
+            'SELECT id, german_word, turkish_meaning, example_sentence_de, example_sentence_tr FROM words WHERE id = %s',
             (word_id,)
         )
         word = cursor.fetchone()

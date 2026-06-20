@@ -23,6 +23,8 @@ import java.io.IOException;
 import okhttp3.ResponseBody;
 import com.zehranur.deutschifyapp.model.AnswerRequest;
 import com.zehranur.deutschifyapp.model.AnswerResponse;
+import com.zehranur.deutschifyapp.model.ExampleRequest;
+import com.zehranur.deutschifyapp.model.ExampleResponse;
 import com.zehranur.deutschifyapp.model.QueueResponse;
 import com.zehranur.deutschifyapp.model.SessionStartResponse;
 import com.zehranur.deutschifyapp.model.Word;
@@ -88,6 +90,7 @@ public class WordCardActivity extends AppCompatActivity {
                 playWordAudio(wordQueue.get(currentIndex).getGermanWord());
             }
         });
+        findViewById(R.id.btn_yeni_cumle).setOnClickListener(v -> generateNewExample());
 
         findViewById(R.id.btn_quality_1).setOnClickListener(v -> submitAnswer(1));
         findViewById(R.id.btn_quality_2).setOnClickListener(v -> submitAnswer(2));
@@ -197,6 +200,37 @@ public class WordCardActivity extends AppCompatActivity {
         });
 
         flipOut.start();
+    }
+
+    private void generateNewExample() {
+        if (wordQueue == null || currentIndex >= wordQueue.size()) return;
+        SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
+        String token = prefs.getString("access_token", null);
+        if (token == null) {
+            Toast.makeText(this, "Oturum süresi dolmuş", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String germanWord = wordQueue.get(currentIndex).getGermanWord();
+        api.getExampleSentence("Bearer " + token, new ExampleRequest(germanWord))
+                .enqueue(new Callback<ExampleResponse>() {
+            @Override
+            public void onResponse(Call<ExampleResponse>call, Response<ExampleResponse> response) {
+                if (response.isSuccessful() && response.body() != null
+                        && response.body().getExampleSentence() != null) {
+                    tvExampleDe.setText(response.body().getExampleSentence());
+                    tvExampleTr.setText("(çeviri mevcut değil)");
+                } else {
+                    Toast.makeText(WordCardActivity.this,
+                            "Örnek cümle üretilemedi", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ExampleResponse>call, Throwable t) {
+                Toast.makeText(WordCardActivity.this,
+                        "Bağlantı hatası: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void submitAnswer(int quality) {

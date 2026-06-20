@@ -1,9 +1,18 @@
+import os
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env'))
+
 from backend.database import get_db
 
 
 def seed_data():
     with get_db() as conn:
         cursor = conn.cursor()
+        for name, min_xp in [('A1', 0), ('A2', 500)]:
+            cursor.execute(
+                "INSERT INTO levels (name, min_xp) VALUES (%s, %s) ON CONFLICT (name) DO NOTHING",
+                (name, min_xp)
+            )
         cursor.execute("""
             INSERT INTO articles (id, name) VALUES
             (1, 'der'), (2, 'die'), (3, 'das')

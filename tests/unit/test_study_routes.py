@@ -24,7 +24,6 @@ def client():
             cursor.execute("DELETE FROM word_categories")
             cursor.execute("DELETE FROM word_types")
             cursor.execute("DELETE FROM articles")
-            cursor.execute("DELETE FROM levels")
 
 @pytest.fixture
 def seeded_client():
@@ -80,7 +79,6 @@ def seeded_client():
             cursor.execute("DELETE FROM word_categories")
             cursor.execute("DELETE FROM word_types")
             cursor.execute("DELETE FROM articles")
-            cursor.execute("DELETE FROM levels")
 
 # kullanıcının hiç progressi yoksa yeni kelimeler new olarak gözükecek
 def test_queue_returns_new_words(seeded_client):

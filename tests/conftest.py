@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'), encoding='utf-8-sig')
+
 import pytest
 import psycopg2
 from backend import create_app
@@ -35,7 +38,6 @@ def clean_db():
         cursor.execute("DELETE FROM word_categories")
         cursor.execute("DELETE FROM word_types")
         cursor.execute("DELETE FROM articles")
-        cursor.execute("DELETE FROM levels")
         conn.commit()
     finally:
         conn.close()
