@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'), encoding='utf-8-sig')
-os.environ['DATABASE_URL'] = 'postgresql://postgres:postgres@localhost:5433/deutschify'
+if not os.environ.get('GITHUB_ACTIONS'):
+    os.environ['DATABASE_URL'] = 'postgresql://postgres:postgres@localhost:5433/deutschify'
 
 import pytest
 import psycopg2
