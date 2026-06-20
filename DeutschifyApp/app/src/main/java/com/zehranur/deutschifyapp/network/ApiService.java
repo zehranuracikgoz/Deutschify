@@ -63,6 +63,9 @@ public interface ApiService {
     @GET("study/history")
     Call<HistoryResponse> getHistory(@Header("Authorization") String token);
 
+    @GET("words/daily")
+    Call<WordResponse> getDailyWord();
+
     @GET("words/")
     Call<List<WordResponse>> getWords(@Query("has_article") boolean hasArticle);
 

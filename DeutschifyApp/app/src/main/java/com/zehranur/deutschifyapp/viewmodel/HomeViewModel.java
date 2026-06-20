@@ -3,9 +3,8 @@ package com.zehranur.deutschifyapp.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import com.zehranur.deutschifyapp.model.QueueResponse;
-import com.zehranur.deutschifyapp.model.Word;
 import com.zehranur.deutschifyapp.model.StatsResponse;
+import com.zehranur.deutschifyapp.model.WordResponse;
 import com.zehranur.deutschifyapp.network.ApiService;
 import com.zehranur.deutschifyapp.network.RetrofitClient;
 import java.util.List;
@@ -17,38 +16,36 @@ public class HomeViewModel extends ViewModel {
 
     private final MutableLiveData<String> wordOfDay = new MutableLiveData<>();
     private final MutableLiveData<String> wordOfDayTranslation = new MutableLiveData<>();
+    private final MutableLiveData<String> wordOfDayExampleDe = new MutableLiveData<>();
+    private final MutableLiveData<String> wordOfDayExampleTr = new MutableLiveData<>();
     private final MutableLiveData<int[]> weeklySessionCounts = new MutableLiveData<>();
     private final MutableLiveData<Integer> totalXp = new MutableLiveData<>();
     private final MutableLiveData<Integer> dailyStreak = new MutableLiveData<>();
 
     public LiveData<String> getWordOfDay() { return wordOfDay; }
     public LiveData<String> getWordOfDayTranslation() { return wordOfDayTranslation; }
+    public LiveData<String> getWordOfDayExampleDe() { return wordOfDayExampleDe; }
+    public LiveData<String> getWordOfDayExampleTr() { return wordOfDayExampleTr; }
     public LiveData<int[]> getWeeklySessionCounts() { return weeklySessionCounts; }
     public LiveData<Integer> getTotalXp() { return totalXp; }
     public LiveData<Integer> getDailyStreak() { return dailyStreak; }
 
-    public void loadHomeData(String token, int userId) {
+    public void loadHomeData(String token) {
         ApiService api = RetrofitClient.getInstance().create(ApiService.class);
 
-        api.getStudyQueue(userId, 1).enqueue(new Callback<QueueResponse>() {
+        api.getDailyWord().enqueue(new Callback<WordResponse>() {
             @Override
-            public void onResponse(Call<QueueResponse> call, Response<QueueResponse> response) {
-                if (response.isSuccessful() && response.body() != null
-                        && response.body().getQueue() != null
-                        && !response.body().getQueue().isEmpty()) {
-                    Word word = response.body().getQueue().get(0);
-                    wordOfDay.postValue(word.getGermanWord());
-                    wordOfDayTranslation.postValue(word.getTurkishMeaning());
-                } else {
-                    wordOfDay.postValue("lernen");
-                    wordOfDayTranslation.postValue("öğrenmek");
+            public void onResponse(Call<WordResponse> call, Response<WordResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    WordResponse w = response.body();
+                    wordOfDay.postValue(w.getGermanWord());
+                    wordOfDayTranslation.postValue(w.getTurkishMeaning());
+                    wordOfDayExampleDe.postValue(w.getExampleSentenceDe() != null ? w.getExampleSentenceDe() : "");
+                    wordOfDayExampleTr.postValue(w.getExampleSentenceTr() != null ? w.getExampleSentenceTr() : "");
                 }
             }
             @Override
-            public void onFailure(Call<QueueResponse> call, Throwable t) {
-                wordOfDay.postValue("lernen");
-                wordOfDayTranslation.postValue("öğrenmek");
-            }
+            public void onFailure(Call<WordResponse> call, Throwable t) {}
         });
 
         api.getStats("Bearer " + token).enqueue(new Callback<StatsResponse>() {

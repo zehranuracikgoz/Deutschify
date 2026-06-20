@@ -57,7 +57,7 @@
                     android:id="@+id/tv_word_of_day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="lernen"
+                    android:text=""
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="#B794D6"/>
@@ -66,7 +66,7 @@
                     android:id="@+id/tv_word_translation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="öğrenmek"
+                    android:text=""
                     android:textSize="13sp"
                     android:textColor="#8899cc"
                     android:layout_marginBottom="14dp"/>
@@ -79,18 +79,20 @@
                     android:padding="12dp">
 
                     <TextView
+                        android:id="@+id/tv_word_example_de"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ich lerne Deutsch jeden Tag."
+                        android:text=""
                         android:textSize="13sp"
                         android:textStyle="italic"
                         android:textColor="#2D1B69"/>
 
                     <TextView
+                        android:id="@+id/tv_word_example_tr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Ben her gün Almanca öğreniyorum."
+                        android:text=""
                         android:textColor="#B794D6"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -281,6 +283,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/tv_weekly_total"
                         android:text="3sa 20dk"
                         android:textSize="12sp"
                         android:textColor="#e8a838"/>
@@ -298,7 +301,7 @@
                         <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
                             <View android:layout_width="match_parent" android:layout_height="match_parent"
                                 android:background="@drawable/bg_bar_track"/>
-                            <View android:id="@+id/bar1" android:layout_width="match_parent" android:layout_height="32dp"
+                            <View android:id="@+id/bar1" android:layout_width="match_parent" android:layout_height="4dp"
                                 android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
                         </FrameLayout>
                     </LinearLayout>
@@ -308,7 +311,7 @@
                         <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
                             <View android:layout_width="match_parent" android:layout_height="match_parent"
                                 android:background="@drawable/bg_bar_track"/>
-                            <View android:id="@+id/bar2" android:layout_width="match_parent" android:layout_height="50dp"
+                            <View android:id="@+id/bar2" android:layout_width="match_parent" android:layout_height="4dp"
                                 android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
                         </FrameLayout>
                     </LinearLayout>
@@ -318,7 +321,7 @@
                         <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
                             <View android:layout_width="match_parent" android:layout_height="match_parent"
                                 android:background="@drawable/bg_bar_track"/>
-                            <View android:id="@+id/bar3" android:layout_width="match_parent" android:layout_height="22dp"
+                            <View android:id="@+id/bar3" android:layout_width="match_parent" android:layout_height="4dp"
                                 android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
                         </FrameLayout>
                     </LinearLayout>
@@ -328,7 +331,7 @@
                         <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
                             <View android:layout_width="match_parent" android:layout_height="match_parent"
                                 android:background="@drawable/bg_bar_track"/>
-                            <View android:id="@+id/bar4" android:layout_width="match_parent" android:layout_height="40dp"
+                            <View android:id="@+id/bar4" android:layout_width="match_parent" android:layout_height="4dp"
                                 android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
                         </FrameLayout>
                     </LinearLayout>
@@ -338,16 +341,8 @@
                         <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
                             <View android:layout_width="match_parent" android:layout_height="match_parent"
                                 android:background="@drawable/bg_bar_track"/>
-                            <View android:id="@+id/bar5" android:layout_width="match_parent" android:layout_height="36dp"
+                            <View android:id="@+id/bar5" android:layout_width="match_parent" android:layout_height="4dp"
                                 android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
-                        </FrameLayout>
-                    </LinearLayout>
-
-                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
-                        android:layout_weight="1" android:gravity="center_horizontal">
-                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
-                            <View android:id="@+id/bar6" android:layout_width="match_parent" android:layout_height="match_parent"
-                                android:background="@drawable/bg_bar_fill_active"/>
                         </FrameLayout>
                     </LinearLayout>
 
@@ -356,7 +351,17 @@
                         <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
                             <View android:layout_width="match_parent" android:layout_height="match_parent"
                                 android:background="@drawable/bg_bar_track"/>
-                            <View android:id="@+id/bar7" android:layout_width="match_parent" android:layout_height="18dp"
+                            <View android:id="@+id/bar6" android:layout_width="match_parent" android:layout_height="4dp"
+                                android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <LinearLayout android:layout_width="0dp" android:layout_height="match_parent"
+                        android:layout_weight="1" android:gravity="center_horizontal">
+                        <FrameLayout android:layout_width="12dp" android:layout_height="match_parent">
+                            <View android:layout_width="match_parent" android:layout_height="match_parent"
+                                android:background="@drawable/bg_bar_track"/>
+                            <View android:id="@+id/bar7" android:layout_width="match_parent" android:layout_height="4dp"
                                 android:background="@drawable/bg_bar_fill" android:layout_gravity="bottom"/>
                         </FrameLayout>
                     </LinearLayout>

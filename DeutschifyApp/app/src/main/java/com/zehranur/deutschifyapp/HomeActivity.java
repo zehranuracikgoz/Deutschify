@@ -40,11 +40,27 @@ public class HomeActivity extends AppCompatActivity {
             if (tvTranslation != null) tvTranslation.setText(translation);
         });
 
+        homeViewModel.getWordOfDayExampleDe().observe(this, example -> {
+            TextView tv = findViewById(R.id.tv_word_example_de);
+            if (tv != null) tv.setText(example);
+        });
+
+        homeViewModel.getWordOfDayExampleTr().observe(this, example -> {
+            TextView tv = findViewById(R.id.tv_word_example_tr);
+            if (tv != null) tv.setText(example);
+        });
+
         homeViewModel.getWeeklySessionCounts().observe(this, counts -> {
             int[] barIds = {
                 R.id.bar1, R.id.bar2, R.id.bar3,
                 R.id.bar4, R.id.bar5, R.id.bar6, R.id.bar7
             };
+            int totalSessions = 0;
+            for (int c : counts) totalSessions += c;
+            TextView tvWeeklyTotal = findViewById(R.id.tv_weekly_total);
+            if (tvWeeklyTotal != null) {
+                tvWeeklyTotal.setText(totalSessions + " oturum");
+            }
             int maxCount = 1;
             for (int c : counts) if (c > maxCount) maxCount = c;
             int maxHeightDp = 60;
@@ -60,8 +76,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        int userId = prefs.getInt("user_id", -1);
-        homeViewModel.loadHomeData(token, userId);
+        homeViewModel.loadHomeData(token);
 
         findViewById(R.id.btn_kelime_kartlari).setOnClickListener(v ->
                 startActivity(new Intent(this, WordCardActivity.class)));

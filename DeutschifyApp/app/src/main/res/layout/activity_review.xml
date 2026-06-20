@@ -98,7 +98,7 @@
         android:layout_weight="1"/>
 
     <FrameLayout
-        android:id=" @+id/card_container"
+        android:id="@+id/card_container"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginStart="24dp"
@@ -137,7 +137,7 @@
                     android:textSize="28sp"
                     android:textStyle="bold"
                     android:textColor="#1a2d6e"
-                    android:gravity="center " />
+                    android:gravity="center" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
             android:id="@+id/card_back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/bg_card_white "
+            android:background="@drawable/bg_card_white"
             android:orientation="vertical"
             android:padding="16dp"
             android:visibility="gone">
@@ -301,7 +301,7 @@
                 android:focusable="true"/>
 
             <TextView
-                android:id="@+id/btn_quality_3 "
+                android:id="@+id/btn_quality_3"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
