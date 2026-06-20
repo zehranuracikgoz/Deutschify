@@ -7,7 +7,7 @@ from backend.srs import calculate_next_review
 grammar_bp = Blueprint('grammar', __name__, url_prefix='/grammar')
 
 
-@grammar_bp.route('/topics',methods=['GET'])
+@grammar_bp.route('/topics', methods=['GET'])
 def get_topics():
     level = request.args.get('level')
     with get_db() as conn:
@@ -37,7 +37,7 @@ def get_topic_exercises(slug):
         )
         topic = cursor.fetchone()
         if not topic:
-            return jsonify({'error':'Konu bulunamadı'}), 404
+            return jsonify({'error': 'Konu bulunamadı'}), 404
 
         cursor.execute(
             'SELECT id, question, exercise_type, options, display_order '
@@ -55,7 +55,7 @@ def get_topic_exercises(slug):
 def check_answer():
     data = request.get_json()
     if not data or 'exercise_id' not in data or 'answer' not in data:
-        return jsonify({'error':'exercise_id ve answer alanları gerekli'}), 400
+        return jsonify({'error': 'exercise_id ve answer alanları gerekli'}), 400
 
     exercise_id = data['exercise_id']
     user_answer = str(data['answer']).strip().lower()
@@ -78,7 +78,7 @@ def check_answer():
 
     if user_id:
         try:
-            quality =4 if correct else 1
+            quality = 4 if correct else 1
             today = date.today()
 
             with get_db() as conn:
@@ -96,9 +96,9 @@ def check_answer():
                     (int(user_id), exercise_id)
                 )
                 existing = cursor.fetchone()
-                ef       = existing['ease_factor']      if existing else 2.5
-                interval = existing['interval_days']    if existing else 0
-                rep      = existing['repetition_count'] if existing else 0
+                ef = existing['ease_factor'] if existing else 2.5
+                interval = existing['interval_days'] if existing else 0
+                rep = existing['repetition_count'] if existing else 0
 
                 srs = calculate_next_review(ef, interval, rep, quality)
                 next_review = (today + timedelta(days=srs['interval_days'])).isoformat()

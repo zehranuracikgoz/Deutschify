@@ -11,6 +11,7 @@ def register_user(username, email, password):
             (username, email, password_hash)
         )
 
+
 def authenticate_user(email, password):
     with get_db() as conn:
         cursor = conn.cursor()

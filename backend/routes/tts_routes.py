@@ -9,7 +9,7 @@ tts_bp = Blueprint('tts', __name__, url_prefix='/tts')
 def pronounce(word):
     try:
         tts = gTTS(text=word, lang='de')
-        buf =io.BytesIO()
+        buf = io.BytesIO()
         tts.write_to_fp(buf)
         buf.seek(0)
         return send_file(buf, mimetype='audio/mpeg', as_attachment=False)

@@ -1,6 +1,4 @@
 from datetime import date, datetime, timedelta, timezone
-
-TZ_TR = timezone(timedelta(hours=3))
 from flask import Blueprint, request, jsonify
 import psycopg2.extras
 from backend.database import get_db
@@ -9,6 +7,8 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 import requests
 import os
 import google.generativeai as genai
+
+TZ_TR = timezone(timedelta(hours=3))
 
 study_bp = Blueprint('study', __name__, url_prefix='/study')
 
@@ -181,7 +181,7 @@ def start_session():
         if user_id is None:
             return jsonify({'error': 'user_id zorunlu'}), 400
 
-        module_type   = data.get('module_type')
+        module_type = data.get('module_type')
         session_start = datetime.now(timezone.utc).isoformat()
 
         with get_db() as conn:
@@ -221,7 +221,7 @@ def end_session(session_id):
             if max_streak is not None:
                 cursor.execute(
                     'UPDATE study_sessions SET session_end = %s, max_streak = %s WHERE id = %s',
-                    (session_end, int(max_streak), session_id )
+                    (session_end, int(max_streak), session_id)
                 )
             else:
                 cursor.execute(
@@ -309,10 +309,10 @@ def get_example_sentence():
     # 2- HF Inference API fallback
     try:
         api_url = "https://api-inference.huggingface.co/models/zehranuracikgoz/deutschify-t5-small"
-        headers ={"Authorization": f"Bearer {os.environ.get('HF_TOKEN')}"}
+        headers = {"Authorization": f"Bearer {os.environ.get('HF_TOKEN')}"}
         payload = {"inputs": f"örnek_üret: {word}"}
-        response =requests.post(api_url, headers=headers, json=payload, timeout=10)
-        if response.status_code==200:
+        response = requests.post(api_url, headers=headers, json=payload, timeout=10)
+        if response.status_code == 200:
             result = response.json()
             sentence = result[0].get('generated_text', '')
             if sentence:
@@ -342,16 +342,16 @@ def get_example_sentence():
 def get_ai_feedback():
     user_id = int(get_jwt_identity())
     data = request.get_json()
-    word= data.get('word', '').strip()
+    word = data.get('word', '').strip()
     user_answer = data.get('user_answer', '').strip()
-    correct_answer =data.get('correct_answer', '').strip()
+    correct_answer = data.get('correct_answer', '').strip()
 
     if not all([word, user_answer, correct_answer]):
         return jsonify({'error': 'word, user_answer, correct_answer gerekli'}), 400
 
     try:
         genai.configure(api_key=os.environ.get('GEMINI_API_KEY'))
-        model =genai.GenerativeModel('gemini-2.5-flash-lite')
+        model = genai.GenerativeModel('gemini-2.5-flash-lite')
 
         prompt = (
             f"Bir Almanca öğrencisi '{word}' kelimesine '{user_answer}' cevabını verdi, "
@@ -361,7 +361,7 @@ def get_ai_feedback():
         )
 
         response = model.generate_content(prompt)
-        feedback_text =response.text
+        feedback_text = response.text
 
         with get_db() as conn:
             cursor = conn.cursor()
@@ -373,7 +373,7 @@ def get_ai_feedback():
                 cursor.execute("""
                     INSERT INTO ai_feedback_logs (user_id, word_id, word, user_answer, correct_answer, feedback_text, created_at)
                     VALUES (%s, %s, %s, %s, %s, %s, NOW())
-                """, (user_id,word_id, word, user_answer, correct_answer, feedback_text))
+                """, (user_id, word_id, word, user_answer, correct_answer, feedback_text))
                 conn.commit()
 
         return jsonify({'feedback': feedback_text}), 200
@@ -400,13 +400,13 @@ def get_history():
 
     def calc_rate(correct, wrong):
         total = (correct or 0) + (wrong or 0)
-        return round((correct / total) *100) if total > 0 else None
+        return round((correct / total) * 100) if total > 0 else None
 
     def to_tr(dt):
         if dt is None:
             return None
         if dt.tzinfo is None:
-            dt =dt.replace(tzinfo=timezone.utc)
+            dt = dt.replace(tzinfo=timezone.utc)
         return dt.astimezone(TZ_TR)
 
     result = [
@@ -454,8 +454,8 @@ def get_review_words():
         'example_sentence_de': row[3],
         'example_sentence_tr': row[4],
         'ease_factor': round(float(row[5]), 2),
-        'repetitions':row[6],
-        'next_review_date':str(row[7]) if row[7] else None
+        'repetitions': row[6],
+        'next_review_date': str(row[7]) if row[7] else None
     } for row in rows]
 
     return jsonify({'words': result}), 200
@@ -523,8 +523,8 @@ def get_stats():
                     FROM study_sessions
                     WHERE user_id = %s AND module_type IN ('artikel', 'grammar')
                 """, (user_id,))
-                max_streak_row=cursor.fetchone()
-                max_streak =int(max_streak_row[0]) if max_streak_row else 0
+                max_streak_row = cursor.fetchone()
+                max_streak = int(max_streak_row[0]) if max_streak_row else 0
             except Exception:
                 conn.rollback()
                 max_streak = 0
@@ -532,7 +532,7 @@ def get_stats():
         # Son 7 günü doldur (veri olmayan günler 0)
         from datetime import datetime, timedelta
         today = datetime.utcnow().date()
-        days = [(today - timedelta(days=6-i)) for i in range(7)]
+        days = [(today - timedelta(days=6 - i)) for i in range(7)]
         session_map = {row[0]: row[1] for row in sessions}
         weekly = [session_map.get(day, 0) for day in days]
 
@@ -545,14 +545,14 @@ def get_stats():
         success_rate = round((total_correct / total_answers) * 100) if total_answers > 0 else 0
 
         return jsonify({
-            'total_xp':        user[0] if user else 0,
-            'daily_streak':    user[1] if user else 0,
+            'total_xp': user[0] if user else 0,
+            'daily_streak': user[1] if user else 0,
             'weekly_sessions': weekly,
-            'weekly_minutes':  weekly_minutes,
-            'total_correct':   total_correct,
-            'total_wrong':     total_wrong,
-            'success_rate':    success_rate,
-            'max_streak':      max_streak
+            'weekly_minutes': weekly_minutes,
+            'total_correct': total_correct,
+            'total_wrong': total_wrong,
+            'success_rate': success_rate,
+            'max_streak': max_streak
         }), 200
 
     except Exception as e:

@@ -5,6 +5,7 @@ from ..database import get_db
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
+
 @auth_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()
@@ -21,8 +22,9 @@ def register():
     try:
         register_user(username, email, password)
         return jsonify({'message': 'Kayıt başarılı'}), 201
-    except Exception as e:
+    except Exception:
         return jsonify({'error': 'Bu email zaten kayıtlı'}), 409
+
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
@@ -45,6 +47,7 @@ def login():
             'username': user['username'],
         }), 200
     return jsonify({'error': 'Geçersiz email veya şifre'}), 401
+
 
 @auth_bp.route('/me', methods=['GET'])
 @jwt_required()
@@ -77,11 +80,11 @@ def me():
     return jsonify({
         'id': user_dict['id'],
         'username': user_dict['username'],
-        'email':  user_dict['email'],
+        'email': user_dict['email'],
         'total_xp': user_dict['total_xp'],
-        'daily_streak':user_dict['daily_streak'],
+        'daily_streak': user_dict['daily_streak'],
         'preferred_daily_goal': user_dict['preferred_daily_goal'],
-        'created_at':str(user_dict['created_at']),
+        'created_at': str(user_dict['created_at']),
         'level_name': user_dict['level_name'],
         'total_sessions': stats[0] if stats else 0,
         'total_correct': stats[1] if stats else 0,

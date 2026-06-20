@@ -48,7 +48,7 @@ def artikel():
     return render_template('artikel.html')
 
 
-@web_bp.route ('/grammar')
+@web_bp.route('/grammar')
 def grammar():
     return render_template('grammar.html')
 
