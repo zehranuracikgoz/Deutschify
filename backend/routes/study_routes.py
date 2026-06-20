@@ -322,15 +322,15 @@ def get_example_sentence():
 
     # 3- Statik fallback — DB deki example_sentence_de
     try:
-        conn = get_db()
-        cur = conn.cursor()
-        cur.execute(
-            'SELECT example_sentence_de FROM words WHERE german_word ILIKE %s LIMIT 1',
-            (word,)
-        )
-        row = cur.fetchone()
-        if row and row[0]:
-            return jsonify({'word': word, 'example_sentence': row[0]}), 200
+        with get_db() as conn:
+            cur = conn.cursor()
+            cur.execute(
+                'SELECT example_sentence_de FROM words WHERE german_word ILIKE %s LIMIT 1',
+                (word,)
+            )
+            row = cur.fetchone()
+            if row and row[0]:
+                return jsonify({'word': word, 'example_sentence': row[0]}), 200
     except Exception:
         pass
 
