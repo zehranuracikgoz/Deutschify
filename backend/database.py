@@ -2,6 +2,7 @@ import os
 import psycopg2
 from contextlib import contextmanager
 
+
 @contextmanager
 def get_db():
     database_url = os.environ.get('DATABASE_URL')
@@ -17,6 +18,7 @@ def get_db():
         raise e
     finally:
         conn.close()
+
 
 def init_db():
     with get_db() as conn:
