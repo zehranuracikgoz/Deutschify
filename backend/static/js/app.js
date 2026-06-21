@@ -41,9 +41,9 @@ async function loadHome() {
         const statsRes = await fetch(API_URL + '/study/stats', { headers: authHdr() });
         if (statsRes.ok) {
             const stats = await statsRes.json();
-            const weeklyMinutes = stats.weekly_minutes || new Array(7).fill(0);
-            renderChart(weeklyMinutes);
-            document.getElementById('h-chart-time').textContent = formatDuration(weeklyMinutes.reduce((a, b) => a + b, 0));
+            const weeklySessions = stats.weekly_sessions || new Array(7).fill(0);
+            renderChart(weeklySessions);
+            document.getElementById('h-chart-time').textContent = weeklySessions.reduce((a, b) => a + b, 0) + ' oturum';
             document.getElementById('greet-xp').textContent     = (stats.total_xp     ?? 0) + ' XP';
             document.getElementById('greet-streak').textContent = (stats.daily_streak ?? 0) + ' gün';
             document.getElementById('h-correct').textContent = stats.max_streak ?? 0;
@@ -67,9 +67,9 @@ async function loadDashboard() {
         document.getElementById('d-correct').textContent = d.max_streak  ?? 0;
         document.getElementById('d-rate').textContent    = (d.success_rate  ?? 0) + '%';
 
-        const weeklyMinutes = d.weekly_minutes || new Array(7).fill(0);
-        renderChart(weeklyMinutes);
-        document.getElementById('d-chart-time').textContent = formatDuration(weeklyMinutes.reduce((a, b) => a + b, 0));
+        const weeklySessions = d.weekly_sessions || new Array(7).fill(0);
+        renderChart(weeklySessions);
+        document.getElementById('d-chart-time').textContent = weeklySessions.reduce((a, b) => a + b, 0) + ' oturum';
     } catch { toast('Bağlantı hatası.'); }
 }
 
