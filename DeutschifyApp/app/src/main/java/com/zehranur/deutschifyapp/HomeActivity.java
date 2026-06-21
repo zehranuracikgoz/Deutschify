@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
             if (tv != null) tv.setText(example);
         });
 
-        homeViewModel.getWeeklySessionCounts().observe(this, counts -> {
+        homeViewModel.getWeeklySessionCounts().observe(this,  counts -> {
             int[] barIds = {
                 R.id.bar1, R.id.bar2, R.id.bar3,
                 R.id.bar4, R.id.bar5, R.id.bar6, R.id.bar7

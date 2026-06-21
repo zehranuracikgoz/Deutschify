@@ -61,6 +61,7 @@ public class WordCardActivity extends AppCompatActivity {
     private boolean isAnimating = false;
     private MediaPlayer mediaPlayer;
     private int totalXpEarned =0;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +70,7 @@ public class WordCardActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
         userId = prefs.getInt("user_id", 1);
+        token = prefs.getString("access_token", null);
 
         cardContainer = findViewById(R.id.card_container);
         cardFront = findViewById(R.id.card_front);
@@ -102,7 +104,7 @@ public class WordCardActivity extends AppCompatActivity {
     }
 
     private void loadStudyQueue() {
-        api.getStudyQueue(userId, SESSION_LIMIT).enqueue(new Callback<QueueResponse>() {
+        api.getStudyQueue("Bearer " + token, userId, SESSION_LIMIT).enqueue(new Callback<QueueResponse>() {
             @Override
             public void onResponse(Call<QueueResponse> call, Response<QueueResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -130,7 +132,7 @@ public class WordCardActivity extends AppCompatActivity {
     private void startStudySession(Runnable onReady) {
         Map<String, Integer> body = new HashMap<>();
         body.put("user_id", userId);
-        api.startSession(body).enqueue(new Callback<SessionStartResponse>() {
+        api.startSession("Bearer " + token, body).enqueue(new Callback<SessionStartResponse>() {
             @Override
             public void onResponse(Call<SessionStartResponse> call, Response<SessionStartResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -240,7 +242,7 @@ public class WordCardActivity extends AppCompatActivity {
                 ? new AnswerRequest(userId, wordQueue.get(currentIndex).getWordId(), quality, sessionId)
                 : new AnswerRequest(userId, wordQueue.get(currentIndex).getWordId(), quality);
 
-        api.submitAnswer(request).enqueue(new Callback<AnswerResponse>() {
+        api.submitAnswer("Bearer " + token, request).enqueue(new Callback<AnswerResponse>() {
                     @Override
                     public void onResponse(Call<AnswerResponse> call, Response<AnswerResponse> response) {
                         if (response.isSuccessful()&&response.body() != null) {
@@ -269,7 +271,7 @@ public class WordCardActivity extends AppCompatActivity {
             navigateHome();
             return;
         }
-        api.endSession(sessionId).enqueue(new Callback<Void>() {
+        api.endSession("Bearer " + token, sessionId).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 navigateHome();

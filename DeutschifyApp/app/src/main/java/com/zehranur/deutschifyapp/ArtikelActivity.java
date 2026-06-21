@@ -59,6 +59,7 @@ public class ArtikelActivity extends AppCompatActivity {
 
     private int sessionId =-1;
     private int userId;
+    private String token;
     private int correctCount = 0;
     private int wrongCount = 0;
     private int answeredCount = 0;
@@ -131,6 +132,7 @@ public class ArtikelActivity extends AppCompatActivity {
 
         SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
         userId = prefs.getInt("user_id", 1);
+        token = prefs.getString("access_token", null);
         api = RetrofitClient.getInstance().create(ApiService.class);
         startStudySession();
         viewModel.loadWords();
@@ -217,7 +219,7 @@ public class ArtikelActivity extends AppCompatActivity {
     private void startStudySession() {
         Map<String, Integer> body = new HashMap<>();
         body.put("user_id", userId);
-        api.startSession(body).enqueue(new Callback<SessionStartResponse>() {
+        api.startSession("Bearer " + token, body).enqueue(new Callback<SessionStartResponse>() {
             @Override
             public void onResponse(Call<SessionStartResponse> call, Response<SessionStartResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -234,7 +236,7 @@ public class ArtikelActivity extends AppCompatActivity {
             showSummaryOverlay();
             return;
         }
-        api.endSession(sessionId).enqueue(new Callback<Void>() {
+        api.endSession("Bearer " + token, sessionId).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showSummaryOverlay();

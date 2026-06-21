@@ -55,6 +55,7 @@ public class ReviewActivity extends AppCompatActivity {
     private int sessionId =-1;
     private int correctCount = 0;
     private int wrongCount = 0;
+    private String token;
     private boolean isFlipped = false;
     private boolean isAnimating = false;
 
@@ -64,7 +65,7 @@ public class ReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_review);
 
         SharedPreferences prefs = getSharedPreferences("auth", MODE_PRIVATE);
-        String token = prefs.getString("access_token", null);
+        token = prefs.getString("access_token", null);
         userId=prefs.getInt("user_id", 1);
 
         if (token == null) {
@@ -202,7 +203,7 @@ public class ReviewActivity extends AppCompatActivity {
         else wrongCount++;
 
         AnswerRequest request = new AnswerRequest(userId, wordList.get(currentIndex).getId(), quality);
-        api.submitAnswer(request).enqueue(new Callback<AnswerResponse>() {
+        api.submitAnswer("Bearer " + token, request).enqueue(new Callback<AnswerResponse>() {
             @Override
             public void onResponse(Call<AnswerResponse> call, Response<AnswerResponse> response) {
                 int next = currentIndex + 1;
@@ -226,7 +227,7 @@ public class ReviewActivity extends AppCompatActivity {
     private void startStudySession() {
         Map<String, Integer> body =new HashMap<>();
         body.put("user_id", userId);
-        api.startSession(body).enqueue(new Callback<SessionStartResponse>() {
+        api.startSession("Bearer " + token, body).enqueue(new Callback<SessionStartResponse>() {
             @Override
             public void onResponse(Call<SessionStartResponse> call, Response<SessionStartResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
@@ -245,7 +246,7 @@ public class ReviewActivity extends AppCompatActivity {
             showResultDialog();
             return;
         }
-        api.endSession(sessionId).enqueue(new Callback<Void>() {
+        api.endSession("Bearer " + token, sessionId).enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 showResultDialog();
