@@ -17,7 +17,11 @@ _t5_model = None
 
 
 @study_bp.route('/queue/<int:user_id>', methods=['GET'])
+@jwt_required()
 def get_queue(user_id):
+    token_user_id = int(get_jwt_identity())
+    if user_id != token_user_id:
+        return jsonify({'error': 'Bu kullanıcıya ait veriye erişim yetkiniz yok'}), 403
     try:
         today = date.today().isoformat()
 
@@ -73,7 +77,9 @@ def get_queue(user_id):
 
 
 @study_bp.route('/answer', methods=['POST'])
+@jwt_required()
 def submit_answer():
+    token_user_id = int(get_jwt_identity())
     try:
         data = request.get_json()
         if not data:
@@ -86,6 +92,9 @@ def submit_answer():
 
         if any(v is None for v in [user_id, word_id, quality]):
             return jsonify({'error': 'user_id, word_id ve quality zorunlu'}), 400
+
+        if int(user_id) != token_user_id:
+            return jsonify({'error': 'Bu kullanıcıya ait veriye erişim yetkiniz yok'}), 403
 
         if not isinstance(quality, int) or quality < 1 or quality > 5:
             return jsonify({'error': 'quality 1 ile 5 arasında bir tam sayı olmalı'}), 400
@@ -171,7 +180,9 @@ def submit_answer():
 
 
 @study_bp.route('/session/start', methods=['POST'])
+@jwt_required()
 def start_session():
+    token_user_id = int(get_jwt_identity())
     try:
         data = request.get_json()
         if not data:
@@ -180,6 +191,9 @@ def start_session():
         user_id = data.get('user_id')
         if user_id is None:
             return jsonify({'error': 'user_id zorunlu'}), 400
+
+        if int(user_id) != token_user_id:
+            return jsonify({'error': 'Bu kullanıcıya ait veriye erişim yetkiniz yok'}), 403
 
         module_type = data.get('module_type')
         session_start = datetime.now(timezone.utc).isoformat()
@@ -199,7 +213,9 @@ def start_session():
 
 
 @study_bp.route('/session/<int:session_id>/end', methods=['PUT'])
+@jwt_required()
 def end_session(session_id):
+    token_user_id = int(get_jwt_identity())
     try:
         session_end = datetime.now(timezone.utc).isoformat()
         data = request.get_json(silent=True) or {}
@@ -215,6 +231,9 @@ def end_session(session_id):
 
             if not existing:
                 return jsonify({'error': 'Session bulunamadı'}), 404
+
+            if existing['user_id'] != token_user_id:
+                return jsonify({'error': 'Bu kullanıcıya ait veriye erişim yetkiniz yok'}), 403
 
             user_id = existing['user_id']
 
