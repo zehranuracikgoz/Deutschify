@@ -18,7 +18,8 @@ async function loadHome() {
     document.getElementById('h-extr').textContent = '';
 
     try {
-        const res  = await fetch(`${API_URL}/study/queue/${getUserId()}?limit=1`);
+        const res  = await apiFetch(`${API_URL}/study/queue/${getUserId()}?limit=1`);
+        if (!res) return;
         const data = await res.json();
         const q    = data.queue;
         if (q && q.length > 0) {
@@ -38,7 +39,7 @@ async function loadHome() {
     }
 
     try {
-        const statsRes = await fetch(API_URL + '/study/stats', { headers: authHdr() });
+        const statsRes = await apiFetch(API_URL + '/study/stats');
         if (statsRes.ok) {
             const stats = await statsRes.json();
             const weeklySessions = stats.weekly_sessions || new Array(7).fill(0);
@@ -46,10 +47,20 @@ async function loadHome() {
             document.getElementById('h-chart-time').textContent = weeklySessions.reduce((a, b) => a + b, 0) + ' oturum';
             document.getElementById('greet-xp').textContent     = (stats.total_xp     ?? 0) + ' XP';
             document.getElementById('greet-streak').textContent = (stats.daily_streak ?? 0) + ' gün';
-            document.getElementById('h-correct').textContent = stats.max_streak ?? 0;
+            document.getElementById('h-correct').textContent    = stats.max_streak ?? 0;
             document.getElementById('h-rate').textContent       = (stats.success_rate ?? 0) + '%';
+        } else {
+            renderChart(new Array(7).fill(0));
+            document.getElementById('h-chart-time').textContent = '0 oturum';
+            document.getElementById('h-correct').textContent    = 0;
+            document.getElementById('h-rate').textContent       = '0%';
         }
-    } catch { /* haftalık grafik olmadan da sayfa kullanılabilir */ }
+    } catch {
+        renderChart(new Array(7).fill(0));
+        document.getElementById('h-chart-time').textContent = '0 oturum';
+        document.getElementById('h-correct').textContent    = 0;
+        document.getElementById('h-rate').textContent       = '0%';
+    }
 }
 
 async function loadDashboard() {
@@ -58,7 +69,7 @@ async function loadDashboard() {
     );
 
     try {
-        const res = await fetch(API_URL + '/study/stats', { headers: authHdr() });
+        const res = await apiFetch(API_URL + '/study/stats');
         if (!res.ok) { toast('İstatistikler yüklenemedi.'); return; }
         const d   = await res.json();
 
@@ -100,7 +111,7 @@ async function loadHistory() {
     emptyEl.style.display = 'none';
 
     try {
-        const res = await fetch(API_URL + '/study/history', { headers: authHdr() });
+        const res = await apiFetch(API_URL + '/study/history');
         if (!res.ok) { toast('Geçmiş yüklenemedi.'); return; }
         const data     = await res.json();
         const sessions = data.sessions || [];
@@ -163,7 +174,7 @@ async function loadProfile() {
     document.getElementById('pr-name').textContent = localStorage.getItem('username') || '—';
 
     try {
-        const res = await fetch(API_URL + '/auth/me', { headers: authHdr() });
+        const res = await apiFetch(API_URL + '/auth/me');
         if (!res.ok) { toast('Profil yüklenemedi.'); return; }
         const d   = await res.json();
 
@@ -193,7 +204,8 @@ async function loadFlashcards() {
     document.getElementById('fc-empty').style.display = 'none';
 
     try {
-        const res  = await fetch(`${API_URL}/study/queue/${getUserId()}?limit=5`);
+        const res  = await apiFetch(`${API_URL}/study/queue/${getUserId()}?limit=5`);
+        if (!res) return;
         const data = await res.json();
         fcQueue = data.queue || [];
 
@@ -203,7 +215,7 @@ async function loadFlashcards() {
             return;
         }
         try {
-            const sessionRes  = await fetch(API_URL + '/study/session/start', {
+            const sessionRes  = await apiFetch(API_URL + '/study/session/start', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: getUserId(), module_type: 'flashcard' })
@@ -224,7 +236,7 @@ async function loadReview() {
     document.getElementById('fc-empty').style.display= 'none';
 
     try {
-        const res  = await fetch(API_URL + '/study/review', { headers: authHdr() });
+        const res  = await apiFetch(API_URL + '/study/review');
         if (!res.ok) { toast('Kelimeler yüklenemedi.'); return; }
         const data = await res.json();
         fcQueue  = (data.words || []).map(w => ({
@@ -244,7 +256,7 @@ async function loadReview() {
         }
 
         try {
-            const sessionRes  = await fetch(API_URL + '/study/session/start', {
+            const sessionRes  = await apiFetch(API_URL + '/study/session/start', {
                 method: 'POST',
                 headers:{ 'Content-Type': 'application/json' },
                 body: JSON.stringify({ user_id: getUserId(), module_type: 'review' })
@@ -305,7 +317,7 @@ async function submitQuality(quality) {
     if (quality >= 3) fcCorrectCount++; else fcWrongCount++;
 
     try {
-        const res = await fetch(API_URL + '/study/answer', {
+        const res = await apiFetch(API_URL + '/study/answer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
@@ -353,9 +365,9 @@ async function showAiFeedbackModal(word, onContinue, overrideUserAnswer, overrid
     fcAfterFeedback = onContinue;
 
     try {
-        const res = await fetch(API_URL + '/study/feedback', {
+        const res = await apiFetch(API_URL + '/study/feedback', {
             method: 'POST',
-            headers: { ...authHdr(), 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 word: word.german_word,
                 user_answer: userAnswer,
@@ -390,7 +402,7 @@ function closeAiFeedbackModal() {
 
 async function finishFlashcardSession() {
     if (fcSessionId) {
-        try { await fetch(`${API_URL}/study/session/${fcSessionId}/end`, { method: 'PUT' }); } catch {}
+        try { await apiFetch(`${API_URL}/study/session/${fcSessionId}/end`, { method: 'PUT' }); } catch {}
     }
     document.getElementById('fc-summary-cards').textContent = fcQueue.length;
     document.getElementById('fc-summary-xp').textContent    = fcXpEarned;
@@ -428,9 +440,9 @@ async function fetchDynamicExample() {
     btn.textContent = 'Üretiliyor…';
 
     try {
-        const res = await fetch(API_URL + '/study/example', {
+        const res = await apiFetch(API_URL + '/study/example', {
             method: 'POST',
-            headers:{ ...authHdr(), 'Content-Type': 'application/json' },
+            headers:{ 'Content-Type': 'application/json' },
             body: JSON.stringify({ word: word.german_word })
         });
         if (res.ok) {
@@ -452,7 +464,7 @@ function exitFlashcards() {
     if (!confirm('Oturumdan çıkmak istediğinize emin misiniz?')) return;
     (async () => {
         if (fcSessionId) {
-            try { await fetch(`${API_URL}/study/session/${fcSessionId}/end`, { method: 'PUT' }); } catch {}
+            try { await apiFetch(`${API_URL}/study/session/${fcSessionId}/end`, { method: 'PUT' }); } catch {}
         }
         window.location.href = '/web/';
     })();
@@ -505,7 +517,7 @@ async function loadArtikel() {
     } catch { toast('Kelimeler yüklenemedi.'); return; }
 
     try {
-        const sessionRes  = await fetch(API_URL + '/study/session/start', {
+        const sessionRes  = await apiFetch(API_URL + '/study/session/start', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: getUserId(), module_type: 'artikel' })
@@ -612,11 +624,11 @@ function answerArtikel(articleId) {
         quality: isCorrect ? 4 : 1
     };
     if (artSessionId) answerBody.session_id = artSessionId;
-    fetch(API_URL + '/study/answer', {
+    apiFetch(API_URL + '/study/answer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(answerBody)
-    }).then(r => r.json()).then(d => { artXpEarned += d.xp_earned || 0; }).catch(() => {});
+    }).then(r => r && r.json()).then(d => { if (d) artXpEarned += d.xp_earned || 0; }).catch(() => {});
 
     setTimeout(async () => {
         artAnswering = false;
@@ -645,7 +657,7 @@ function answerArtikel(articleId) {
 
 async function finishArtikelSession() {
     if (artSessionId) {
-        try { await fetch(`${API_URL}/study/session/${artSessionId}/end`, {
+        try { await apiFetch(`${API_URL}/study/session/${artSessionId}/end`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ max_streak: artMaxStreak })
@@ -662,9 +674,9 @@ function exitArtikel() {
 
     (async () => {
         if (artSessionId) {
-            try { await fetch(`${API_URL}/study/session/${artSessionId}/end`, {
+            try { await apiFetch(`${API_URL}/study/session/${artSessionId}/end`, {
                 method: 'PUT',
-                headers: { 'Content-Type':  'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ max_streak: artMaxStreak })
             }); } catch {}
         }
@@ -745,7 +757,7 @@ async function startGrammarExercises() {
     grMaxStreak = 0;
 
     try {
-        const sessionRes = await fetch(API_URL + '/study/session/start', {
+        const sessionRes = await apiFetch(API_URL + '/study/session/start', {
             method: 'POST',
             headers:{ 'Content-Type': 'application/json' },
             body: JSON.stringify({ user_id: getUserId(), module_type: 'grammar' })
@@ -823,9 +835,9 @@ async function doGrammarCheck(answer, clickedBtn) {
     const ex = grExercises[grIndex];
 
     try {
-        const res = await fetch(API_URL + '/grammar/check', {
+        const res = await apiFetch(API_URL + '/grammar/check', {
             method: 'POST',
-            headers: authHdr(),
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ exercise_id: ex.id, answer, user_id: parseInt(getUserId()) || null })
         });
         if (!res.ok) { grAnswered = false; toast('Sunucu hatası.'); return; }
@@ -882,7 +894,7 @@ async function nextGrammarQuestion() {
     grIndex++;
     if (grIndex >= grExercises.length) {
         if (grSessionId) {
-            try { await fetch(`${API_URL}/study/session/${grSessionId}/end`, {
+            try { await apiFetch(`${API_URL}/study/session/${grSessionId}/end`, {
                 method:'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ max_streak: grMaxStreak })
@@ -904,7 +916,7 @@ function exitGrammarDetail() {
                        document.getElementById('gr-exercise-view').style.display !== 'none';
     if (inExercise && !confirm('Alıştırmadan çıkmak istediğinize emin misiniz?')) return;
     if (grSessionId) {
-        fetch(`${API_URL}/study/session/${grSessionId}/end`, { method: 'PUT' }).catch(() => {});
+        apiFetch(`${API_URL}/study/session/${grSessionId}/end`, { method: 'PUT' }).catch(() => {});
         grSessionId =null;
     }
     window.location.href = '/web/grammar';

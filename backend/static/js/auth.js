@@ -20,6 +20,13 @@ const authHdr   = () => ({
     'Authorization': 'Bearer ' + getToken()
 });
 
+async function apiFetch(url, options = {}) {
+    const headers = { ...authHdr(), ...(options.headers || {}) };
+    const res = await fetch(url, { ...options, headers });
+    if (res.status === 401) { doLogout(); return null; }
+    return res;
+}
+
 function requireAuth() {
     if (!getToken()) {
         window.location.href = '/web/login';
