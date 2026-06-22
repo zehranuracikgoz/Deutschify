@@ -10,12 +10,10 @@ instance/
 # android icin
 DeutschifyApp/.gradle/
 DeutschifyApp/build/
-DeutschifyApp/app/build/
 DeutschifyApp/local.properties
 DeutschifyApp/.idea/
 
 *.log
 
 .postman/
-postman/
 docs/
