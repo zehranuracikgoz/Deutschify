@@ -6,7 +6,7 @@ from backend.srs import calculate_next_review
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import requests
 import os
-import google.generativeai as genai
+from google import genai
 
 TZ_TR = timezone(timedelta(hours=3))
 
@@ -369,8 +369,7 @@ def get_ai_feedback():
         return jsonify({'error': 'word, user_answer, correct_answer gerekli'}), 400
 
     try:
-        genai.configure(api_key=os.environ.get('GEMINI_API_KEY'))
-        model = genai.GenerativeModel('gemini-2.5-flash-lite')
+        client = genai.Client(api_key=os.environ.get('GEMINI_API_KEY'))
 
         prompt = (
             f"Bir Almanca öğrencisi '{word}' kelimesine '{user_answer}' cevabını verdi, "
@@ -379,7 +378,10 @@ def get_ai_feedback():
             f"geri bildirimi ver. Teknik terim kullanma."
         )
 
-        response = model.generate_content(prompt)
+        response = client.models.generate_content(
+            model='gemini-2.5-flash-lite',
+            contents=prompt
+        )
         feedback_text = response.text
 
         with get_db() as conn:
