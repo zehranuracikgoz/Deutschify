@@ -1,7 +1,6 @@
 import os
 from datetime import timedelta
 from flask import Flask
-from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from .database import init_db
 from .routes import register_blueprints
@@ -14,8 +13,6 @@ def create_app(test_config=None):
                 instance_relative_config=True)
     import logging
     logging.warning(f"Static folder: {app.static_folder}")
-    CORS(app)
-
     secret_key = os.environ.get('SECRET_KEY')
     jwt_secret = os.environ.get('JWT_SECRET_KEY')
     if not secret_key or not jwt_secret:
