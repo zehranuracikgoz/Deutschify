@@ -14,6 +14,7 @@ study_bp = Blueprint('study', __name__, url_prefix='/study')
 
 _t5_tokenizer = None
 _t5_model = None
+_T5_PROMPT_PREFIX = 'örnek_üret: '
 
 
 @study_bp.route('/queue/<int:user_id>', methods=['GET'])
@@ -312,7 +313,7 @@ def get_example_sentence():
                 _t5_model = T5ForConditionalGeneration.from_pretrained('zehranuracikgoz/deutschify-t5-small')
                 _t5_model.eval()
             inp = _t5_tokenizer(
-                f'generate sentence: {word}',
+                f'{_T5_PROMPT_PREFIX}{word}',
                 return_tensors='pt', max_length=64, truncation=True
             )
             with torch.no_grad():
@@ -498,18 +499,21 @@ def get_stats():
             """, (user_id,))
             user = cursor.fetchone()
 
-            # Son 7 günlük oturum sayısı
+            # hafta pzt başlar, paz biter
+            from datetime import datetime, timedelta
+            today = datetime.utcnow().date()
+            week_start = today - timedelta(days=today.weekday())
+
             cursor.execute("""
                 SELECT DATE(session_start) as day, COUNT(*) as count
                 FROM study_sessions
                 WHERE user_id = %s
-                  AND session_start >= NOW() - INTERVAL '7 days'
+                  AND session_start >= %s
                 GROUP BY DATE(session_start)
                 ORDER BY day ASC
-            """, (user_id,))
+            """, (user_id, week_start))
             sessions = cursor.fetchall()
 
-            # Son 7 günlük çalışma süresi (dakika)
             cursor.execute("""
                 SELECT DATE(session_start) as day,
                        COALESCE(SUM(
@@ -521,10 +525,10 @@ def get_stats():
                        ), 0) as minutes
                 FROM study_sessions
                 WHERE user_id = %s
-                  AND session_start >= NOW() - INTERVAL '7 days'
+                  AND session_start >= %s
                 GROUP BY DATE(session_start)
                 ORDER BY day ASC
-            """, (user_id,))
+            """, (user_id, week_start))
             durations = cursor.fetchall()
 
             # Toplam doğru ve yanlış
@@ -550,10 +554,7 @@ def get_stats():
                 conn.rollback()
                 max_streak = 0
 
-        # Son 7 günü doldur (veri olmayan günler 0)
-        from datetime import datetime, timedelta
-        today = datetime.utcnow().date()
-        days = [(today - timedelta(days=6 - i)) for i in range(7)]
+        days = [week_start + timedelta(days=i) for i in range(7)]
         session_map = {row[0]: row[1] for row in sessions}
         weekly = [session_map.get(day, 0) for day in days]
 

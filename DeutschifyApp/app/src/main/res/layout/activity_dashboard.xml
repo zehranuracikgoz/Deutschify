@@ -288,6 +288,27 @@
                         </FrameLayout>
                     </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Pzt"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sal"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Çar"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Per"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Cum"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Cmt"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Paz"
+                        android:gravity="center" android:textSize="10sp" android:textColor="#9B89C0"/>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
