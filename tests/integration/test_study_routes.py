@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../.
 
 import pytest
 import psycopg2.extras
+from datetime import datetime
 from backend import create_app
 from backend.database import get_db
 
@@ -223,7 +224,8 @@ def test_stats_returns_weekly_minutes(seeded_client):
     data = response.get_json()
     assert 'weekly_minutes' in data
     assert len(data['weekly_minutes']) == 7
-    assert data['weekly_minutes'][-1] == 30
+    today_index = datetime.utcnow().weekday()  # 0=pzt, 6=paz
+    assert data['weekly_minutes'][today_index] == 30
 
 
 # session_end NULL olan (bitmemiş) oturumlar 5 dakika varsayılan ile sayılmalı
@@ -241,7 +243,8 @@ def test_stats_counts_unfinished_sessions_as_default_minutes(seeded_client):
     response = client.get('/study/stats', headers=auth_header(token))
     assert response.status_code == 200
     data = response.get_json()
-    assert data['weekly_minutes'][-1] == 5
+    today_index = datetime.utcnow().weekday()  # 0=pzt, 6=paz
+    assert data['weekly_minutes'][today_index] == 5
 
 # quality=4 gönderilince user_progress'te next_review_date güncellenmeli
 def test_answer_quality4_updates_next_review_date(seeded_client):

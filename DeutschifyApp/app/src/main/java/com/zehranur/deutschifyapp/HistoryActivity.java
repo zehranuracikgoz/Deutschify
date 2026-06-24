@@ -22,6 +22,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class HistoryActivity extends AppCompatActivity {
 
@@ -213,6 +214,7 @@ public class HistoryActivity extends AppCompatActivity {
     private String formatDate(String dateStr) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            sdf.setTimeZone(TimeZone.getTimeZone("Europe/Istanbul"));
             Date parsed = sdf.parse(dateStr);
             String today = sdf.format(new Date());
             String yesterday = sdf.format(new Date(System.currentTimeMillis() - 86400000L));

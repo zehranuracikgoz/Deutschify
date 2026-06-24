@@ -161,10 +161,13 @@ async function loadHistory() {
 }
 
 function formatHistoryDate(dateStr) {
-    const today     = new Date().toISOString().slice(0, 10);
-    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
-    if (dateStr === today)     return 'Bugün';
-    if (dateStr === yesterday) return 'Dün';
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const localToday = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+    const yest = new Date(now); yest.setDate(yest.getDate() - 1);
+    const localYesterday = `${yest.getFullYear()}-${pad(yest.getMonth()+1)}-${pad(yest.getDate())}`;
+    if (dateStr === localToday)     return 'Bugün';
+    if (dateStr === localYesterday) return 'Dün';
     const d = new Date(dateStr + 'T00:00:00');
     const months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
     return `${d.getDate()} ${months[d.getMonth()]}`;

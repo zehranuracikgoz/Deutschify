@@ -501,21 +501,21 @@ def get_stats():
 
             # hafta pzt başlar, paz biter
             from datetime import datetime, timedelta
-            today = datetime.utcnow().date()
-            week_start = today - timedelta(days=today.weekday())
+            today_tr = datetime.now(TZ_TR).date()
+            week_start = today_tr - timedelta(days=today_tr.weekday())
 
             cursor.execute("""
-                SELECT DATE(session_start) as day, COUNT(*) as count
+                SELECT DATE(session_start AT TIME ZONE 'Europe/Istanbul') as day, COUNT(*) as count
                 FROM study_sessions
                 WHERE user_id = %s
-                  AND session_start >= %s
-                GROUP BY DATE(session_start)
+                  AND session_start AT TIME ZONE 'Europe/Istanbul' >= %s
+                GROUP BY DATE(session_start AT TIME ZONE 'Europe/Istanbul')
                 ORDER BY day ASC
             """, (user_id, week_start))
             sessions = cursor.fetchall()
 
             cursor.execute("""
-                SELECT DATE(session_start) as day,
+                SELECT DATE(session_start AT TIME ZONE 'Europe/Istanbul') as day,
                        COALESCE(SUM(
                            CASE
                                WHEN session_end IS NOT NULL THEN
@@ -525,8 +525,8 @@ def get_stats():
                        ), 0) as minutes
                 FROM study_sessions
                 WHERE user_id = %s
-                  AND session_start >= %s
-                GROUP BY DATE(session_start)
+                  AND session_start AT TIME ZONE 'Europe/Istanbul' >= %s
+                GROUP BY DATE(session_start AT TIME ZONE 'Europe/Istanbul')
                 ORDER BY day ASC
             """, (user_id, week_start))
             durations = cursor.fetchall()
